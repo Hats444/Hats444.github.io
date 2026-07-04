@@ -1,7 +1,6 @@
 (function () {
   'use strict';
 
-  /* ── Matrix rain (estilo referência D.K.C) ── */
   const canvas = document.getElementById('matrix');
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -46,19 +45,19 @@
     setInterval(draw, 45);
   }
 
-  /* ── Gate → App ── */
   const gate = document.getElementById('gate');
   const app = document.getElementById('app');
   const btnEnter = document.getElementById('btn-enter');
-  const STORAGE_KEY = 'hats444_entered';
+  const STORAGE_KEY = 'hats444_entered_v4';
 
-  function enterSite() {
+  function showApp() {
     if (!gate || !app) return;
     gate.classList.add('leaving');
     setTimeout(() => {
-      gate.classList.add('hidden');
-      app.classList.remove('hidden');
-    }, 550);
+      gate.hidden = true;
+      app.hidden = false;
+      gate.classList.remove('leaving');
+    }, 500);
     try {
       sessionStorage.setItem(STORAGE_KEY, '1');
     } catch {
@@ -67,19 +66,18 @@
   }
 
   if (btnEnter) {
-    btnEnter.addEventListener('click', enterSite);
+    btnEnter.addEventListener('click', showApp);
   }
 
   try {
     if (sessionStorage.getItem(STORAGE_KEY) === '1' && gate && app) {
-      gate.classList.add('hidden');
-      app.classList.remove('hidden');
+      gate.hidden = true;
+      app.hidden = false;
     }
   } catch {
     /* ignore */
   }
 
-  /* ── Scroll top ── */
   const scrollTopBtn = document.getElementById('scroll-top');
   if (scrollTopBtn) {
     scrollTopBtn.addEventListener('click', () => {
