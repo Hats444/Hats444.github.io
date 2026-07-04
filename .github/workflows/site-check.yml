@@ -1,0 +1,26 @@
+name: Site check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify portfolio assets
+        run: |
+          test -f index.html
+          test -f js/main.js
+          test -f assets/images/card-hanork.jpg
+          test -f assets/audio/fml.mp3
+          grep -q 'gate-panel' index.html
+          grep -q 'card-avatar' index.html
+          grep -q 'id="matrix"' index.html
