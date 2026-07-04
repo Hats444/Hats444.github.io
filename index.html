@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hats444 — Desenvolvedor Full-Stack especializado em bots Telegram, WhatsApp, pagamentos e automação de vendas. Criador do Hanork.">
+  <meta name="theme-color" content="#0a0e17">
+  <title>Hats444 · Full-Stack & Automação</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="glow glow-a" aria-hidden="true"></div>
+  <div class="glow glow-b" aria-hidden="true"></div>
+
+  <header class="site-header" id="top">
+    <nav class="nav container">
+      <a class="logo" href="#top">Hats<span>444</span></a>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#skills">Stack</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#experiencia">Experiência</a></li>
+        <li><a href="#contato" class="nav-cta">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <div class="hero-content">
+        <p class="eyebrow"><span class="pulse"></span> Disponível para projetos</p>
+        <h1>
+          Construo <em>sistemas de automação</em> que vendem, divulgam e escalam sozinhos.
+        </h1>
+        <p class="hero-lead">
+          Desenvolvedor full-stack focado em bots Telegram &amp; WhatsApp, pagamentos PIX,
+          arquitetura multi-processo e produtos SaaS — do código à produção em Linux/WSL.
+        </p>
+        <div class="hero-actions">
+          <a href="#projetos" class="btn btn-primary">Ver projetos</a>
+          <a href="https://github.com/Hats444" target="_blank" rel="noopener" class="btn btn-ghost">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+        </div>
+        <dl class="hero-stats">
+          <div><dt>+3 anos</dt><dd>Automação &amp; bots</dd></div>
+          <div><dt>478+</dt><dd>Arquivos no Hanork v4.1</dd></div>
+          <div><dt>24/7</dt><dd>Produção WSL/Linux</dd></div>
+        </dl>
+      </div>
+      <div class="hero-terminal" aria-label="Terminal de exemplo">
+        <div class="terminal-bar">
+          <span></span><span></span><span></span>
+          <code>~/hanork · produção</code>
+        </div>
+        <pre class="terminal-body"><code><span class="t-dim">$</span> npm start
+<span class="t-green">✓</span> Telegram polling online
+<span class="t-green">✓</span> wa_a conectado · 25 grupos
+<span class="t-green">✓</span> wa_b conectado · 22 grupos
+<span class="t-green">✓</span> Redis + Bull queues
+<span class="t-cyan">→</span> Promo Hanork · 4 status + 4 pagamentos
+<span class="t-dim">$</span> validate-production.js
+<span class="t-green">18/18 OK</span></code></pre>
+      </div>
+    </section>
+
+    <section id="sobre" class="section container">
+      <div class="section-head">
+        <span class="section-tag">01 · Sobre</span>
+        <h2>Engenharia de produto, não só código</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            Sou desenvolvedor full-stack com foco em <strong>automação comercial</strong>:
+            bots que vendem, entregam produtos digitais, processam PIX e divulgam em escala
+            — com anti-ban, idempotência e observabilidade desde o dia um.
+          </p>
+          <p>
+            Trabalho end-to-end: arquitetura Node.js, integrações de pagamento (Mercado Pago),
+            workers WhatsApp (Baileys), filas Redis/Bull, painéis admin, deploy em WSL/Linux
+            e documentação operacional detalhada para produção real.
+          </p>
+          <p>
+            Meu projeto principal é o <strong>Hanork</strong> — ecossistema completo de vendas
+            Telegram + divulgação WhatsApp + SaaS para assinantes (Hanork Div).
+          </p>
+        </div>
+        <ul class="about-highlights">
+          <li>
+            <span class="highlight-icon">🎯</span>
+            <div>
+              <strong>Produto em produção</strong>
+              <span>Bot rodando 24/7 com clientes reais, pagamentos e entrega automática</span>
+            </div>
+          </li>
+          <li>
+            <span class="highlight-icon">🛡️</span>
+            <div>
+              <strong>Zero constrangimento</strong>
+              <span>Idempotência, webhooks seguros, mensagens honestas ao usuário</span>
+            </div>
+          </li>
+          <li>
+            <span class="highlight-icon">📐</span>
+            <div>
+              <strong>Docs vivas</strong>
+              <span>README 2k+ linhas, planos de auditoria e checklists de deploy</span>
+            </div>
+          </li>
+          <li>
+            <span class="highlight-icon">⚙️</span>
+            <div>
+              <strong>Dual WA + IPC</strong>
+              <span>Dois números WhatsApp, fan-out, overlap monitor, blast coordenado</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="skills" class="section section-dark">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">02 · Stack</span>
+          <h2>O que domino na prática</h2>
+        </div>
+        <div class="skills-grid">
+          <article class="skill-card">
+            <h3>Backend &amp; Runtime</h3>
+            <ul class="skill-tags">
+              <li>Node.js 20+</li><li>Express 5</li><li>JavaScript ES2022</li>
+              <li>SQLite / WAL</li><li>Redis</li><li>Bull Queues</li>
+              <li>EventBus</li><li>IPC JSONL</li><li>PM2 / nohup</li>
+            </ul>
+          </article>
+          <article class="skill-card">
+            <h3>Messaging &amp; Bots</h3>
+            <ul class="skill-tags">
+              <li>Telegraf</li><li>Telegram Bot API</li><li>Baileys (WhatsApp)</li>
+              <li>GramJS / MTProto</li><li>Webhooks</li><li>Pairing / QR login</li>
+              <li>Broadcast</li><li>Anti-ban multi-camada</li>
+            </ul>
+          </article>
+          <article class="skill-card">
+            <h3>Pagamentos &amp; SaaS</h3>
+            <ul class="skill-tags">
+              <li>Mercado Pago</li><li>PIX</li><li>Webhooks idempotentes</li>
+              <li>Multi-tenant</li><li>Assinaturas</li><li>Carteira / afiliados</li>
+              <li>Flash sales</li><li>Checkout Telegram</li>
+            </ul>
+          </article>
+          <article class="skill-card">
+            <h3>Integrações &amp; APIs</h3>
+            <ul class="skill-tags">
+              <li>Google Gemini</li><li>SMM FornecedorBrasil</li><li>Virtuo eSIM</li>
+              <li>ZeroTwo API</li><li>SMTP</li><li>REST / Axios</li>
+              <li>Catálogo dinâmico</li>
+            </ul>
+          </article>
+          <article class="skill-card">
+            <h3>Frontend &amp; Mobile</h3>
+            <ul class="skill-tags">
+              <li>HTML / CSS / JS</li><li>Dashboard admin SPA</li><li>Flutter</li>
+              <li>Android APK</li><li>GitHub Actions CI</li><li>Telegram inline UI</li>
+            </ul>
+          </article>
+          <article class="skill-card">
+            <h3>DevOps &amp; Qualidade</h3>
+            <ul class="skill-tags">
+              <li>WSL / Ubuntu</li><li>Docker Compose</li><li>Prometheus</li>
+              <li>Grafana</li><li>Scripts deploy</li><li>30+ test suites</li>
+              <li>validate-production</li><li>Observabilidade</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projetos" class="section container">
+      <div class="section-head">
+        <span class="section-tag">03 · Projetos</span>
+        <h2>Trabalho em destaque</h2>
+      </div>
+      <div class="projects">
+        <article class="project-card project-featured">
+          <div class="project-meta">
+            <span class="project-badge">Flagship · v4.1</span>
+            <span class="project-year">2024 — 2026</span>
+          </div>
+          <h3>Hanork Bot</h3>
+          <p>
+            Bot de vendas Telegram completo: catálogo, carrinho, cupons, checkout PIX/cartão,
+            entrega automática de digitais, afiliados, flash sales, dashboard web e plugin
+            WhatsApp com rotação anti-ban. Monolito modular com 90+ módulos em <code>src/</code>.
+          </p>
+          <ul class="project-features">
+            <li>Mercado Pago webhooks com dedup Redis</li>
+            <li>Zero Divu — status WA + pagamento c/ menção @todos</li>
+            <li>Dual WA (wa_a + wa_b) com fan-out e overlap monitor</li>
+            <li>Ponte MTProto para divulgação em grupos</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://github.com/Hats444/hanork" target="_blank" rel="noopener" class="btn btn-sm btn-primary">Ver no GitHub</a>
+            <span class="project-stack">Node · Telegraf · Baileys · SQLite · Redis</span>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-meta">
+            <span class="project-badge">SaaS</span>
+            <span class="project-year">2026</span>
+          </div>
+          <h3>Hanork Div</h3>
+          <p>
+            Produto white-label: cada assinante ganha worker WhatsApp isolado (IPC por usuário),
+            wizard Telegram, campanhas A/B/C, pareamento estilo Zero Two e blast manual
+            (status, pagamento, menção).
+          </p>
+          <ul class="project-features">
+            <li>Worker Baileys por assinante</li>
+            <li>Grant admin preserva sessão WA</li>
+            <li>Tour, guia in-app e deep links</li>
+          </ul>
+          <span class="project-stack">Node · IPC · Baileys · Telegraf</span>
+        </article>
+
+        <article class="project-card">
+          <div class="project-meta">
+            <span class="project-badge">Mobile</span>
+            <span class="project-year">2026</span>
+          </div>
+          <h3>Hanork Panel</h3>
+          <p>
+            App Flutter/Android para administração mobile — build automatizado via
+            GitHub Actions com geração de APK.
+          </p>
+          <span class="project-stack">Flutter · Android · GitHub Actions</span>
+        </article>
+
+        <article class="project-card">
+          <div class="project-meta">
+            <span class="project-badge">Integrações</span>
+            <span class="project-year">2026</span>
+          </div>
+          <h3>SMM + Virtuo eSIM</h3>
+          <p>
+            Módulos plugáveis: pedidos SMM via FornecedorBrasil (Instagram, TikTok…)
+            e venda de eSIM internacional com catálogo live, reconcile de pendentes
+            e bloqueio por país sem estoque.
+          </p>
+          <span class="project-stack">REST APIs · Node · SQLite</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="experiencia" class="section section-dark">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">04 · Experiência</span>
+          <h2>Problemas reais que resolvo</h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <span class="timeline-dot"></span>
+            <div class="timeline-content">
+              <h3>Arquitetura multi-processo</h3>
+              <p>
+                Hanork principal + workers WhatsApp filhos via <code>fork()</code> e IPC JSONL.
+                Sessões isoladas, comandos namespaced, timeout graceful sem derrubar o bot Telegram.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-dot"></span>
+            <div class="timeline-content">
+              <h3>Anti-ban WhatsApp em 12+ camadas</h3>
+              <p>
+                Risk controller, circuit breaker 12h, flood guard, pattern guard, post guard,
+                quiet hours, warm-up e perfis safe/balanced/aggressive — tudo persistido em JSON.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-dot"></span>
+            <div class="timeline-content">
+              <h3>Pagamentos sem duplicata</h3>
+              <p>
+                Webhooks MP com dedup, locks distribuídos Redis, entrega idempotente,
+                estorno automático se fulfill falhar — política «zero constrangimento».
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-dot"></span>
+            <div class="timeline-content">
+              <h3>Deploy &amp; ops em produção</h3>
+              <p>
+                WSL Ubuntu, scripts <code>hanork-ctl.sh</code>, validate 18/18 checks,
+                métricas Prometheus, logs estruturados Pino e documentação viva pós-deploy.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-dot"></span>
+            <div class="timeline-content">
+              <h3>Pareamento WA instantâneo</h3>
+              <p>
+                Fluxo estilo Zero Two: pairing code imediato, reconexão 515, stale session fix,
+                forceRefresh IPC — UX de conectar em segundos, não minutos.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" class="section container">
+      <div class="contact-box">
+        <div class="contact-text">
+          <span class="section-tag">05 · Contato</span>
+          <h2>Vamos construir algo que roda de verdade?</h2>
+          <p>
+            Aberto a freelas, parcerias e projetos de automação — bots, pagamentos,
+            integrações WhatsApp/Telegram e produtos SaaS.
+          </p>
+        </div>
+        <div class="contact-actions">
+          <a href="https://github.com/Hats444" target="_blank" rel="noopener" class="contact-link">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span>
+              <strong>GitHub</strong>
+              <small>github.com/Hats444</small>
+            </span>
+          </a>
+          <a href="https://github.com/Hats444/hanork" target="_blank" rel="noopener" class="contact-link">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+            <span>
+              <strong>Hanork</strong>
+              <small>Repositório principal</small>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Hats444 · Feito com Node, café e anti-ban.</p>
+      <a href="#top" class="back-top">↑ Topo</a>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
