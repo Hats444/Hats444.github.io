@@ -6,7 +6,7 @@
 
   if (canvas && !reduced) {
     const ctx = canvas.getContext('2d');
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*<>{}[]/\\|';
+    const chars = 'ｱｲｳｴｵｶｷｸｹｺABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*<>{}[]/\\|';
     let columns = [];
     let fontSize = 14;
 
@@ -48,7 +48,7 @@
   const gate = document.getElementById('gate');
   const app = document.getElementById('app');
   const btnEnter = document.getElementById('btn-enter');
-  const STORAGE_KEY = 'hats444_entered_v4';
+  const STORAGE_KEY = 'hats444_entered_v5';
 
   function showApp() {
     if (!gate || !app) return;
