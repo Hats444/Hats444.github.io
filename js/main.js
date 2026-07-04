@@ -1,59 +1,89 @@
 (function () {
   'use strict';
 
-  document.getElementById('year').textContent = new Date().getFullYear();
+  /* ── Matrix rain (estilo referência D.K.C) ── */
+  const canvas = document.getElementById('matrix');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const toggle = document.querySelector('.nav-toggle');
-  const links = document.querySelector('.nav-links');
+  if (canvas && !reduced) {
+    const ctx = canvas.getContext('2d');
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*<>{}[]/\\|';
+    let columns = [];
+    let fontSize = 14;
 
-  if (toggle && links) {
-    toggle.addEventListener('click', () => {
-      const open = links.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', String(open));
-    });
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      fontSize = window.innerWidth < 480 ? 12 : 14;
+      const colCount = Math.ceil(canvas.width / fontSize);
+      columns = Array.from({ length: colCount }, () =>
+        Math.floor(Math.random() * (canvas.height / fontSize))
+      );
+    }
 
-    links.querySelectorAll('a').forEach((a) => {
-      a.addEventListener('click', () => {
-        links.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-      });
-    });
+    function draw() {
+      ctx.fillStyle = 'rgba(5, 5, 5, 0.08)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = 'rgba(180, 180, 180, 0.35)';
+      ctx.font = fontSize + 'px JetBrains Mono, monospace';
+
+      for (let i = 0; i < columns.length; i++) {
+        const char = chars[Math.floor(Math.random() * chars.length)];
+        const x = i * fontSize;
+        const y = columns[i] * fontSize;
+        ctx.fillText(char, x, y);
+
+        if (y > canvas.height && Math.random() > 0.975) {
+          columns[i] = 0;
+        } else {
+          columns[i]++;
+        }
+      }
+    }
+
+    resize();
+    window.addEventListener('resize', resize);
+    setInterval(draw, 45);
   }
 
-  const revealEls = document.querySelectorAll(
-    '.section-head, .about-grid, .skill-card, .project-card, .timeline-item, .contact-box, .hero-content, .hero-terminal'
-  );
+  /* ── Gate → App ── */
+  const gate = document.getElementById('gate');
+  const app = document.getElementById('app');
+  const btnEnter = document.getElementById('btn-enter');
+  const STORAGE_KEY = 'hats444_entered';
 
-  revealEls.forEach((el) => el.classList.add('reveal'));
-
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            io.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
-    );
-    revealEls.forEach((el) => io.observe(el));
-  } else {
-    revealEls.forEach((el) => el.classList.add('visible'));
+  function enterSite() {
+    if (!gate || !app) return;
+    gate.classList.add('leaving');
+    setTimeout(() => {
+      gate.classList.add('hidden');
+      app.classList.remove('hidden');
+    }, 550);
+    try {
+      sessionStorage.setItem(STORAGE_KEY, '1');
+    } catch {
+      /* ignore */
+    }
   }
 
-  const header = document.querySelector('.site-header');
-  let lastY = 0;
+  if (btnEnter) {
+    btnEnter.addEventListener('click', enterSite);
+  }
 
-  window.addEventListener(
-    'scroll',
-    () => {
-      const y = window.scrollY;
-      if (!header) return;
-      header.style.transform = y > lastY && y > 120 ? 'translateY(-100%)' : 'translateY(0)';
-      lastY = y;
-    },
-    { passive: true }
-  );
+  try {
+    if (sessionStorage.getItem(STORAGE_KEY) === '1' && gate && app) {
+      gate.classList.add('hidden');
+      app.classList.remove('hidden');
+    }
+  } catch {
+    /* ignore */
+  }
+
+  /* ── Scroll top ── */
+  const scrollTopBtn = document.getElementById('scroll-top');
+  if (scrollTopBtn) {
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 })();
