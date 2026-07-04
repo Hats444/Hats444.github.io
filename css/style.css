@@ -599,9 +599,9 @@ main {
 
 .float-widgets {
   position: fixed;
-  bottom: 36px;
-  right: 72px;
-  z-index: 40;
+  bottom: 78px;
+  right: 16px;
+  z-index: 61;
 }
 
 .float-btn {
