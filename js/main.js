@@ -48,7 +48,7 @@
   const gate = document.getElementById('gate');
   const app = document.getElementById('app');
   const btnEnter = document.getElementById('btn-enter');
-  const STORAGE_KEY = 'hats444_entered_v5';
+  const STORAGE_KEY = 'hats444_entered_v6';
 
   function showApp() {
     if (!gate || !app) return;
@@ -83,5 +83,39 @@
     scrollTopBtn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+  }
+
+  const audio = document.getElementById('bg-music');
+  const btnMusic = document.getElementById('btn-music');
+  const viz = document.getElementById('viz-bars');
+
+  function setPlaying(isPlaying) {
+    if (!btnMusic || !viz) return;
+    btnMusic.classList.toggle('is-playing', isPlaying);
+    viz.classList.toggle('is-paused', !isPlaying);
+    btnMusic.setAttribute(
+      'aria-label',
+      isPlaying ? 'Pausar FML — Arizona Zervas' : 'Tocar FML — Arizona Zervas'
+    );
+  }
+
+  if (audio && btnMusic) {
+    btnMusic.addEventListener('click', async () => {
+      try {
+        if (audio.paused) {
+          await audio.play();
+          setPlaying(true);
+        } else {
+          audio.pause();
+          setPlaying(false);
+        }
+      } catch {
+        setPlaying(false);
+      }
+    });
+
+    audio.addEventListener('play', () => setPlaying(true));
+    audio.addEventListener('pause', () => setPlaying(false));
+    audio.addEventListener('error', () => setPlaying(false));
   }
 })();

@@ -29,7 +29,7 @@
   --mono: "JetBrains Mono", ui-monospace, monospace;
   --radius: 12px;
   --radius-sm: 6px;
-  --max: 480px;
+  --max: 720px;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -222,7 +222,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 560px;
+  max-width: var(--max);
   margin: 0 auto;
   min-height: 100vh;
   padding-bottom: 96px;
@@ -337,6 +337,56 @@ main {
   padding: 6px 0 20px;
 }
 
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.cards-grid .dkc-card {
+  margin-bottom: 0;
+  padding: 14px 10px 12px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.cards-grid .card-avatar {
+  width: 68px;
+  height: 68px;
+  margin-bottom: 10px;
+}
+
+.cards-grid .card-name {
+  font-size: 0.82rem;
+  line-height: 1.25;
+}
+
+.cards-grid .card-status {
+  font-size: 0.58rem;
+  margin-bottom: 6px;
+}
+
+.cards-grid .card-desc {
+  font-size: 0.64rem;
+  margin-bottom: 10px;
+  line-height: 1.35;
+  flex: 1;
+}
+
+.cards-grid .btn-card {
+  padding: 10px 6px;
+  font-size: 0.56rem;
+  letter-spacing: 0.06em;
+  margin-top: auto;
+}
+
+.cards-grid .dkc-card:nth-child(odd):last-child {
+  grid-column: 1 / -1;
+  max-width: calc(50% - 5px);
+  justify-self: center;
+}
+
 /* ── D.K.C list cards ── */
 .dkc-card {
   background: var(--bg-card);
@@ -367,13 +417,42 @@ main {
   font-size: 1.2rem;
   border: 1px solid rgba(255,255,255,0.1);
   overflow: hidden;
+  background: #0a0a0a;
 }
 
-.card-avatar.hanork { background: linear-gradient(135deg, #1a2a1a, #0a0a0a); color: #6ee7b7; }
-.card-avatar.div { background: linear-gradient(135deg, #1a1a2e, #0a0a0a); color: #93c5fd; }
-.card-avatar.wa { background: linear-gradient(135deg, #0d2a1a, #0a0a0a); color: #25d366; }
-.card-avatar.ig { background: linear-gradient(135deg, #2a1520, #0a0a0a); color: #f472b6; }
-.card-avatar.gh { background: linear-gradient(135deg, #1a1a1a, #0a0a0a); color: #e5e5e5; }
+.card-avatar .avatar-img,
+.logo-mark .avatar-img,
+.brand-icon .avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-avatar.hanork .avatar-img,
+.card-avatar.div .avatar-img,
+.card-avatar.wa .avatar-img,
+.logo-mark .avatar-img,
+.brand-icon .avatar-img {
+  object-position: 22% center;
+}
+
+.card-avatar.ig .avatar-img,
+.card-avatar.gh .avatar-img {
+  object-position: 78% center;
+}
+
+.logo-mark,
+.brand-icon {
+  padding: 0;
+  overflow: hidden;
+}
+
+.card-avatar.hanork { color: #6ee7b7; }
+.card-avatar.div { color: #93c5fd; }
+.card-avatar.wa { color: #25d366; }
+.card-avatar.ig { color: #f472b6; }
+.card-avatar.gh { color: #e5e5e5; }
 
 .card-name {
   font-family: var(--serif);
@@ -529,7 +608,7 @@ main {
 .float-widgets {
   position: fixed;
   bottom: 36px;
-  right: 16px;
+  right: 72px;
   z-index: 40;
 }
 
@@ -550,9 +629,97 @@ main {
   border-color: rgba(255,255,255,0.22);
 }
 
+/* ── Music widget (estilo D.K.C) ── */
+.music-widget {
+  position: fixed;
+  bottom: 36px;
+  right: 16px;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.viz-bars {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 3px;
+  width: 36px;
+  height: 36px;
+  padding: 8px 6px;
+  background: rgba(16, 16, 16, 0.92);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.viz-bars span {
+  display: block;
+  width: 3px;
+  min-height: 4px;
+  background: var(--text-muted);
+  border-radius: 1px;
+  animation: viz-pulse 0.75s ease-in-out infinite alternate;
+}
+
+.viz-bars span:nth-child(1) { animation-delay: 0s; }
+.viz-bars span:nth-child(2) { animation-delay: 0.12s; }
+.viz-bars span:nth-child(3) { animation-delay: 0.24s; }
+.viz-bars span:nth-child(4) { animation-delay: 0.36s; }
+
+.viz-bars.is-paused span {
+  animation: none;
+  height: 6px !important;
+}
+
+@keyframes viz-pulse {
+  from { height: 6px; }
+  to { height: 16px; }
+}
+
+.music-btn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(16, 16, 16, 0.92);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  backdrop-filter: blur(8px);
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.music-btn:hover,
+.music-btn.is-playing {
+  color: var(--text);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.music-btn .icon-muted { display: block; }
+.music-btn .icon-playing { display: none; }
+.music-btn.is-playing .icon-muted { display: none; }
+.music-btn.is-playing .icon-playing { display: block; }
+
+@media (max-width: 380px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cards-grid .dkc-card:nth-child(odd):last-child {
+    max-width: none;
+  }
+}
+
 @media (min-width: 768px) {
-  :root { --max: 520px; }
+  :root { --max: 760px; }
   .gate-desc { font-size: 0.72rem; }
+  .cards-grid { gap: 12px; }
+  .cards-grid .dkc-card { padding: 16px 12px 14px; }
+  .cards-grid .card-avatar { width: 76px; height: 76px; }
+  .cards-grid .card-name { font-size: 0.88rem; }
+  .cards-grid .btn-card { font-size: 0.6rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -563,7 +730,7 @@ main {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?v=5" media="all">
+  <link rel="stylesheet" href="/css/style.css?v=6" media="all">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23111' width='100' height='100' rx='18'/><text x='50' y='62' text-anchor='middle' fill='white' font-size='36' font-family='monospace' font-weight='bold'>H4</text></svg>">
 </head>
 <body>
@@ -575,7 +742,9 @@ main {
     <div class="gate-inner">
       <div class="logo-box" aria-hidden="true">
         <div class="logo-glow"></div>
-        <div class="logo-mark">HK</div>
+        <div class="logo-mark">
+          <img src="/assets/images/hanork.jpg" alt="Hanork" class="avatar-img" width="84" height="84">
+        </div>
       </div>
       <h1 class="gate-title">HANORK</h1>
       <p class="gate-desc">BOT TELEGRAM · PIX · VENDAS</p>
@@ -598,7 +767,9 @@ main {
     <header class="topbar">
       <div class="topbar-inner">
         <a href="#top" class="brand">
-          <span class="brand-icon">H4</span>
+          <span class="brand-icon">
+            <img src="/assets/images/hanork.jpg" alt="" class="avatar-img" width="32" height="32">
+          </span>
           <span class="brand-text">HATS444<sup>v4</sup></span>
         </a>
         <a href="https://github.com/Hats444" target="_blank" rel="noopener" class="btn-adm">
@@ -609,96 +780,75 @@ main {
     </header>
 
     <main id="top">
-      <section class="intro">
-        <p class="intro-label">// SOBRE</p>
-        <h2>Engenharia de automação<br>que roda de verdade.</h2>
-        <p class="intro-text">
-          Construo ecossistemas completos: bot de vendas Telegram, WhatsApp com anti-ban,
-          Mercado Pago, SaaS multi-tenant e deploy Linux — do código à produção.
-        </p>
-      </section>
-
       <section class="cards-section" id="projetos">
-        <p class="section-label">// PROJETOS ATIVOS</p>
+        <p class="section-label">// PROJETOS &amp; CONTATO</p>
 
-        <article class="dkc-card">
-          <div class="card-avatar hanork">
-            <span>HK</span>
-          </div>
-          <h3 class="card-name">HANORK BOT <span class="tag">#FLAGSHIP</span></h3>
-          <p class="card-status">PROJETO ATIVO</p>
-          <p class="card-desc">Vendas Telegram · PIX · entrega digital · Dual WA · 90+ módulos</p>
-          <a href="https://t.me/hanork_bot" target="_blank" rel="noopener" class="btn-card">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-            FALAR COM BOT
-          </a>
-        </article>
+        <div class="cards-grid">
+          <article class="dkc-card">
+            <div class="card-avatar hanork">
+              <img src="/assets/images/hanork.jpg" alt="Hanork Bot" class="avatar-img" loading="lazy" width="68" height="68">
+            </div>
+            <h3 class="card-name">HANORK BOT <span class="tag">#FLAGSHIP</span></h3>
+            <p class="card-status">PROJETO ATIVO</p>
+            <p class="card-desc">Vendas Telegram · PIX · entrega digital · Dual WA</p>
+            <a href="https://t.me/hanork_bot" target="_blank" rel="noopener" class="btn-card">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              FALAR COM BOT
+            </a>
+          </article>
 
-        <article class="dkc-card">
-          <div class="card-avatar div">
-            <span>DV</span>
-          </div>
-          <h3 class="card-name">HANORK DIV <span class="tag">#SAAS</span></h3>
-          <p class="card-status is-private">REPOSITÓRIO PRIVADO</p>
-          <p class="card-desc">White-label WA · worker por assinante · campanhas A/B/C · pareamento instantâneo</p>
-          <span class="btn-card is-locked">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            CÓDIGO PRIVADO
-          </span>
-        </article>
-      </section>
+          <article class="dkc-card">
+            <div class="card-avatar div">
+              <img src="/assets/images/div.jpg" alt="Hanork Div" class="avatar-img" loading="lazy" width="68" height="68">
+            </div>
+            <h3 class="card-name">HANORK DIV <span class="tag">#SAAS</span></h3>
+            <p class="card-status is-private">REPOSITÓRIO PRIVADO</p>
+            <p class="card-desc">White-label WA · worker · campanhas A/B/C</p>
+            <span class="btn-card is-locked">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+              CÓDIGO PRIVADO
+            </span>
+          </article>
 
-      <section class="stack-section" id="stack">
-        <p class="section-label">// STACK</p>
-        <div class="stack-grid">
-          <span>Node.js 20</span><span>Telegraf</span><span>Baileys</span><span>SQLite</span>
-          <span>Redis</span><span>Bull</span><span>Mercado Pago</span><span>Express</span>
-          <span>Docker</span><span>Prometheus</span><span>WSL/Linux</span>
-          <span>GramJS</span><span>Gemini AI</span><span>GitHub Actions</span><span>IPC</span>
+          <article class="dkc-card">
+            <div class="card-avatar wa">
+              <img src="/assets/images/whatsapp.jpg" alt="WhatsApp" class="avatar-img" loading="lazy" width="68" height="68">
+            </div>
+            <h3 class="card-name">WHATSAPP <span class="tag">#DIRECT</span></h3>
+            <p class="card-status">DISPONÍVEL</p>
+            <p class="card-desc">+55 13 99693-2716</p>
+            <a href="https://wa.me/5513996932716" target="_blank" rel="noopener" class="btn-card">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              FALAR NO ZAP
+            </a>
+          </article>
+
+          <article class="dkc-card">
+            <div class="card-avatar ig">
+              <img src="/assets/images/instagram.jpg" alt="Instagram" class="avatar-img" loading="lazy" width="68" height="68">
+            </div>
+            <h3 class="card-name">INSTAGRAM <span class="tag">#@q_zeroxx</span></h3>
+            <p class="card-status">SOCIAL ATIVO</p>
+            <p class="card-desc">Bastidores e updates</p>
+            <a href="https://www.instagram.com/q_zeroxx" target="_blank" rel="noopener" class="btn-card">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              SEGUIR INSTA
+            </a>
+          </article>
+
+          <article class="dkc-card">
+            <div class="card-avatar gh">
+              <img src="/assets/images/github.jpg" alt="GitHub" class="avatar-img" loading="lazy" width="68" height="68">
+            </div>
+            <h3 class="card-name">GITHUB <span class="tag">#HATS444</span></h3>
+            <p class="card-status is-private">REPOS PRIVADOS</p>
+            <p class="card-desc">Perfil público · Hanork privado</p>
+            <a href="https://github.com/Hats444" target="_blank" rel="noopener" class="btn-card">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              VER PERFIL
+            </a>
+          </article>
         </div>
-      </section>
-
-      <section class="cards-section" id="contato">
-        <p class="section-label">// CONTATO</p>
-
-        <article class="dkc-card">
-          <div class="card-avatar wa">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          </div>
-          <h3 class="card-name">WHATSAPP <span class="tag">#DIRECT</span></h3>
-          <p class="card-status">DISPONÍVEL</p>
-          <p class="card-desc">+55 13 99693-2716</p>
-          <a href="https://wa.me/5513996932716" target="_blank" rel="noopener" class="btn-card">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-            FALAR NO WHATSAPP
-          </a>
-        </article>
-
-        <article class="dkc-card">
-          <div class="card-avatar ig">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-          </div>
-          <h3 class="card-name">INSTAGRAM <span class="tag">#@q_zeroxx</span></h3>
-          <p class="card-status">SOCIAL ATIVO</p>
-          <p class="card-desc">Acompanhe projetos, bastidores e updates</p>
-          <a href="https://www.instagram.com/q_zeroxx" target="_blank" rel="noopener" class="btn-card">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-            SEGUIR NO INSTA
-          </a>
-        </article>
-
-        <article class="dkc-card">
-          <div class="card-avatar gh">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-          </div>
-          <h3 class="card-name">GITHUB <span class="tag">#HATS444</span></h3>
-          <p class="card-status is-private">REPOS PRIVADOS</p>
-          <p class="card-desc">Perfil público · projetos Hanork em repositório privado</p>
-          <a href="https://github.com/Hats444" target="_blank" rel="noopener" class="btn-card">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-            VER PERFIL
-          </a>
-        </article>
       </section>
 
       <section class="partners">
@@ -726,6 +876,19 @@ main {
     </div>
   </div>
 
-  <script src="/js/main.js?v=5"></script>
+  <div class="music-widget" id="music-widget">
+    <div class="viz-bars is-paused" id="viz-bars" aria-hidden="true">
+      <span></span><span></span><span></span><span></span>
+    </div>
+    <button type="button" class="music-btn" id="btn-music" aria-label="Tocar FML — Arizona Zervas" title="FML · Arizona Zervas">
+      <svg class="icon-muted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+      <svg class="icon-playing" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07"/></svg>
+    </button>
+  </div>
+  <audio id="bg-music" loop preload="none">
+    <source src="/assets/audio/fml.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="/js/main.js?v=6"></script>
 </body>
 </html>
