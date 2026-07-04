@@ -6,7 +6,7 @@ INFOS = Path(r'c:\Users\boots\Downloads\hanork\infos')
 OUT = Path(r'c:\Users\boots\Downloads\Hats444.github.io\assets\images')
 OUT.mkdir(parents=True, exist_ok=True)
 
-SIZE = 512
+SIZE = 176  # 2x retina; exibido em 88px no CSS
 BG = (10, 10, 10)
 
 MAPPING = {

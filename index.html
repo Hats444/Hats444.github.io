@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Hats444 — Full-Stack · Bots Telegram & WhatsApp · Hanork · Automação e pagamentos PIX.">
-  <meta name="theme-color" content="#050505">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>HANORK · Bot Telegram</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -429,12 +431,17 @@ main {
   background: #0a0a0a;
 }
 
-.card-avatar .avatar-img {
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
+.cards-grid .card-avatar,
+.card-avatar {
+  box-sizing: border-box;
+}
+
+.cards-grid .card-avatar .avatar-img {
+  width: 88px !important;
+  height: 88px !important;
+  max-width: 88px !important;
+  max-height: 88px !important;
+  object-fit: contain !important;
   object-position: center;
   display: block;
 }
@@ -740,7 +747,7 @@ main {
       <div class="logo-box" aria-hidden="true">
         <div class="logo-glow"></div>
         <div class="logo-mark">
-          <img src="/assets/images/logo-hanork.jpg?v=13" alt="Hanork" class="avatar-img" width="84" height="84">
+          <img src="/assets/images/logo-hanork.jpg?v=14" alt="Hanork" class="avatar-img" width="84" height="84">
         </div>
       </div>
       <h1 class="gate-title">HANORK</h1>
@@ -765,7 +772,7 @@ main {
       <div class="topbar-inner">
         <a href="#top" class="brand">
           <span class="brand-icon">
-            <img src="/assets/images/logo-hanork.jpg?v=13" alt="" class="avatar-img" width="32" height="32">
+            <img src="/assets/images/logo-hanork.jpg?v=14" alt="" class="avatar-img" width="32" height="32">
           </span>
           <span class="brand-text">HANORK</span>
         </a>
@@ -791,8 +798,8 @@ main {
 
         <div class="cards-grid">
           <article class="dkc-card">
-            <div class="card-avatar hanork">
-              <img src="/assets/images/card-hanork.jpg?v=13" alt="Hanork Bot" class="avatar-img" loading="lazy" width="88" height="88">
+            <div class="card-avatar hanork" style="width:88px;height:88px;min-width:88px;max-width:88px;min-height:88px;max-height:88px;overflow:hidden;flex-shrink:0">
+              <img src="/assets/images/card-hanork.jpg?v=14" alt="Hanork Bot" class="avatar-img" loading="lazy" width="88" height="88" style="width:88px;height:88px;object-fit:contain;display:block">
             </div>
             <h3 class="card-name">HANORK BOT <span class="tag">#FLAGSHIP</span></h3>
             <p class="card-status">PROJETO ATIVO</p>
@@ -804,8 +811,8 @@ main {
           </article>
 
           <article class="dkc-card">
-            <div class="card-avatar div">
-              <img src="/assets/images/card-div.jpg?v=13" alt="Hanork Div" class="avatar-img" loading="lazy" width="88" height="88">
+            <div class="card-avatar div" style="width:88px;height:88px;min-width:88px;max-width:88px;min-height:88px;max-height:88px;overflow:hidden;flex-shrink:0">
+              <img src="/assets/images/card-div.jpg?v=14" alt="Hanork Div" class="avatar-img" loading="lazy" width="88" height="88" style="width:88px;height:88px;object-fit:contain;display:block">
             </div>
             <h3 class="card-name">HANORK DIV <span class="tag">#SAAS</span></h3>
             <p class="card-status is-private">REPOSITÓRIO PRIVADO</p>
@@ -817,8 +824,8 @@ main {
           </article>
 
           <article class="dkc-card">
-            <div class="card-avatar wa">
-              <img src="/assets/images/card-wa.jpg?v=13" alt="WhatsApp" class="avatar-img" loading="lazy" width="88" height="88">
+            <div class="card-avatar wa" style="width:88px;height:88px;min-width:88px;max-width:88px;min-height:88px;max-height:88px;overflow:hidden;flex-shrink:0">
+              <img src="/assets/images/card-wa.jpg?v=14" alt="WhatsApp" class="avatar-img" loading="lazy" width="88" height="88" style="width:88px;height:88px;object-fit:contain;display:block">
             </div>
             <h3 class="card-name">WHATSAPP <span class="tag">#DIRECT</span></h3>
             <p class="card-status">DISPONÍVEL</p>
@@ -830,8 +837,8 @@ main {
           </article>
 
           <article class="dkc-card">
-            <div class="card-avatar ig">
-              <img src="/assets/images/card-ig.jpg?v=13" alt="Instagram" class="avatar-img" loading="lazy" width="88" height="88">
+            <div class="card-avatar ig" style="width:88px;height:88px;min-width:88px;max-width:88px;min-height:88px;max-height:88px;overflow:hidden;flex-shrink:0">
+              <img src="/assets/images/card-ig.jpg?v=14" alt="Instagram" class="avatar-img" loading="lazy" width="88" height="88" style="width:88px;height:88px;object-fit:contain;display:block">
             </div>
             <h3 class="card-name">INSTAGRAM <span class="tag">#@q_zeroxx</span></h3>
             <p class="card-status">SOCIAL ATIVO</p>
@@ -843,8 +850,8 @@ main {
           </article>
 
           <article class="dkc-card">
-            <div class="card-avatar gh">
-              <img src="/assets/images/card-gh.jpg?v=13" alt="GitHub" class="avatar-img" loading="lazy" width="88" height="88">
+            <div class="card-avatar gh" style="width:88px;height:88px;min-width:88px;max-width:88px;min-height:88px;max-height:88px;overflow:hidden;flex-shrink:0">
+              <img src="/assets/images/card-gh.jpg?v=14" alt="GitHub" class="avatar-img" loading="lazy" width="88" height="88" style="width:88px;height:88px;object-fit:contain;display:block">
             </div>
             <h3 class="card-name">GITHUB <span class="tag">#HATS444</span></h3>
             <p class="card-status is-private">REPOS PRIVADOS</p>
@@ -905,6 +912,6 @@ main {
     <source src="/assets/audio/fml.mp3" type="audio/mpeg">
   </audio>
 
-  <script src="/js/main.js?v=13"></script>
+  <script src="/js/main.js?v=14"></script>
 </body>
 </html>
