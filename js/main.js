@@ -48,7 +48,7 @@
   const gate = document.getElementById('gate');
   const app = document.getElementById('app');
   const btnEnter = document.getElementById('btn-enter');
-  const STORAGE_KEY = 'hats444_entered_v6';
+  const STORAGE_KEY = 'hats444_entered_v7';
 
   function showApp() {
     if (!gate || !app) return;

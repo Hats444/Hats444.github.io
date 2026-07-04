@@ -18,6 +18,7 @@
   --radius: 12px;
   --radius-sm: 6px;
   --max: 720px;
+  --grid-gap: 12px;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -328,50 +329,53 @@ main {
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
+  gap: var(--grid-gap);
+  width: 100%;
 }
 
 .cards-grid .dkc-card {
   margin-bottom: 0;
-  padding: 14px 10px 12px;
-  height: 100%;
+  padding: 16px 12px 14px;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .cards-grid .card-avatar {
-  width: 68px;
-  height: 68px;
-  margin-bottom: 10px;
+  width: 88px;
+  height: 88px;
+  margin-bottom: 12px;
 }
 
 .cards-grid .card-name {
-  font-size: 0.82rem;
-  line-height: 1.25;
+  font-size: 0.88rem;
+  line-height: 1.2;
 }
 
 .cards-grid .card-status {
-  font-size: 0.58rem;
-  margin-bottom: 6px;
+  font-size: 0.62rem;
+  margin-bottom: 8px;
 }
 
 .cards-grid .card-desc {
-  font-size: 0.64rem;
-  margin-bottom: 10px;
-  line-height: 1.35;
+  font-size: 0.68rem;
+  margin-bottom: 12px;
+  line-height: 1.4;
   flex: 1;
 }
 
 .cards-grid .btn-card {
-  padding: 10px 6px;
-  font-size: 0.56rem;
-  letter-spacing: 0.06em;
+  padding: 12px 8px;
+  font-size: 0.62rem;
+  letter-spacing: 0.07em;
   margin-top: auto;
+  width: 100%;
 }
 
-.cards-grid .dkc-card:nth-child(odd):last-child {
+.cards-grid .dkc-card:last-child:nth-child(odd) {
   grid-column: 1 / -1;
-  max-width: calc(50% - 5px);
+  max-width: calc(50% - (var(--grid-gap) / 2));
   justify-self: center;
 }
 
@@ -690,24 +694,13 @@ main {
 .music-btn.is-playing .icon-muted { display: none; }
 .music-btn.is-playing .icon-playing { display: block; }
 
-@media (max-width: 380px) {
-  .cards-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .cards-grid .dkc-card:nth-child(odd):last-child {
-    max-width: none;
-  }
-}
-
 @media (min-width: 768px) {
-  :root { --max: 760px; }
+  :root { --max: 820px; --grid-gap: 14px; }
   .gate-desc { font-size: 0.72rem; }
-  .cards-grid { gap: 12px; }
-  .cards-grid .dkc-card { padding: 16px 12px 14px; }
-  .cards-grid .card-avatar { width: 76px; height: 76px; }
-  .cards-grid .card-name { font-size: 0.88rem; }
-  .cards-grid .btn-card { font-size: 0.6rem; }
+  .cards-grid .dkc-card { padding: 18px 14px 16px; }
+  .cards-grid .card-avatar { width: 100px; height: 100px; }
+  .cards-grid .card-name { font-size: 0.95rem; }
+  .cards-grid .btn-card { font-size: 0.66rem; padding: 13px 10px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
