@@ -22,5 +22,7 @@ jobs:
           test -f assets/images/card-hanork.jpg
           test -f assets/audio/fml.mp3
           grep -q 'gate-panel' index.html
+          grep -q 'gate-matrix' index.html
+          grep -q 'gate-open' index.html
           grep -q 'card-avatar' index.html
           grep -q 'id="matrix"' index.html

@@ -58,16 +58,31 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   width: 100%;
   height: 100%;
   z-index: 0;
-  opacity: 0.45;
+  opacity: 0.48;
   transition: opacity 0.6s ease;
+  pointer-events: none;
 }
 
-body:has(#gate:not([hidden])) #matrix {
-  opacity: 0.62;
+.gate #gate-matrix {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.88;
+  pointer-events: none;
 }
 
-body:has(#gate:not([hidden])) .vignette {
-  background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.18) 45%, rgba(0,0,0,0.82) 100%);
+html.gate-open #matrix {
+  opacity: 0.55;
+}
+
+html.gate-open .vignette {
+  background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.12) 42%, rgba(0,0,0,0.78) 100%);
+}
+
+html:not(.gate-open) #gate-matrix {
+  display: none;
 }
 
 .vignette {
@@ -126,8 +141,8 @@ body:has(#gate:not([hidden])) .vignette {
 
 .gate-panel {
   padding: 36px 28px 28px;
-  background: rgba(6, 6, 6, 0.78);
-  border: 1px solid rgba(255, 255, 255, 0.11);
+  background: rgba(6, 6, 6, 0.62);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: var(--radius);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -791,18 +806,27 @@ main {
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23111' width='100' height='100' rx='18'/><text x='50' y='62' text-anchor='middle' fill='white' font-size='36' font-family='monospace' font-weight='bold'>H4</text></svg>">
 </head>
 <body>
+<script>
+  document.documentElement.classList.add('gate-open');
+  try {
+    if (sessionStorage.getItem('hats444_entered_v16') === '1') {
+      document.documentElement.classList.remove('gate-open');
+    }
+  } catch (e) { /* ignore */ }
+</script>
   <canvas id="matrix" aria-hidden="true"></canvas>
   <div class="vignette" aria-hidden="true"></div>
 
   <!-- Landing gate -->
-  <section class="gate" id="gate">
+  <section class="gate" id="gate" style="background:transparent!important">
+    <canvas id="gate-matrix" aria-hidden="true"></canvas>
     <div class="gate-scanlines" aria-hidden="true"></div>
     <div class="gate-inner">
       <div class="gate-panel">
       <div class="logo-box" aria-hidden="true">
         <div class="logo-glow"></div>
         <div class="logo-mark">
-          <img src="/assets/images/logo-hanork.jpg?v=15" alt="Hanork" class="avatar-img" width="84" height="84">
+          <img src="/assets/images/logo-hanork.jpg?v=16" alt="Hanork" class="avatar-img" width="84" height="84">
         </div>
       </div>
       <h1 class="gate-title">HANORK</h1>
@@ -828,7 +852,7 @@ main {
       <div class="topbar-inner">
         <a href="#top" class="brand">
           <span class="brand-icon">
-            <img src="/assets/images/logo-hanork.jpg?v=15" alt="" class="avatar-img" width="32" height="32">
+            <img src="/assets/images/logo-hanork.jpg?v=16" alt="" class="avatar-img" width="32" height="32">
           </span>
           <span class="brand-text">HANORK</span>
         </a>
@@ -855,7 +879,7 @@ main {
         <div class="cards-grid">
           <article class="dkc-card">
             <div class="card-avatar hanork" style="width:88px;height:88px;min-width:88px;max-width:88px;min-height:88px;max-height:88px;overflow:hidden;flex-shrink:0">
-              <img src="/assets/images/card-hanork.jpg?v=15" alt="Hanork Bot" class="avatar-img" loading="lazy" width="88" height="88" style="width:88px;height:88px;object-fit:contain;display:block">
+              <img src="/assets/images/card-hanork.jpg?v=16" alt="Hanork Bot" class="avatar-img" loading="lazy" width="88" height="88" style="width:88px;height:88px;object-fit:contain;display:block">
             </div>
             <h3 class="card-name">HANORK BOT <span class="tag">#FLAGSHIP</span></h3>
             <p class="card-status">PROJETO ATIVO</p>
@@ -868,7 +892,7 @@ main {
 
           <article class="dkc-card">
             <div class="card-avatar div" style="width:88px;height:88px;min-width:88px;max-width:88px;min-height:88px;max-height:88px;overflow:hidden;flex-shrink:0">
-              <img src="/assets/images/card-div.jpg?v=15" alt="Hanork Div" class="avatar-img" loading="lazy" width="88" height="88" style="width:88px;height:88px;object-fit:contain;display:block">
+              <img src="/assets/images/card-div.jpg?v=16" alt="Hanork Div" class="avatar-img" loading="lazy" width="88" height="88" style="width:88px;height:88px;object-fit:contain;display:block">
             </div>
             <h3 class="card-name">HANORK DIV <span class="tag">#SAAS</span></h3>
             <p class="card-status is-private">REPOSITÓRIO PRIVADO</p>
@@ -881,7 +905,7 @@ main {
 
           <article class="dkc-card">
             <div class="card-avatar wa" style="width:88px;height:88px;min-width:88px;max-width:88px;min-height:88px;max-height:88px;overflow:hidden;flex-shrink:0">
-              <img src="/assets/images/card-wa.jpg?v=15" alt="WhatsApp" class="avatar-img" loading="lazy" width="88" height="88" style="width:88px;height:88px;object-fit:contain;display:block">
+              <img src="/assets/images/card-wa.jpg?v=16" alt="WhatsApp" class="avatar-img" loading="lazy" width="88" height="88" style="width:88px;height:88px;object-fit:contain;display:block">
             </div>
             <h3 class="card-name">WHATSAPP <span class="tag">#DIRECT</span></h3>
             <p class="card-status">DISPONÍVEL</p>
@@ -894,7 +918,7 @@ main {
 
           <article class="dkc-card">
             <div class="card-avatar ig" style="width:88px;height:88px;min-width:88px;max-width:88px;min-height:88px;max-height:88px;overflow:hidden;flex-shrink:0">
-              <img src="/assets/images/card-ig.jpg?v=15" alt="Instagram" class="avatar-img" loading="lazy" width="88" height="88" style="width:88px;height:88px;object-fit:contain;display:block">
+              <img src="/assets/images/card-ig.jpg?v=16" alt="Instagram" class="avatar-img" loading="lazy" width="88" height="88" style="width:88px;height:88px;object-fit:contain;display:block">
             </div>
             <h3 class="card-name">INSTAGRAM <span class="tag">#@q_zeroxx</span></h3>
             <p class="card-status">SOCIAL ATIVO</p>
@@ -907,7 +931,7 @@ main {
 
           <article class="dkc-card">
             <div class="card-avatar gh" style="width:88px;height:88px;min-width:88px;max-width:88px;min-height:88px;max-height:88px;overflow:hidden;flex-shrink:0">
-              <img src="/assets/images/card-gh.jpg?v=15" alt="GitHub" class="avatar-img" loading="lazy" width="88" height="88" style="width:88px;height:88px;object-fit:contain;display:block">
+              <img src="/assets/images/card-gh.jpg?v=16" alt="GitHub" class="avatar-img" loading="lazy" width="88" height="88" style="width:88px;height:88px;object-fit:contain;display:block">
             </div>
             <h3 class="card-name">GITHUB <span class="tag">#HATS444</span></h3>
             <p class="card-status is-private">REPOS PRIVADOS</p>
@@ -968,6 +992,6 @@ main {
     <source src="/assets/audio/fml.mp3" type="audio/mpeg">
   </audio>
 
-  <script src="/js/main.js?v=15"></script>
+  <script src="/js/main.js?v=16"></script>
 </body>
 </html>
