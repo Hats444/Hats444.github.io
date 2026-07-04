@@ -418,20 +418,8 @@ main {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   display: block;
-}
-
-.card-avatar.hanork .avatar-img,
-.card-avatar.div .avatar-img,
-.card-avatar.wa .avatar-img,
-.logo-mark .avatar-img,
-.brand-icon .avatar-img {
-  object-position: 22% center;
-}
-
-.card-avatar.ig .avatar-img,
-.card-avatar.gh .avatar-img {
-  object-position: 78% center;
 }
 
 .logo-mark,
