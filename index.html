@@ -59,6 +59,15 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   height: 100%;
   z-index: 0;
   opacity: 0.45;
+  transition: opacity 0.6s ease;
+}
+
+body:has(#gate:not([hidden])) #matrix {
+  opacity: 0.62;
+}
+
+body:has(#gate:not([hidden])) .vignette {
+  background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.18) 45%, rgba(0,0,0,0.82) 100%);
 }
 
 .vignette {
@@ -74,7 +83,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 /* ── Landing gate ── */
 .gate {
-  background: rgba(0, 0, 0, 0.97);
+  background: transparent;
   position: fixed;
   inset: 0;
   z-index: 100;
@@ -83,6 +92,22 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   justify-content: center;
   padding: 24px;
   transition: opacity 0.6s ease, transform 0.6s ease;
+  overflow: hidden;
+}
+
+.gate-scanlines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.35;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.04) 2px,
+    rgba(0, 0, 0, 0.04) 4px
+  );
 }
 
 .gate.leaving {
@@ -97,6 +122,30 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   text-align: center;
   max-width: var(--max);
   width: 100%;
+}
+
+.gate-panel {
+  padding: 36px 28px 28px;
+  background: rgba(6, 6, 6, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: var(--radius);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow:
+    0 28px 72px rgba(0, 0, 0, 0.65),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  animation: gateIn 0.85s ease both;
+}
+
+@keyframes gateIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .logo-box {
@@ -131,10 +180,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 .gate-title {
-  font-size: clamp(1.75rem, 6vw, 2.2rem);
-  font-weight: 800;
-  letter-spacing: 0.08em;
+  font-family: var(--serif);
+  font-size: clamp(2rem, 7vw, 2.65rem);
+  font-weight: 700;
+  letter-spacing: 0.1em;
   margin-bottom: 14px;
+  text-shadow: 0 0 40px rgba(255, 255, 255, 0.12);
 }
 
 .gate-title sup {
@@ -161,8 +212,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   justify-content: center;
   gap: 10px 18px;
   padding: 10px 16px;
-  background: rgba(16, 16, 16, 0.9);
-  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-sm);
   font-family: var(--mono);
   font-size: 0.64rem;
@@ -730,7 +781,9 @@ main {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   #matrix { display: none; }
+  .gate-panel { background: rgba(6, 6, 6, 0.96); }
   .gate.leaving { transition: none; }
+  .gate-panel { animation: none; }
   .status-bar .dot { animation: none; }
 }
 
@@ -743,11 +796,13 @@ main {
 
   <!-- Landing gate -->
   <section class="gate" id="gate">
+    <div class="gate-scanlines" aria-hidden="true"></div>
     <div class="gate-inner">
+      <div class="gate-panel">
       <div class="logo-box" aria-hidden="true">
         <div class="logo-glow"></div>
         <div class="logo-mark">
-          <img src="/assets/images/logo-hanork.jpg?v=14" alt="Hanork" class="avatar-img" width="84" height="84">
+          <img src="/assets/images/logo-hanork.jpg?v=15" alt="Hanork" class="avatar-img" width="84" height="84">
         </div>
       </div>
       <h1 class="gate-title">HANORK</h1>
@@ -763,6 +818,7 @@ main {
         <span>© 2026 HATS444</span>
         <span>NODE 20 // WSL</span>
       </footer>
+      </div>
     </div>
   </section>
 
@@ -772,7 +828,7 @@ main {
       <div class="topbar-inner">
         <a href="#top" class="brand">
           <span class="brand-icon">
-            <img src="/assets/images/logo-hanork.jpg?v=14" alt="" class="avatar-img" width="32" height="32">
+            <img src="/assets/images/logo-hanork.jpg?v=15" alt="" class="avatar-img" width="32" height="32">
           </span>
           <span class="brand-text">HANORK</span>
         </a>
@@ -799,7 +855,7 @@ main {
         <div class="cards-grid">
           <article class="dkc-card">
             <div class="card-avatar hanork" style="width:88px;height:88px;min-width:88px;max-width:88px;min-height:88px;max-height:88px;overflow:hidden;flex-shrink:0">
-              <img src="/assets/images/card-hanork.jpg?v=14" alt="Hanork Bot" class="avatar-img" loading="lazy" width="88" height="88" style="width:88px;height:88px;object-fit:contain;display:block">
+              <img src="/assets/images/card-hanork.jpg?v=15" alt="Hanork Bot" class="avatar-img" loading="lazy" width="88" height="88" style="width:88px;height:88px;object-fit:contain;display:block">
             </div>
             <h3 class="card-name">HANORK BOT <span class="tag">#FLAGSHIP</span></h3>
             <p class="card-status">PROJETO ATIVO</p>
@@ -812,7 +868,7 @@ main {
 
           <article class="dkc-card">
             <div class="card-avatar div" style="width:88px;height:88px;min-width:88px;max-width:88px;min-height:88px;max-height:88px;overflow:hidden;flex-shrink:0">
-              <img src="/assets/images/card-div.jpg?v=14" alt="Hanork Div" class="avatar-img" loading="lazy" width="88" height="88" style="width:88px;height:88px;object-fit:contain;display:block">
+              <img src="/assets/images/card-div.jpg?v=15" alt="Hanork Div" class="avatar-img" loading="lazy" width="88" height="88" style="width:88px;height:88px;object-fit:contain;display:block">
             </div>
             <h3 class="card-name">HANORK DIV <span class="tag">#SAAS</span></h3>
             <p class="card-status is-private">REPOSITÓRIO PRIVADO</p>
@@ -825,7 +881,7 @@ main {
 
           <article class="dkc-card">
             <div class="card-avatar wa" style="width:88px;height:88px;min-width:88px;max-width:88px;min-height:88px;max-height:88px;overflow:hidden;flex-shrink:0">
-              <img src="/assets/images/card-wa.jpg?v=14" alt="WhatsApp" class="avatar-img" loading="lazy" width="88" height="88" style="width:88px;height:88px;object-fit:contain;display:block">
+              <img src="/assets/images/card-wa.jpg?v=15" alt="WhatsApp" class="avatar-img" loading="lazy" width="88" height="88" style="width:88px;height:88px;object-fit:contain;display:block">
             </div>
             <h3 class="card-name">WHATSAPP <span class="tag">#DIRECT</span></h3>
             <p class="card-status">DISPONÍVEL</p>
@@ -838,7 +894,7 @@ main {
 
           <article class="dkc-card">
             <div class="card-avatar ig" style="width:88px;height:88px;min-width:88px;max-width:88px;min-height:88px;max-height:88px;overflow:hidden;flex-shrink:0">
-              <img src="/assets/images/card-ig.jpg?v=14" alt="Instagram" class="avatar-img" loading="lazy" width="88" height="88" style="width:88px;height:88px;object-fit:contain;display:block">
+              <img src="/assets/images/card-ig.jpg?v=15" alt="Instagram" class="avatar-img" loading="lazy" width="88" height="88" style="width:88px;height:88px;object-fit:contain;display:block">
             </div>
             <h3 class="card-name">INSTAGRAM <span class="tag">#@q_zeroxx</span></h3>
             <p class="card-status">SOCIAL ATIVO</p>
@@ -851,7 +907,7 @@ main {
 
           <article class="dkc-card">
             <div class="card-avatar gh" style="width:88px;height:88px;min-width:88px;max-width:88px;min-height:88px;max-height:88px;overflow:hidden;flex-shrink:0">
-              <img src="/assets/images/card-gh.jpg?v=14" alt="GitHub" class="avatar-img" loading="lazy" width="88" height="88" style="width:88px;height:88px;object-fit:contain;display:block">
+              <img src="/assets/images/card-gh.jpg?v=15" alt="GitHub" class="avatar-img" loading="lazy" width="88" height="88" style="width:88px;height:88px;object-fit:contain;display:block">
             </div>
             <h3 class="card-name">GITHUB <span class="tag">#HATS444</span></h3>
             <p class="card-status is-private">REPOS PRIVADOS</p>
@@ -912,6 +968,6 @@ main {
     <source src="/assets/audio/fml.mp3" type="audio/mpeg">
   </audio>
 
-  <script src="/js/main.js?v=14"></script>
+  <script src="/js/main.js?v=15"></script>
 </body>
 </html>

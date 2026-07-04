@@ -21,15 +21,18 @@
     }
 
     function draw() {
-      ctx.fillStyle = 'rgba(5, 5, 5, 0.08)';
+      ctx.fillStyle = 'rgba(5, 5, 5, 0.09)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = 'rgba(180, 180, 180, 0.35)';
       ctx.font = fontSize + 'px JetBrains Mono, monospace';
 
       for (let i = 0; i < columns.length; i++) {
         const char = chars[Math.floor(Math.random() * chars.length)];
         const x = i * fontSize;
         const y = columns[i] * fontSize;
+        const isHead = Math.random() > 0.978;
+        ctx.fillStyle = isHead
+          ? 'rgba(210, 255, 210, 0.82)'
+          : 'rgba(100, 190, 110, 0.32)';
         ctx.fillText(char, x, y);
 
         if (y > canvas.height && Math.random() > 0.975) {
@@ -48,7 +51,7 @@
   const gate = document.getElementById('gate');
   const app = document.getElementById('app');
   const btnEnter = document.getElementById('btn-enter');
-  const STORAGE_KEY = 'hats444_entered_v14';
+  const STORAGE_KEY = 'hats444_entered_v15';
 
   function showApp() {
     if (!gate || !app) return;
