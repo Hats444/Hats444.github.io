@@ -1,0 +1,11 @@
+# Supabase local config — see README for deploy steps
+project_id = "ljgcrgihviyvzjexfbyp"
+
+[api]
+enabled = true
+
+[db]
+major_version = 15
+
+[functions]
+verify_jwt = false

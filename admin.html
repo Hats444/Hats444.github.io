@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analytics — Hats444 Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050505;
+      --panel: rgba(16, 16, 16, 0.92);
+      --border: rgba(255, 255, 255, 0.1);
+      --text: #e8e8e8;
+      --text-dim: #6a6a6a;
+      --green: #4ade80;
+      --mono: 'JetBrains Mono', monospace;
+      --font: 'Inter', system-ui, sans-serif;
+      --radius: 8px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 24px 16px 48px;
+    }
+    .wrap { max-width: 1100px; margin: 0 auto; }
+    h1 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      margin-bottom: 4px;
+    }
+    .sub {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--text-dim);
+      margin-bottom: 24px;
+    }
+    .login-panel, .dash {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      backdrop-filter: blur(8px);
+    }
+    .login-panel { max-width: 360px; }
+    label {
+      display: block;
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      color: var(--text-dim);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+    input[type="password"], select {
+      width: 100%;
+      padding: 10px 12px;
+      background: rgba(0,0,0,0.5);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      margin-bottom: 14px;
+    }
+    button {
+      padding: 10px 18px;
+      background: linear-gradient(90deg, #4a4a4a, #222);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 6px;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.78rem;
+      cursor: pointer;
+      letter-spacing: 0.05em;
+    }
+    button:hover { border-color: rgba(255,255,255,0.28); }
+    .error {
+      color: #f87171;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      margin-top: 10px;
+    }
+    .hidden { display: none !important; }
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .kpi {
+      background: rgba(0,0,0,0.45);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 14px;
+    }
+    .kpi .val {
+      font-family: var(--mono);
+      font-size: 1.4rem;
+      color: var(--green);
+    }
+    .kpi .lbl {
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      color: var(--text-dim);
+      margin-top: 4px;
+      text-transform: uppercase;
+    }
+    .charts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    @media (max-width: 720px) { .charts { grid-template-columns: 1fr; } }
+    .chart-box {
+      background: rgba(0,0,0,0.45);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 14px;
+    }
+    .chart-box h3 {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      color: var(--text-dim);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+    .chart-box canvas { max-height: 220px; }
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .toolbar select { width: auto; margin: 0; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--mono);
+      font-size: 0.62rem;
+    }
+    th, td {
+      text-align: left;
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    th { color: var(--text-dim); font-weight: 500; }
+    td { color: var(--text); }
+    .breakdown-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .breakdown-list {
+      background: rgba(0,0,0,0.45);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 12px;
+    }
+    .breakdown-list h3 {
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+    .breakdown-list li {
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      padding: 4px 0;
+      font-size: 0.62rem;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    a.back {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      color: var(--text-dim);
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+    a.back:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a href="/" class="back">← Voltar ao portfolio</a>
+    <h1>HANORK ANALYTICS</h1>
+    <p class="sub">// PAINEL ADMIN — ACESSO RESTRITO</p>
+
+    <section id="login-section" class="login-panel">
+      <label for="admin-password">Senha</label>
+      <input type="password" id="admin-password" autocomplete="current-password" placeholder="••••••••">
+      <button type="button" id="btn-login">ENTRAR</button>
+      <p id="login-error" class="error hidden"></p>
+    </section>
+
+    <section id="dash-section" class="dash hidden">
+      <div class="toolbar">
+        <label for="range-days">Período</label>
+        <select id="range-days">
+          <option value="7">7 dias</option>
+          <option value="14">14 dias</option>
+          <option value="30" selected>30 dias</option>
+          <option value="60">60 dias</option>
+          <option value="90">90 dias</option>
+        </select>
+        <button type="button" id="btn-refresh">ATUALIZAR</button>
+        <button type="button" id="btn-logout">SAIR</button>
+      </div>
+
+      <div class="kpi-row" id="kpi-row">
+        <div class="kpi"><div class="val" id="kpi-online">—</div><div class="lbl">Online agora</div></div>
+        <div class="kpi"><div class="val" id="kpi-visitors">—</div><div class="lbl">Visitantes únicos</div></div>
+        <div class="kpi"><div class="val" id="kpi-accesses">—</div><div class="lbl">Total acessos</div></div>
+        <div class="kpi"><div class="val" id="kpi-range">—</div><div class="lbl">No período</div></div>
+      </div>
+
+      <div class="charts">
+        <div class="chart-box">
+          <h3>Acessos por dia</h3>
+          <canvas id="chart-day"></canvas>
+        </div>
+        <div class="chart-box">
+          <h3>Acessos por hora (UTC)</h3>
+          <canvas id="chart-hour"></canvas>
+        </div>
+      </div>
+
+      <div class="breakdown-grid" id="breakdown-grid"></div>
+
+      <div class="chart-box">
+        <h3>Últimos acessos</h3>
+        <div style="overflow-x:auto">
+          <table>
+            <thead>
+              <tr>
+                <th>Data</th>
+                <th>Browser</th>
+                <th>OS</th>
+                <th>Device</th>
+                <th>País</th>
+                <th>Cidade</th>
+                <th>Referer</th>
+              </tr>
+            </thead>
+            <tbody id="recent-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="/js/config.js"></script>
+  <script src="/js/services/analyticsApi.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+  <script src="/js/admin-dashboard.js"></script>
+</body>
+</html>

@@ -115,7 +115,7 @@ html:not(.gate-open) #gate-matrix {
   inset: 0;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.35;
+  opacity: 0.28;
   background: repeating-linear-gradient(
     0deg,
     transparent,
@@ -680,6 +680,33 @@ main {
   text-overflow: ellipsis;
 }
 
+.gate-analytics {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 16px;
+  margin-bottom: 18px;
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+}
+
+.gate-analytics span {
+  white-space: nowrap;
+}
+
+.session-bar .dot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  background: var(--green);
+  border-radius: 50%;
+  margin-right: 5px;
+  vertical-align: middle;
+  animation: blink 2s ease infinite;
+}
+
 .float-widgets {
   position: fixed;
   bottom: 78px;
@@ -836,6 +863,11 @@ main {
         <span>VER: 4.1.0</span>
         <span>SECURE JWT ACTIVE</span>
       </div>
+      <div class="gate-analytics" id="gate-analytics" aria-label="Estatísticas públicas">
+        <span id="gate-stat-online">👥 —</span>
+        <span id="gate-stat-visitors">👤 —</span>
+        <span id="gate-stat-accesses">📈 —</span>
+      </div>
       <button type="button" class="btn-enter" id="btn-enter">ENTRAR →</button>
       <footer class="gate-footer">
         <span>HATS PROTOCOL</span>
@@ -968,10 +1000,10 @@ main {
       <span>PORT 3000 // ACTIVE</span>
     </footer>
 
-    <div class="session-bar" aria-hidden="true">
-      <span>SESSÃO: VISITANTE_H4</span>
-      <span>CENTRAL: SA-EAST-1</span>
-      <span>STATUS: ENCRYPTED</span>
+    <div class="session-bar" id="analytics-bar" aria-label="Estatísticas do site">
+      <span id="stat-online"><i class="dot"></i> ONLINE: —</span>
+      <span id="stat-visitors">VISITANTES: —</span>
+      <span id="stat-accesses">ACESSOS: —</span>
     </div>
 
     <div class="float-widgets" aria-hidden="true">
@@ -992,6 +1024,14 @@ main {
     <source src="/assets/audio/fml.mp3" type="audio/mpeg">
   </audio>
 
-  <script src="/js/main.js?v=16"></script>
+  <script src="/js/config.js?v=17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.min.js"></script>
+  <script src="/js/utils/visitor.js?v=17"></script>
+  <script src="/js/utils/device.js?v=17"></script>
+  <script src="/js/utils/debounce.js?v=17"></script>
+  <script src="/js/services/analyticsApi.js?v=17"></script>
+  <script src="/js/components/AnalyticsBar.js?v=17"></script>
+  <script src="/js/hooks/useAnalytics.js?v=17"></script>
+  <script src="/js/main.js?v=17"></script>
 </body>
 </html>
