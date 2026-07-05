@@ -203,7 +203,14 @@
 
     const result = await Api().adminLogin(password);
     if (!result.ok || !result.data?.token) {
-      showLogin('Senha inválida.');
+      const err = result.error || result.data?.error;
+      if (err === 'not_configured') {
+        showLogin('Analytics não configurado — verifique js/config.js.');
+      } else if (err === 'invalid_credentials') {
+        showLogin('Senha inválida.');
+      } else {
+        showLogin(err ? String(err) : 'Senha inválida.');
+      }
       return;
     }
 
