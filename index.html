@@ -921,71 +921,8 @@ main {
       <section class="cards-section" id="projetos">
         <p class="section-label">// PROJETOS &amp; CONTATO</p>
 
-        <div class="cards-grid">
-          <article class="dkc-card">
-            <div class="card-avatar hanork" style="width:88px;height:88px;min-width:88px;max-width:88px;min-height:88px;max-height:88px;overflow:hidden;flex-shrink:0">
-              <img src="/assets/images/card-hanork.jpg?v=16" alt="Hanork Bot" class="avatar-img" loading="lazy" width="88" height="88" style="width:88px;height:88px;object-fit:contain;display:block">
-            </div>
-            <h3 class="card-name">HANORK BOT <span class="tag">#FLAGSHIP</span></h3>
-            <p class="card-status">PROJETO ATIVO</p>
-            <p class="card-desc">Vendas Telegram · PIX · entrega digital · Dual WA</p>
-            <a href="https://t.me/hanork_bot" target="_blank" rel="noopener" class="btn-card">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-              FALAR COM BOT
-            </a>
-          </article>
-
-          <article class="dkc-card">
-            <div class="card-avatar div" style="width:88px;height:88px;min-width:88px;max-width:88px;min-height:88px;max-height:88px;overflow:hidden;flex-shrink:0">
-              <img src="/assets/images/card-div.jpg?v=16" alt="Hanork Div" class="avatar-img" loading="lazy" width="88" height="88" style="width:88px;height:88px;object-fit:contain;display:block">
-            </div>
-            <h3 class="card-name">HANORK DIV <span class="tag">#SAAS</span></h3>
-            <p class="card-status is-private">REPOSITÓRIO PRIVADO</p>
-            <p class="card-desc">White-label WA · worker · campanhas A/B/C</p>
-            <span class="btn-card is-locked">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-              CÓDIGO PRIVADO
-            </span>
-          </article>
-
-          <article class="dkc-card">
-            <div class="card-avatar wa" style="width:88px;height:88px;min-width:88px;max-width:88px;min-height:88px;max-height:88px;overflow:hidden;flex-shrink:0">
-              <img src="/assets/images/card-wa.jpg?v=17" alt="Telegram Suporte" class="avatar-img" loading="lazy" width="88" height="88" style="width:88px;height:88px;object-fit:contain;display:block">
-            </div>
-            <h3 class="card-name">TELEGRAM <span class="tag">#SUPORTE</span></h3>
-            <p class="card-status">DISPONÍVEL</p>
-            <p class="card-desc">@Sepultarei606 · bots, Hanork e projetos</p>
-            <a href="https://t.me/Sepultarei606" target="_blank" rel="noopener" class="btn-card">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-              FALAR NO TELEGRAM
-            </a>
-          </article>
-
-          <article class="dkc-card">
-            <div class="card-avatar ig" style="width:88px;height:88px;min-width:88px;max-width:88px;min-height:88px;max-height:88px;overflow:hidden;flex-shrink:0">
-              <img src="/assets/images/card-ig.jpg?v=16" alt="Instagram" class="avatar-img" loading="lazy" width="88" height="88" style="width:88px;height:88px;object-fit:contain;display:block">
-            </div>
-            <h3 class="card-name">INSTAGRAM <span class="tag">#@q_zeroxx</span></h3>
-            <p class="card-status">SOCIAL ATIVO</p>
-            <p class="card-desc">Bastidores e updates</p>
-            <a href="https://www.instagram.com/q_zeroxx" target="_blank" rel="noopener" class="btn-card">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-              SEGUIR INSTA
-            </a>
-          </article>
-
-          <article class="dkc-card">
-            <div class="card-avatar gh" style="width:88px;height:88px;min-width:88px;max-width:88px;min-height:88px;max-height:88px;overflow:hidden;flex-shrink:0">
-              <img src="/assets/images/card-gh.jpg?v=16" alt="GitHub" class="avatar-img" loading="lazy" width="88" height="88" style="width:88px;height:88px;object-fit:contain;display:block">
-            </div>
-            <h3 class="card-name">GITHUB <span class="tag">#HATS444</span></h3>
-            <p class="card-status is-private">REPOS PRIVADOS</p>
-            <p class="card-desc">Perfil público · Hanork privado</p>
-            <a href="https://github.com/Hats444" target="_blank" rel="noopener" class="btn-card">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-              VER PERFIL
-            </a>
-          </article>
+        <div class="cards-grid" id="cards-grid">
+          <!-- preenchido por js/siteContent.js -->
         </div>
       </section>
 
@@ -1045,6 +982,7 @@ main {
   <script src="/js/services/analyticsApi.js?v=17"></script>
   <script src="/js/components/AnalyticsBar.js?v=17"></script>
   <script src="/js/hooks/useAnalytics.js?v=17"></script>
-  <script src="/js/main.js?v=17"></script>
+  <script src="/js/siteContent.js?v=18"></script>
+  <script src="/js/main.js?v=18"></script>
 </body>
 </html>

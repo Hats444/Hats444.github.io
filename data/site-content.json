@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "meta": {
+    "title": "HANORK · Bot Telegram",
+    "description": "Hats444 — Full-Stack · Bots Telegram & WhatsApp · Hanork · Automação e pagamentos PIX.",
+    "introTitle": "Engenharia de automação<br>que roda de verdade.",
+    "introText": "Construo ecossistemas completos: bot de vendas Telegram, WhatsApp com anti-ban, Mercado Pago, SaaS multi-tenant e deploy Linux — do código à produção."
+  },
+  "cards": [
+    {
+      "id": "hanork",
+      "avatarClass": "hanork",
+      "image": "/assets/images/card-hanork.jpg",
+      "imageAlt": "Hanork Bot",
+      "name": "HANORK BOT",
+      "tag": "#FLAGSHIP",
+      "status": "PROJETO ATIVO",
+      "statusPrivate": false,
+      "desc": "Vendas Telegram · PIX · entrega digital · Dual WA",
+      "buttonType": "link",
+      "buttonLabel": "FALAR COM BOT",
+      "buttonUrl": "https://t.me/hanork_bot",
+      "buttonIcon": "chat"
+    },
+    {
+      "id": "div",
+      "avatarClass": "div",
+      "image": "/assets/images/card-div.jpg",
+      "imageAlt": "Hanork Div",
+      "name": "HANORK DIV",
+      "tag": "#SAAS",
+      "status": "REPOSITÓRIO PRIVADO",
+      "statusPrivate": true,
+      "desc": "White-label WA · worker · campanhas A/B/C",
+      "buttonType": "locked",
+      "buttonLabel": "CÓDIGO PRIVADO"
+    },
+    {
+      "id": "suporte",
+      "avatarClass": "wa",
+      "image": "/assets/images/card-wa.jpg",
+      "imageAlt": "Telegram Suporte",
+      "name": "TELEGRAM",
+      "tag": "#SUPORTE",
+      "status": "DISPONÍVEL",
+      "statusPrivate": false,
+      "desc": "@Sepultarei606 · bots, Hanork e projetos",
+      "buttonType": "link",
+      "buttonLabel": "FALAR NO TELEGRAM",
+      "buttonUrl": "https://t.me/Sepultarei606",
+      "buttonIcon": "telegram"
+    },
+    {
+      "id": "ig",
+      "avatarClass": "ig",
+      "image": "/assets/images/card-ig.jpg",
+      "imageAlt": "Instagram",
+      "name": "INSTAGRAM",
+      "tag": "#@q_zeroxx",
+      "status": "SOCIAL ATIVO",
+      "statusPrivate": false,
+      "desc": "Bastidores e updates",
+      "buttonType": "link",
+      "buttonLabel": "SEGUIR INSTA",
+      "buttonUrl": "https://www.instagram.com/q_zeroxx",
+      "buttonIcon": "chat"
+    },
+    {
+      "id": "github",
+      "avatarClass": "gh",
+      "image": "/assets/images/card-gh.jpg",
+      "imageAlt": "GitHub",
+      "name": "GITHUB",
+      "tag": "#HATS444",
+      "status": "REPOS PRIVADOS",
+      "statusPrivate": true,
+      "desc": "Perfil público · Hanork privado",
+      "buttonType": "link",
+      "buttonLabel": "VER PERFIL",
+      "buttonUrl": "https://github.com/Hats444",
+      "buttonIcon": "chat"
+    }
+  ]
+}
