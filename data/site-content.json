@@ -47,7 +47,7 @@
       "desc": "@hanorkoff • bots whatsapp/telegram • apis • sites.",
       "buttonType": "link",
       "buttonLabel": "FALAR NO TELEGRAM",
-      "buttonUrl": "https://t.me/Sepultarei606",
+      "buttonUrl": "https://t.me/hanorkoff",
       "buttonIcon": "telegram"
     },
     {
@@ -81,5 +81,5 @@
       "buttonIcon": "chat"
     }
   ],
-  "updatedAt": 1783391062303
+  "updatedAt": 1783465566510
 }
