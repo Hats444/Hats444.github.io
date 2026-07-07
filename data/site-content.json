@@ -16,7 +16,7 @@
       "tag": "#FLAGSHIP",
       "status": "PROJETO ATIVO",
       "statusPrivate": false,
-      "desc": "Vendas Telegram · PIX · entrega digital · Dual WA",
+      "desc": "Divulgação • vendas online • pix/cartão • entrega instantânea.",
       "buttonType": "link",
       "buttonLabel": "FALAR COM BOT",
       "buttonUrl": "https://t.me/hanork_bot",
@@ -81,5 +81,5 @@
       "buttonIcon": "chat"
     }
   ],
-  "updatedAt": 1783390942967
+  "updatedAt": 1783391062303
 }
