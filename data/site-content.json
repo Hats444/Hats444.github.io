@@ -44,7 +44,7 @@
       "tag": "#SUPORTE",
       "status": "DISPONÍVEL",
       "statusPrivate": false,
-      "desc": "@Sepultarei606 · bots, Hanork e projetos",
+      "desc": "@hanorkoff • bots whatsapp/telegram • apis • sites.",
       "buttonType": "link",
       "buttonLabel": "FALAR NO TELEGRAM",
       "buttonUrl": "https://t.me/Sepultarei606",
@@ -80,5 +80,6 @@
       "buttonUrl": "https://github.com/Hats444",
       "buttonIcon": "chat"
     }
-  ]
+  ],
+  "updatedAt": 1783390942967
 }
