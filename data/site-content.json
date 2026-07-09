@@ -45,7 +45,7 @@
       "tag": "#SUPORTE",
       "status": "DISPONÍVEL",
       "statusPrivate": false,
-      "desc": "@hanorkoff • bots whatsapp/telegram • apis • sites.",
+      "desc": "Criação de bots whatsapp/telegram • rest apis • sites estáticos.",
       "buttonType": "link",
       "buttonLabel": "FALAR NO TELEGRAM",
       "buttonUrl": "https://t.me/hanorkoff",
@@ -82,5 +82,5 @@
       "buttonIcon": "chat"
     }
   ],
-  "updatedAt": 1783626990426
+  "updatedAt": 1783627079034
 }
