@@ -31,7 +31,7 @@
       "tag": "#SAAS",
       "status": "REPOSITÓRIO PRIVADO",
       "statusPrivate": true,
-      "desc": "White-label WA · worker · campanhas A/B/C",
+      "desc": "Divulgação telegram/whatsapp, saas, multi canal, marketing.",
       "buttonType": "link",
       "buttonLabel": "CÓDIGO PRIVADO",
       "buttonUrl": "https://github.com/Hats444/hanork.git"
@@ -82,5 +82,5 @@
       "buttonIcon": "chat"
     }
   ],
-  "updatedAt": 1783626792227
+  "updatedAt": 1783626856018
 }
