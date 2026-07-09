@@ -31,7 +31,7 @@
       "tag": "#SAAS",
       "status": "REPOSITÓRIO PRIVADO",
       "statusPrivate": true,
-      "desc": "Divulgação telegram/whatsapp, saas, multi canal, marketing.",
+      "desc": "Divulgação telegram/whatsapp, projeto privado, automação multi canal, marketing.",
       "buttonType": "link",
       "buttonLabel": "CÓDIGO PRIVADO",
       "buttonUrl": "https://github.com/Hats444/hanork"
@@ -82,5 +82,5 @@
       "buttonIcon": "chat"
     }
   ],
-  "updatedAt": 1783626906767
+  "updatedAt": 1783626982241
 }
