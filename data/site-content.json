@@ -34,7 +34,7 @@
       "desc": "Divulgação telegram/whatsapp, saas, multi canal, marketing.",
       "buttonType": "link",
       "buttonLabel": "CÓDIGO PRIVADO",
-      "buttonUrl": "https://github.com/Hats444/hanork.git"
+      "buttonUrl": "https://github.com/Hats444/hanork"
     },
     {
       "id": "suporte",
@@ -82,5 +82,5 @@
       "buttonIcon": "chat"
     }
   ],
-  "updatedAt": 1783626860120
+  "updatedAt": 1783626902884
 }
