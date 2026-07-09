@@ -75,12 +75,12 @@
       "tag": "#HATS444",
       "status": "REPOS PRIVADOS",
       "statusPrivate": true,
-      "desc": "Perfil público · Hanork privado",
+      "desc": "Perfil público, porém com repositórios privados, e resultados visíveis.",
       "buttonType": "link",
       "buttonLabel": "VER PERFIL",
       "buttonUrl": "https://github.com/Hats444",
       "buttonIcon": "chat"
     }
   ],
-  "updatedAt": 1783627083114
+  "updatedAt": 1783627221604
 }
