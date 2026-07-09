@@ -60,7 +60,7 @@
       "tag": "#@q_zeroxx",
       "status": "SOCIAL ATIVO",
       "statusPrivate": false,
-      "desc": "Bastidores e updates",
+      "desc": "Acompanhe a evolução dos projetos, novidades e futuros lançamentos.",
       "buttonType": "link",
       "buttonLabel": "SEGUIR INSTA",
       "buttonUrl": "https://www.instagram.com/q_zeroxx",
@@ -82,5 +82,5 @@
       "buttonIcon": "chat"
     }
   ],
-  "updatedAt": 1783627224726
+  "updatedAt": 1783627373802
 }
