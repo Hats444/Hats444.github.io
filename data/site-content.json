@@ -32,8 +32,9 @@
       "status": "REPOSITÓRIO PRIVADO",
       "statusPrivate": true,
       "desc": "White-label WA · worker · campanhas A/B/C",
-      "buttonType": "locked",
-      "buttonLabel": "CÓDIGO PRIVADO"
+      "buttonType": "link",
+      "buttonLabel": "CÓDIGO PRIVADO",
+      "buttonUrl": "https://github.com/Hats444/hanork.git"
     },
     {
       "id": "suporte",
@@ -81,5 +82,5 @@
       "buttonIcon": "chat"
     }
   ],
-  "updatedAt": 1783465566510
+  "updatedAt": 1783626774324
 }
