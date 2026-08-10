@@ -15,14 +15,40 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Verify portfolio assets
+      - name: Required files
         run: |
+          test -f README.md
+          test -f LICENSE
           test -f index.html
+          test -f admin.html
           test -f js/main.js
+          test -f js/config.example.js
+          test -f js/config.js
+          test -f .env.example
+          test -f database/schema.sql
           test -f assets/images/card-hanork.jpg
           test -f assets/audio/fml.mp3
+
+      - name: Markup smoke
+        run: |
           grep -q 'gate-panel' index.html
           grep -q 'gate-matrix' index.html
           grep -q 'gate-open' index.html
           grep -q 'card-avatar' index.html
           grep -q 'id="matrix"' index.html
+
+      - name: No .env or service_role in client
+        run: |
+          if git ls-files | grep -E '(^|/)\.env$'; then
+            echo "Tracked .env forbidden"
+            exit 1
+          fi
+          if grep -RIn 'service_role' js index.html admin.html 2>/dev/null; then
+            echo "service_role must not appear in client files"
+            exit 1
+          fi
+          if grep -RInE 'SUPABASE_SERVICE_ROLE|ADMIN_TOKEN_SECRET\s*[:=]\s*['\''\"][^'\''\"]{8,}' js index.html admin.html 2>/dev/null; then
+            echo "Server secrets leaked into client"
+            exit 1
+          fi
+          echo "secrets hygiene OK"
