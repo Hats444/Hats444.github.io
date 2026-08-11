@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS public.app_settings (
 );
 
 INSERT INTO public.app_settings (key, value) VALUES
-  ('admin_password_hash', 'c0b2748ebddb8a45b473c6da64ac9229cc1efc491565da4704437ab450feaf65'),
+  ('admin_password_hash', '38a1a3fd9a39d2e73be80a315152900433ee2f5281e480a62ddf8bcc60c20a4a'),
   ('enter_debounce_seconds', '30')
 ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value;
 
