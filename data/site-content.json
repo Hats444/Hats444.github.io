@@ -1,11 +1,46 @@
 {
-  "version": 1,
+  "version": 2,
   "meta": {
-    "title": "HANORK · Bot Telegram",
-    "description": "Hats444 — Full-Stack · Bots Telegram & WhatsApp · Hanork · Automação e pagamentos PIX.",
-    "introTitle": "Engenharia de automação<br>que roda de verdade.",
-    "introText": "Construo ecossistemas completos: bot de vendas Telegram, WhatsApp com anti-ban, Mercado Pago, SaaS multi-tenant e deploy Linux — do código à produção."
+    "title": "Hats444 · Hanork",
+    "description": "Hats444 — bots WhatsApp & Telegram, vendas PIX, segurança de grupos, multi-sessão Baileys e APIs. Hanork em produção.",
+    "introTitle": "Automação que vende,<br>protege e escala.",
+    "introText": "Construo bots e plataformas multi-sessão: vendas com PIX, WhatsApp + Telegram, moderação de grupos, gates de superfície e APIs de download/consulta — do código ao servidor.",
+    "gateDesc": "WHATSAPP · TELEGRAM · PIX · SEGURANÇA",
+    "gateVersion": "2026.8"
   },
+  "focus": [
+    {
+      "title": "Multi-sessão",
+      "text": "Painel Telegram + N WhatsApp (Baileys), dados isolados por usuário."
+    },
+    {
+      "title": "Segurança",
+      "text": "Anti-flood, anti-link, anti-mídia e gates permanentes contra vetores abusivos."
+    },
+    {
+      "title": "Vendas & API",
+      "text": "PIX, entrega digital, downloads e catálogo via API Hanork."
+    }
+  ],
+  "stack": [
+    "Node.js 20",
+    "@systemzero/baileys",
+    "Telegram Bot API",
+    "SQLite",
+    "Intent / NLU",
+    "Mercado Pago",
+    "Supabase",
+    "GitHub Actions",
+    "Linux / WSL",
+    "Redis / Bull"
+  ],
+  "partners": [
+    "Telegram",
+    "WhatsApp",
+    "Baileys Zero",
+    "Mercado Pago",
+    "Supabase"
+  ],
   "cards": [
     {
       "id": "hanork",
@@ -14,42 +49,73 @@
       "imageAlt": "Hanork Bot",
       "name": "HANORK BOT",
       "tag": "#FLAGSHIP",
-      "status": "PROJETO ATIVO",
+      "status": "EM PRODUÇÃO",
       "statusPrivate": false,
-      "desc": "Divulgação • vendas online • pix/cartão • entrega instantânea.",
+      "desc": "Vendas no Telegram · PIX · entrega digital · catálogo vivo",
       "buttonType": "link",
-      "buttonLabel": "FALAR COM BOT",
+      "buttonLabel": "ABRIR BOT",
       "buttonUrl": "https://t.me/hanork_bot",
-      "buttonIcon": "chat"
+      "buttonIcon": "telegram"
+    },
+    {
+      "id": "beta",
+      "avatarClass": "beta",
+      "image": "/assets/images/card-wa.jpg",
+      "imageAlt": "Hanork Beta",
+      "name": "HANORK BETA",
+      "tag": "#PLATAFORMA",
+      "status": "REPO PÚBLICO",
+      "statusPrivate": false,
+      "desc": "WhatsApp + Telegram · multi-tenant · menus · segurança de grupo",
+      "buttonType": "link",
+      "buttonLabel": "VER CÓDIGO",
+      "buttonUrl": "https://github.com/Hats444/hanork-beta",
+      "buttonIcon": "github"
     },
     {
       "id": "div",
       "avatarClass": "div",
       "image": "/assets/images/card-div.jpg",
-      "imageAlt": "Hanork Div",
-      "name": "HANORK DIV",
-      "tag": "#SAAS",
-      "status": "REPOSITÓRIO PRIVADO",
-      "statusPrivate": true,
-      "desc": "Divulgação telegram/whatsapp • projeto privado • automação multi canal • marketing.",
+      "imageAlt": "Hanork",
+      "name": "HANORK",
+      "tag": "#VENDAS",
+      "status": "REPO PÚBLICO",
+      "statusPrivate": false,
+      "desc": "Bot de vendas Telegram + WhatsApp · divulgação e checkout",
       "buttonType": "link",
-      "buttonLabel": "CÓDIGO PRIVADO",
-      "buttonUrl": "https://github.com/Hats444/hanork"
+      "buttonLabel": "VER CÓDIGO",
+      "buttonUrl": "https://github.com/Hats444/hanork",
+      "buttonIcon": "github"
     },
     {
       "id": "suporte",
       "avatarClass": "wa",
       "image": "/assets/images/card-wa.jpg",
-      "imageAlt": "Telegram Suporte",
+      "imageAlt": "Telegram contato",
       "name": "TELEGRAM",
-      "tag": "#SUPORTE",
+      "tag": "#CONTATO",
       "status": "DISPONÍVEL",
       "statusPrivate": false,
-      "desc": "Criação de bots whatsapp/telegram • rest apis • sites estáticos.",
+      "desc": "Bots, Hanork, APIs e sites — conversa direta",
       "buttonType": "link",
       "buttonLabel": "FALAR NO TELEGRAM",
       "buttonUrl": "https://t.me/hanorkoff",
       "buttonIcon": "telegram"
+    },
+    {
+      "id": "github",
+      "avatarClass": "gh",
+      "image": "/assets/images/card-gh.jpg",
+      "imageAlt": "GitHub Hats444",
+      "name": "GITHUB",
+      "tag": "#HATS444",
+      "status": "REPOS PÚBLICOS",
+      "statusPrivate": false,
+      "desc": "hanork · hanork-beta · portfolio Pages",
+      "buttonType": "link",
+      "buttonLabel": "VER PERFIL",
+      "buttonUrl": "https://github.com/Hats444",
+      "buttonIcon": "github"
     },
     {
       "id": "ig",
@@ -58,29 +124,13 @@
       "imageAlt": "Instagram",
       "name": "INSTAGRAM",
       "tag": "#@q_zeroxx",
-      "status": "SOCIAL ATIVO",
+      "status": "SOCIAL",
       "statusPrivate": false,
-      "desc": "Acompanhe a evolução dos projetos, novidades e futuros lançamentos.",
+      "desc": "Bastidores, updates e lançamentos",
       "buttonType": "link",
-      "buttonLabel": "SEGUIR INSTA",
+      "buttonLabel": "SEGUIR",
       "buttonUrl": "https://www.instagram.com/q_zeroxx",
       "buttonIcon": "chat"
-    },
-    {
-      "id": "github",
-      "avatarClass": "gh",
-      "image": "/assets/images/card-gh.jpg",
-      "imageAlt": "GitHub",
-      "name": "GITHUB",
-      "tag": "#HATS444",
-      "status": "REPOS PRIVADOS",
-      "statusPrivate": true,
-      "desc": "Perfil público, porém com repositórios privados, e resultados visíveis.",
-      "buttonType": "link",
-      "buttonLabel": "VER PERFIL",
-      "buttonUrl": "https://github.com/Hats444",
-      "buttonIcon": "chat"
     }
-  ],
-  "updatedAt": 1783627519049
+  ]
 }

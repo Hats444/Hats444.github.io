@@ -3,31 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Hats444 — Full-Stack · Bots Telegram & WhatsApp · Hanork · Automação e pagamentos PIX.">
+  <meta name="description" content="Hats444 — bots WhatsApp & Telegram, vendas PIX, segurança de grupos, multi-sessão Baileys e APIs. Hanork em produção.">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>HANORK · Bot Telegram</title>
+  <title>Hats444 · Hanork</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-/* HATS444 — estilo Aliança D.K.C (lista · quadrado · elegante) */
+/* HATS444 — portfolio Hanork (lista · quadrado · elegante) */
 
 :root {
-  --bg: #000000;
-  --bg-card: rgba(18, 18, 18, 0.88);
-  --bg-card-hover: rgba(24, 24, 24, 0.92);
+  --bg: #050505;
+  --bg-card: rgba(14, 14, 14, 0.9);
+  --bg-card-hover: rgba(22, 22, 22, 0.95);
   --border: rgba(255, 255, 255, 0.1);
-  --text: #ffffff;
+  --text: #f4f4f4;
   --text-muted: #9a9a9a;
   --text-dim: #666666;
+  --accent: #c8a96b;
+  --accent-dim: rgba(200, 169, 107, 0.22);
   --red: #e53935;
-  --red-glow: rgba(229, 57, 53, 0.4);
+  --red-glow: rgba(229, 57, 53, 0.35);
   --green: #22c55e;
-  --logo-glow: rgba(255, 255, 255, 0.12);
-  --font: "Inter", system-ui, sans-serif;
-  --serif: "Playfair Display", Georgia, "Times New Roman", serif;
+  --logo-glow: rgba(200, 169, 107, 0.14);
+  --font: "Sora", "Segoe UI", sans-serif;
+  --serif: "Syne", "Sora", sans-serif;
   --mono: "JetBrains Mono", ui-monospace, monospace;
   --radius: 12px;
   --radius-sm: 6px;
@@ -41,7 +43,10 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font);
-  background: var(--bg);
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(200, 169, 107, 0.07), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(229, 57, 53, 0.05), transparent 50%),
+    var(--bg);
   color: var(--text);
   line-height: 1.5;
   overflow-x: hidden;
@@ -380,7 +385,7 @@ main {
 }
 
 .intro {
-  padding: 28px 0 20px;
+  padding: 32px 0 12px;
   text-align: center;
 }
 
@@ -396,17 +401,64 @@ main {
 
 .intro h2 {
   font-family: var(--serif);
-  font-size: 1.35rem;
+  font-size: clamp(1.35rem, 4.5vw, 1.75rem);
   font-weight: 700;
-  line-height: 1.3;
-  letter-spacing: 0.01em;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
   margin-bottom: 12px;
 }
 
 .intro-text {
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   color: var(--text-muted);
-  line-height: 1.6;
+  line-height: 1.65;
+  max-width: 36em;
+  margin: 0 auto;
+}
+
+.focus-section {
+  padding: 8px 0 22px;
+}
+
+.focus-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.focus-item {
+  padding: 16px 16px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(200, 169, 107, 0.05), transparent 70%), var(--bg-card);
+  animation: focusIn 0.55s ease both;
+  animation-delay: calc(var(--i, 0) * 0.08s);
+}
+
+@keyframes focusIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.focus-item h3 {
+  font-family: var(--serif);
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+  color: var(--accent);
+}
+
+.focus-item p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+@media (min-width: 560px) {
+  .focus-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 .cards-section {
@@ -532,6 +584,7 @@ main {
 
 .card-avatar.hanork { color: #6ee7b7; }
 .card-avatar.div { color: #93c5fd; }
+.card-avatar.beta { color: var(--accent); }
 .card-avatar.wa { color: #25d366; }
 .card-avatar.ig { color: #f472b6; }
 .card-avatar.gh { color: #e5e5e5; }
@@ -617,11 +670,17 @@ main {
 .stack-grid span {
   font-family: var(--mono);
   font-size: 0.64rem;
-  padding: 5px 10px;
+  padding: 6px 11px;
   background: rgba(16,16,16,0.85);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   color: var(--text-muted);
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.stack-grid span:hover {
+  border-color: rgba(200, 169, 107, 0.35);
+  color: var(--text);
 }
 
 .partners {
@@ -631,10 +690,12 @@ main {
 }
 
 .partners-title {
-  font-size: 0.72rem;
-  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  color: var(--text-dim);
   margin-bottom: 14px;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .partners-row {
@@ -864,11 +925,11 @@ main {
         </div>
       </div>
       <h1 class="gate-title">HANORK</h1>
-      <p class="gate-desc">BOT TELEGRAM · PIX · VENDAS</p>
+      <p class="gate-desc">WHATSAPP · TELEGRAM · PIX · SEGURANÇA</p>
       <div class="status-bar">
         <span><i class="dot"></i> STATUS: ONLINE</span>
-        <span>VER: 4.1.0</span>
-        <span>SECURE JWT ACTIVE</span>
+        <span id="gate-version">VER: 2026.8</span>
+        <span>PAGES · LIVE</span>
       </div>
       <div class="gate-analytics" id="gate-analytics" aria-label="Estatísticas públicas">
         <span id="gate-stat-online">👥 —</span>
@@ -879,7 +940,7 @@ main {
       <footer class="gate-footer">
         <span>HATS PROTOCOL</span>
         <span>© 2026 HATS444</span>
-        <span>NODE 20 // WSL</span>
+        <span>NODE 20 // PAGES</span>
       </footer>
       </div>
     </div>
@@ -901,8 +962,8 @@ main {
             PAINEL
           </a>
           <a href="https://github.com/Hats444" target="_blank" rel="noopener" class="btn-adm">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            ACESSO GIT
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.341-3.369-1.341-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg>
+            GITHUB
           </a>
         </div>
       </div>
@@ -911,11 +972,29 @@ main {
     <main id="top">
       <section class="intro">
         <p class="intro-label">// SOBRE</p>
-        <h2>Engenharia de automação<br>que roda de verdade.</h2>
+        <h2>Automação que vende,<br>protege e escala.</h2>
         <p class="intro-text">
-          Construo ecossistemas completos: bot de vendas Telegram, WhatsApp com anti-ban,
-          Mercado Pago, SaaS multi-tenant e deploy Linux — do código à produção.
+          Construo bots e plataformas multi-sessão: vendas com PIX, WhatsApp + Telegram,
+          moderação de grupos, gates de superfície e APIs de download/consulta — do código ao servidor.
         </p>
+      </section>
+
+      <section class="focus-section" id="foco" aria-label="Foco">
+        <p class="section-label">// FOCO</p>
+        <div class="focus-grid" id="focus-grid">
+          <article class="focus-item" style="--i:0">
+            <h3>Multi-sessão</h3>
+            <p>Painel Telegram + N WhatsApp (Baileys), dados isolados por usuário.</p>
+          </article>
+          <article class="focus-item" style="--i:1">
+            <h3>Segurança</h3>
+            <p>Anti-flood, anti-link, anti-mídia e gates permanentes contra vetores abusivos.</p>
+          </article>
+          <article class="focus-item" style="--i:2">
+            <h3>Vendas &amp; API</h3>
+            <p>PIX, entrega digital, downloads e catálogo via API Hanork.</p>
+          </article>
+        </div>
       </section>
 
       <section class="cards-section" id="projetos">
@@ -928,18 +1007,17 @@ main {
 
       <section class="stack-section" id="stack">
         <p class="section-label">// STACK</p>
-        <div class="stack-grid">
-          <span>Node.js 20</span><span>Telegraf</span><span>Baileys</span><span>SQLite</span>
-          <span>Redis</span><span>Bull</span><span>Mercado Pago</span><span>Express</span>
-          <span>Docker</span><span>Prometheus</span><span>WSL/Linux</span>
-          <span>GramJS</span><span>Gemini AI</span><span>GitHub Actions</span><span>IPC</span>
+        <div class="stack-grid" id="stack-grid">
+          <span>Node.js 20</span><span>@systemzero/baileys</span><span>Telegram Bot API</span><span>SQLite</span>
+          <span>Intent / NLU</span><span>Mercado Pago</span><span>Supabase</span><span>GitHub Actions</span>
+          <span>Linux / WSL</span><span>Redis / Bull</span>
         </div>
       </section>
 
       <section class="partners">
-        <p class="partners-title">🤝 TECNOLOGIAS DE DESTAQUE</p>
-        <div class="partners-row">
-          <span>Telegram</span><span>WhatsApp</span><span>Mercado Pago</span><span>Redis</span><span>Baileys</span>
+        <p class="partners-title">// SUPERFÍCIES</p>
+        <div class="partners-row" id="partners-row">
+          <span>Telegram</span><span>WhatsApp</span><span>Baileys Zero</span><span>Mercado Pago</span><span>Supabase</span>
         </div>
       </section>
     </main>
@@ -947,7 +1025,7 @@ main {
     <footer class="site-footer">
       <span>HATS PROTOCOL</span>
       <span>© 2026 HATS444</span>
-      <span>PORT 3000 // ACTIVE</span>
+      <span>PAGES · LIVE</span>
     </footer>
 
     <div class="session-bar" id="analytics-bar" aria-label="Estatísticas do site">
@@ -974,15 +1052,15 @@ main {
     <source src="/assets/audio/fml.mp3" type="audio/mpeg">
   </audio>
 
-  <script src="/js/config.js?v=17"></script>
+  <script src="/js/config.js?v=19"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.min.js"></script>
-  <script src="/js/utils/visitor.js?v=17"></script>
-  <script src="/js/utils/device.js?v=17"></script>
-  <script src="/js/utils/debounce.js?v=17"></script>
-  <script src="/js/services/analyticsApi.js?v=17"></script>
-  <script src="/js/components/AnalyticsBar.js?v=17"></script>
-  <script src="/js/hooks/useAnalytics.js?v=17"></script>
-  <script src="/js/siteContent.js?v=18"></script>
-  <script src="/js/main.js?v=18"></script>
+  <script src="/js/utils/visitor.js?v=19"></script>
+  <script src="/js/utils/device.js?v=19"></script>
+  <script src="/js/utils/debounce.js?v=19"></script>
+  <script src="/js/services/analyticsApi.js?v=19"></script>
+  <script src="/js/components/AnalyticsBar.js?v=19"></script>
+  <script src="/js/hooks/useAnalytics.js?v=19"></script>
+  <script src="/js/siteContent.js?v=19"></script>
+  <script src="/js/main.js?v=19"></script>
 </body>
 </html>
