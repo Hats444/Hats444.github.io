@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "meta": {
     "title": "Hats444 · Hanork",
     "description": "Hats444 — bots WhatsApp & Telegram, vendas PIX, segurança de grupos, multi-sessão Baileys e APIs. Hanork em produção.",
@@ -64,13 +64,11 @@
       "imageAlt": "Hanork Beta",
       "name": "HANORK BETA",
       "tag": "#PLATAFORMA",
-      "status": "REPO PÚBLICO",
-      "statusPrivate": false,
+      "status": "REPOSITÓRIO PRIVADO",
+      "statusPrivate": true,
       "desc": "WhatsApp + Telegram · multi-tenant · menus · segurança de grupo",
-      "buttonType": "link",
-      "buttonLabel": "VER CÓDIGO",
-      "buttonUrl": "https://github.com/Hats444/hanork-beta",
-      "buttonIcon": "github"
+      "buttonType": "locked",
+      "buttonLabel": "CÓDIGO PRIVADO"
     },
     {
       "id": "div",
@@ -79,13 +77,11 @@
       "imageAlt": "Hanork",
       "name": "HANORK",
       "tag": "#VENDAS",
-      "status": "REPO PÚBLICO",
-      "statusPrivate": false,
+      "status": "REPOSITÓRIO PRIVADO",
+      "statusPrivate": true,
       "desc": "Bot de vendas Telegram + WhatsApp · divulgação e checkout",
-      "buttonType": "link",
-      "buttonLabel": "VER CÓDIGO",
-      "buttonUrl": "https://github.com/Hats444/hanork",
-      "buttonIcon": "github"
+      "buttonType": "locked",
+      "buttonLabel": "CÓDIGO PRIVADO"
     },
     {
       "id": "suporte",
@@ -109,9 +105,9 @@
       "imageAlt": "GitHub Hats444",
       "name": "GITHUB",
       "tag": "#HATS444",
-      "status": "REPOS PÚBLICOS",
-      "statusPrivate": false,
-      "desc": "hanork · hanork-beta · portfolio Pages",
+      "status": "REPOS PRIVADOS",
+      "statusPrivate": true,
+      "desc": "Perfil público · código sob demanda",
       "buttonType": "link",
       "buttonLabel": "VER PERFIL",
       "buttonUrl": "https://github.com/Hats444",
