@@ -1,6 +1,13 @@
 (function (global) {
   'use strict';
 
+  const Mono = global.Hats444Mono || {
+    toMonoMath: function (s) { return s; },
+    toMonoMathHtml: function (s) { return s; },
+  };
+  const M = Mono.toMonoMath;
+  const MH = Mono.toMonoMathHtml;
+
   const ICONS = {
     chat:
       '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>',
@@ -31,7 +38,7 @@
     let buttonHtml;
     if (card.buttonType === 'locked') {
       buttonHtml =
-        '<span class="btn-card is-locked">' + (ICONS.lock || '') + ' ' + esc(card.buttonLabel) + '</span>';
+        '<span class="btn-card is-locked">' + (ICONS.lock || '') + ' ' + esc(M(card.buttonLabel)) + '</span>';
     } else {
       buttonHtml =
         '<a href="' +
@@ -39,7 +46,7 @@
         '" target="_blank" rel="noopener" class="btn-card">' +
         icon +
         ' ' +
-        esc(card.buttonLabel || 'ABRIR') +
+        esc(M(card.buttonLabel || 'ABRIR')) +
         '</a>';
     }
     return (
@@ -56,17 +63,17 @@
       '" class="avatar-img" loading="lazy" width="88" height="88" style="width:88px;height:88px;object-fit:contain;display:block">' +
       '</div>' +
       '<h3 class="card-name">' +
-      esc(card.name) +
+      esc(M(card.name)) +
       ' <span class="tag">' +
-      esc(card.tag) +
+      esc(M(card.tag)) +
       '</span></h3>' +
       '<p class="card-status' +
       statusClass +
       '">' +
-      esc(card.status) +
+      esc(M(card.status)) +
       '</p>' +
       '<p class="card-desc">' +
-      esc(card.desc) +
+      esc(M(card.desc)) +
       '</p>' +
       buttonHtml +
       '</article>'
@@ -75,17 +82,17 @@
 
   function applyMeta(data) {
     const meta = data.meta || {};
-    if (meta.title) document.title = meta.title;
+    if (meta.title) document.title = M(meta.title);
     const desc = document.querySelector('meta[name="description"]');
     if (desc && meta.description) desc.setAttribute('content', meta.description);
     const introTitle = document.querySelector('.intro h2');
-    if (introTitle && meta.introTitle) introTitle.innerHTML = meta.introTitle;
+    if (introTitle && meta.introTitle) introTitle.innerHTML = MH(meta.introTitle);
     const introText = document.querySelector('.intro-text');
-    if (introText && meta.introText) introText.textContent = meta.introText;
+    if (introText && meta.introText) introText.textContent = M(meta.introText);
     const gateDesc = document.querySelector('.gate-desc');
-    if (gateDesc && meta.gateDesc) gateDesc.textContent = meta.gateDesc;
+    if (gateDesc && meta.gateDesc) gateDesc.textContent = M(meta.gateDesc);
     const gateVer = document.getElementById('gate-version');
-    if (gateVer && meta.gateVersion) gateVer.textContent = 'VER: ' + meta.gateVersion;
+    if (gateVer && meta.gateVersion) gateVer.textContent = M('VER: ' + meta.gateVersion);
   }
 
   function renderFocus(items) {
@@ -98,10 +105,10 @@
           i +
           '">' +
           '<h3>' +
-          esc(item.title) +
+          esc(M(item.title)) +
           '</h3>' +
           '<p>' +
-          esc(item.text) +
+          esc(M(item.text)) +
           '</p>' +
           '</article>'
         );
@@ -112,7 +119,7 @@
   function renderChips(elId, items) {
     const el = document.getElementById(elId);
     if (!el || !Array.isArray(items) || !items.length) return;
-    el.innerHTML = items.map(function (s) { return '<span>' + esc(s) + '</span>'; }).join('');
+    el.innerHTML = items.map(function (s) { return '<span>' + esc(M(s)) + '</span>'; }).join('');
   }
 
   function render(data) {
@@ -125,6 +132,10 @@
     renderFocus(data.focus);
     renderChips('stack-grid', data.stack);
     renderChips('partners-row', data.partners);
+    if (Mono.applyToTree) {
+      Mono.applyToTree(document.getElementById('gate'));
+      Mono.applyToTree(document.getElementById('app'));
+    }
   }
 
   async function load() {
@@ -144,5 +155,5 @@
     load();
   }
 
-  global.Hats444SiteContent = { load, render };
+  global.Hats444SiteContent = { load: load, render: render };
 })(typeof window !== 'undefined' ? window : globalThis);

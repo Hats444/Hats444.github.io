@@ -22,6 +22,12 @@
     return Number(n).toLocaleString('pt-BR');
   }
 
+  function mono(s) {
+    return global.Hats444Mono && global.Hats444Mono.toMonoMath
+      ? global.Hats444Mono.toMonoMath(s)
+      : s;
+  }
+
   function setText(id, text) {
     const el = document.getElementById(id);
     if (el) el.textContent = text;
@@ -32,13 +38,13 @@
     const visitors = formatNum(stats.visitors);
     const accesses = formatNum(stats.accesses);
 
-    setText(IDS.gate.online, '👥 ' + online);
-    setText(IDS.gate.visitors, '👤 ' + visitors);
-    setText(IDS.gate.accesses, '📈 ' + accesses);
+    setText(IDS.gate.online, '👥 ' + mono(online));
+    setText(IDS.gate.visitors, '👤 ' + mono(visitors));
+    setText(IDS.gate.accesses, '📈 ' + mono(accesses));
 
-    setText(IDS.session.online, 'ONLINE: ' + online);
-    setText(IDS.session.visitors, 'VISITANTES: ' + visitors);
-    setText(IDS.session.accesses, 'ACESSOS: ' + accesses);
+    setText(IDS.session.online, mono('ONLINE: ' + online));
+    setText(IDS.session.visitors, mono('VISITANTES: ' + visitors));
+    setText(IDS.session.accesses, mono('ACESSOS: ' + accesses));
   }
 
   global.Hats444AnalyticsBar = { updateStats, formatNum };

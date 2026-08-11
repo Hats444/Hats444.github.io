@@ -28,9 +28,9 @@
   --red-glow: rgba(229, 57, 53, 0.35);
   --green: #22c55e;
   --logo-glow: rgba(200, 169, 107, 0.14);
-  --font: "Sora", "Segoe UI", sans-serif;
-  --serif: "Syne", "Sora", sans-serif;
-  --mono: "JetBrains Mono", ui-monospace, monospace;
+  --font: "Sora", "Segoe UI Symbol", "Cambria Math", "Segoe UI", sans-serif;
+  --serif: "Syne", "Sora", "Segoe UI Symbol", "Cambria Math", sans-serif;
+  --mono: "JetBrains Mono", "Segoe UI Symbol", "Cambria Math", ui-monospace, monospace;
   --radius: 12px;
   --radius-sm: 6px;
   --max: 720px;
@@ -43,12 +43,15 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font);
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0;
   background:
     radial-gradient(ellipse 80% 50% at 50% -10%, rgba(200, 169, 107, 0.07), transparent 55%),
     radial-gradient(ellipse 60% 40% at 100% 100%, rgba(229, 57, 53, 0.05), transparent 50%),
     var(--bg);
   color: var(--text);
-  line-height: 1.5;
+  line-height: 1.55;
+  letter-spacing: 0.02em;
   overflow-x: hidden;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
@@ -972,10 +975,10 @@ main {
     <main id="top">
       <section class="intro">
         <p class="intro-label">// SOBRE</p>
-        <h2>Automação que vende,<br>protege e escala.</h2>
+        <h2>Automacao que vende,<br>protege e escala.</h2>
         <p class="intro-text">
-          Construo bots e plataformas multi-sessão: vendas com PIX, WhatsApp + Telegram,
-          moderação de grupos, gates de superfície e APIs de download/consulta — do código ao servidor.
+          Bots e plataformas multi-sessao: vendas com PIX, WhatsApp + Telegram,
+          moderacao de grupos, gates de superficie Baileys e APIs de download e consulta — do codigo ao servidor.
         </p>
       </section>
 
@@ -983,16 +986,16 @@ main {
         <p class="section-label">// FOCO</p>
         <div class="focus-grid" id="focus-grid">
           <article class="focus-item" style="--i:0">
-            <h3>Multi-sessão</h3>
-            <p>Painel Telegram + N WhatsApp (Baileys), dados isolados por usuário.</p>
+            <h3>Multi-sessao</h3>
+            <p>Painel Telegram com varias sessoes WhatsApp (Baileys) e dados isolados por usuario.</p>
           </article>
           <article class="focus-item" style="--i:1">
-            <h3>Segurança</h3>
-            <p>Anti-flood, anti-link, anti-mídia e gates permanentes contra vetores abusivos.</p>
+            <h3>Seguranca</h3>
+            <p>Anti-flood, anti-link, anti-midia, anti-porno e gates permanentes contra vetores abusivos do Baileys.</p>
           </article>
           <article class="focus-item" style="--i:2">
-            <h3>Vendas &amp; API</h3>
-            <p>PIX, entrega digital, downloads e catálogo via API Hanork.</p>
+            <h3>Vendas e API</h3>
+            <p>PIX, entrega digital, downloads (Play, TikTok, Instagram) e catalogo via API Hanork.</p>
           </article>
         </div>
       </section>
@@ -1052,15 +1055,32 @@ main {
     <source src="/assets/audio/fml.mp3" type="audio/mpeg">
   </audio>
 
-  <script src="/js/config.js?v=19"></script>
+  <script src="/js/config.js?v=20"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.min.js"></script>
-  <script src="/js/utils/visitor.js?v=19"></script>
-  <script src="/js/utils/device.js?v=19"></script>
-  <script src="/js/utils/debounce.js?v=19"></script>
-  <script src="/js/services/analyticsApi.js?v=19"></script>
-  <script src="/js/components/AnalyticsBar.js?v=19"></script>
-  <script src="/js/hooks/useAnalytics.js?v=19"></script>
-  <script src="/js/siteContent.js?v=19"></script>
-  <script src="/js/main.js?v=19"></script>
+  <script src="/js/utils/monoMath.js?v=20"></script>
+  <script src="/js/utils/visitor.js?v=20"></script>
+  <script src="/js/utils/device.js?v=20"></script>
+  <script src="/js/utils/debounce.js?v=20"></script>
+  <script src="/js/services/analyticsApi.js?v=20"></script>
+  <script src="/js/components/AnalyticsBar.js?v=20"></script>
+  <script src="/js/hooks/useAnalytics.js?v=20"></script>
+  <script src="/js/siteContent.js?v=20"></script>
+  <script src="/js/main.js?v=20"></script>
+  <script>
+    (function () {
+      function paint() {
+        if (!window.Hats444Mono) return;
+        Hats444Mono.applyToTree(document.getElementById('gate'));
+        Hats444Mono.applyToTree(document.getElementById('app'));
+        Hats444Mono.applyToTree(document.getElementById('music-widget'));
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', paint);
+      } else {
+        paint();
+      }
+      window.addEventListener('load', function () { setTimeout(paint, 50); });
+    })();
+  </script>
 </body>
 </html>
