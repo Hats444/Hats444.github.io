@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Hats444 — Hanork em producao: WhatsApp + Telegram, PIX, divulgacao, protecao de grupo e OSINT publico.">
+  <meta name="description" content="Hats444 — bots WhatsApp e Telegram, vendas PIX, proteção de grupos, divulgação com META, multi-sessão Baileys, downloads, consultas, OSINT público e host. Hanork em produção.">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
@@ -66,41 +66,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   width: 100%;
   height: 100%;
   z-index: 0;
-  opacity: 0.16;
+  opacity: 0.48;
   transition: opacity 0.6s ease;
   pointer-events: none;
-}
-
-.gate-layers,
-.app-frame {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.app-frame {
-  position: fixed;
-  z-index: 1;
-}
-
-.layer-frame {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top right;
-}
-
-.layer-sigil {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
 }
 
 .gate #gate-matrix {
@@ -108,26 +76,21 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   inset: 0;
   width: 100%;
   height: 100%;
-  z-index: 1;
-  opacity: 0.1;
+  z-index: 0;
+  opacity: 0.88;
   pointer-events: none;
 }
 
 html.gate-open #matrix {
-  opacity: 0.04;
+  opacity: 0.55;
 }
 
 html.gate-open .vignette {
-  opacity: 0.2;
-  background: radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, transparent 58%, rgba(0,0,0,0.2) 100%);
+  background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.12) 42%, rgba(0,0,0,0.78) 100%);
 }
 
 html:not(.gate-open) #gate-matrix {
   display: none;
-}
-
-html:not(.gate-open) .vignette {
-  background: radial-gradient(ellipse at center, transparent 20%, rgba(0,0,0,0.18) 58%, rgba(0,0,0,0.72) 100%);
 }
 
 .vignette {
@@ -143,14 +106,14 @@ html:not(.gate-open) .vignette {
 
 /* ── Landing gate ── */
 .gate {
-  background: #000;
+  background: transparent;
   position: fixed;
   inset: 0;
   z-index: 100;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px 16px 28px;
+  padding: 24px;
   transition: opacity 0.6s ease, transform 0.6s ease;
   overflow: hidden;
 }
@@ -180,22 +143,20 @@ html:not(.gate-open) .vignette {
   position: relative;
   z-index: 2;
   text-align: center;
+  max-width: var(--max);
   width: 100%;
-  max-width: 420px;
 }
 
 .gate-panel {
-  margin: 0 auto;
-  width: 100%;
-  padding: 22px 20px 18px;
-  background: rgba(0, 0, 0, 0.42);
-  border: 1px solid rgba(200, 169, 107, 0.28);
+  padding: 36px 28px 28px;
+  background: rgba(6, 6, 6, 0.62);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: var(--radius);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   box-shadow:
-    0 24px 64px rgba(0, 0, 0, 0.55),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    0 28px 72px rgba(0, 0, 0, 0.65),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
   animation: gateIn 0.85s ease both;
 }
 
@@ -212,9 +173,9 @@ html:not(.gate-open) .vignette {
 
 .logo-box {
   position: relative;
-  width: 72px;
-  height: 72px;
-  margin: 0 auto 14px;
+  width: 84px;
+  height: 84px;
+  margin: 0 auto 24px;
 }
 
 .logo-glow {
@@ -226,8 +187,8 @@ html:not(.gate-open) .vignette {
 
 .logo-mark {
   position: relative;
-  width: 72px;
-  height: 72px;
+  width: 84px;
+  height: 84px;
   background: #0a0a0a;
   border: 1px solid rgba(255,255,255,0.14);
   border-radius: var(--radius);
@@ -243,10 +204,10 @@ html:not(.gate-open) .vignette {
 
 .gate-title {
   font-family: var(--serif);
-  font-size: clamp(1.7rem, 6vw, 2.2rem);
+  font-size: clamp(2rem, 7vw, 2.65rem);
   font-weight: 700;
   letter-spacing: 0.1em;
-  margin-bottom: 8px;
+  margin-bottom: 14px;
   text-shadow: 0 0 40px rgba(255, 255, 255, 0.12);
 }
 
@@ -264,7 +225,7 @@ html:not(.gate-open) .vignette {
   letter-spacing: 0.05em;
   color: var(--text-muted);
   line-height: 1.75;
-  margin-bottom: 14px;
+  margin-bottom: 22px;
   text-transform: uppercase;
 }
 
@@ -280,7 +241,7 @@ html:not(.gate-open) .vignette {
   font-family: var(--mono);
   font-size: 0.64rem;
   color: var(--text-muted);
-  margin-bottom: 16px;
+  margin-bottom: 24px;
   backdrop-filter: blur(8px);
 }
 
@@ -324,24 +285,19 @@ html:not(.gate-open) .vignette {
 
 .gate-footer {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 18px;
+  justify-content: space-between;
+  margin-top: 44px;
   font-family: var(--mono);
-  font-size: 0.55rem;
+  font-size: 0.58rem;
   color: var(--text-dim);
   letter-spacing: 0.04em;
-  gap: 6px 12px;
-}
-
-.gate-footer span {
-  white-space: nowrap;
+  gap: 8px;
 }
 
 /* ── App shell ── */
 .app {
   position: relative;
-  z-index: 3;
+  z-index: 2;
   width: 100%;
   max-width: var(--max);
   margin: 0 auto;
@@ -441,22 +397,9 @@ main {
   font-family: var(--mono);
   font-size: 0.62rem;
   color: var(--text-dim);
-  letter-spacing: 0.14em;
-  margin-bottom: 12px;
+  letter-spacing: 0.12em;
+  margin-bottom: 10px;
   text-transform: uppercase;
-}
-
-.intro-label::before,
-.section-label::before,
-.partners-title::before {
-  content: "";
-  display: inline-block;
-  width: 16px;
-  height: 1px;
-  margin-right: 8px;
-  vertical-align: middle;
-  background: var(--accent);
-  opacity: 0.75;
 }
 
 .intro h2 {
@@ -477,13 +420,13 @@ main {
 }
 
 .focus-section {
-  padding: 18px 0 28px;
+  padding: 8px 0 22px;
 }
 
 .focus-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 12px;
+  gap: 10px;
 }
 
 .focus-item {
@@ -517,7 +460,7 @@ main {
 
 @media (min-width: 560px) {
   .focus-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -948,18 +891,6 @@ main {
   .cards-grid .btn-card { font-size: 0.66rem; padding: 13px 10px; }
 }
 
-@media (max-width: 640px) {
-  .layer-sigil {
-    object-fit: cover;
-    object-position: center top;
-  }
-  .gate-inner { max-width: 360px; }
-  .gate-panel { padding: 18px 16px 16px; }
-  .gate-footer span:last-child { display: none; }
-  .topbar-actions a[href="#foco"],
-  .topbar-actions a[href="#projetos"] { display: none; }
-}
-
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   #matrix { display: none; }
@@ -976,7 +907,7 @@ main {
 <script>
   document.documentElement.classList.add('gate-open');
   try {
-    if (sessionStorage.getItem('hats444_entered_v20') === '1') {
+    if (sessionStorage.getItem('hats444_entered_v16') === '1') {
       document.documentElement.classList.remove('gate-open');
     }
   } catch (e) { /* ignore */ }
@@ -985,10 +916,7 @@ main {
   <div class="vignette" aria-hidden="true"></div>
 
   <!-- Landing gate -->
-  <section class="gate" id="gate">
-    <div class="gate-layers" aria-hidden="true">
-      <img class="layer-sigil" src="assets/images/bg-sigil.jpg?v=25" alt="">
-    </div>
+  <section class="gate" id="gate" style="background:transparent!important">
     <canvas id="gate-matrix" aria-hidden="true"></canvas>
     <div class="gate-scanlines" aria-hidden="true"></div>
     <div class="gate-inner">
@@ -1022,9 +950,6 @@ main {
   </section>
 
   <!-- Main app (revealed after enter) -->
-  <div class="app-frame" aria-hidden="true">
-    <img class="layer-frame" src="assets/images/bg-frame.jpg?v=25" alt="">
-  </div>
   <div class="app" id="app" hidden>
     <header class="topbar">
       <div class="topbar-inner">
@@ -1035,8 +960,6 @@ main {
           <span class="brand-text">HANORK</span>
         </a>
         <div class="topbar-actions">
-          <a href="#foco" class="btn-adm">FOCO</a>
-          <a href="#projetos" class="btn-adm">LINKS</a>
           <a href="/admin.html" class="btn-adm" title="Painel de analytics">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 16l4-6 4 3 5-8"/></svg>
             PAINEL
@@ -1054,8 +977,9 @@ main {
         <p class="intro-label">// SOBRE</p>
         <h2>Automacao que vende,<br>protege e escala.</h2>
         <p class="intro-text">
-          Hanork e o que eu construo: paga no Telegram, pareia o chip e usa no Zap.
-          Divulgacao, protecao, downloads, consultas e OSINT — do codigo ao servidor.
+          Hanork e a plataforma que eu construo: WhatsApp + Telegram no mesmo produto.
+          O cliente paga no Telegram (PIX, cartao, boleto), pareia o chip (QR ou codigo) e usa no Zap —
+          divulgacao com ocupacao META, protecao de grupo, downloads, consultas, figurinhas, OSINT publico e painel multi-sessao.
         </p>
       </section>
 
@@ -1063,20 +987,36 @@ main {
         <p class="section-label">// FOCO</p>
         <div class="focus-grid" id="focus-grid">
           <article class="focus-item" style="--i:0">
-            <h3>Plataforma</h3>
-            <p>WhatsApp + Telegram, multi-sessao Baileys, QR ou codigo. Cada usuario isolado. Prefixo live no Zap.</p>
+            <h3>Multi-sessao</h3>
+            <p>Painel no Telegram com varias sessoes WhatsApp (Baileys). QR ou codigo. Cada usuario tem dados, grupos e DIV isolados. Prefixo live no Zap.</p>
           </article>
           <article class="focus-item" style="--i:1">
-            <h3>Vendas</h3>
-            <p>Starter R$29 · Pro R$49 · Enterprise R$99 /mes. Day pass R$1. PIX, cartao, boleto. Afiliado com VIP.</p>
+            <h3>Protecao de grupo</h3>
+            <p>Antilink, anti-flood, anti-delete, anti-admin, so-admin, anti-ataque e presets. Admin nativo liga/desliga no painel .gpseguranca.</p>
           </article>
           <article class="focus-item" style="--i:2">
-            <h3>Operacao</h3>
-            <p>Divulgacao com ocupacao META, grupo morto sai sozinho. Protecao de grupo no painel. Host em producao.</p>
+            <h3>Vendas e PIX</h3>
+            <p>Starter R$29 · Pro R$49 · Enterprise R$99 /mes. Trimestral e anual com desconto. Day pass R$1. Checkout Mercado Pago. Afiliado com VIP por venda.</p>
           </article>
           <article class="focus-item" style="--i:3">
-            <h3>Intel e midia</h3>
-            <p>Downloads, figurinhas, consultas e OSINT publico (dominio, username, wiki, gist). Sem dump de senha.</p>
+            <h3>Divulgacao</h3>
+            <p>Posts em massa com CTA, status, midia e PIX. Grupo morto sai sozinho e a vaga reporna da fila (ocupacao META). Gerenciador de convites.</p>
+          </article>
+          <article class="focus-item" style="--i:4">
+            <h3>Downloads e consulta</h3>
+            <p>YouTube, TikTok, Instagram, Spotify, Facebook, Kwai. Figurinhas e canal. Consultas (CPF, nome, placa) e hub da API Hanork (~750 cmds).</p>
+          </article>
+          <article class="focus-item" style="--i:5">
+            <h3>OSINT publico</h3>
+            <p>Um comando, relatorio completo: dominio, DNS, arquivo, username, wiki, gist, paste publico e correlacao. Sem dump de senha.</p>
+          </article>
+          <article class="focus-item" style="--i:6">
+            <h3>Pareamento</h3>
+            <p>Paga no Telegram, conecta o chip e manda comando no WhatsApp. Prefixo troca com setprefix. Telegram continua sempre com /.</p>
+          </article>
+          <article class="focus-item" style="--i:7">
+            <h3>Host e entrega</h3>
+            <p>Egg em producao, backup do codigo sem .env nem sessoes. Zip do bot sem segredos. Painel admin e saude do processo.</p>
           </article>
         </div>
       </section>
@@ -1084,11 +1024,16 @@ main {
       <section class="stack-section" id="caps" aria-label="Capacidades">
         <p class="section-label">// CAPACIDADES</p>
         <div class="stack-grid" id="caps-grid">
-          <span>WhatsApp + Telegram</span><span>Multi-sessao Baileys</span>
-          <span>PIX Mercado Pago</span><span>Planos R$29 / R$49 / R$99</span>
-          <span>Divulgacao META</span><span>Protecao de grupo</span>
-          <span>Downloads e figurinhas</span><span>Consultas</span>
-          <span>OSINT publico</span><span>Host / backup</span>
+          <span>WhatsApp + Telegram</span><span>Multi-sessao Baileys</span><span>Pareamento QR / codigo</span>
+          <span>Prefixo live no Zap</span><span>PIX Mercado Pago</span><span>Cartao e boleto</span>
+          <span>Starter R$29/mes</span><span>Pro R$49/mes</span><span>Enterprise R$99/mes</span>
+          <span>Trimestral / anual</span><span>Day pass R$1</span><span>Afiliado com VIP</span>
+          <span>Divulgacao em grupos</span><span>Gerenciador de convites</span><span>Ocupacao META</span>
+          <span>Grupo morto auto-repor</span><span>Antilink / anti-flood</span><span>Anti-admin / anti-delete</span>
+          <span>Anti-ataque (defesa)</span><span>Painel .gpseguranca</span><span>Frase natural</span>
+          <span>Downloads (YT, TT, IG, SP)</span><span>Figurinhas e canal</span><span>Consultas CPF / nome / placa</span>
+          <span>API Hanork (~750 cmds)</span><span>OSINT publico completo</span><span>Menus com botoes</span>
+          <span>XP / niveis / quotas</span><span>Host / backup</span><span>Entrega do zip sem .env</span>
         </div>
       </section>
 
@@ -1104,7 +1049,8 @@ main {
         <p class="section-label">// STACK</p>
         <div class="stack-grid" id="stack-grid">
           <span>Node.js 20</span><span>@systemzero/baileys</span><span>Telegram Bot API</span><span>SQLite</span>
-          <span>Intent / NLU</span><span>Mercado Pago</span><span>Supabase</span><span>Linux</span>
+          <span>Intent / NLU</span><span>Mercado Pago</span><span>Supabase</span><span>GitHub Actions</span>
+          <span>Linux / WSL</span><span>Redis / Bull</span>
         </div>
       </section>
 
@@ -1155,8 +1101,8 @@ main {
   <script src="/js/services/analyticsApi.js?v=20"></script>
   <script src="/js/components/AnalyticsBar.js?v=20"></script>
   <script src="/js/hooks/useAnalytics.js?v=20"></script>
-  <script src="js/siteContent.js?v=25"></script>
-  <script src="js/main.js?v=25"></script>
+  <script src="/js/siteContent.js?v=21"></script>
+  <script src="/js/main.js?v=20"></script>
   <script>
     (function () {
       function paint() {

@@ -142,7 +142,7 @@
 
   const btnEnter = document.getElementById('btn-enter');
 
-  const STORAGE_KEY = 'hats444_entered_v20';
+  const STORAGE_KEY = 'hats444_entered_v16';
 
 
 
