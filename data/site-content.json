@@ -1,79 +1,43 @@
 {
-  "version": 6,
-  "updatedAt": 1788135000000,
+  "version": 7,
+  "updatedAt": 1788136200000,
   "meta": {
     "title": "Hats444 · Hanork",
-    "description": "Hats444 — bots WhatsApp e Telegram, vendas PIX, proteção de grupos, divulgação com META, multi-sessão Baileys, downloads, consultas, OSINT público e host. Hanork em produção.",
+    "description": "Hats444 — Hanork em producao: WhatsApp + Telegram, PIX, divulgacao, protecao de grupo e OSINT publico.",
     "introTitle": "Automacao que vende,<br>protege e escala.",
-    "introText": "Hanork e a plataforma que eu construo: WhatsApp + Telegram no mesmo produto. O cliente paga no Telegram (PIX, cartao, boleto), pareia o chip (QR ou codigo) e usa no Zap — divulgacao com ocupacao META, protecao de grupo, downloads, consultas, figurinhas, OSINT publico e painel multi-sessao. Do codigo ao servidor.",
+    "introText": "Hanork e o que eu construo: paga no Telegram, pareia o chip e usa no Zap. Divulgacao, protecao, downloads, consultas e OSINT — do codigo ao servidor.",
     "gateDesc": "WHATSAPP · TELEGRAM · PIX · SEGURANCA",
     "gateVersion": "2026.8.31"
   },
   "focus": [
     {
-      "title": "Multi-sessao",
-      "text": "Painel no Telegram com varias sessoes WhatsApp (Baileys). QR ou codigo. Cada usuario tem dados, grupos e DIV isolados. Prefixo live no Zap."
+      "title": "Plataforma",
+      "text": "WhatsApp + Telegram, multi-sessao Baileys, QR ou codigo. Cada usuario isolado. Prefixo live no Zap."
     },
     {
-      "title": "Protecao de grupo",
-      "text": "Antilink, anti-flood, anti-delete, anti-admin, so-admin, anti-ataque e presets. Admin nativo liga/desliga no painel .gpseguranca."
+      "title": "Vendas",
+      "text": "Starter R$29 · Pro R$49 · Enterprise R$99 /mes. Day pass R$1. PIX, cartao, boleto. Afiliado com VIP."
     },
     {
-      "title": "Vendas e PIX",
-      "text": "Starter R$29 · Pro R$49 · Enterprise R$99 /mes. Trimestral e anual com desconto. Day pass R$1. Checkout Mercado Pago. Afiliado com VIP por venda."
+      "title": "Operacao",
+      "text": "Divulgacao com ocupacao META, grupo morto sai sozinho. Protecao de grupo no painel. Host em producao."
     },
     {
-      "title": "Divulgacao",
-      "text": "Posts em massa com CTA, status, midia e PIX. Grupo morto sai sozinho e a vaga reporna da fila (ocupacao META). Gerenciador de convites."
-    },
-    {
-      "title": "Downloads e consulta",
-      "text": "YouTube, TikTok, Instagram, Spotify, Facebook, Kwai. Figurinhas e canal. Consultas (CPF, nome, placa) e hub da API Hanork (~750 cmds)."
-    },
-    {
-      "title": "OSINT publico",
-      "text": "Um comando, relatorio completo: dominio, DNS, arquivo, username, wiki, gist, paste publico e correlacao. Sem dump de senha."
-    },
-    {
-      "title": "Pareamento",
-      "text": "Paga no Telegram, conecta o chip e manda comando no WhatsApp. Prefixo troca com setprefix. Telegram continua sempre com /."
-    },
-    {
-      "title": "Host e entrega",
-      "text": "Egg em producao, backup do codigo sem .env nem sessoes. Zip do bot sem segredos. Painel admin e saude do processo."
+      "title": "Intel e midia",
+      "text": "Downloads, figurinhas, consultas e OSINT publico (dominio, username, wiki, gist). Sem dump de senha."
     }
   ],
   "capabilities": [
     "WhatsApp + Telegram",
     "Multi-sessao Baileys",
-    "Pareamento QR / codigo",
-    "Prefixo live no Zap",
     "PIX Mercado Pago",
-    "Cartao e boleto",
-    "Starter R$29/mes",
-    "Pro R$49/mes",
-    "Enterprise R$99/mes",
-    "Trimestral / anual",
-    "Day pass R$1",
-    "Afiliado com VIP",
-    "Divulgacao em grupos",
-    "Gerenciador de convites",
-    "Ocupacao META",
-    "Grupo morto auto-repor",
-    "Antilink / anti-flood",
-    "Anti-admin / anti-delete",
-    "Anti-ataque (defesa)",
-    "Painel .gpseguranca",
-    "Frase natural",
-    "Downloads (YT, TT, IG, SP)",
-    "Figurinhas e canal",
-    "Consultas CPF / nome / placa",
-    "API Hanork (~750 cmds)",
-    "OSINT publico completo",
-    "Menus com botoes",
-    "XP / niveis / quotas",
-    "Host / backup",
-    "Entrega do zip sem .env"
+    "Planos R$29 / R$49 / R$99",
+    "Divulgacao META",
+    "Protecao de grupo",
+    "Downloads e figurinhas",
+    "Consultas",
+    "OSINT publico",
+    "Host / backup"
   ],
   "stack": [
     "Node.js 20",
@@ -81,11 +45,9 @@
     "Telegram Bot API",
     "SQLite",
     "Intent / NLU",
-    "Ollama opcional",
     "Mercado Pago",
     "Supabase",
-    "GitHub Actions",
-    "Linux / WSL"
+    "Linux"
   ],
   "partners": [
     "Telegram",
@@ -104,37 +66,11 @@
       "tag": "#FLAGSHIP",
       "status": "EM PRODUCAO",
       "statusPrivate": false,
-      "desc": "Telegram + WhatsApp · PIX · planos · DIV · protecao · downloads · OSINT",
+      "desc": "Telegram + WhatsApp · PIX · DIV · protecao · OSINT",
       "buttonType": "link",
       "buttonLabel": "ABRIR BOT",
       "buttonUrl": "https://t.me/hanork_bot",
       "buttonIcon": "telegram"
-    },
-    {
-      "id": "beta",
-      "avatarClass": "beta",
-      "image": "/assets/images/card-wa.jpg",
-      "imageAlt": "Hanork Beta",
-      "name": "HANORK BETA",
-      "tag": "#PLATAFORMA",
-      "status": "REPOSITORIO PRIVADO",
-      "statusPrivate": true,
-      "desc": "Codigo vivo: multi-usuario, menus, billing, OSINT, gerenciador de grupos, META",
-      "buttonType": "locked",
-      "buttonLabel": "CODIGO PRIVADO"
-    },
-    {
-      "id": "div",
-      "avatarClass": "div",
-      "image": "/assets/images/card-div.jpg",
-      "imageAlt": "Hanork",
-      "name": "HANORK",
-      "tag": "#VENDAS",
-      "status": "REPOSITORIO PRIVADO",
-      "statusPrivate": true,
-      "desc": "Divulgacao automatica, checkout no Telegram e entrega digital",
-      "buttonType": "locked",
-      "buttonLabel": "CODIGO PRIVADO"
     },
     {
       "id": "suporte",
@@ -145,7 +81,7 @@
       "tag": "#CONTATO",
       "status": "DISPONIVEL",
       "statusPrivate": false,
-      "desc": "Bots, Hanork, APIs e sites — conversa direta",
+      "desc": "Bots, Hanork e APIs — conversa direta",
       "buttonType": "link",
       "buttonLabel": "FALAR NO TELEGRAM",
       "buttonUrl": "https://t.me/hanorkoff",
@@ -160,7 +96,7 @@
       "tag": "#HATS444",
       "status": "REPOS PRIVADOS",
       "statusPrivate": true,
-      "desc": "Perfil publico · backup do codigo sem segredos",
+      "desc": "Perfil publico · backup sem segredos",
       "buttonType": "link",
       "buttonLabel": "VER PERFIL",
       "buttonUrl": "https://github.com/Hats444",
@@ -175,7 +111,7 @@
       "tag": "#@q_zeroxx",
       "status": "SOCIAL",
       "statusPrivate": false,
-      "desc": "Bastidores, updates e lancamentos",
+      "desc": "Bastidores e lancamentos",
       "buttonType": "link",
       "buttonLabel": "SEGUIR",
       "buttonUrl": "https://www.instagram.com/q_zeroxx",
