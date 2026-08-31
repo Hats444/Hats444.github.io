@@ -1,11 +1,5 @@
-Coloque aqui o arquivo de áudio da música FML (Arizona Zervas):
+Musica do site: Young Pwavy — MOOD (Official Visualizer).
 
-  assets/audio/fml.mp3
+Arquivo: assets/audio/mood.mp3
 
-Como obter:
-1. Compre ou baixe legalmente (Spotify/Apple/iTunes/Amazon).
-2. Exporte ou converta para MP3.
-3. Renomeie para fml.mp3 e coloque nesta pasta.
-4. git add assets/audio/fml.mp3 && git push
-
-O site já tem o botão de play/pause — só falta o arquivo MP3.
+O botao de play no canto inferior usa esse MP3 em loop.

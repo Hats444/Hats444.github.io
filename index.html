@@ -795,6 +795,10 @@ main {
   margin-bottom: 8px;
 }
 
+.price-card.is-featured .price-value {
+  color: var(--accent);
+}
+
 .price-value span {
   font-family: var(--mono);
   font-size: 0.72rem;
@@ -802,6 +806,33 @@ main {
   letter-spacing: 0.08em;
   color: var(--text-muted);
   margin-left: 6px;
+}
+
+.price-features {
+  list-style: none;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.price-features li {
+  font-family: var(--font);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+  padding-left: 14px;
+  position: relative;
+}
+
+.price-features li::before {
+  content: "·";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-family: var(--mono);
 }
 
 .price-note {
@@ -873,6 +904,10 @@ main {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  padding: 5px 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  border-radius: 999px;
 }
 
 .gate-analytics {
@@ -996,8 +1031,8 @@ main {
 
 .music-btn:hover,
 .music-btn.is-playing {
-  color: var(--text);
-  border-color: rgba(255, 255, 255, 0.22);
+  color: var(--accent);
+  border-color: rgba(200, 169, 107, 0.45);
 }
 
 .music-btn .icon-muted { display: block; }
@@ -1009,13 +1044,13 @@ main {
   .cards-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .pricing-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
 }
 
 @media (min-width: 768px) {
   :root { --max: 960px; --grid-gap: 16px; --section-y: 72px; }
+  .pricing-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
   .gate-desc { font-size: 0.72rem; }
   .stack-section .stack-grid { justify-content: center; }
   .cards-grid .dkc-card { padding: 20px 16px 16px; }
@@ -1191,14 +1226,28 @@ main {
           <article class="price-card">
             <p class="price-tier">STARTER</p>
             <p class="price-value">R$29<span>/mês</span></p>
+            <ul class="price-features">
+              <li>Checkout Mercado Pago</li>
+              <li>PIX, cartao, boleto</li>
+            </ul>
           </article>
           <article class="price-card is-featured">
             <p class="price-tier">PRO</p>
             <p class="price-value">R$49<span>/mês</span></p>
+            <ul class="price-features">
+              <li>Checkout Mercado Pago</li>
+              <li>PIX, cartao, boleto</li>
+              <li>Trimestral e anual com desconto</li>
+            </ul>
           </article>
           <article class="price-card">
             <p class="price-tier">ENTERPRISE</p>
             <p class="price-value">R$99<span>/mês</span></p>
+            <ul class="price-features">
+              <li>Checkout Mercado Pago</li>
+              <li>PIX, cartao, boleto</li>
+              <li>Afiliado com VIP por venda</li>
+            </ul>
           </article>
         </div>
         <p class="pricing-foot">Trimestral e anual com desconto · Day pass R$1 · PIX, cartao, boleto</p>
@@ -1300,13 +1349,13 @@ main {
     <div class="viz-bars is-paused" id="viz-bars" aria-hidden="true">
       <span></span><span></span><span></span><span></span>
     </div>
-    <button type="button" class="music-btn" id="btn-music" aria-label="Tocar FML — Arizona Zervas" title="FML · Arizona Zervas">
+    <button type="button" class="music-btn" id="btn-music" aria-label="Tocar MOOD — Young Pwavy" title="MOOD · Young Pwavy">
       <svg class="icon-muted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
       <svg class="icon-playing" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07"/></svg>
     </button>
   </div>
   <audio id="bg-music" loop preload="none">
-    <source src="/assets/audio/fml.mp3" type="audio/mpeg">
+    <source src="/assets/audio/mood.mp3" type="audio/mpeg">
   </audio>
 
   <script src="/js/config.js?v=20"></script>
@@ -1318,8 +1367,8 @@ main {
   <script src="/js/services/analyticsApi.js?v=20"></script>
   <script src="/js/components/AnalyticsBar.js?v=20"></script>
   <script src="/js/hooks/useAnalytics.js?v=20"></script>
-  <script src="/js/siteContent.js?v=28"></script>
-  <script src="/js/main.js?v=28"></script>
+  <script src="/js/siteContent.js?v=30"></script>
+  <script src="/js/main.js?v=30"></script>
   <script>
     (function () {
       function paint() {

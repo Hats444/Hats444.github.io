@@ -252,6 +252,8 @@
 
   const viz = document.getElementById('viz-bars');
 
+  const TRACK_LABEL = 'MOOD — Young Pwavy';
+
 
 
   function setPlaying(isPlaying) {
@@ -266,7 +268,7 @@
 
       'aria-label',
 
-      isPlaying ? 'Pausar FML — Arizona Zervas' : 'Tocar FML — Arizona Zervas'
+      isPlaying ? 'Pausar ' + TRACK_LABEL : 'Tocar ' + TRACK_LABEL
 
     );
 
