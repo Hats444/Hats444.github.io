@@ -71,46 +71,55 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   pointer-events: none;
 }
 
-.gate-inner {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  max-width: none;
-  width: 100%;
+.gate-layers,
+.app-frame {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
 }
 
-.gate-photos {
-  width: 100%;
-  background: #000;
-  line-height: 0;
+.app-frame {
+  position: fixed;
+  z-index: 1;
 }
 
-.gate-photos .photo-frame {
-  display: block;
+.layer-frame {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: auto;
-  max-height: 34vh;
+  height: 100%;
   object-fit: cover;
-  object-position: top center;
+  object-position: top right;
 }
 
-.gate-photos .photo-sigil {
-  display: block;
-  width: min(62vw, 260px);
-  height: auto;
-  margin: 12px auto 8px;
+.layer-sigil {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
 }
 
 .gate #gate-matrix {
-  display: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.1;
+  pointer-events: none;
 }
 
 html.gate-open #matrix {
-  opacity: 0.06;
+  opacity: 0.04;
 }
 
 html.gate-open .vignette {
-  background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.12) 42%, rgba(0,0,0,0.78) 100%);
+  opacity: 0.2;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, transparent 58%, rgba(0,0,0,0.2) 100%);
 }
 
 html:not(.gate-open) #gate-matrix {
@@ -118,7 +127,7 @@ html:not(.gate-open) #gate-matrix {
 }
 
 html:not(.gate-open) .vignette {
-  background: radial-gradient(ellipse at center, transparent 18%, rgba(0,0,0,0.22) 58%, rgba(0,0,0,0.78) 100%);
+  background: radial-gradient(ellipse at center, transparent 20%, rgba(0,0,0,0.18) 58%, rgba(0,0,0,0.72) 100%);
 }
 
 .vignette {
@@ -139,12 +148,11 @@ html:not(.gate-open) .vignette {
   inset: 0;
   z-index: 100;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  padding: 0;
+  padding: 20px 16px 28px;
   transition: opacity 0.6s ease, transform 0.6s ease;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
 }
 
 .gate-scanlines {
@@ -172,23 +180,22 @@ html:not(.gate-open) .vignette {
   position: relative;
   z-index: 2;
   text-align: center;
-  max-width: none;
   width: 100%;
+  max-width: 420px;
 }
 
 .gate-panel {
-  margin: 8px auto 32px;
-  width: calc(100% - 32px);
-  max-width: var(--max);
-  padding: 28px 22px 24px;
-  background: rgba(6, 6, 6, 0.82);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  margin: 0 auto;
+  width: 100%;
+  padding: 22px 20px 18px;
+  background: rgba(0, 0, 0, 0.42);
+  border: 1px solid rgba(200, 169, 107, 0.28);
   border-radius: var(--radius);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   box-shadow:
-    0 28px 72px rgba(0, 0, 0, 0.65),
-    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+    0 24px 64px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
   animation: gateIn 0.85s ease both;
 }
 
@@ -205,9 +212,9 @@ html:not(.gate-open) .vignette {
 
 .logo-box {
   position: relative;
-  width: 84px;
-  height: 84px;
-  margin: 0 auto 24px;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 14px;
 }
 
 .logo-glow {
@@ -219,8 +226,8 @@ html:not(.gate-open) .vignette {
 
 .logo-mark {
   position: relative;
-  width: 84px;
-  height: 84px;
+  width: 72px;
+  height: 72px;
   background: #0a0a0a;
   border: 1px solid rgba(255,255,255,0.14);
   border-radius: var(--radius);
@@ -236,10 +243,10 @@ html:not(.gate-open) .vignette {
 
 .gate-title {
   font-family: var(--serif);
-  font-size: clamp(2rem, 7vw, 2.65rem);
+  font-size: clamp(1.7rem, 6vw, 2.2rem);
   font-weight: 700;
   letter-spacing: 0.1em;
-  margin-bottom: 14px;
+  margin-bottom: 8px;
   text-shadow: 0 0 40px rgba(255, 255, 255, 0.12);
 }
 
@@ -257,7 +264,7 @@ html:not(.gate-open) .vignette {
   letter-spacing: 0.05em;
   color: var(--text-muted);
   line-height: 1.75;
-  margin-bottom: 22px;
+  margin-bottom: 14px;
   text-transform: uppercase;
 }
 
@@ -273,7 +280,7 @@ html:not(.gate-open) .vignette {
   font-family: var(--mono);
   font-size: 0.64rem;
   color: var(--text-muted);
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   backdrop-filter: blur(8px);
 }
 
@@ -317,13 +324,18 @@ html:not(.gate-open) .vignette {
 
 .gate-footer {
   display: flex;
-  justify-content: space-between;
-  margin-top: 44px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 18px;
   font-family: var(--mono);
-  font-size: 0.58rem;
+  font-size: 0.55rem;
   color: var(--text-dim);
   letter-spacing: 0.04em;
-  gap: 8px;
+  gap: 6px 12px;
+}
+
+.gate-footer span {
+  white-space: nowrap;
 }
 
 /* ── App shell ── */
@@ -331,38 +343,10 @@ html:not(.gate-open) .vignette {
   position: relative;
   z-index: 3;
   width: 100%;
+  max-width: var(--max);
   margin: 0 auto;
   min-height: 100vh;
   padding-bottom: 96px;
-}
-
-.page-art {
-  width: 100%;
-  line-height: 0;
-  background: #000;
-  position: relative;
-  z-index: 4;
-}
-
-.page-art img {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: 260px;
-  object-fit: cover;
-  object-position: top right;
-}
-
-.hero-sigil {
-  margin: 22px auto 8px;
-  max-width: 220px;
-  line-height: 0;
-}
-
-.hero-sigil img {
-  display: block;
-  width: 100%;
-  height: auto;
 }
 
 .topbar {
@@ -965,10 +949,13 @@ main {
 }
 
 @media (max-width: 640px) {
-  .gate-photos .photo-frame { max-height: 26vh; }
-  .gate-photos .photo-sigil { width: min(72vw, 280px); }
-  .page-art img { max-height: 160px; }
-  .hero-sigil { max-width: 200px; }
+  .layer-sigil {
+    object-fit: cover;
+    object-position: center top;
+  }
+  .gate-inner { max-width: 360px; }
+  .gate-panel { padding: 18px 16px 16px; }
+  .gate-footer span:last-child { display: none; }
   .topbar-actions a[href="#foco"],
   .topbar-actions a[href="#projetos"] { display: none; }
 }
@@ -989,7 +976,7 @@ main {
 <script>
   document.documentElement.classList.add('gate-open');
   try {
-    if (sessionStorage.getItem('hats444_entered_v19') === '1') {
+    if (sessionStorage.getItem('hats444_entered_v20') === '1') {
       document.documentElement.classList.remove('gate-open');
     }
   } catch (e) { /* ignore */ }
@@ -999,13 +986,12 @@ main {
 
   <!-- Landing gate -->
   <section class="gate" id="gate">
+    <div class="gate-layers" aria-hidden="true">
+      <img class="layer-sigil" src="assets/images/bg-sigil.jpg?v=25" alt="">
+    </div>
     <canvas id="gate-matrix" aria-hidden="true"></canvas>
     <div class="gate-scanlines" aria-hidden="true"></div>
     <div class="gate-inner">
-      <div class="gate-photos">
-        <img class="photo-frame" src="assets/images/bg-frame.jpg?v=24" alt="Hats444 frame">
-        <img class="photo-sigil" src="assets/images/bg-sigil.jpg?v=24" alt="Hats444 sigil">
-      </div>
       <div class="gate-panel">
       <div class="logo-box" aria-hidden="true">
         <div class="logo-glow"></div>
@@ -1036,10 +1022,10 @@ main {
   </section>
 
   <!-- Main app (revealed after enter) -->
+  <div class="app-frame" aria-hidden="true">
+    <img class="layer-frame" src="assets/images/bg-frame.jpg?v=25" alt="">
+  </div>
   <div class="app" id="app" hidden>
-    <div class="page-art" aria-hidden="true">
-      <img src="assets/images/bg-frame.jpg?v=24" alt="Hats444 frame">
-    </div>
     <header class="topbar">
       <div class="topbar-inner">
         <a href="#top" class="brand">
@@ -1071,9 +1057,6 @@ main {
           Hanork e o que eu construo: paga no Telegram, pareia o chip e usa no Zap.
           Divulgacao, protecao, downloads, consultas e OSINT — do codigo ao servidor.
         </p>
-        <figure class="hero-sigil">
-          <img src="assets/images/bg-sigil.jpg?v=24" alt="Hats444 sigil">
-        </figure>
       </section>
 
       <section class="focus-section" id="foco" aria-label="Foco">
@@ -1172,8 +1155,8 @@ main {
   <script src="/js/services/analyticsApi.js?v=20"></script>
   <script src="/js/components/AnalyticsBar.js?v=20"></script>
   <script src="/js/hooks/useAnalytics.js?v=20"></script>
-  <script src="js/siteContent.js?v=24"></script>
-  <script src="js/main.js?v=24"></script>
+  <script src="js/siteContent.js?v=25"></script>
+  <script src="js/main.js?v=25"></script>
   <script>
     (function () {
       function paint() {
