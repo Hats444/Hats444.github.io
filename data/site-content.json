@@ -1,59 +1,77 @@
 {
-  "version": 5,
-  "updatedAt": 1756630000000,
+  "version": 6,
+  "updatedAt": 1788135000000,
   "meta": {
     "title": "Hats444 · Hanork",
-    "description": "Hats444 — bots WhatsApp e Telegram, vendas PIX, proteção de grupos, divulgação, multi-sessão Baileys, downloads, consultas e OSINT público. Hanork em produção.",
+    "description": "Hats444 — bots WhatsApp e Telegram, vendas PIX, proteção de grupos, divulgação com META, multi-sessão Baileys, downloads, consultas, OSINT público e host. Hanork em produção.",
     "introTitle": "Automacao que vende,<br>protege e escala.",
-    "introText": "Hanork e a plataforma que eu construo: WhatsApp + Telegram no mesmo produto. O cliente paga no Telegram (PIX, cartao, boleto), pareia o chip e usa no Zap — divulgacao, protecao de grupo, downloads, consultas, figurinhas e painel multi-sessao. Do codigo ao servidor.",
+    "introText": "Hanork e a plataforma que eu construo: WhatsApp + Telegram no mesmo produto. O cliente paga no Telegram (PIX, cartao, boleto), pareia o chip (QR ou codigo) e usa no Zap — divulgacao com ocupacao META, protecao de grupo, downloads, consultas, figurinhas, OSINT publico e painel multi-sessao. Do codigo ao servidor.",
     "gateDesc": "WHATSAPP · TELEGRAM · PIX · SEGURANCA",
-    "gateVersion": "2026.8"
+    "gateVersion": "2026.8.31"
   },
   "focus": [
     {
       "title": "Multi-sessao",
-      "text": "Painel no Telegram com varias sessoes WhatsApp (Baileys). Cada usuario tem dados, grupos e DIV isolados."
+      "text": "Painel no Telegram com varias sessoes WhatsApp (Baileys). QR ou codigo. Cada usuario tem dados, grupos e DIV isolados. Prefixo live no Zap."
     },
     {
       "title": "Protecao de grupo",
-      "text": "Antilink, anti-flood, anti-delete, anti-admin, so-admin, anti-ataque e presets. Admin nativo liga/desliga no painel."
+      "text": "Antilink, anti-flood, anti-delete, anti-admin, so-admin, anti-ataque e presets. Admin nativo liga/desliga no painel .gpseguranca."
     },
     {
       "title": "Vendas e PIX",
-      "text": "Starter R$29 · Pro R$49 · Enterprise R$99 /mes. Day pass R$1. Checkout Mercado Pago. Afiliado com VIP por venda."
+      "text": "Starter R$29 · Pro R$49 · Enterprise R$99 /mes. Trimestral e anual com desconto. Day pass R$1. Checkout Mercado Pago. Afiliado com VIP por venda."
     },
     {
       "title": "Divulgacao",
-      "text": "Posts em massa com CTA, status, midia e PIX. Grupo morto sai sozinho e a vaga reporna da fila (ocupacao META)."
+      "text": "Posts em massa com CTA, status, midia e PIX. Grupo morto sai sozinho e a vaga reporna da fila (ocupacao META). Gerenciador de convites."
     },
     {
       "title": "Downloads e consulta",
-      "text": "Play, Spotify, TikTok, Instagram, YouTube. Figurinhas. Consultas (CPF, nome, placa) e hub da API Hanork."
+      "text": "YouTube, TikTok, Instagram, Spotify, Facebook, Kwai. Figurinhas e canal. Consultas (CPF, nome, placa) e hub da API Hanork (~750 cmds)."
     },
     {
       "title": "OSINT publico",
-      "text": "Um comando, varias fontes publicas: dominio, arquivo, username, wiki, gist e correlacao. Sem dump de senha."
+      "text": "Um comando, relatorio completo: dominio, DNS, arquivo, username, wiki, gist, paste publico e correlacao. Sem dump de senha."
+    },
+    {
+      "title": "Pareamento",
+      "text": "Paga no Telegram, conecta o chip e manda comando no WhatsApp. Prefixo troca com setprefix. Telegram continua sempre com /."
+    },
+    {
+      "title": "Host e entrega",
+      "text": "Egg em producao, backup do codigo sem .env nem sessoes. Zip do bot sem segredos. Painel admin e saude do processo."
     }
   ],
   "capabilities": [
     "WhatsApp + Telegram",
     "Multi-sessao Baileys",
+    "Pareamento QR / codigo",
+    "Prefixo live no Zap",
     "PIX Mercado Pago",
-    "Planos Starter / Pro / Enterprise",
+    "Cartao e boleto",
+    "Starter R$29/mes",
+    "Pro R$49/mes",
+    "Enterprise R$99/mes",
+    "Trimestral / anual",
     "Day pass R$1",
-    "Afiliado",
+    "Afiliado com VIP",
     "Divulgacao em grupos",
     "Gerenciador de convites",
     "Ocupacao META",
+    "Grupo morto auto-repor",
     "Antilink / anti-flood",
     "Anti-admin / anti-delete",
+    "Anti-ataque (defesa)",
     "Painel .gpseguranca",
-    "Downloads (YT, TT, IG)",
+    "Frase natural",
+    "Downloads (YT, TT, IG, SP)",
     "Figurinhas e canal",
-    "Consultas",
-    "OSINT publico",
+    "Consultas CPF / nome / placa",
+    "API Hanork (~750 cmds)",
+    "OSINT publico completo",
     "Menus com botoes",
-    "Prefixo live no Zap",
+    "XP / niveis / quotas",
     "Host / backup",
     "Entrega do zip sem .env"
   ],
@@ -86,7 +104,7 @@
       "tag": "#FLAGSHIP",
       "status": "EM PRODUCAO",
       "statusPrivate": false,
-      "desc": "Telegram + WhatsApp · PIX · planos · DIV · protecao · downloads",
+      "desc": "Telegram + WhatsApp · PIX · planos · DIV · protecao · downloads · OSINT",
       "buttonType": "link",
       "buttonLabel": "ABRIR BOT",
       "buttonUrl": "https://t.me/hanork_bot",
@@ -101,7 +119,7 @@
       "tag": "#PLATAFORMA",
       "status": "REPOSITORIO PRIVADO",
       "statusPrivate": true,
-      "desc": "Codigo vivo: multi-usuario, menus, billing, OSINT, gerenciador de grupos",
+      "desc": "Codigo vivo: multi-usuario, menus, billing, OSINT, gerenciador de grupos, META",
       "buttonType": "locked",
       "buttonLabel": "CODIGO PRIVADO"
     },
