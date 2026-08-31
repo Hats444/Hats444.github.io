@@ -130,6 +130,7 @@
     }
     applyMeta(data);
     renderFocus(data.focus);
+    renderChips('caps-grid', data.capabilities);
     renderChips('stack-grid', data.stack);
     renderChips('partners-row', data.partners);
     if (Mono.applyToTree) {

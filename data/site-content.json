@@ -1,26 +1,61 @@
 {
-  "version": 4,
+  "version": 5,
+  "updatedAt": 1756630000000,
   "meta": {
     "title": "Hats444 · Hanork",
-    "description": "Hats444 — bots WhatsApp e Telegram, vendas PIX, segurança de grupos, multi-sessão Baileys e APIs. Hanork em produção.",
+    "description": "Hats444 — bots WhatsApp e Telegram, vendas PIX, proteção de grupos, divulgação, multi-sessão Baileys, downloads, consultas e OSINT público. Hanork em produção.",
     "introTitle": "Automacao que vende,<br>protege e escala.",
-    "introText": "Bots e plataformas multi-sessao: vendas com PIX, WhatsApp + Telegram, moderacao de grupos, gates de superficie Baileys e APIs de download e consulta — do codigo ao servidor.",
+    "introText": "Hanork e a plataforma que eu construo: WhatsApp + Telegram no mesmo produto. O cliente paga no Telegram (PIX, cartao, boleto), pareia o chip e usa no Zap — divulgacao, protecao de grupo, downloads, consultas, figurinhas e painel multi-sessao. Do codigo ao servidor.",
     "gateDesc": "WHATSAPP · TELEGRAM · PIX · SEGURANCA",
     "gateVersion": "2026.8"
   },
   "focus": [
     {
       "title": "Multi-sessao",
-      "text": "Painel Telegram com varias sessoes WhatsApp (Baileys) e dados isolados por usuario."
+      "text": "Painel no Telegram com varias sessoes WhatsApp (Baileys). Cada usuario tem dados, grupos e DIV isolados."
     },
     {
-      "title": "Seguranca",
-      "text": "Anti-flood, anti-link, anti-midia, anti-porno e gates permanentes contra vetores abusivos do Baileys."
+      "title": "Protecao de grupo",
+      "text": "Antilink, anti-flood, anti-delete, anti-admin, so-admin, anti-ataque e presets. Admin nativo liga/desliga no painel."
     },
     {
-      "title": "Vendas e API",
-      "text": "PIX, entrega digital, downloads (Play, TikTok, Instagram) e catalogo via API Hanork."
+      "title": "Vendas e PIX",
+      "text": "Starter R$29 · Pro R$49 · Enterprise R$99 /mes. Day pass R$1. Checkout Mercado Pago. Afiliado com VIP por venda."
+    },
+    {
+      "title": "Divulgacao",
+      "text": "Posts em massa com CTA, status, midia e PIX. Grupo morto sai sozinho e a vaga reporna da fila (ocupacao META)."
+    },
+    {
+      "title": "Downloads e consulta",
+      "text": "Play, Spotify, TikTok, Instagram, YouTube. Figurinhas. Consultas (CPF, nome, placa) e hub da API Hanork."
+    },
+    {
+      "title": "OSINT publico",
+      "text": "Um comando, varias fontes publicas: dominio, arquivo, username, wiki, gist e correlacao. Sem dump de senha."
     }
+  ],
+  "capabilities": [
+    "WhatsApp + Telegram",
+    "Multi-sessao Baileys",
+    "PIX Mercado Pago",
+    "Planos Starter / Pro / Enterprise",
+    "Day pass R$1",
+    "Afiliado",
+    "Divulgacao em grupos",
+    "Gerenciador de convites",
+    "Ocupacao META",
+    "Antilink / anti-flood",
+    "Anti-admin / anti-delete",
+    "Painel .gpseguranca",
+    "Downloads (YT, TT, IG)",
+    "Figurinhas e canal",
+    "Consultas",
+    "OSINT publico",
+    "Menus com botoes",
+    "Prefixo live no Zap",
+    "Host / backup",
+    "Entrega do zip sem .env"
   ],
   "stack": [
     "Node.js 20",
@@ -32,8 +67,7 @@
     "Mercado Pago",
     "Supabase",
     "GitHub Actions",
-    "Linux / WSL",
-    "Redis / Bull"
+    "Linux / WSL"
   ],
   "partners": [
     "Telegram",
@@ -52,7 +86,7 @@
       "tag": "#FLAGSHIP",
       "status": "EM PRODUCAO",
       "statusPrivate": false,
-      "desc": "Vendas no Telegram · PIX · entrega digital · catalogo vivo",
+      "desc": "Telegram + WhatsApp · PIX · planos · DIV · protecao · downloads",
       "buttonType": "link",
       "buttonLabel": "ABRIR BOT",
       "buttonUrl": "https://t.me/hanork_bot",
@@ -67,7 +101,7 @@
       "tag": "#PLATAFORMA",
       "status": "REPOSITORIO PRIVADO",
       "statusPrivate": true,
-      "desc": "WhatsApp + Telegram · multi-usuario · menus · seguranca de grupo",
+      "desc": "Codigo vivo: multi-usuario, menus, billing, OSINT, gerenciador de grupos",
       "buttonType": "locked",
       "buttonLabel": "CODIGO PRIVADO"
     },
@@ -80,7 +114,7 @@
       "tag": "#VENDAS",
       "status": "REPOSITORIO PRIVADO",
       "statusPrivate": true,
-      "desc": "Bot de vendas Telegram + WhatsApp · divulgacao e checkout",
+      "desc": "Divulgacao automatica, checkout no Telegram e entrega digital",
       "buttonType": "locked",
       "buttonLabel": "CODIGO PRIVADO"
     },
@@ -108,7 +142,7 @@
       "tag": "#HATS444",
       "status": "REPOS PRIVADOS",
       "statusPrivate": true,
-      "desc": "Perfil publico · codigo sob demanda",
+      "desc": "Perfil publico · backup do codigo sem segredos",
       "buttonType": "link",
       "buttonLabel": "VER PERFIL",
       "buttonUrl": "https://github.com/Hats444",
