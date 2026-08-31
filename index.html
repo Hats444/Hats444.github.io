@@ -15,26 +15,27 @@
 /* HATS444 — portfolio Hanork (lista · quadrado · elegante) */
 
 :root {
-  --bg: #050505;
-  --bg-card: rgba(14, 14, 14, 0.9);
-  --bg-card-hover: rgba(22, 22, 22, 0.95);
-  --border: rgba(255, 255, 255, 0.1);
-  --text: #f4f4f4;
-  --text-muted: #9a9a9a;
-  --text-dim: #666666;
+  --bg: #070707;
+  --bg-card: rgba(12, 12, 12, 0.92);
+  --bg-card-hover: rgba(20, 20, 18, 0.96);
+  --border: rgba(232, 224, 208, 0.18);
+  --text: #f3efe6;
+  --text-muted: #c5bfb3;
+  --text-dim: #9a9488;
   --accent: #c8a96b;
-  --accent-dim: rgba(200, 169, 107, 0.22);
+  --accent-dim: rgba(200, 169, 107, 0.16);
   --red: #e53935;
   --red-glow: rgba(229, 57, 53, 0.35);
-  --green: #22c55e;
-  --logo-glow: rgba(200, 169, 107, 0.14);
+  --green: #3ddc84;
+  --logo-glow: rgba(200, 169, 107, 0.18);
   --font: "Sora", "Segoe UI Symbol", "Cambria Math", "Segoe UI", sans-serif;
   --serif: "Syne", "Sora", "Segoe UI Symbol", "Cambria Math", sans-serif;
   --mono: "JetBrains Mono", "Segoe UI Symbol", "Cambria Math", ui-monospace, monospace;
-  --radius: 12px;
-  --radius-sm: 6px;
-  --max: 720px;
-  --grid-gap: 12px;
+  --radius: 10px;
+  --radius-sm: 4px;
+  --max: 880px;
+  --grid-gap: 16px;
+  --section-y: 64px;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -46,12 +47,11 @@ body {
   font-variant-ligatures: none;
   font-feature-settings: "liga" 0;
   background:
-    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(200, 169, 107, 0.07), transparent 55%),
-    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(229, 57, 53, 0.05), transparent 50%),
+    radial-gradient(ellipse 70% 42% at 50% -8%, rgba(200, 169, 107, 0.08), transparent 52%),
     var(--bg);
   color: var(--text);
-  line-height: 1.55;
-  letter-spacing: 0.02em;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
   overflow-x: hidden;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
@@ -66,7 +66,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   width: 100%;
   height: 100%;
   z-index: 0;
-  opacity: 0.48;
+  opacity: 0.22;
   transition: opacity 0.6s ease;
   pointer-events: none;
 }
@@ -77,12 +77,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   width: 100%;
   height: 100%;
   z-index: 0;
-  opacity: 0.88;
+  opacity: 0.42;
   pointer-events: none;
 }
 
 html.gate-open #matrix {
-  opacity: 0.55;
+  opacity: 0.28;
 }
 
 html.gate-open .vignette {
@@ -148,15 +148,15 @@ html:not(.gate-open) #gate-matrix {
 }
 
 .gate-panel {
-  padding: 36px 28px 28px;
-  background: rgba(6, 6, 6, 0.62);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 40px 32px 32px;
+  background: rgba(8, 8, 8, 0.78);
+  border: 1px solid rgba(200, 169, 107, 0.22);
   border-radius: var(--radius);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   box-shadow:
     0 28px 72px rgba(0, 0, 0, 0.65),
-    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
   animation: gateIn 0.85s ease both;
 }
 
@@ -204,11 +204,12 @@ html:not(.gate-open) #gate-matrix {
 
 .gate-title {
   font-family: var(--serif);
-  font-size: clamp(2rem, 7vw, 2.65rem);
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  margin-bottom: 14px;
-  text-shadow: 0 0 40px rgba(255, 255, 255, 0.12);
+  font-size: clamp(2.15rem, 7vw, 2.9rem);
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  margin-bottom: 10px;
+  color: var(--text);
+  text-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
 }
 
 .gate-title sup {
@@ -220,11 +221,12 @@ html:not(.gate-open) #gate-matrix {
 }
 
 .gate-desc {
-  font-size: 0.68rem;
+  font-family: var(--mono);
+  font-size: 0.7rem;
   font-weight: 500;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.12em;
   color: var(--text-muted);
-  line-height: 1.75;
+  line-height: 1.7;
   margin-bottom: 22px;
   text-transform: uppercase;
 }
@@ -233,16 +235,24 @@ html:not(.gate-open) #gate-matrix {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px 18px;
-  padding: 10px 16px;
-  background: rgba(0, 0, 0, 0.45);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--radius-sm);
+  gap: 8px;
+  padding: 0;
+  background: none;
+  border: none;
+  margin-bottom: 18px;
+}
+
+.status-bar span {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 11px;
   font-family: var(--mono);
-  font-size: 0.64rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
   color: var(--text-muted);
-  margin-bottom: 24px;
-  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  border-radius: 999px;
 }
 
 .status-bar .dot {
@@ -263,35 +273,38 @@ html:not(.gate-open) #gate-matrix {
 
 .btn-enter {
   width: 100%;
-  max-width: 320px;
-  padding: 15px 28px;
-  font-size: 0.9rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  color: var(--text);
-  background: linear-gradient(90deg, #7a7a7a 0%, #4a4a4a 28%, #222 62%, #111 100%);
-  border: 1px solid rgba(255,255,255,0.14);
+  max-width: 280px;
+  padding: 16px 28px;
+  font-family: var(--serif);
+  font-size: 0.92rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: #120e08;
+  background: var(--accent);
+  border: 1px solid rgba(255, 232, 180, 0.35);
   border-radius: var(--radius-sm);
-  box-shadow: 0 6px 24px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 8px 28px rgba(200, 169, 107, 0.28);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
 }
 
 .btn-enter:hover {
   transform: translateY(-1px);
-  box-shadow: 0 10px 32px rgba(0,0,0,0.65), inset 0 1px 0 rgba(255,255,255,0.14);
+  filter: brightness(1.06);
+  box-shadow: 0 12px 32px rgba(200, 169, 107, 0.38);
 }
 
 .btn-enter:active { transform: translateY(0); }
 
 .gate-footer {
   display: flex;
-  justify-content: space-between;
-  margin-top: 44px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 28px;
   font-family: var(--mono);
   font-size: 0.58rem;
   color: var(--text-dim);
-  letter-spacing: 0.04em;
-  gap: 8px;
+  letter-spacing: 0.06em;
+  gap: 8px 16px;
 }
 
 /* ── App shell ── */
@@ -302,7 +315,7 @@ html:not(.gate-open) #gate-matrix {
   max-width: var(--max);
   margin: 0 auto;
   min-height: 100vh;
-  padding-bottom: 96px;
+  padding-bottom: 112px;
 }
 
 .topbar {
@@ -317,7 +330,7 @@ html:not(.gate-open) #gate-matrix {
 .topbar-inner {
   max-width: var(--max);
   margin: 0 auto;
-  padding: 12px 16px;
+  padding: 14px 22px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -384,58 +397,80 @@ html:not(.gate-open) #gate-matrix {
 main {
   max-width: var(--max);
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0 22px;
 }
 
 .intro {
-  padding: 32px 0 12px;
+  padding: 72px 0 56px;
   text-align: center;
 }
 
 .intro-label,
-.section-label {
+.section-label,
+.partners-title {
   font-family: var(--mono);
-  font-size: 0.62rem;
-  color: var(--text-dim);
-  letter-spacing: 0.12em;
-  margin-bottom: 10px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.18em;
+  margin-bottom: 20px;
   text-transform: uppercase;
+}
+
+.intro-label::before,
+.section-label::before,
+.partners-title::before {
+  content: "";
+  display: none;
 }
 
 .intro h2 {
   font-family: var(--serif);
-  font-size: clamp(1.35rem, 4.5vw, 1.75rem);
-  font-weight: 700;
-  line-height: 1.25;
-  letter-spacing: -0.02em;
-  margin-bottom: 12px;
+  font-size: clamp(1.7rem, 5vw, 2.35rem);
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.03em;
+  margin-bottom: 18px;
+  color: var(--text);
 }
 
 .intro-text {
-  font-size: 0.84rem;
+  font-size: 0.95rem;
   color: var(--text-muted);
-  line-height: 1.65;
-  max-width: 36em;
+  line-height: 1.75;
+  max-width: 38em;
   margin: 0 auto;
 }
 
-.focus-section {
-  padding: 8px 0 22px;
+.focus-section,
+.pricing-section,
+.stack-section,
+.cards-section,
+.partners {
+  padding: var(--section-y) 0 8px;
+  border-top: 1px solid var(--border);
 }
 
 .focus-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 10px;
+  gap: 14px;
 }
 
 .focus-item {
-  padding: 16px 16px 14px;
+  padding: 22px 20px 20px;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: linear-gradient(180deg, rgba(200, 169, 107, 0.05), transparent 70%), var(--bg-card);
+  background: var(--bg-card);
   animation: focusIn 0.55s ease both;
-  animation-delay: calc(var(--i, 0) * 0.08s);
+  animation-delay: calc(var(--i, 0) * 0.06s);
+  min-height: 100%;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.focus-item:hover {
+  border-color: rgba(200, 169, 107, 0.32);
+  background: var(--bg-card-hover);
 }
 
 @keyframes focusIn {
@@ -443,34 +478,47 @@ main {
   to { opacity: 1; transform: translateY(0); }
 }
 
+.focus-glyph {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.64rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
 .focus-item h3 {
   font-family: var(--serif);
-  font-size: 0.92rem;
+  font-size: 1.05rem;
   font-weight: 700;
-  letter-spacing: -0.01em;
-  margin-bottom: 6px;
-  color: var(--accent);
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+  color: var(--text);
 }
 
 .focus-item p {
-  font-size: 0.78rem;
+  font-family: var(--font);
+  font-size: 0.84rem;
   color: var(--text-muted);
-  line-height: 1.55;
+  line-height: 1.65;
 }
 
-@media (min-width: 560px) {
+@media (min-width: 640px) {
+  .focus-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 920px) {
   .focus-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
-.cards-section {
-  padding: 6px 0 20px;
-}
-
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: var(--grid-gap);
   width: 100%;
 }
@@ -659,46 +707,120 @@ main {
   opacity: 0.72;
 }
 
-.stack-section {
-  padding: 6px 0 24px;
+.caps-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
 }
 
+.caps-group {
+  text-align: left;
+}
+
+.caps-cat {
+  font-family: var(--mono);
+  font-size: 0.64rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 12px;
+}
+
+.chip-row,
 .stack-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 8px;
+  justify-content: flex-start;
+}
+
+.stack-section .stack-grid {
   justify-content: center;
 }
 
+.chip,
 .stack-grid span {
   font-family: var(--mono);
-  font-size: 0.64rem;
-  padding: 6px 11px;
-  background: rgba(16,16,16,0.85);
+  font-size: 0.68rem;
+  line-height: 1.3;
+  padding: 8px 12px;
+  background: rgba(16, 16, 16, 0.88);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   color: var(--text-muted);
   transition: border-color 0.2s, color 0.2s;
 }
 
+.chip:hover,
 .stack-grid span:hover {
-  border-color: rgba(200, 169, 107, 0.35);
+  border-color: rgba(200, 169, 107, 0.4);
   color: var(--text);
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.price-card {
+  padding: 28px 22px 26px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  text-align: left;
+}
+
+.price-card.is-featured {
+  border-color: rgba(200, 169, 107, 0.45);
+  background: linear-gradient(180deg, var(--accent-dim), transparent 48%), var(--bg-card);
+}
+
+.price-tier {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+  color: var(--text-dim);
+  margin-bottom: 12px;
+}
+
+.price-value {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 5vw, 2.45rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.price-value span {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-left: 6px;
+}
+
+.price-note {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.pricing-foot {
+  margin-top: 16px;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+  text-align: center;
 }
 
 .partners {
   text-align: center;
-  padding: 28px 0 20px;
-  border-top: 1px solid var(--border);
-}
-
-.partners-title {
-  font-family: var(--mono);
-  font-size: 0.62rem;
-  color: var(--text-dim);
-  margin-bottom: 14px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
 }
 
 .partners-row {
@@ -707,7 +829,7 @@ main {
   justify-content: center;
   gap: 10px 18px;
   font-family: var(--mono);
-  font-size: 0.62rem;
+  font-size: 0.68rem;
   color: var(--text-dim);
 }
 
@@ -715,14 +837,16 @@ main {
   position: relative;
   z-index: 2;
   max-width: var(--max);
-  margin: 0 auto;
-  padding: 16px;
+  margin: 40px auto 0;
+  padding: 28px 22px 24px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   font-family: var(--mono);
-  font-size: 0.56rem;
+  font-size: 0.6rem;
   color: var(--text-dim);
-  gap: 8px;
+  gap: 10px 16px;
+  border-top: 1px solid var(--border);
 }
 
 .session-bar {
@@ -755,16 +879,22 @@ main {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px 16px;
-  margin-bottom: 18px;
-  font-family: var(--mono);
-  font-size: 0.58rem;
-  color: var(--text-dim);
-  letter-spacing: 0.04em;
+  gap: 8px;
+  margin-bottom: 22px;
 }
 
 .gate-analytics span {
+  display: inline-flex;
+  align-items: center;
   white-space: nowrap;
+  padding: 6px 11px;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  border-radius: 999px;
 }
 
 .session-bar .dot {
@@ -875,10 +1005,20 @@ main {
 .music-btn.is-playing .icon-muted { display: none; }
 .music-btn.is-playing .icon-playing { display: block; }
 
+@media (min-width: 640px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .pricing-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 @media (min-width: 768px) {
-  :root { --max: 820px; --grid-gap: 14px; }
+  :root { --max: 960px; --grid-gap: 16px; --section-y: 72px; }
   .gate-desc { font-size: 0.72rem; }
-  .cards-grid .dkc-card { padding: 18px 14px 16px; }
+  .stack-section .stack-grid { justify-content: center; }
+  .cards-grid .dkc-card { padding: 20px 16px 16px; }
   .cards-grid .card-avatar {
     width: 100px;
     height: 100px;
@@ -889,6 +1029,22 @@ main {
   }
   .cards-grid .card-name { font-size: 0.95rem; }
   .cards-grid .btn-card { font-size: 0.66rem; padding: 13px 10px; }
+}
+
+@media (max-width: 639px) {
+  :root { --section-y: 48px; }
+  main { padding: 0 18px; }
+  .gate { padding: 16px; }
+  .gate-panel { padding: 28px 18px 22px; }
+  .intro { padding: 48px 0 40px; }
+  .intro-text { font-size: 0.9rem; }
+  .focus-item { padding: 20px 16px 18px; }
+  .price-card { padding: 24px 18px 20px; }
+  .site-footer { padding: 24px 18px; justify-content: center; text-align: center; }
+  .cards-grid .dkc-card:last-child:nth-child(odd) {
+    grid-column: auto;
+    max-width: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -907,7 +1063,7 @@ main {
 <script>
   document.documentElement.classList.add('gate-open');
   try {
-    if (sessionStorage.getItem('hats444_entered_v16') === '1') {
+    if (sessionStorage.getItem('hats444_entered_v22') === '1') {
       document.documentElement.classList.remove('gate-open');
     }
   } catch (e) { /* ignore */ }
@@ -987,53 +1143,114 @@ main {
         <p class="section-label">// FOCO</p>
         <div class="focus-grid" id="focus-grid">
           <article class="focus-item" style="--i:0">
+            <span class="focus-glyph" aria-hidden="true">// 01</span>
             <h3>Multi-sessao</h3>
             <p>Painel no Telegram com varias sessoes WhatsApp (Baileys). QR ou codigo. Cada usuario tem dados, grupos e DIV isolados. Prefixo live no Zap.</p>
           </article>
           <article class="focus-item" style="--i:1">
+            <span class="focus-glyph" aria-hidden="true">// 02</span>
             <h3>Protecao de grupo</h3>
             <p>Antilink, anti-flood, anti-delete, anti-admin, so-admin, anti-ataque e presets. Admin nativo liga/desliga no painel .gpseguranca.</p>
           </article>
           <article class="focus-item" style="--i:2">
+            <span class="focus-glyph" aria-hidden="true">// 03</span>
             <h3>Vendas e PIX</h3>
             <p>Starter R$29 · Pro R$49 · Enterprise R$99 /mes. Trimestral e anual com desconto. Day pass R$1. Checkout Mercado Pago. Afiliado com VIP por venda.</p>
           </article>
           <article class="focus-item" style="--i:3">
+            <span class="focus-glyph" aria-hidden="true">// 04</span>
             <h3>Divulgacao</h3>
             <p>Posts em massa com CTA, status, midia e PIX. Grupo morto sai sozinho e a vaga reporna da fila (ocupacao META). Gerenciador de convites.</p>
           </article>
           <article class="focus-item" style="--i:4">
+            <span class="focus-glyph" aria-hidden="true">// 05</span>
             <h3>Downloads e consulta</h3>
             <p>YouTube, TikTok, Instagram, Spotify, Facebook, Kwai. Figurinhas e canal. Consultas (CPF, nome, placa) e hub da API Hanork (~750 cmds).</p>
           </article>
           <article class="focus-item" style="--i:5">
+            <span class="focus-glyph" aria-hidden="true">// 06</span>
             <h3>OSINT publico</h3>
             <p>Um comando, relatorio completo: dominio, DNS, arquivo, username, wiki, gist, paste publico e correlacao. Sem dump de senha.</p>
           </article>
           <article class="focus-item" style="--i:6">
+            <span class="focus-glyph" aria-hidden="true">// 07</span>
             <h3>Pareamento</h3>
             <p>Paga no Telegram, conecta o chip e manda comando no WhatsApp. Prefixo troca com setprefix. Telegram continua sempre com /.</p>
           </article>
           <article class="focus-item" style="--i:7">
+            <span class="focus-glyph" aria-hidden="true">// 08</span>
             <h3>Host e entrega</h3>
             <p>Egg em producao, backup do codigo sem .env nem sessoes. Zip do bot sem segredos. Painel admin e saude do processo.</p>
           </article>
         </div>
       </section>
 
+      <section class="pricing-section" id="planos" aria-label="Planos">
+        <p class="section-label">// PLANOS</p>
+        <div class="pricing-grid">
+          <article class="price-card">
+            <p class="price-tier">STARTER</p>
+            <p class="price-value">R$29<span>/mês</span></p>
+          </article>
+          <article class="price-card is-featured">
+            <p class="price-tier">PRO</p>
+            <p class="price-value">R$49<span>/mês</span></p>
+          </article>
+          <article class="price-card">
+            <p class="price-tier">ENTERPRISE</p>
+            <p class="price-value">R$99<span>/mês</span></p>
+          </article>
+        </div>
+        <p class="pricing-foot">Trimestral e anual com desconto · Day pass R$1 · PIX, cartao, boleto</p>
+      </section>
+
       <section class="stack-section" id="caps" aria-label="Capacidades">
         <p class="section-label">// CAPACIDADES</p>
-        <div class="stack-grid" id="caps-grid">
-          <span>WhatsApp + Telegram</span><span>Multi-sessao Baileys</span><span>Pareamento QR / codigo</span>
-          <span>Prefixo live no Zap</span><span>PIX Mercado Pago</span><span>Cartao e boleto</span>
-          <span>Starter R$29/mes</span><span>Pro R$49/mes</span><span>Enterprise R$99/mes</span>
-          <span>Trimestral / anual</span><span>Day pass R$1</span><span>Afiliado com VIP</span>
-          <span>Divulgacao em grupos</span><span>Gerenciador de convites</span><span>Ocupacao META</span>
-          <span>Grupo morto auto-repor</span><span>Antilink / anti-flood</span><span>Anti-admin / anti-delete</span>
-          <span>Anti-ataque (defesa)</span><span>Painel .gpseguranca</span><span>Frase natural</span>
-          <span>Downloads (YT, TT, IG, SP)</span><span>Figurinhas e canal</span><span>Consultas CPF / nome / placa</span>
-          <span>API Hanork (~750 cmds)</span><span>OSINT publico completo</span><span>Menus com botoes</span>
-          <span>XP / niveis / quotas</span><span>Host / backup</span><span>Entrega do zip sem .env</span>
+        <div class="caps-wrap" id="caps-grid">
+          <div class="caps-group">
+            <p class="caps-cat">WhatsApp / Telegram</p>
+            <div class="chip-row">
+              <span class="chip">WhatsApp + Telegram</span><span class="chip">Multi-sessao Baileys</span><span class="chip">Pareamento QR / codigo</span>
+              <span class="chip">Prefixo live no Zap</span><span class="chip">Menus com botoes</span><span class="chip">Frase natural</span>
+              <span class="chip">XP / niveis / quotas</span>
+            </div>
+          </div>
+          <div class="caps-group">
+            <p class="caps-cat">Pagamentos</p>
+            <div class="chip-row">
+              <span class="chip">PIX Mercado Pago</span><span class="chip">Cartao e boleto</span><span class="chip">Starter R$29/mes</span>
+              <span class="chip">Pro R$49/mes</span><span class="chip">Enterprise R$99/mes</span><span class="chip">Trimestral / anual</span>
+              <span class="chip">Day pass R$1</span><span class="chip">Afiliado com VIP</span>
+            </div>
+          </div>
+          <div class="caps-group">
+            <p class="caps-cat">Seguranca</p>
+            <div class="chip-row">
+              <span class="chip">Antilink / anti-flood</span><span class="chip">Anti-admin / anti-delete</span>
+              <span class="chip">Anti-ataque (defesa)</span><span class="chip">Painel .gpseguranca</span>
+            </div>
+          </div>
+          <div class="caps-group">
+            <p class="caps-cat">Divulgacao</p>
+            <div class="chip-row">
+              <span class="chip">Divulgacao em grupos</span><span class="chip">Gerenciador de convites</span>
+              <span class="chip">Ocupacao META</span><span class="chip">Grupo morto auto-repor</span>
+            </div>
+          </div>
+          <div class="caps-group">
+            <p class="caps-cat">Downloads / Intel</p>
+            <div class="chip-row">
+              <span class="chip">Downloads (YT, TT, IG, SP)</span><span class="chip">Figurinhas e canal</span>
+              <span class="chip">Consultas CPF / nome / placa</span><span class="chip">API Hanork (~750 cmds)</span>
+              <span class="chip">OSINT publico completo</span>
+            </div>
+          </div>
+          <div class="caps-group">
+            <p class="caps-cat">Host</p>
+            <div class="chip-row">
+              <span class="chip">Host / backup</span><span class="chip">Entrega do zip sem .env</span>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -1101,8 +1318,8 @@ main {
   <script src="/js/services/analyticsApi.js?v=20"></script>
   <script src="/js/components/AnalyticsBar.js?v=20"></script>
   <script src="/js/hooks/useAnalytics.js?v=20"></script>
-  <script src="/js/siteContent.js?v=21"></script>
-  <script src="/js/main.js?v=20"></script>
+  <script src="/js/siteContent.js?v=28"></script>
+  <script src="/js/main.js?v=28"></script>
   <script>
     (function () {
       function paint() {

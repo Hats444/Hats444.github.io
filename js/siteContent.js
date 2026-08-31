@@ -95,6 +95,70 @@
     if (gateVer && meta.gateVersion) gateVer.textContent = M('VER: ' + meta.gateVersion);
   }
 
+  const CAP_GROUPS = [
+    {
+      label: 'WhatsApp / Telegram',
+      items: [
+        'WhatsApp + Telegram',
+        'Multi-sessao Baileys',
+        'Pareamento QR / codigo',
+        'Prefixo live no Zap',
+        'Menus com botoes',
+        'Frase natural',
+        'XP / niveis / quotas',
+      ],
+    },
+    {
+      label: 'Pagamentos',
+      items: [
+        'PIX Mercado Pago',
+        'Cartao e boleto',
+        'Starter R$29/mes',
+        'Pro R$49/mes',
+        'Enterprise R$99/mes',
+        'Trimestral / anual',
+        'Day pass R$1',
+        'Afiliado com VIP',
+      ],
+    },
+    {
+      label: 'Seguranca',
+      items: [
+        'Antilink / anti-flood',
+        'Anti-admin / anti-delete',
+        'Anti-ataque (defesa)',
+        'Painel .gpseguranca',
+      ],
+    },
+    {
+      label: 'Divulgacao',
+      items: [
+        'Divulgacao em grupos',
+        'Gerenciador de convites',
+        'Ocupacao META',
+        'Grupo morto auto-repor',
+      ],
+    },
+    {
+      label: 'Downloads / Intel',
+      items: [
+        'Downloads (YT, TT, IG, SP)',
+        'Figurinhas e canal',
+        'Consultas CPF / nome / placa',
+        'API Hanork (~750 cmds)',
+        'OSINT publico completo',
+      ],
+    },
+    {
+      label: 'Host',
+      items: ['Host / backup', 'Entrega do zip sem .env'],
+    },
+  ];
+
+  function pad2(n) {
+    return n < 10 ? '0' + n : String(n);
+  }
+
   function renderFocus(items) {
     const grid = document.getElementById('focus-grid');
     if (!grid || !Array.isArray(items) || !items.length) return;
@@ -104,6 +168,9 @@
           '<article class="focus-item" style="--i:' +
           i +
           '">' +
+          '<span class="focus-glyph" aria-hidden="true">// ' +
+          pad2(i + 1) +
+          '</span>' +
           '<h3>' +
           esc(M(item.title)) +
           '</h3>' +
@@ -111,6 +178,36 @@
           esc(M(item.text)) +
           '</p>' +
           '</article>'
+        );
+      })
+      .join('');
+  }
+
+  function renderCapabilities(items) {
+    const el = document.getElementById('caps-grid');
+    if (!el || !Array.isArray(items) || !items.length) return;
+    const leftover = items.slice();
+    const groups = CAP_GROUPS.map(function (g) {
+      const found = [];
+      g.items.forEach(function (name) {
+        const idx = leftover.indexOf(name);
+        if (idx !== -1) found.push(leftover.splice(idx, 1)[0]);
+      });
+      return { label: g.label, items: found };
+    }).filter(function (g) { return g.items.length; });
+    if (leftover.length) groups.push({ label: 'Outros', items: leftover });
+    el.innerHTML = groups
+      .map(function (g) {
+        return (
+          '<div class="caps-group">' +
+          '<p class="caps-cat">' +
+          esc(M(g.label)) +
+          '</p>' +
+          '<div class="chip-row">' +
+          g.items.map(function (s) {
+            return '<span class="chip">' + esc(M(s)) + '</span>';
+          }).join('') +
+          '</div></div>'
         );
       })
       .join('');
@@ -130,7 +227,7 @@
     }
     applyMeta(data);
     renderFocus(data.focus);
-    renderChips('caps-grid', data.capabilities);
+    renderCapabilities(data.capabilities);
     renderChips('stack-grid', data.stack);
     renderChips('partners-row', data.partners);
     if (Mono.applyToTree) {
