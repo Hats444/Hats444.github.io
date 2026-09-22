@@ -85,14 +85,14 @@
     if (meta.title) document.title = M(meta.title);
     const desc = document.querySelector('meta[name="description"]');
     if (desc && meta.description) desc.setAttribute('content', meta.description);
-    const introTitle = document.querySelector('.intro h2');
-    if (introTitle && meta.introTitle) introTitle.innerHTML = MH(meta.introTitle);
-    const introText = document.querySelector('.intro-text');
-    if (introText && meta.introText) introText.textContent = M(meta.introText);
     const gateDesc = document.querySelector('.gate-desc');
     if (gateDesc && meta.gateDesc) gateDesc.textContent = M(meta.gateDesc);
     const gateVer = document.getElementById('gate-version');
     if (gateVer && meta.gateVersion) gateVer.textContent = M('VER: ' + meta.gateVersion);
+    const introTitle = document.querySelector('.intro h2');
+    if (introTitle && meta.introTitle) introTitle.innerHTML = MH(meta.introTitle);
+    const introText = document.querySelector('.intro-text');
+    if (introText && meta.introText) introText.textContent = M(meta.introText);
   }
 
   const CAP_GROUPS = [
