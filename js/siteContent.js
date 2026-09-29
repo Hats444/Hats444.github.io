@@ -43,7 +43,7 @@
       buttonHtml =
         '<a href="' +
         esc(card.buttonUrl || '#') +
-        '" target="_blank" rel="noopener" class="btn-card">' +
+        '" target="_blank" rel="noopener noreferrer" class="btn-card">' +
         icon +
         ' ' +
         esc(M(card.buttonLabel || 'ABRIR')) +

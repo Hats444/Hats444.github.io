@@ -117,11 +117,13 @@
       "imageAlt": "Hanork Beta",
       "name": "HANORK BETA",
       "tag": "#PLATAFORMA",
-      "status": "REPOSITORIO PRIVADO",
-      "statusPrivate": true,
+      "status": "CODIGO ABERTO",
+      "statusPrivate": false,
       "desc": "Codigo vivo: multi-usuario, menus, billing, OSINT, gerenciador de grupos, META",
-      "buttonType": "locked",
-      "buttonLabel": "CODIGO PRIVADO"
+      "buttonType": "link",
+      "buttonLabel": "VER CODIGO",
+      "buttonUrl": "https://github.com/Hats444/hanork-beta",
+      "buttonIcon": "github"
     },
     {
       "id": "div",
@@ -130,11 +132,13 @@
       "imageAlt": "Hanork",
       "name": "HANORK",
       "tag": "#VENDAS",
-      "status": "REPOSITORIO PRIVADO",
-      "statusPrivate": true,
+      "status": "CODIGO ABERTO",
+      "statusPrivate": false,
       "desc": "Divulgacao automatica, checkout no Telegram e entrega digital",
-      "buttonType": "locked",
-      "buttonLabel": "CODIGO PRIVADO"
+      "buttonType": "link",
+      "buttonLabel": "VER CODIGO",
+      "buttonUrl": "https://github.com/Hats444/hanork",
+      "buttonIcon": "github"
     },
     {
       "id": "suporte",
@@ -158,8 +162,8 @@
       "imageAlt": "GitHub Hats444",
       "name": "GITHUB",
       "tag": "#HATS444",
-      "status": "REPOS PRIVADOS",
-      "statusPrivate": true,
+      "status": "CODIGO ABERTO",
+      "statusPrivate": false,
       "desc": "Perfil publico · backup do codigo sem segredos",
       "buttonType": "link",
       "buttonLabel": "VER PERFIL",
