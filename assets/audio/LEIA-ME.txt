@@ -1,5 +1,5 @@
-Musica do site: Young Pwavy — MOOD (Official Visualizer).
+Musica do site: Enygma — Ciência Nikola Tesla (Shuumatsu no Valkyrie).
 
-Arquivo: assets/audio/mood.mp3
+Arquivo: assets/audio/ciencia-nikola-tesla.mp3
 
-O botao de play no canto inferior usa esse MP3 em loop.
+O botao de play no canto inferior usa esse MP3 em loop. Nao ha autoplay.
