@@ -382,11 +382,13 @@ html:not(.gate-open) #gate-matrix { display: none; }
 }
 
 .brand-text {
-  font-family: var(--font-black);
-  font-size: 1.7rem;
-  line-height: 1;
+  font-family: var(--font-title);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
   color: var(--bone);
-  text-shadow: 0 0 12px rgba(139, 30, 45, 0.7);
+  text-transform: lowercase;
 }
 
 .topbar-actions {
