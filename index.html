@@ -2,17 +2,17 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Hats444 — bots WhatsApp e Telegram, vendas PIX, proteção de grupos, divulgação com META, multi-sessão Baileys, downloads, consultas, OSINT público e host. Hanork em produção.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Hats444 — bots WhatsApp e Telegram, vendas PIX, proteção de grupos, divulgação com META, multi-sessão Baileys, downloads, consultas, inteligência de fontes públicas e host. Hanork em produção.">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <title>Hats444 · Hanork</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css?v=32">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23111' width='100' height='100' rx='18'/><text x='50' y='62' text-anchor='middle' fill='white' font-size='36' font-family='monospace' font-weight='bold'>H4</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css?v=34">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%2307060a' width='100' height='100'/><text x='50' y='62' text-anchor='middle' fill='%23c9b98a' font-size='36' font-family='serif' font-weight='bold'>H4</text></svg>">
 </head>
 <body>
 <script>
@@ -25,42 +25,77 @@
 </script>
   <canvas id="matrix" aria-hidden="true"></canvas>
   <div class="vignette" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
 
-  <!-- Landing gate -->
-  <section class="gate" id="gate" style="background:transparent!important">
+  <section class="gate" id="gate">
     <canvas id="gate-matrix" aria-hidden="true"></canvas>
+    <div class="rose-wrap" aria-hidden="true">
+      <svg class="rose" viewBox="0 0 400 400" focusable="false">
+        <g fill="none" stroke="#8b1e2d" stroke-width="1.15" transform="translate(200 200)">
+          <circle r="176"/>
+          <circle r="142"/>
+          <circle r="86"/>
+          <circle r="34"/>
+          <circle r="8" fill="#c9b98a" stroke="none"/>
+          <path d="M0 -176 V176 M-176 0 H176 M-124 -124 L124 124 M124 -124 L-124 124" stroke="#c9b98a" stroke-opacity="0.35"/>
+          <g stroke="#c9b98a" stroke-opacity="0.8">
+            <ellipse cy="-112" rx="22" ry="48"/>
+            <g transform="rotate(30)"><ellipse cy="-112" rx="22" ry="48"/></g>
+            <g transform="rotate(60)"><ellipse cy="-112" rx="22" ry="48"/></g>
+            <g transform="rotate(90)"><ellipse cy="-112" rx="22" ry="48"/></g>
+            <g transform="rotate(120)"><ellipse cy="-112" rx="22" ry="48"/></g>
+            <g transform="rotate(150)"><ellipse cy="-112" rx="22" ry="48"/></g>
+            <g transform="rotate(180)"><ellipse cy="-112" rx="22" ry="48"/></g>
+            <g transform="rotate(210)"><ellipse cy="-112" rx="22" ry="48"/></g>
+            <g transform="rotate(240)"><ellipse cy="-112" rx="22" ry="48"/></g>
+            <g transform="rotate(270)"><ellipse cy="-112" rx="22" ry="48"/></g>
+            <g transform="rotate(300)"><ellipse cy="-112" rx="22" ry="48"/></g>
+            <g transform="rotate(330)"><ellipse cy="-112" rx="22" ry="48"/></g>
+          </g>
+          <g>
+            <ellipse cy="-58" rx="14" ry="26"/>
+            <g transform="rotate(45)"><ellipse cy="-58" rx="14" ry="26"/></g>
+            <g transform="rotate(90)"><ellipse cy="-58" rx="14" ry="26"/></g>
+            <g transform="rotate(135)"><ellipse cy="-58" rx="14" ry="26"/></g>
+            <g transform="rotate(180)"><ellipse cy="-58" rx="14" ry="26"/></g>
+            <g transform="rotate(225)"><ellipse cy="-58" rx="14" ry="26"/></g>
+            <g transform="rotate(270)"><ellipse cy="-58" rx="14" ry="26"/></g>
+            <g transform="rotate(315)"><ellipse cy="-58" rx="14" ry="26"/></g>
+          </g>
+        </g>
+      </svg>
+    </div>
     <div class="gate-scanlines" aria-hidden="true"></div>
     <div class="gate-inner">
       <div class="gate-panel">
-      <div class="logo-box" aria-hidden="true">
-        <div class="logo-glow"></div>
-        <div class="logo-mark">
-          <img src="/assets/images/logo-hanork.jpg?v=16" alt="Hanork" class="avatar-img" width="84" height="84">
+        <div class="logo-box" aria-hidden="true">
+          <div class="logo-glow"></div>
+          <div class="logo-mark">
+            <img src="/assets/images/logo-hanork.jpg?v=16" alt="Hanork" class="avatar-img" width="84" height="84">
+          </div>
         </div>
-      </div>
-      <h1 class="gate-title">HANORK</h1>
-      <p class="gate-desc">WHATSAPP · TELEGRAM · PIX · SEGURANÇA</p>
-      <div class="status-bar">
-        <span><i class="dot"></i> STATUS: ONLINE</span>
-        <span id="gate-version">VER: 2026.8</span>
-        <span>PAGES · LIVE</span>
-      </div>
-      <div class="gate-analytics" id="gate-analytics" aria-label="Estatísticas públicas">
-        <span id="gate-stat-online">👥 —</span>
-        <span id="gate-stat-visitors">👤 —</span>
-        <span id="gate-stat-accesses">📈 —</span>
-      </div>
-      <button type="button" class="btn-enter" id="btn-enter">ENTRAR →</button>
-      <footer class="gate-footer">
-        <span>HATS PROTOCOL</span>
-        <span>© 2026 HATS444</span>
-        <span>NODE 20 // PAGES</span>
-      </footer>
+        <h1 class="gate-title">HANORK</h1>
+        <p class="gate-desc">WHATSAPP · TELEGRAM · PIX · SEGURANÇA</p>
+        <div class="status-bar">
+          <span class="status-live"><i class="dot"></i> STATUS: ONLINE<span class="caret" aria-hidden="true">▌</span></span>
+          <span id="gate-version">VER: 2026.8</span>
+          <span>PAGES · LIVE</span>
+        </div>
+        <div class="gate-analytics" id="gate-analytics" aria-label="Estatísticas públicas">
+          <span id="gate-stat-online">◈ —</span>
+          <span id="gate-stat-visitors">✧ —</span>
+          <span id="gate-stat-accesses">† —</span>
+        </div>
+        <button type="button" class="btn-enter" id="btn-enter">ENTRAR →</button>
+        <footer class="gate-footer">
+          <span>HATS PROTOCOL</span>
+          <span>© 2026 HATS444</span>
+          <span>NODE 20 // PAGES</span>
+        </footer>
       </div>
     </div>
   </section>
 
-  <!-- Main app (revealed after enter) -->
   <div class="app" id="app" hidden>
     <header class="topbar">
       <div class="topbar-inner">
@@ -75,7 +110,7 @@
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 16l4-6 4 3 5-8"/></svg>
             PAINEL
           </a>
-          <a href="https://github.com/Hats444" target="_blank" rel="noopener" class="btn-adm">
+          <a href="https://github.com/Hats444" target="_blank" rel="noopener noreferrer" class="btn-adm">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.341-3.369-1.341-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg>
             GITHUB
           </a>
@@ -84,79 +119,82 @@
     </header>
 
     <main id="top">
-      <section class="intro" id="sobre">
+      <section class="intro reveal" id="sobre">
         <p class="intro-label">// SOBRE</p>
-        <h2>Automacao que vende,<br>protege e escala.</h2>
+        <h2>Automação que vende,<br>protege e escala.</h2>
         <p class="intro-text">
-          Hanork e a plataforma que eu construo: WhatsApp + Telegram no mesmo produto.
-          O cliente paga no Telegram (PIX, cartao, boleto), pareia o chip (QR ou codigo) e usa no Zap —
-          divulgacao com ocupacao META, protecao de grupo, downloads, consultas, figurinhas, OSINT publico e painel multi-sessao.
+          Hanork é a plataforma que eu construo: WhatsApp + Telegram no mesmo produto.
+          O cliente paga no Telegram (PIX, cartão, boleto), pareia o chip (QR ou código) e usa no Zap —
+          divulgação com ocupação META, proteção de grupo, downloads, consultas e inteligência de fontes públicas, figurinhas e painel multi-sessão.
+          Do código ao servidor.
         </p>
       </section>
 
-      <section class="focus-section" id="foco" aria-label="Foco">
+      <p class="rule" aria-hidden="true"><span></span>†<span></span></p>
+
+      <section class="focus-section reveal" id="foco" aria-label="Foco">
         <p class="section-label">// FOCO</p>
         <div class="focus-grid" id="focus-grid">
-          <article class="focus-item" style="--i:0">
-            <span class="focus-glyph" aria-hidden="true">// 01</span>
-            <h3>Multi-sessao</h3>
-            <p>Painel no Telegram com varias sessoes WhatsApp (Baileys). QR ou codigo. Cada usuario tem dados, grupos e DIV isolados. Prefixo live no Zap.</p>
-          </article>
-          <article class="focus-item" style="--i:1">
-            <span class="focus-glyph" aria-hidden="true">// 02</span>
-            <h3>Protecao de grupo</h3>
-            <p>Antilink, anti-flood, anti-delete, anti-admin, so-admin, anti-ataque e presets. Admin nativo liga/desliga no painel .gpseguranca.</p>
-          </article>
-          <article class="focus-item" style="--i:2">
-            <span class="focus-glyph" aria-hidden="true">// 03</span>
-            <h3>Vendas e PIX</h3>
-            <p>Starter R$29 · Pro R$49 · Enterprise R$99 /mes. Trimestral e anual com desconto. Day pass R$1. Checkout Mercado Pago. Afiliado com VIP por venda.</p>
-          </article>
-          <article class="focus-item" style="--i:3">
-            <span class="focus-glyph" aria-hidden="true">// 04</span>
-            <h3>Divulgacao</h3>
-            <p>Posts em massa com CTA, status, midia e PIX. Grupo morto sai sozinho e a vaga reporna da fila (ocupacao META). Gerenciador de convites.</p>
-          </article>
-          <article class="focus-item" style="--i:4">
-            <span class="focus-glyph" aria-hidden="true">// 05</span>
-            <h3>Downloads e consulta</h3>
-            <p>YouTube, TikTok, Instagram, Spotify, Facebook, Kwai. Figurinhas e canal. Consultas (CPF, nome, placa) e hub da API Hanork (~750 cmds).</p>
-          </article>
-          <article class="focus-item" style="--i:5">
-            <span class="focus-glyph" aria-hidden="true">// 06</span>
-            <h3>OSINT publico</h3>
-            <p>Um comando, relatorio completo: dominio, DNS, arquivo, username, wiki, gist, paste publico e correlacao. Sem dump de senha.</p>
-          </article>
-          <article class="focus-item" style="--i:6">
-            <span class="focus-glyph" aria-hidden="true">// 07</span>
-            <h3>Pareamento</h3>
-            <p>Paga no Telegram, conecta o chip e manda comando no WhatsApp. Prefixo troca com setprefix. Telegram continua sempre com /.</p>
-          </article>
-          <article class="focus-item" style="--i:7">
-            <span class="focus-glyph" aria-hidden="true">// 08</span>
-            <h3>Host e entrega</h3>
-            <p>Egg em producao, backup do codigo sem .env nem sessoes. Zip do bot sem segredos. Painel admin e saude do processo.</p>
-          </article>
+          <div class="focus-lead">
+            <article class="focus-item is-lead" style="--i:0">
+              <span class="focus-glyph" aria-hidden="true">I</span>
+              <h3>Multi-sessão</h3>
+              <p>Painel no Telegram com várias sessões WhatsApp (Baileys). QR ou código. Cada usuário tem dados, grupos e DIV isolados. Prefixo live no Zap.</p>
+            </article>
+            <article class="focus-item is-lead" style="--i:1">
+              <span class="focus-glyph" aria-hidden="true">II</span>
+              <h3>Proteção de grupo</h3>
+              <p>Antilink, anti-flood, anti-delete, anti-admin, só-admin, anti-ataque e presets. Admin nativo liga/desliga no painel .gpseguranca.</p>
+            </article>
+            <article class="focus-item is-lead" style="--i:2">
+              <span class="focus-glyph" aria-hidden="true">III</span>
+              <h3>Vendas e PIX</h3>
+              <p>Starter R$29 · Pro R$49 · Enterprise R$99 /mês. Trimestral e anual com desconto. Day pass R$1. Checkout Mercado Pago. Afiliado com VIP por venda.</p>
+            </article>
+          </div>
+          <div class="focus-rest">
+            <article class="focus-item" style="--i:3">
+              <span class="focus-glyph" aria-hidden="true">IV</span>
+              <h3>Divulgação</h3>
+              <p>Posts em massa com CTA, status, mídia e PIX. Grupo morto sai sozinho e a vaga se repõe pela fila (ocupação META). Gerenciador de convites.</p>
+            </article>
+            <article class="focus-item" style="--i:4">
+              <span class="focus-glyph" aria-hidden="true">V</span>
+              <h3>Downloads e consulta</h3>
+              <p>YouTube, TikTok, Instagram, Spotify, Facebook, Kwai. Figurinhas e canal. Consultas e inteligência de fontes públicas, e o hub da API Hanork (~750 cmds).</p>
+            </article>
+            <article class="focus-item" style="--i:5">
+              <span class="focus-glyph" aria-hidden="true">VI</span>
+              <h3>Fontes públicas</h3>
+              <p>Um comando, relatório de fontes públicas: domínio, DNS, arquivo, username, wiki, gist, paste público e correlação. Sem dump de senha.</p>
+            </article>
+            <article class="focus-item" style="--i:6">
+              <span class="focus-glyph" aria-hidden="true">VII</span>
+              <h3>Pareamento</h3>
+              <p>Paga no Telegram, conecta o chip e manda comando no WhatsApp. Prefixo troca com setprefix. Telegram continua sempre com /.</p>
+            </article>
+            <article class="focus-item" style="--i:7">
+              <span class="focus-glyph" aria-hidden="true">VIII</span>
+              <h3>Host e entrega</h3>
+              <p>Egg em produção, backup do código sem .env nem sessões. Zip do bot sem segredos. Painel admin e saúde do processo.</p>
+            </article>
+          </div>
         </div>
       </section>
 
-      <section class="pricing-section" id="planos" aria-label="Planos">
+      <p class="rule" aria-hidden="true"><span></span>✦<span></span></p>
+
+      <section class="pricing-section reveal" id="planos" aria-label="Planos">
         <p class="section-label">// PLANOS</p>
         <div class="pricing-grid">
           <article class="price-card">
             <p class="price-tier">STARTER</p>
             <p class="price-value">R$29<span>/mês</span></p>
-            <ul class="price-features">
-              <li>Checkout Mercado Pago</li>
-              <li>PIX, cartao, boleto</li>
-            </ul>
           </article>
           <article class="price-card is-featured">
             <p class="price-tier">PRO</p>
             <p class="price-value">R$49<span>/mês</span></p>
             <ul class="price-features">
-              <li>Checkout Mercado Pago</li>
-              <li>PIX, cartao, boleto</li>
               <li>Trimestral e anual com desconto</li>
             </ul>
           </article>
@@ -164,54 +202,55 @@
             <p class="price-tier">ENTERPRISE</p>
             <p class="price-value">R$99<span>/mês</span></p>
             <ul class="price-features">
-              <li>Checkout Mercado Pago</li>
-              <li>PIX, cartao, boleto</li>
               <li>Afiliado com VIP por venda</li>
             </ul>
           </article>
         </div>
-        <p class="pricing-foot">Trimestral e anual com desconto · Day pass R$1 · PIX, cartao, boleto</p>
+        <p class="pricing-foot">Checkout Mercado Pago · PIX, cartão, boleto</p>
+        <p class="pricing-foot">Trimestral e anual com desconto · Day pass R$1</p>
       </section>
 
-      <section class="caps-section" id="caps" aria-label="Capacidades">
+      <p class="rule" aria-hidden="true"><span></span>⸸<span></span></p>
+
+      <section class="caps-section reveal" id="caps" aria-label="Capacidades">
         <p class="section-label">// CAPACIDADES</p>
         <div class="caps-wrap" id="caps-grid">
           <div class="caps-group">
             <p class="caps-cat">WhatsApp / Telegram</p>
             <div class="chip-row">
-              <span class="chip">WhatsApp + Telegram</span><span class="chip">Multi-sessao Baileys</span><span class="chip">Pareamento QR / codigo</span>
-              <span class="chip">Prefixo live no Zap</span><span class="chip">Menus com botoes</span><span class="chip">Frase natural</span>
-              <span class="chip">XP / niveis / quotas</span>
+              <span class="chip">WhatsApp + Telegram</span><span class="chip">Multi-sessão Baileys</span><span class="chip">Pareamento QR / código</span>
+              <span class="chip">Prefixo live no Zap</span><span class="chip">Menus com botões</span><span class="chip">Frase natural</span>
+              <span class="chip">XP / níveis / quotas</span>
             </div>
           </div>
           <div class="caps-group">
             <p class="caps-cat">Pagamentos</p>
             <div class="chip-row">
-              <span class="chip">PIX Mercado Pago</span><span class="chip">Cartao e boleto</span><span class="chip">Starter R$29/mes</span>
-              <span class="chip">Pro R$49/mes</span><span class="chip">Enterprise R$99/mes</span><span class="chip">Trimestral / anual</span>
+              <span class="chip">PIX Mercado Pago</span><span class="chip">Cartão e boleto</span><span class="chip">Starter R$29/mês</span>
+              <span class="chip">Pro R$49/mês</span><span class="chip">Enterprise R$99/mês</span><span class="chip">Trimestral / anual</span>
               <span class="chip">Day pass R$1</span><span class="chip">Afiliado com VIP</span>
             </div>
           </div>
           <div class="caps-group">
-            <p class="caps-cat">Seguranca</p>
+            <p class="caps-cat">Segurança</p>
             <div class="chip-row">
               <span class="chip">Antilink / anti-flood</span><span class="chip">Anti-admin / anti-delete</span>
               <span class="chip">Anti-ataque (defesa)</span><span class="chip">Painel .gpseguranca</span>
             </div>
           </div>
           <div class="caps-group">
-            <p class="caps-cat">Divulgacao</p>
+            <p class="caps-cat">Divulgação</p>
             <div class="chip-row">
-              <span class="chip">Divulgacao em grupos</span><span class="chip">Gerenciador de convites</span>
-              <span class="chip">Ocupacao META</span><span class="chip">Grupo morto auto-repor</span>
+              <span class="chip">Divulgação em grupos</span><span class="chip">Gerenciador de convites</span>
+              <span class="chip">Ocupação META</span><span class="chip">Grupo morto auto-repõe</span>
             </div>
           </div>
           <div class="caps-group">
             <p class="caps-cat">Downloads / Intel</p>
             <div class="chip-row">
               <span class="chip">Downloads (YT, TT, IG, SP)</span><span class="chip">Figurinhas e canal</span>
-              <span class="chip">Consultas CPF / nome / placa</span><span class="chip">API Hanork (~750 cmds)</span>
-              <span class="chip">OSINT publico completo</span>
+              <span class="chip">Consultas e inteligência pública</span><span class="chip">API Hanork (~750 cmds)</span>
+              <span class="chip">Fontes públicas</span>
             </div>
           </div>
           <div class="caps-group">
@@ -223,24 +262,68 @@
         </div>
       </section>
 
-      <section class="cards-section" id="projetos">
-        <p class="section-label">// PROJETOS &amp; CONTATO</p>
+      <p class="rule" aria-hidden="true"><span></span>†<span></span></p>
 
+      <section class="cards-section reveal" id="projetos">
+        <p class="section-label">// PROJETOS &amp; CONTATO</p>
         <div class="cards-grid" id="cards-grid">
-          <!-- preenchido por js/siteContent.js (dkc-card · card-avatar) -->
+          <article class="dkc-card">
+            <div class="card-avatar hanork"><img src="/assets/images/card-hanork.jpg" alt="Hanork Bot" class="avatar-img" loading="lazy" width="88" height="88"></div>
+            <h3 class="card-name">HANORK BOT <span class="tag">#FLAGSHIP</span></h3>
+            <p class="card-status">EM PRODUÇÃO</p>
+            <p class="card-desc">Telegram + WhatsApp · PIX · planos · DIV · proteção · downloads · fontes públicas</p>
+            <a class="btn-card" href="https://t.me/hanork_bot" target="_blank" rel="noopener noreferrer">ABRIR BOT</a>
+          </article>
+          <article class="dkc-card">
+            <div class="card-avatar beta"><img src="/assets/images/card-wa.jpg" alt="Hanork Beta" class="avatar-img" loading="lazy" width="88" height="88"></div>
+            <h3 class="card-name">HANORK BETA <span class="tag">#PLATAFORMA</span></h3>
+            <p class="card-status">CÓDIGO ABERTO</p>
+            <p class="card-desc">Código vivo: multi-usuário, menus, billing, fontes públicas, gerenciador de grupos, META</p>
+            <a class="btn-card" href="https://github.com/Hats444/hanork-beta" target="_blank" rel="noopener noreferrer">VER CÓDIGO</a>
+          </article>
+          <article class="dkc-card">
+            <div class="card-avatar div"><img src="/assets/images/card-div.jpg" alt="Hanork" class="avatar-img" loading="lazy" width="88" height="88"></div>
+            <h3 class="card-name">HANORK <span class="tag">#VENDAS</span></h3>
+            <p class="card-status">CÓDIGO ABERTO</p>
+            <p class="card-desc">Divulgação automática, checkout no Telegram e entrega digital</p>
+            <a class="btn-card" href="https://github.com/Hats444/hanork" target="_blank" rel="noopener noreferrer">VER CÓDIGO</a>
+          </article>
+          <article class="dkc-card">
+            <div class="card-avatar wa"><img src="/assets/images/card-wa.jpg" alt="Telegram contato" class="avatar-img" loading="lazy" width="88" height="88"></div>
+            <h3 class="card-name">TELEGRAM <span class="tag">#CONTATO</span></h3>
+            <p class="card-status">DISPONÍVEL</p>
+            <p class="card-desc">Bots, Hanork, APIs e sites — conversa direta</p>
+            <a class="btn-card" href="https://t.me/hanorkoff" target="_blank" rel="noopener noreferrer">FALAR NO TELEGRAM</a>
+          </article>
+          <article class="dkc-card">
+            <div class="card-avatar gh"><img src="/assets/images/card-gh.jpg" alt="GitHub Hats444" class="avatar-img" loading="lazy" width="88" height="88"></div>
+            <h3 class="card-name">GITHUB <span class="tag">#HATS444</span></h3>
+            <p class="card-status">CÓDIGO ABERTO</p>
+            <p class="card-desc">Perfil público · backup do código sem segredos</p>
+            <a class="btn-card" href="https://github.com/Hats444" target="_blank" rel="noopener noreferrer">VER PERFIL</a>
+          </article>
+          <article class="dkc-card">
+            <div class="card-avatar ig"><img src="/assets/images/card-ig.jpg" alt="Instagram" class="avatar-img" loading="lazy" width="88" height="88"></div>
+            <h3 class="card-name">INSTAGRAM <span class="tag">#@q_zeroxx</span></h3>
+            <p class="card-status">SOCIAL</p>
+            <p class="card-desc">Bastidores, updates e lançamentos</p>
+            <a class="btn-card" href="https://www.instagram.com/q_zeroxx" target="_blank" rel="noopener noreferrer">SEGUIR</a>
+          </article>
         </div>
       </section>
 
-      <section class="stack-section" id="stack">
+      <p class="rule" aria-hidden="true"><span></span>✦<span></span></p>
+
+      <section class="stack-section reveal" id="stack">
         <p class="section-label">// STACK</p>
         <div class="stack-grid" id="stack-grid">
           <span>Node.js 20</span><span>@systemzero/baileys</span><span>Telegram Bot API</span><span>SQLite</span>
-          <span>Intent / NLU</span><span>Mercado Pago</span><span>Supabase</span><span>GitHub Actions</span>
+          <span>Intent / NLU</span><span>Ollama opcional</span><span>Mercado Pago</span><span>Supabase</span><span>GitHub Actions</span>
           <span>Linux / WSL</span><span>Redis / Bull</span>
         </div>
       </section>
 
-      <section class="partners">
+      <section class="partners reveal">
         <p class="partners-title">// SUPERFÍCIES</p>
         <div class="partners-row" id="partners-row">
           <span>Telegram</span><span>WhatsApp</span><span>Baileys Zero</span><span>Mercado Pago</span><span>Supabase</span>
@@ -260,8 +343,9 @@
       <span id="stat-accesses">ACESSOS: —</span>
     </div>
 
-    <div class="float-widgets" aria-hidden="true">
-      <button type="button" class="float-btn" id="scroll-top" title="Topo">↑</button>
+    <div class="float-widgets">
+      <button type="button" class="float-btn" id="scroll-top" title="Topo" aria-label="Voltar ao topo">↑</button>
+      <button type="button" class="float-btn" id="scroll-down" title="Fim" aria-label="Ir para o fim">↓</button>
     </div>
   </div>
 
@@ -285,25 +369,9 @@
   <script src="/js/utils/device.js?v=20"></script>
   <script src="/js/utils/debounce.js?v=20"></script>
   <script src="/js/services/analyticsApi.js?v=20"></script>
-  <script src="/js/components/AnalyticsBar.js?v=20"></script>
+  <script src="/js/components/AnalyticsBar.js?v=21"></script>
   <script src="/js/hooks/useAnalytics.js?v=20"></script>
-  <script src="/js/siteContent.js?v=32"></script>
-  <script src="/js/main.js?v=30"></script>
-  <script>
-    (function () {
-      function paint() {
-        if (!window.Hats444Mono) return;
-        Hats444Mono.applyToTree(document.getElementById('gate'));
-        Hats444Mono.applyToTree(document.getElementById('app'));
-        Hats444Mono.applyToTree(document.getElementById('music-widget'));
-      }
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', paint);
-      } else {
-        paint();
-      }
-      window.addEventListener('load', function () { setTimeout(paint, 50); });
-    })();
-  </script>
+  <script src="/js/siteContent.js?v=33"></script>
+  <script src="/js/main.js?v=32"></script>
 </body>
 </html>

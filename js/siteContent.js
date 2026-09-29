@@ -1,12 +1,8 @@
 (function (global) {
   'use strict';
 
-  const Mono = global.Hats444Mono || {
-    toMonoMath: function (s) { return s; },
-    toMonoMathHtml: function (s) { return s; },
-  };
-  const M = Mono.toMonoMath;
-  const MH = Mono.toMonoMathHtml;
+  function M(s) { return String(s == null ? '' : s); }
+  const MH = M;
 
   const ICONS = {
     chat:
@@ -100,29 +96,29 @@
       label: 'WhatsApp / Telegram',
       items: [
         'WhatsApp + Telegram',
-        'Multi-sessao Baileys',
-        'Pareamento QR / codigo',
+        'Multi-sessão Baileys',
+        'Pareamento QR / código',
         'Prefixo live no Zap',
-        'Menus com botoes',
+        'Menus com botões',
         'Frase natural',
-        'XP / niveis / quotas',
+        'XP / níveis / quotas',
       ],
     },
     {
       label: 'Pagamentos',
       items: [
         'PIX Mercado Pago',
-        'Cartao e boleto',
-        'Starter R$29/mes',
-        'Pro R$49/mes',
-        'Enterprise R$99/mes',
+        'Cartão e boleto',
+        'Starter R$29/mês',
+        'Pro R$49/mês',
+        'Enterprise R$99/mês',
         'Trimestral / anual',
         'Day pass R$1',
         'Afiliado com VIP',
       ],
     },
     {
-      label: 'Seguranca',
+      label: 'Segurança',
       items: [
         'Antilink / anti-flood',
         'Anti-admin / anti-delete',
@@ -131,12 +127,12 @@
       ],
     },
     {
-      label: 'Divulgacao',
+      label: 'Divulgação',
       items: [
-        'Divulgacao em grupos',
+        'Divulgação em grupos',
         'Gerenciador de convites',
-        'Ocupacao META',
-        'Grupo morto auto-repor',
+        'Ocupação META',
+        'Grupo morto auto-repõe',
       ],
     },
     {
@@ -144,9 +140,9 @@
       items: [
         'Downloads (YT, TT, IG, SP)',
         'Figurinhas e canal',
-        'Consultas CPF / nome / placa',
+        'Consultas e inteligência pública',
         'API Hanork (~750 cmds)',
-        'OSINT publico completo',
+        'Fontes públicas',
       ],
     },
     {
@@ -155,32 +151,49 @@
     },
   ];
 
-  function pad2(n) {
-    return n < 10 ? '0' + n : String(n);
+  var ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
+  var LEAD_TITLES = ['Multi-sessão', 'Proteção de grupo', 'Vendas e PIX'];
+
+  function focusArticle(item, i, lead) {
+    return (
+      '<article class="focus-item' +
+      (lead ? ' is-lead' : '') +
+      '" style="--i:' +
+      i +
+      '">' +
+      '<span class="focus-glyph" aria-hidden="true">' +
+      (ROMAN[i] || String(i + 1)) +
+      '</span>' +
+      '<h3>' +
+      esc(M(item.title)) +
+      '</h3>' +
+      '<p>' +
+      esc(M(item.text)) +
+      '</p>' +
+      '</article>'
+    );
   }
 
   function renderFocus(items) {
     const grid = document.getElementById('focus-grid');
     if (!grid || !Array.isArray(items) || !items.length) return;
-    grid.innerHTML = items
-      .map(function (item, i) {
-        return (
-          '<article class="focus-item" style="--i:' +
-          i +
-          '">' +
-          '<span class="focus-glyph" aria-hidden="true">// ' +
-          pad2(i + 1) +
-          '</span>' +
-          '<h3>' +
-          esc(M(item.title)) +
-          '</h3>' +
-          '<p>' +
-          esc(M(item.text)) +
-          '</p>' +
-          '</article>'
-        );
-      })
-      .join('');
+    const indexed = items.map(function (item, i) { return { item: item, i: i }; });
+    const lead = [];
+    LEAD_TITLES.forEach(function (title) {
+      indexed.forEach(function (row) {
+        if (row.item.title === title) lead.push(row);
+      });
+    });
+    const rest = indexed.filter(function (row) {
+      return LEAD_TITLES.indexOf(row.item.title) === -1;
+    });
+    grid.innerHTML =
+      '<div class="focus-lead">' +
+      lead.map(function (row) { return focusArticle(row.item, row.i, true); }).join('') +
+      '</div>' +
+      '<div class="focus-rest">' +
+      rest.map(function (row) { return focusArticle(row.item, row.i, false); }).join('') +
+      '</div>';
   }
 
   function renderCapabilities(items) {
@@ -230,10 +243,6 @@
     renderCapabilities(data.capabilities);
     renderChips('stack-grid', data.stack);
     renderChips('partners-row', data.partners);
-    if (Mono.applyToTree) {
-      Mono.applyToTree(document.getElementById('gate'));
-      Mono.applyToTree(document.getElementById('app'));
-    }
   }
 
   async function load() {

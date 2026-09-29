@@ -2,7 +2,7 @@
 
   'use strict';
 
-
+  document.documentElement.classList.add('js');
 
   const canvas = document.getElementById('matrix');
 
@@ -68,7 +68,7 @@
 
       if (!ctx) return;
 
-      ctx.fillStyle = 'rgba(5, 5, 5, 0.1)';
+      ctx.fillStyle = 'rgba(7, 6, 10, 0.16)';
 
       ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
@@ -88,9 +88,9 @@
 
         ctx.fillStyle = isHead
 
-          ? 'rgba(180, 255, 160, 0.95)'
+          ? 'rgba(201, 185, 138, 0.92)'
 
-          : 'rgba(70, 200, 90, 0.42)';
+          : 'rgba(139, 30, 45, 0.55)';
 
         ctx.fillText(char, x, y);
 
@@ -159,6 +159,14 @@
       gate.hidden = true;
 
       app.hidden = false;
+
+      document.querySelectorAll('.reveal').forEach(function (node) {
+
+        const rect = node.getBoundingClientRect();
+
+        if (rect.top < window.innerHeight * 0.96) node.classList.add('is-in');
+
+      });
 
       gate.classList.remove('leaving');
 
@@ -232,13 +240,27 @@
 
 
 
+  const scrollBehavior = reduced ? 'auto' : 'smooth';
+
   const scrollTopBtn = document.getElementById('scroll-top');
+
+  const scrollDownBtn = document.getElementById('scroll-down');
 
   if (scrollTopBtn) {
 
     scrollTopBtn.addEventListener('click', () => {
 
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: scrollBehavior });
+
+    });
+
+  }
+
+  if (scrollDownBtn) {
+
+    scrollDownBtn.addEventListener('click', () => {
+
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: scrollBehavior });
 
     });
 
@@ -276,6 +298,22 @@
 
 
 
+  function rememberMusic(on) {
+
+    try {
+
+      localStorage.setItem('hats444_music', on ? '1' : '0');
+
+    } catch (e) {
+
+      /* ignore */
+
+    }
+
+  }
+
+
+
   if (audio && btnMusic) {
 
     btnMusic.addEventListener('click', async () => {
@@ -288,17 +326,23 @@
 
           setPlaying(true);
 
+          rememberMusic(true);
+
         } else {
 
           audio.pause();
 
           setPlaying(false);
 
+          rememberMusic(false);
+
         }
 
       } catch {
 
         setPlaying(false);
+
+        rememberMusic(false);
 
       }
 
@@ -311,6 +355,34 @@
     audio.addEventListener('pause', () => setPlaying(false));
 
     audio.addEventListener('error', () => setPlaying(false));
+
+  }
+
+
+
+  const revealNodes = document.querySelectorAll('.reveal');
+
+  if (revealNodes.length && 'IntersectionObserver' in window && !reduced) {
+
+    const io = new IntersectionObserver(function (entries) {
+
+      entries.forEach(function (entry) {
+
+        if (!entry.isIntersecting) return;
+
+        entry.target.classList.add('is-in');
+
+        io.unobserve(entry.target);
+
+      });
+
+    }, { threshold: 0.12 });
+
+    revealNodes.forEach(function (node) { io.observe(node); });
+
+  } else {
+
+    revealNodes.forEach(function (node) { node.classList.add('is-in'); });
 
   }
 
