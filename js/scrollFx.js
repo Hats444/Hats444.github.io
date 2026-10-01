@@ -26,7 +26,10 @@
      o #app começa com [hidden]: medir antes de abrir daria
      top=0 e h=0, quebrando toda a matemática. */
   function collect() {
-    var sel = '.reveal, .focus-item, .dkc-card, .price-card, .caps-group, .chip, .rule';
+    /* Só SECÇÕES E CARDS animam.
+     Incluir .chip aqui significava escrever ~40 elementos por quadro
+     de scroll com !important — era o maior custo do site no scroll. */
+    var sel = '.reveal, .focus-item, .dkc-card, .price-card, .caps-group, .rule';
     var nodes = doc.querySelectorAll(sel);
     items = [];
     for (var i = 0; i < nodes.length; i++) {
@@ -92,7 +95,12 @@
     }
   }
 
+  var lastScrollY = -1;
+
   function onScroll() {
+    /* não recalcula se a posição não mudou de verdade */
+    if (global.scrollY === lastScrollY) return;
+    lastScrollY = global.scrollY;
     if (!ticking) {
       ticking = true;
       requestAnimationFrame(frame);

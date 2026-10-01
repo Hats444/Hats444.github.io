@@ -401,7 +401,7 @@
     if (tiltY < -TILT_CLAMP) { tiltY = -TILT_CLAMP; if (tiltVY < 0) tiltVY = 0; }
 
     applyTransform();
-    applySpeedFX(dt);
+    applySpeedFX(dt, now);
   }
 
   /*Blur: a cópia principal fica nítida; clones deslocados
@@ -412,44 +412,68 @@
     var v = Math.abs(spin) / SPIN_MAX;          /* 0..1 velocidade */
     var tiltV = Math.min(1, (Math.abs(tiltX) + Math.abs(tiltY)) / 0.35);
 
-    /* Rastro do blur: SOMENTE no eixo Z.
-       Rastro em X/Y vira borrão e esconde a roda.
-       Opacidade máxima 6% — é um traço, não uma névoa. */
-    if (ghostEls.length) {
-      var show = v > 0.3 ? Math.min(1, (v - 0.3) / 0.7) : 0;
-      for (var i = 0; i < ghostEls.length; i++) {
-        var g = ghostEls[i];
-        var k = (i + 1) / ghostEls.length;
-        g.style.transform = 'rotateZ(' + (rot.z - spin * k * 7).toFixed(2) + 'deg)';
-        g.style.opacity = (show * 0.06 * (1 - k)).toFixed(3);
+    /* Cache: escrever style.filter e style.opacity a 60fps obriga o
+     navegador a repintar o SVG inteiro todo quadro. Só escrevo quando
+     o valor MUDA de fato (arredondado). */
+    var lastFilter = '';
+    var lastWheelOp = '';
+    var lastCoreOp = '';
+    var lastHot = null;
+    var lastGhostOp = [];
+    var lastSpark = 0;
+
+    function applySpeedFX(dt, now2) {
+      if (!wheel) return;
+      var v = Math.abs(spin) / SPIN_MAX;          /* 0..1 velocidade */
+
+      /* Rastro do blur: SOMENTE no eixo Z.
+         Rastro em X/Y vira borrão e esconde a roda.
+         Opacidade máxima 6% — é um traço, não uma névoa. */
+      if (ghostEls.length) {
+        var show = v > 0.3 ? Math.min(1, (v - 0.3) / 0.7) : 0;
+        for (var i = 0; i < ghostEls.length; i++) {
+          var g = ghostEls[i];
+          var k = (i + 1) / ghostEls.length;
+          g.style.transform = 'rotateZ(' + (rot.z - spin * k * 7).toFixed(2) + 'deg)';
+          var op = (show * 0.06 * (1 - k)).toFixed(3);
+          if (op !== lastGhostOp[i]) { g.style.opacity = op; lastGhostOp[i] = op; }
+        }
       }
-    }
 
-    /* brilho proporcional à velocidade */
-    svgEl.style.filter = 'drop-shadow(0 0 ' +
-      (2 + v * 5).toFixed(1) + 'px rgba(139,26,43,' + (0.18 + v * 0.3).toFixed(2) + '))';
+      /* brilho proporcional à velocidade — só escreve se mudou */
+      var blurPx = (2 + v * 5).toFixed(1);
+      var alpha = (0.18 + v * 0.3).toFixed(2);
+      var f = 'drop-shadow(0 0 ' + blurPx + 'px rgba(139,26,43,' + alpha + '))';
+      if (f !== lastFilter) { svgEl.style.filter = f; lastFilter = f; }
 
-    /* opacidade base alta o bastante para a roda ser vista */
-    wheel.style.opacity = (0.14 + v * 0.06).toFixed(3);
-    core.style.opacity = (0.25 + v * 0.45).toFixed(3);
+      var wo = (0.14 + v * 0.06).toFixed(3);
+      if (wo !== lastWheelOp) { wheel.style.opacity = wo; lastWheelOp = wo; }
 
-    /* acende o "fogo" no anel quando está rápido */
-    if (stage) {
-      if (v > 0.55) stage.classList.add('is-hot');
-      else stage.classList.remove('is-hot');
-    }
+      var co = (0.25 + v * 0.45).toFixed(3);
+      if (co !== lastCoreOp) { core.style.opacity = co; lastCoreOp = co; }
 
-    /* faíscas atrás quando acelera */
-    if (v > 0.5) {
-      var n = Math.min(2, Math.floor((v - 0.5) * 4));
-      for (var s = 0; s < n; s++) {
-        if (particleCtx) {
-          var a = Math.random() * Math.PI * 2;
-          var r = 150 + Math.random() * 70;
-          spawnParticle(
-            window.innerWidth / 2 + Math.cos(a) * r,
-            window.innerHeight / 2 + Math.sin(a) * r
-          );
+      /* acende o "fogo" no anel quando está rápido */
+      var hot = v > 0.55;
+      if (hot !== lastHot) {
+        if (stage) { if (hot) stage.classList.add('is-hot'); else stage.classList.remove('is-hot'); }
+        lastHot = hot;
+      }
+
+      /* faíscas atrás quando acelera.
+         Limitado a ~10/s (antes era por frame = 60/s), senão o canvas
+         vira o gargalo do site inteiro. */
+      if (v > 0.5) {
+        var n = Math.min(2, Math.floor((v - 0.5) * 4));
+        for (var s = 0; s < n; s++) {
+          if (!particleCtx) break;
+          if (now2 - lastSpark > 100) {
+            var a = Math.random() * Math.PI * 2;
+            var r = 150 + Math.random() * 70;
+            spawnParticle(
+              window.innerWidth / 2 + Math.cos(a) * r,
+              window.innerHeight / 2 + Math.sin(a) * r
+            );
+          }
         }
       }
     }

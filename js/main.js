@@ -26,6 +26,8 @@
 
     let fontSize = 14;
 
+    let columnStep = 14;
+
 
 
     function resize() {
@@ -34,7 +36,17 @@
 
       const h = window.innerHeight;
 
-      fontSize = w < 480 ? 12 : 14;
+      /* fonte maior em telas pequenas = menos colunas = menos custo */
+
+      fontSize = w < 480 ? 16 : (w < 900 ? 18 : 20);
+
+      /* limita o número de colunas: é o que realmente pesa */
+
+      const MIN_COL_GAP = 18;
+
+      const maxCols = Math.max(12, Math.floor(w / MIN_COL_GAP));
+
+      const step = Math.max(fontSize, w / maxCols);
 
       if (canvas) {
 
@@ -52,13 +64,15 @@
 
       }
 
-      const colCount = Math.ceil(w / fontSize);
-
-      columns = Array.from({ length: colCount }, () =>
+      columns = Array.from({ length: Math.ceil(w / step) }, () =>
 
         Math.floor(Math.random() * (h / fontSize))
 
       );
+
+      /* guarda o passo para o paint usar o mesmo espaçamento */
+
+      columnStep = step;
 
     }
 
@@ -80,7 +94,7 @@
 
         const char = chars[Math.floor(Math.random() * chars.length)];
 
-        const x = i * fontSize;
+        const x = i * columnStep;
 
         const y = columns[i] * fontSize;
 
@@ -130,11 +144,17 @@
 
     window.addEventListener('resize', resize);
 
+    /* FPS da chuva: 42ms ≈ 24fps. Baixa para 55ms (~18fps).
+     A chuva é decorativa e opaca a 0.22 — nobody percebe os frames
+     que caem, mas o processador agradece. Em telas pequenas o custo
+     por frame é o mesmo, então menos frames = menos trabalho. */
+    const MATRIX_MS = 55;
+
     var matrixTimer = null;
 
     function startMatrix() {
       if (matrixTimer || document.visibilityState === 'hidden') return;
-      matrixTimer = setInterval(draw, 42);
+      matrixTimer = setInterval(draw, MATRIX_MS);
     }
 
     function stopMatrix() {
@@ -149,6 +169,17 @@
       if (document.visibilityState === 'hidden') stopMatrix();
       else startMatrix();
     });
+
+    /* Quando o gate fecha, a chuva do gate não roda mais.
+       Reduz para metade da taxa quando o gate já passou. */
+    const originalDraw = draw;
+    draw = function () {
+      if (document.documentElement.classList.contains('gate-open')) {
+        originalDraw();
+      } else {
+        paint(ctxMain);   /* só a camada principal */
+      }
+    };
 
   }
 
