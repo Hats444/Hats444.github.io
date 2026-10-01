@@ -22,6 +22,7 @@ jobs:
           test -f index.html
           test -f admin.html
           test -f js/main.js
+          test -f js/adaptationWheel.js
           test -f js/config.example.js
           test -f js/config.js
           test -f .env.example
@@ -37,6 +38,8 @@ jobs:
           grep -q 'gate-open' index.html
           grep -q 'card-avatar' index.html
           grep -q 'id="matrix"' index.html
+          grep -q 'hanork-adaptation-wheel' js/adaptationWheel.js
+          grep -q 'hanork-control-dock' index.html
 
       - name: No .env or service_role in client
         run: |

@@ -130,7 +130,25 @@
 
     window.addEventListener('resize', resize);
 
-    setInterval(draw, 42);
+    var matrixTimer = null;
+
+    function startMatrix() {
+      if (matrixTimer || document.visibilityState === 'hidden') return;
+      matrixTimer = setInterval(draw, 42);
+    }
+
+    function stopMatrix() {
+      if (!matrixTimer) return;
+      clearInterval(matrixTimer);
+      matrixTimer = null;
+    }
+
+    startMatrix();
+
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState === 'hidden') stopMatrix();
+      else startMatrix();
+    });
 
   }
 

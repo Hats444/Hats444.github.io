@@ -920,3 +920,381 @@ html.js .reveal.is-in {
     transform: none;
   }
 }
+
+/* ── Adaptation wheel & visual system ── */
+:root {
+  --gold: #c9b27c;
+  --gold-light: #dfcf9b;
+  --blood: #8b1a2b;
+}
+
+body {
+  background:
+    radial-gradient(1200px 700px at 18% -10%, rgba(77, 13, 25, 0.22), transparent 55%),
+    radial-gradient(900px 600px at 110% 20%, rgba(12, 9, 16, 0.9), transparent 50%),
+    #050509;
+}
+
+.hanork-adaptation-stage {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  perspective: 1400px;
+  overflow: hidden;
+}
+
+.hanork-adaptation-parallax {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.hanork-adaptation-wheel {
+  position: relative;
+  width: min(120vw, 900px);
+  aspect-ratio: 1;
+  opacity: 0.12;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.hanork-adaptation-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+.hanork-adaptation-nucleus {
+  opacity: 0.55;
+}
+
+.hanork-adaptation-core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 7%;
+  height: 7%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(223, 207, 155, 0.35), transparent 70%);
+  opacity: 0.25;
+}
+
+.hanork-adaptation-wheel.is-adapting {
+  opacity: 0.18;
+}
+
+.hanork-adaptation-svg.is-adapting {
+  filter: drop-shadow(0 0 6px rgba(139, 26, 43, 0.35));
+}
+
+.hanork-adaptation-core.is-adapting {
+  opacity: 0.85;
+  background: radial-gradient(circle, rgba(139, 26, 43, 0.55), rgba(201, 178, 124, 0.2) 45%, transparent 70%);
+}
+
+.hanork-particle-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.hanork-control-dock {
+  position: fixed;
+  right: max(10px, env(safe-area-inset-right, 0px));
+  bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.hanork-control-dock .float-widgets,
+.hanork-control-dock .music-widget {
+  position: static;
+  pointer-events: auto;
+}
+
+.hanork-control-dock .float-widgets {
+  right: auto;
+  bottom: auto;
+}
+
+.hanork-control-dock .music-widget {
+  right: auto;
+  bottom: auto;
+}
+
+html.gate-open .float-widgets {
+  display: none;
+}
+
+.float-btn,
+.music-btn {
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  min-height: 44px;
+}
+
+.btn-enter:hover,
+.btn-adm:hover,
+.btn-card:hover,
+.float-btn:hover,
+.music-btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-enter:active,
+.btn-adm:active,
+.btn-card:active,
+.float-btn:active,
+.music-btn:active {
+  transform: translateY(1px);
+}
+
+.gate-title {
+  animation: hanork-breathe 5.6s ease-in-out infinite;
+}
+
+.intro h2 {
+  text-shadow: 0 0 22px rgba(139, 26, 43, 0.35);
+  animation: hanork-breathe 6.4s ease-in-out infinite;
+}
+
+@keyframes hanork-breathe {
+  0%, 100% { text-shadow: 0 0 16px rgba(139, 30, 45, 0.55), 0 0 36px rgba(139, 30, 45, 0.2); }
+  50% { text-shadow: 0 0 22px rgba(139, 30, 45, 0.85), 0 0 48px rgba(201, 178, 124, 0.12); }
+}
+
+.hanork-gate-kicker,
+.hanork-kicker {
+  font-size: 0.58rem;
+  letter-spacing: 0.28em;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.gate-panel {
+  background: rgba(12, 9, 16, 0.52);
+  border-radius: 18px 18px 8px 8px;
+  position: relative;
+}
+
+.gate-panel::before {
+  content: "";
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.55;
+}
+
+.intro {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+  position: relative;
+  padding-top: 56px;
+}
+
+.intro::before {
+  content: "I";
+  position: absolute;
+  left: -8px;
+  top: 8px;
+  font-family: var(--font-title);
+  font-size: clamp(5rem, 22vw, 10rem);
+  line-height: 0.8;
+  color: var(--gold);
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+.hanork-hero-side {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.hanork-hero-side span {
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+  color: var(--text-dim);
+  border: 1px solid var(--line);
+  padding: 6px 8px;
+}
+
+.focus-section,
+.pricing-section,
+.caps-section,
+.cards-section,
+.stack-section {
+  position: relative;
+}
+
+.pricing-section::before,
+.caps-section::before,
+.cards-section::before,
+.stack-section::before {
+  content: attr(data-numeral);
+  position: absolute;
+  right: 0;
+  top: -12px;
+  font-family: var(--font-title);
+  font-size: clamp(4rem, 16vw, 8rem);
+  color: var(--gold);
+  opacity: 0.05;
+  pointer-events: none;
+  line-height: 1;
+}
+
+.focus-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.focus-item::before {
+  content: attr(data-numeral);
+  position: absolute;
+  right: 8px;
+  top: -6px;
+  font-family: var(--font-title);
+  font-size: 4.4rem;
+  color: var(--gold);
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.focus-item:nth-child(even) {
+  border-radius: 14px 52px 14px 52px;
+}
+
+.focus-lead .focus-item:first-child {
+  border-radius: 8px 8px 48px 8px;
+}
+
+.price-card:nth-child(1) { border-radius: 8px 64px 8px 8px; }
+.price-card:nth-child(2) { border-radius: 72px 12px 12px 12px; }
+.price-card:nth-child(3) { border-radius: 12px 12px 56px 12px; }
+
+.dkc-card:nth-child(1) { border-radius: 8px 8px 8px 40px; }
+.dkc-card:nth-child(2) { border-radius: 48px 8px 8px 8px; }
+.dkc-card:nth-child(3) { border-radius: 8px 40px 8px 8px; }
+.dkc-card:nth-child(4) { border-radius: 20px; }
+.dkc-card:nth-child(5) { border-radius: 8px 8px 36px 8px; }
+.dkc-card:nth-child(6) { border-radius: 36px 8px 8px 36px; }
+
+.caps-wrap {
+  display: grid;
+  gap: 10px;
+}
+
+.caps-group {
+  border: 1px solid var(--line);
+  background: rgba(12, 9, 16, 0.55);
+  padding: 10px 12px;
+}
+
+.caps-group summary {
+  cursor: pointer;
+  list-style: none;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.caps-group summary::-webkit-details-marker { display: none; }
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.app {
+  padding-bottom: calc(168px + env(safe-area-inset-bottom, 0px));
+}
+
+.session-bar {
+  padding: 8px 10px calc(8px + env(safe-area-inset-bottom, 0px));
+}
+
+main {
+  padding-right: 16px;
+  padding-left: 16px;
+}
+
+@media (max-width: 412px) {
+  .hanork-adaptation-wheel {
+    width: min(140vw, 640px);
+    opacity: 0.08;
+  }
+  .hanork-control-dock {
+    right: max(8px, env(safe-area-inset-right, 0px));
+  }
+  main {
+    padding-right: 58px;
+  }
+}
+
+@media (min-width: 720px) {
+  .caps-group summary {
+    min-height: 0;
+    pointer-events: none;
+    cursor: default;
+  }
+  .caps-wrap {
+    grid-template-columns: 1fr 1fr;
+  }
+  .focus-item:nth-child(odd) {
+    transform: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hanork-adaptation-wheel {
+    width: min(100vw, 1080px);
+    opacity: 0.13;
+  }
+  .intro {
+    grid-template-columns: minmax(0, 1.35fr) minmax(180px, 0.5fr);
+    align-items: end;
+    min-height: 52vh;
+  }
+  .hanork-hero-side {
+    flex-direction: column;
+    align-items: flex-end;
+    padding-bottom: 12px;
+  }
+  .cards-grid .dkc-card:nth-child(1) {
+    grid-column: span 2;
+  }
+  .focus-rest .focus-item:nth-child(2) {
+    margin-left: 8%;
+  }
+  main {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gate-title,
+  .intro h2,
+  .hanork-adaptation-wheel,
+  .hanork-adaptation-svg {
+    animation: none;
+    filter: none;
+  }
+}

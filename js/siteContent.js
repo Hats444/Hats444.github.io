@@ -158,6 +158,8 @@
     return (
       '<article class="focus-item' +
       (lead ? ' is-lead' : '') +
+      '" data-numeral="' +
+      (ROMAN[i] || String(i + 1)) +
       '" style="--i:' +
       i +
       '">' +
@@ -210,20 +212,33 @@
     }).filter(function (g) { return g.items.length; });
     if (leftover.length) groups.push({ label: 'Outros', items: leftover });
     el.innerHTML = groups
-      .map(function (g) {
+      .map(function (g, i) {
         return (
-          '<div class="caps-group">' +
-          '<p class="caps-cat">' +
+          '<details class="caps-group"' +
+          (i === 0 ? ' open' : '') +
+          '>' +
+          '<summary class="caps-cat">' +
           esc(M(g.label)) +
-          '</p>' +
+          '</summary>' +
           '<div class="chip-row">' +
           g.items.map(function (s) {
             return '<span class="chip">' + esc(M(s)) + '</span>';
           }).join('') +
-          '</div></div>'
+          '</div></details>'
         );
       })
       .join('');
+    syncCapsAccordion();
+  }
+
+  function syncCapsAccordion() {
+    var groups = document.querySelectorAll('#caps-grid details.caps-group');
+    if (!groups.length) return;
+    var desktop = window.matchMedia('(min-width: 720px)').matches;
+    groups.forEach(function (node, i) {
+      if (desktop) node.open = true;
+      else if (i === 0 && !node.dataset.userToggled) node.open = true;
+    });
   }
 
   function renderChips(elId, items) {
@@ -255,6 +270,8 @@
       /* fallback: HTML estático permanece */
     }
   }
+
+  window.addEventListener('resize', syncCapsAccordion);
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', load);
