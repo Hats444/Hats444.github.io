@@ -178,6 +178,13 @@
 
       app.hidden = false;
 
+      /* avisa módulos que dependem de layout visível (ex.: scrollFx) */
+      try {
+        document.dispatchEvent(new CustomEvent('hats444:app-shown'));
+      } catch (e) {
+        /* ignore */
+      }
+
       document.querySelectorAll('.reveal').forEach(function (node) {
 
         const rect = node.getBoundingClientRect();
