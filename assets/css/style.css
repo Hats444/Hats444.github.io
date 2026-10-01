@@ -956,7 +956,7 @@ body {
   position: relative;
   width: min(120vw, 900px);
   aspect-ratio: 1;
-  opacity: 0.12;
+  opacity: 0.14;
   transform-style: preserve-3d;
   will-change: transform;
 }
@@ -968,10 +968,8 @@ body {
   overflow: visible;
 }
 
-/* ── RASTRO / BLUR DE MOVIMENTO ──
-   Clones da roda deslocados no sentido do giro. Só aparecem
-   quando a velocidade sobe; em repouso ficam em opacity 0.
-   É isso que tira a sensação de "papel girando". */
+/*Blur do giro: clones discretos, só no eixo Z.
+   Opacidade alta aqui vira borrão e esconde a roda. */
 .hanork-adaptation-wheel.hw-ghost {
   position: absolute;
   top: 0;
@@ -980,8 +978,6 @@ body {
   height: 100%;
   pointer-events: none;
   will-change: transform, opacity;
-  mix-blend-mode: screen;
-  filter: blur(0.4px);
 }
 
 .hanork-adaptation-parallax {

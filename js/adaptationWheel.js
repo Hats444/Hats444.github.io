@@ -209,22 +209,23 @@
     var boost = SPIN_BASE + Math.random() * (SPIN_MAX - SPIN_BASE) * (0.55 + Math.random() * 0.45);
     spin = dir * Math.max(Math.abs(spin), boost);
 
-    /* tombamento: eixo e sentido aleatórios, com magnitudes diferentes
-       para nunca parecer um padrão repetido */
+    /* tombamento: eixo e sentido sorteados a cada clique.
+       Potência em GRAUS POR SEGUNDO de velocidade angular,
+       e o teto é TILT_CLAMP — a roda nunca cai de lado. */
     var axis = randomPick(['x', 'y', 'z', 'xy']);
-    var power = 0.16 + Math.random() * 0.30;   /* rad/ms de velocidade angular */
+    var power = 0.05 + Math.random() * 0.09;   /* 0.05–0.14 deg/frame de tombo */
 
     if (axis === 'x' || axis === 'xy') tiltVX += (Math.random() < 0.5 ? -1 : 1) * power;
     if (axis === 'y' || axis === 'xy') tiltVY += (Math.random() < 0.5 ? -1 : 1) * power;
 
     /* Z também pode levar um impulso extra */
     if (axis === 'z') {
-      spin += (Math.random() < 0.5 ? -1 : 1) * 0.02;
+      spin += (Math.random() < 0.5 ? -1 : 1) * 0.004;
     }
 
-    /* limita o ângulo para não virar "papel dobrando" */
-    tiltVX = Math.max(-0.42, Math.min(0.42, tiltVX));
-    tiltVY = Math.max(-0.42, Math.min(0.42, tiltVY));
+    /* trava a velocidade angular de tombo */
+    tiltVX = Math.max(-0.18, Math.min(0.18, tiltVX));
+    tiltVY = Math.max(-0.18, Math.min(0.18, tiltVY));
 
     flash();
     playTick();
@@ -349,14 +350,21 @@
      blur   = rastro por clones com opacidade proporcional à velocidade
      sparks = faíscas atrás da roda quando a velocidade sobe
   ══════════════════════════════════════════════════════════ */
-  var SPIN_BASE = 0.012;      /* ~7.2deg/s: giro contínuo e calmo */
-  var SPIN_MAX = 0.085;       /* teto após impulso (~49deg/s) */
+  /* Calibrado para ficar LENTO e legível.
+     SPIN_BASE 0.006 deg/ms = 6°/s  → 60s por volta, quase parado
+     SPIN_MAX  0.030 deg/ms = 30°/s → impulso perceptível, nunca frenético
+     TILT_CLAMP limita o tombamento para ~14°: nunca vira de lado
+     (virar de lado = sumir = "não dá pra ver nada"). */
+  var SPIN_BASE = 0.006;
+  var SPIN_MAX = 0.030;
+  var TILT_CLAMP = 14;      /* graus — o disco nunca chega a 90° */
+  var TILT_DAMP = 0.94;
   var spin = SPIN_BASE;
   var tiltVX = 0, tiltVY = 0;
   var tiltX = 0, tiltY = 0;
   var lastT = 0;
   var spinRaf = 0;
-  var GHOSTS = 5;
+  var GHOSTS = 4;
 
   function ghosts() {
     return stage ? stage.querySelectorAll('.hw-ghost') : [];
@@ -378,11 +386,19 @@
     rot.y += tiltY * dt;
 
     /* tombamento volta ao eixo com atrito — disco pesado */
-    tiltVX *= 0.955; tiltVY *= 0.955;
+    tiltVX *= TILT_DAMP; tiltVY *= TILT_DAMP;
     tiltX += tiltVX * dt;
     tiltY += tiltVY * dt;
-    tiltX -= tiltX * 0.05 * (dt / 16);
-    tiltY -= tiltY * 0.05 * (dt / 16);
+    tiltX -= tiltX * 0.06 * (dt / 16);
+    tiltY -= tiltY * 0.06 * (dt / 16);
+
+    /* CLAMP DURO: o disco nunca vira de perfil.
+       Passar de ~90° em rotateX/rotateY deixa a roda invisível
+       (ela fica de fio). Aqui o limite é 14°. */
+    if (tiltX > TILT_CLAMP) { tiltX = TILT_CLAMP; if (tiltVX > 0) tiltVX = 0; }
+    if (tiltX < -TILT_CLAMP) { tiltX = -TILT_CLAMP; if (tiltVX < 0) tiltVX = 0; }
+    if (tiltY > TILT_CLAMP) { tiltY = TILT_CLAMP; if (tiltVY > 0) tiltVY = 0; }
+    if (tiltY < -TILT_CLAMP) { tiltY = -TILT_CLAMP; if (tiltVY < 0) tiltVY = 0; }
 
     applyTransform();
     applySpeedFX(dt);
@@ -396,36 +412,36 @@
     var v = Math.abs(spin) / SPIN_MAX;          /* 0..1 velocidade */
     var tiltV = Math.min(1, (Math.abs(tiltX) + Math.abs(tiltY)) / 0.35);
 
-    /* rastro: clones atrasados no tempo */
+    /* Rastro do blur: SOMENTE no eixo Z.
+       Rastro em X/Y vira borrão e esconde a roda.
+       Opacidade máxima 6% — é um traço, não uma névoa. */
     if (ghostEls.length) {
+      var show = v > 0.3 ? Math.min(1, (v - 0.3) / 0.7) : 0;
       for (var i = 0; i < ghostEls.length; i++) {
         var g = ghostEls[i];
         var k = (i + 1) / ghostEls.length;
-        var back = k * v * 26;                   /* graus de atraso */
-        g.style.transform =
-          'rotateX(' + (rot.x - tiltVX * back * 0.6).toFixed(2) + 'deg) ' +
-          'rotateY(' + (rot.y - tiltVY * back * 0.6).toFixed(2) + 'deg) ' +
-          'rotateZ(' + (rot.z - spin * back * 16).toFixed(2) + 'deg)';
-        g.style.opacity = (v * 0.16 * (1 - k)).toFixed(3);
+        g.style.transform = 'rotateZ(' + (rot.z - spin * k * 7).toFixed(2) + 'deg)';
+        g.style.opacity = (show * 0.06 * (1 - k)).toFixed(3);
       }
     }
 
     /* brilho proporcional à velocidade */
     svgEl.style.filter = 'drop-shadow(0 0 ' +
-      (3 + v * 9).toFixed(1) + 'px rgba(139,26,43,' + (0.2 + v * 0.5).toFixed(2) + '))';
+      (2 + v * 5).toFixed(1) + 'px rgba(139,26,43,' + (0.18 + v * 0.3).toFixed(2) + '))';
 
-    wheel.style.opacity = (0.1 + v * 0.07).toFixed(3);
-    core.style.opacity = (0.22 + v * 0.5).toFixed(3);
+    /* opacidade base alta o bastante para a roda ser vista */
+    wheel.style.opacity = (0.14 + v * 0.06).toFixed(3);
+    core.style.opacity = (0.25 + v * 0.45).toFixed(3);
 
     /* acende o "fogo" no anel quando está rápido */
     if (stage) {
-      if (v > 0.22) stage.classList.add('is-hot');
+      if (v > 0.55) stage.classList.add('is-hot');
       else stage.classList.remove('is-hot');
     }
 
     /* faíscas atrás quando acelera */
-    if (v > 0.18) {
-      var n = Math.min(3, Math.floor((v - 0.18) * 5));
+    if (v > 0.5) {
+      var n = Math.min(2, Math.floor((v - 0.5) * 4));
       for (var s = 0; s < n; s++) {
         if (particleCtx) {
           var a = Math.random() * Math.PI * 2;
