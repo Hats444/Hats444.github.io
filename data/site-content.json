@@ -177,13 +177,13 @@
       "image": "/assets/images/card-ig.jpg",
       "imageAlt": "Instagram",
       "name": "INSTAGRAM",
-      "tag": "#@q_zeroxx",
+      "tag": "#@caimsecond",
       "status": "SOCIAL",
       "statusPrivate": false,
       "desc": "Bastidores, updates e lançamentos",
       "buttonType": "link",
       "buttonLabel": "SEGUIR",
-      "buttonUrl": "https://www.instagram.com/q_zeroxx",
+      "buttonUrl": "https://www.instagram.com/caimsecond",
       "buttonIcon": "chat"
     }
   ]
