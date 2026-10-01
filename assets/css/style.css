@@ -968,6 +968,77 @@ body {
   overflow: visible;
 }
 
+/* ── RASTRO / BLUR DE MOVIMENTO ──
+   Clones da roda deslocados no sentido do giro. Só aparecem
+   quando a velocidade sobe; em repouso ficam em opacity 0.
+   É isso que tira a sensação de "papel girando". */
+.hanork-adaptation-wheel.hw-ghost {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  will-change: transform, opacity;
+  mix-blend-mode: screen;
+  filter: blur(0.4px);
+}
+
+.hanork-adaptation-parallax {
+  position: relative;
+}
+
+/* ── FOGO / ARDÊNCIA ATRÁS DA RODA ──
+   Anel quente que só acende com a velocidade. Dá a impressão
+   de que girou tão rápido que queimou o ar em volta. */
+.hanork-heat-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 118%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle,
+      transparent 38%,
+      rgba(139, 26, 43, 0.10) 58%,
+      rgba(77, 13, 25, 0.16) 72%,
+      transparent 84%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  mix-blend-mode: screen;
+}
+
+.hanork-adaptation-stage.is-hot .hanork-heat-ring {
+  opacity: 1;
+  transition: opacity 0.12s ease-out;
+}
+
+/* rastro de fogo: 3 arcos que giram em velocidades diferentes */
+.hanork-heat-ring::before,
+.hanork-heat-ring::after {
+  content: "";
+  position: absolute;
+  inset: 6%;
+  border-radius: 50%;
+  border: 1px solid rgba(223, 207, 155, 0.18);
+  clip-path: polygon(0 0, 55% 0, 40% 100%, 0 100%);
+}
+
+.hanork-heat-ring::after {
+  inset: 14%;
+  border-color: rgba(139, 26, 43, 0.3);
+  clip-path: polygon(55% 0, 100% 0, 100% 100%, 40% 100%);
+  animation: heat-drift 2.4s linear infinite;
+}
+
+@keyframes heat-drift {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 .hanork-adaptation-nucleus {
   opacity: 0.55;
 }

@@ -5,21 +5,10 @@
 (function () {
   'use strict';
 
-  var MOVES = [
-    { z: 360 },
-    { z: -360 },
-    { x: 360 },
-    { x: -360 },
-    { y: 360 },
-    { y: -360 },
-    { z: 360, x: 360 },
-    { z: -360, x: -360 }
-  ];
+  /* A sequência fixa de 8 movimentos foi substituída: o clique agora
+   acelera a roda e injeta tombamento aleatório. Sem passos fixos. */
 
-  var DURATION = 1000;
-  var EASING = 'cubic-bezier(.7, 0, .2, 1)';
   var rot = { x: 0, y: 0, z: 0 };
-  var step = 0;
   var animating = false;
   var pending = false;
   var hidden = document.visibilityState === 'hidden';
@@ -110,6 +99,7 @@
     stage.setAttribute('aria-hidden', 'true');
     stage.innerHTML =
       '<div class="hanork-adaptation-parallax">' +
+      '<div class="hanork-heat-ring"></div>' +
       '<div class="hanork-adaptation-wheel">' +
       svgMarkup() +
       '<div class="hanork-adaptation-core"></div>' +
@@ -202,80 +192,49 @@
     }, 280);
   }
 
+  /* ══ ADAPTAÇÃO ══════════════════════════════════════════
+     O clique NÃO dá mais um passo de uma sequência fixa.
+     Ele acelera a roda e injeta tombamento aleatório em X/Y,
+     com direção e intensidade nunca repetidas — o disco
+     reage como um corpo pesado, não como uma carta.
+     Depois volta sozinho ao giro calmo. Continua girando. */
+  function randomPick(arr) { return arr[(Math.random() * arr.length) | 0]; }
+
   function runMove() {
-    if (hidden) {
-      animating = false;
-      if (pending) {
-        pending = false;
-        adapt();
-      }
-      return;
+    if (hidden) { animating = false; drainPending(); return; }
+
+    var dir = Math.random() < 0.5 ? -1 : 1;
+
+    /* velocidade: base + impulso, sempre voltando à base */
+    var boost = SPIN_BASE + Math.random() * (SPIN_MAX - SPIN_BASE) * (0.55 + Math.random() * 0.45);
+    spin = dir * Math.max(Math.abs(spin), boost);
+
+    /* tombamento: eixo e sentido aleatórios, com magnitudes diferentes
+       para nunca parecer um padrão repetido */
+    var axis = randomPick(['x', 'y', 'z', 'xy']);
+    var power = 0.16 + Math.random() * 0.30;   /* rad/ms de velocidade angular */
+
+    if (axis === 'x' || axis === 'xy') tiltVX += (Math.random() < 0.5 ? -1 : 1) * power;
+    if (axis === 'y' || axis === 'xy') tiltVY += (Math.random() < 0.5 ? -1 : 1) * power;
+
+    /* Z também pode levar um impulso extra */
+    if (axis === 'z') {
+      spin += (Math.random() < 0.5 ? -1 : 1) * 0.02;
     }
 
-    if (reduced) {
-      step += 1;
-      flash();
-      playTick();
-      animating = false;
-      if (pending) {
-        pending = false;
-        adapt();
-      }
-      return;
-    }
+    /* limita o ângulo para não virar "papel dobrando" */
+    tiltVX = Math.max(-0.42, Math.min(0.42, tiltVX));
+    tiltVY = Math.max(-0.42, Math.min(0.42, tiltVY));
 
-    var move = MOVES[step % MOVES.length];
-    step += 1;
-    var from = { x: rot.x, y: rot.y, z: rot.z };
-    var to = {
-      x: rot.x + (move.x || 0),
-      y: rot.y + (move.y || 0),
-      z: rot.z + (move.z || 0)
-    };
-
-    animating = true;
     flash();
     playTick();
+    animating = false;
+    drainPending();
+  }
 
-    var over = {
-      x: to.x + (move.x ? (move.x > 0 ? 8 : -8) : 0),
-      y: to.y + (move.y ? (move.y > 0 ? 8 : -8) : 0),
-      z: to.z + (move.z ? (move.z > 0 ? 8 : -8) : 0)
-    };
-
-    var anim = wheel.animate(
-      [
-        {
-          transform:
-            'rotateX(' + from.x + 'deg) rotateY(' + from.y + 'deg) rotateZ(' + from.z + 'deg)'
-        },
-        {
-          offset: 0.84,
-          transform:
-            'rotateX(' + over.x + 'deg) rotateY(' + over.y + 'deg) rotateZ(' + over.z + 'deg)'
-        },
-        {
-          transform:
-            'rotateX(' + to.x + 'deg) rotateY(' + to.y + 'deg) rotateZ(' + to.z + 'deg)'
-        }
-      ],
-      { duration: DURATION, easing: EASING, fill: 'forwards' }
-    );
-
-    anim.addEventListener('finish', function () {
-      rot = to;
-      applyTransform();
-      try {
-        anim.cancel();
-      } catch (e) {
-        /* ignore */
-      }
-      animating = false;
-      if (pending) {
-        pending = false;
-        adapt();
-      }
-    });
+  /* Um clique nunca cria fila infinita: executa no máximo 1 */
+  function drainPending() {
+    if (pending) { pending = false; adapt(); }
   }
 
   function adapt() {
@@ -380,7 +339,130 @@
     }
   }
 
+  /* ══ MOTOR CONTÍNUO ══════════════════════════════════════
+     A roda NUNCA para. Ela gira sempre em Z e, quando o usuário
+     clica, ganha um impulso em X/Y aleatório que a faz tombar
+     como um disco pesado — nunca como papel dobrando.
+
+     speed  = rotação base em Z (deg/ms)
+     tiltX/tiltY = tombamento amortecido (velocidade angular)
+     blur   = rastro por clones com opacidade proporcional à velocidade
+     sparks = faíscas atrás da roda quando a velocidade sobe
+  ══════════════════════════════════════════════════════════ */
+  var SPIN_BASE = 0.012;      /* ~7.2deg/s: giro contínuo e calmo */
+  var SPIN_MAX = 0.085;       /* teto após impulso (~49deg/s) */
+  var spin = SPIN_BASE;
+  var tiltVX = 0, tiltVY = 0;
+  var tiltX = 0, tiltY = 0;
+  var lastT = 0;
+  var spinRaf = 0;
+  var GHOSTS = 5;
+
+  function ghosts() {
+    return stage ? stage.querySelectorAll('.hw-ghost') : [];
+  }
+
+  /*Um disco pesado: gira em Z e tomba em X/Y com inércia. */
+  function spinFrame(now) {
+    spinRaf = requestAnimationFrame(spinFrame);
+    if (hidden) { lastT = now; return; }
+    if (!lastT) { lastT = now; return; }
+    var dt = Math.min(48, now - lastT);   /* limita salto ao voltar a aba */
+    lastT = now;
+
+    /* decai de volta à velocidade base (amortecimento) */
+    spin += (SPIN_BASE - spin) * 0.012 * (dt / 16);
+
+    rot.z += spin * dt;
+    rot.x += tiltX * dt;
+    rot.y += tiltY * dt;
+
+    /* tombamento volta ao eixo com atrito — disco pesado */
+    tiltVX *= 0.955; tiltVY *= 0.955;
+    tiltX += tiltVX * dt;
+    tiltY += tiltVY * dt;
+    tiltX -= tiltX * 0.05 * (dt / 16);
+    tiltY -= tiltY * 0.05 * (dt / 16);
+
+    applyTransform();
+    applySpeedFX(dt);
+  }
+
+  /*Blur: a cópia principal fica nítida; clones deslocados
+     no sentido do giro criam a sensação de disco girando. */
+  var ghostEls = [];
+  function applySpeedFX(dt) {
+    if (!wheel) return;
+    var v = Math.abs(spin) / SPIN_MAX;          /* 0..1 velocidade */
+    var tiltV = Math.min(1, (Math.abs(tiltX) + Math.abs(tiltY)) / 0.35);
+
+    /* rastro: clones atrasados no tempo */
+    if (ghostEls.length) {
+      for (var i = 0; i < ghostEls.length; i++) {
+        var g = ghostEls[i];
+        var k = (i + 1) / ghostEls.length;
+        var back = k * v * 26;                   /* graus de atraso */
+        g.style.transform =
+          'rotateX(' + (rot.x - tiltVX * back * 0.6).toFixed(2) + 'deg) ' +
+          'rotateY(' + (rot.y - tiltVY * back * 0.6).toFixed(2) + 'deg) ' +
+          'rotateZ(' + (rot.z - spin * back * 16).toFixed(2) + 'deg)';
+        g.style.opacity = (v * 0.16 * (1 - k)).toFixed(3);
+      }
+    }
+
+    /* brilho proporcional à velocidade */
+    svgEl.style.filter = 'drop-shadow(0 0 ' +
+      (3 + v * 9).toFixed(1) + 'px rgba(139,26,43,' + (0.2 + v * 0.5).toFixed(2) + '))';
+
+    wheel.style.opacity = (0.1 + v * 0.07).toFixed(3);
+    core.style.opacity = (0.22 + v * 0.5).toFixed(3);
+
+    /* acende o "fogo" no anel quando está rápido */
+    if (stage) {
+      if (v > 0.22) stage.classList.add('is-hot');
+      else stage.classList.remove('is-hot');
+    }
+
+    /* faíscas atrás quando acelera */
+    if (v > 0.18) {
+      var n = Math.min(3, Math.floor((v - 0.18) * 5));
+      for (var s = 0; s < n; s++) {
+        if (particleCtx) {
+          var a = Math.random() * Math.PI * 2;
+          var r = 150 + Math.random() * 70;
+          spawnParticle(
+            window.innerWidth / 2 + Math.cos(a) * r,
+            window.innerHeight / 2 + Math.sin(a) * r
+          );
+        }
+      }
+    }
+  }
+
+  function buildGhosts() {
+    if (!wheel || isNarrow || reduced) return;
+    for (var i = 0; i < GHOSTS; i++) {
+      var g = wheel.cloneNode(true);
+      g.className = 'hanork-adaptation-wheel hw-ghost';
+      g.style.opacity = '0';
+      var coreG = g.querySelector('.hanork-adaptation-core');
+      if (coreG) coreG.style.display = 'none';
+      stage.querySelector('.hanork-adaptation-parallax').appendChild(g);
+      ghostEls.push(g);
+    }
+  }
+
   mount();
+  buildGhosts();
+
+  /* ── giro permanente ──
+     Em reduced-motion a roda não gira; um clique ainda dá
+     um pulso curto de brilho, sem rotação. */
+  if (!reduced) {
+    spinRaf = requestAnimationFrame(spinFrame);
+  } else if (svgEl) {
+    svgEl.style.opacity = '0.07';
+  }
 
   document.addEventListener('pointerdown', onPointer, { passive: true });
   window.addEventListener('scroll', onScroll, { passive: true });
