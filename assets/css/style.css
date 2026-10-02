@@ -163,7 +163,7 @@ html:not(.gate-open) #gate-matrix { display: none; }
   inset: 0;
   z-index: var(--z-gate);
   display: grid;
-  place-items: stretch;
+  grid-template-rows: minmax(0, 1fr) auto;
   padding: 0;
   overflow: hidden;
   background: transparent;
@@ -213,9 +213,23 @@ html:not(.gate-open) #gate-matrix { display: none; }
   z-index: 2;
   display: flex;
   align-items: center;
+  min-height: 0;
+  overflow: auto;
   width: min(100%, var(--max));
   margin: 0 auto;
-  padding: 28px 20px;
+  padding: 24px 20px 8px;
+}
+
+.gate-cta {
+  position: relative;
+  z-index: 4;
+  padding: 12px 20px calc(18px + env(safe-area-inset-bottom, 0px));
+  background: linear-gradient(180deg, rgba(5, 5, 6, 0), rgba(5, 5, 6, 0.96) 42%);
+}
+
+.gate-cta .btn-enter {
+  width: min(100%, 320px);
+  min-height: 52px;
 }
 
 .gate-panel {
@@ -939,11 +953,6 @@ main {
   letter-spacing: 0.02em;
 }
 
-.chip::before {
-  content: "— ";
-  color: var(--carmine);
-}
-
 .stack-lanes {
   display: grid;
   gap: 14px;
@@ -1444,6 +1453,16 @@ html.js .reveal.is-in { opacity: 1; transform: none; }
   .hanork-control-dock { right: max(8px, env(safe-area-inset-right, 0px)); }
   .viz-bars { display: none; }
   .rose-wrap { right: -40%; opacity: 0.55; }
+}
+
+@media (max-height: 820px) {
+  .gate-title { font-size: clamp(2.1rem, 8vh, 3.5rem); }
+  .gate-lead { display: none; }
+  .logo-box,
+  .logo-mark { width: 52px; height: 52px; }
+  .logo-box { margin-bottom: 10px; }
+  .hanork-gate-kicker { margin-bottom: 8px; }
+  .gate-footer { margin-top: 16px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

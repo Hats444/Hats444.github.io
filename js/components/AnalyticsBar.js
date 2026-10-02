@@ -18,7 +18,7 @@
   };
 
   function formatNum(n) {
-    if (n === null || n === undefined || Number.isNaN(n)) return '—';
+    if (n === null || n === undefined || Number.isNaN(n)) return '…';
     return Number(n).toLocaleString('pt-BR');
   }
 
@@ -38,9 +38,9 @@
     const visitors = formatNum(stats.visitors);
     const accesses = formatNum(stats.accesses);
 
-    setText(IDS.gate.online, '◈ ' + online);
-    setText(IDS.gate.visitors, '✧ ' + visitors);
-    setText(IDS.gate.accesses, '† ' + accesses);
+    setText(IDS.gate.online, 'Online ' + online);
+    setText(IDS.gate.visitors, 'Visitantes ' + visitors);
+    setText(IDS.gate.accesses, 'Acessos ' + accesses);
 
     setText(IDS.session.online, 'ONLINE: ' + online);
     setText(IDS.session.visitors, 'VISITANTES: ' + visitors);

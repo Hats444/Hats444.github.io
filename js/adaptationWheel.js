@@ -27,7 +27,6 @@
   var parallaxY = 0;
   var mouseTilt = { x: 0, y: 0 };
   var orientTilt = { x: 0, y: 0 };
-  var audioCtx = null;
   var lastParticle = 0;
 
   function svgMarkup() {
@@ -146,44 +145,6 @@
       (oy * 0.12).toFixed(2) + 'deg) rotateY(' + (ox * -0.12).toFixed(2) + 'deg)';
   }
 
-  function musicIsOn() {
-    var audio = document.getElementById('bg-music');
-    if (!audio) return false;
-    return !audio.paused && !audio.muted && audio.volume > 0;
-  }
-
-  function playTick() {
-    if (hidden || !musicIsOn()) return;
-    try {
-      var AC = window.AudioContext || window.webkitAudioContext;
-      if (!AC) return;
-      if (!audioCtx) audioCtx = new AC();
-      if (audioCtx.state === 'suspended') audioCtx.resume();
-      var t = audioCtx.currentTime;
-      var osc = audioCtx.createOscillator();
-      var osc2 = audioCtx.createOscillator();
-      var gain = audioCtx.createGain();
-      osc.type = 'triangle';
-      osc2.type = 'square';
-      osc.frequency.setValueAtTime(1680, t);
-      osc.frequency.exponentialRampToValueAtTime(420, t + 0.07);
-      osc2.frequency.setValueAtTime(880, t);
-      osc2.frequency.exponentialRampToValueAtTime(220, t + 0.05);
-      gain.gain.setValueAtTime(0.0001, t);
-      gain.gain.exponentialRampToValueAtTime(0.045, t + 0.008);
-      gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.09);
-      osc.connect(gain);
-      osc2.connect(gain);
-      gain.connect(audioCtx.destination);
-      osc.start(t);
-      osc2.start(t);
-      osc.stop(t + 0.1);
-      osc2.stop(t + 0.08);
-    } catch (e) {
-      /* ignore */
-    }
-  }
-
   function flash() {
     if (!wheel || !core || !svgEl) return;
     wheel.classList.add('is-adapting');
@@ -232,7 +193,6 @@
     tiltVY = Math.max(-0.18, Math.min(0.18, tiltVY));
 
     flash();
-    playTick();
     animating = false;
     drainPending();
   }
