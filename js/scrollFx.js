@@ -87,9 +87,9 @@
       var dy = (1 - e) * 26;
 
       /* inline style ganha do CSS por ser mais específico */
-      el.style.setProperty('opacity', (0.04 + e * 0.96).toFixed(3), 'important');
+      el.style.setProperty('opacity', '1', 'important');
       el.style.setProperty('transform',
-        'translate3d(0,' + dy.toFixed(2) + 'px,0) scale(' + (0.985 + e * 0.015).toFixed(4) + ')',
+        'translate3d(0,' + (dy * 0.35).toFixed(2) + 'px,0)',
         'important');
       el.style.setProperty('transition', 'none', 'important');
     }

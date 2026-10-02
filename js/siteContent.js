@@ -15,8 +15,16 @@
       '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>',
   };
 
-  const AVATAR_STYLE =
-    'width:88px;height:88px;min-width:88px;max-width:88px;min-height:88px;max-height:88px;overflow:hidden;flex-shrink:0';
+  const SYS_BY_TITLE = {
+    'Multi-sessão': 'session',
+    'Proteção de grupo': 'shield',
+    'Vendas e PIX': 'pay',
+    'Divulgação': 'div',
+    'Downloads e consulta': 'dl',
+    'Fontes públicas': 'osint',
+    'Pareamento': 'pair',
+    'Host e entrega': 'host',
+  };
 
   function esc(s) {
     return String(s || '')
@@ -26,11 +34,12 @@
       .replace(/"/g, '&quot;');
   }
 
-  function renderCard(card, cacheBust) {
+  function renderCard(card, cacheBust, index) {
     const v = cacheBust || Date.now();
     const img = esc(card.image || '') + '?v=' + v;
     const statusClass = card.statusPrivate ? ' is-private' : '';
     const icon = ICONS[card.buttonIcon] || ICONS.chat;
+    const flag = index === 0 ? ' is-flagship' : '';
     let buttonHtml;
     if (card.buttonType === 'locked') {
       buttonHtml =
@@ -45,18 +54,19 @@
         esc(M(card.buttonLabel || 'ABRIR')) +
         '</a>';
     }
+    const tech = index === 0
+      ? '<p class="card-meta">Telegram + WhatsApp · Mercado Pago · Baileys</p>'
+      : '';
     return (
-      '<article class="dkc-card">' +
+      '<article class="dkc-card' + flag + '">' +
       '<div class="card-avatar ' +
       esc(card.avatarClass || '') +
-      '" style="' +
-      AVATAR_STYLE +
       '">' +
       '<img src="' +
       img +
       '" alt="' +
       esc(card.imageAlt || card.name) +
-      '" class="avatar-img" loading="lazy" width="88" height="88" style="width:88px;height:88px;object-fit:contain;display:block">' +
+      '" class="avatar-img" loading="lazy" width="88" height="88">' +
       '</div>' +
       '<h3 class="card-name">' +
       esc(M(card.name)) +
@@ -68,6 +78,7 @@
       '">' +
       esc(M(card.status)) +
       '</p>' +
+      tech +
       '<p class="card-desc">' +
       esc(M(card.desc)) +
       '</p>' +
@@ -93,7 +104,7 @@
 
   const CAP_GROUPS = [
     {
-      label: 'WhatsApp / Telegram',
+      label: 'Plataformas',
       items: [
         'WhatsApp + Telegram',
         'Multi-sessão Baileys',
@@ -118,7 +129,7 @@
       ],
     },
     {
-      label: 'Segurança',
+      label: 'Proteção',
       items: [
         'Antilink / anti-flood',
         'Anti-admin / anti-delete',
@@ -127,7 +138,7 @@
       ],
     },
     {
-      label: 'Divulgação',
+      label: 'Distribuição',
       items: [
         'Divulgação em grupos',
         'Gerenciador de convites',
@@ -136,7 +147,7 @@
       ],
     },
     {
-      label: 'Downloads / Intel',
+      label: 'Consultas e mídia',
       items: [
         'Downloads (YT, TT, IG, SP)',
         'Figurinhas e canal',
@@ -146,7 +157,7 @@
       ],
     },
     {
-      label: 'Host',
+      label: 'Hospedagem',
       items: ['Host / backup', 'Entrega do zip sem .env'],
     },
   ];
@@ -155,11 +166,14 @@
   var LEAD_TITLES = ['Multi-sessão', 'Proteção de grupo', 'Vendas e PIX'];
 
   function focusArticle(item, i, lead) {
+    var sys = SYS_BY_TITLE[item.title] || 'session';
     return (
       '<article class="focus-item' +
       (lead ? ' is-lead' : '') +
       '" data-numeral="' +
       (ROMAN[i] || String(i + 1)) +
+      '" data-sys="' +
+      sys +
       '" style="--i:' +
       i +
       '">' +
@@ -244,14 +258,17 @@
   function renderChips(elId, items) {
     const el = document.getElementById(elId);
     if (!el || !Array.isArray(items) || !items.length) return;
-    el.innerHTML = items.map(function (s) { return '<span>' + esc(M(s)) + '</span>'; }).join('');
+    el.innerHTML = items.map(function (s) {
+      var opt = String(s).toLowerCase().indexOf('opcional') !== -1 ? ' class="is-optional"' : '';
+      return '<span' + opt + '>' + esc(M(s)) + '</span>';
+    }).join('');
   }
 
   function render(data) {
     const grid = document.getElementById('cards-grid');
     if (grid && Array.isArray(data.cards)) {
       const bust = data.updatedAt || Date.now();
-      grid.innerHTML = data.cards.map(function (c) { return renderCard(c, bust); }).join('');
+      grid.innerHTML = data.cards.map(function (c, i) { return renderCard(c, bust, i); }).join('');
     }
     applyMeta(data);
     renderFocus(data.focus);

@@ -20,7 +20,7 @@
 
     const ctxGate = gateCanvas ? gateCanvas.getContext('2d') : null;
 
-    const chars = 'ｱｲｳｴｵｶｷｸｹｺABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*<>{}[]/\\|';
+    const marks = ['+', '·', '×', '—'];
 
     let columns = [];
 
@@ -82,29 +82,29 @@
 
       if (!ctx) return;
 
-      ctx.fillStyle = 'rgba(7, 6, 10, 0.16)';
+      ctx.fillStyle = 'rgba(5, 5, 6, 0.22)';
 
       ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
-      ctx.font = fontSize + 'px JetBrains Mono, monospace';
+      ctx.font = fontSize + 'px IBM Plex Mono, monospace';
 
 
 
       for (let i = 0; i < columns.length; i++) {
 
-        const char = chars[Math.floor(Math.random() * chars.length)];
+        const char = marks[Math.floor(Math.random() * marks.length)];
 
         const x = i * columnStep;
 
         const y = columns[i] * fontSize;
 
-        const isHead = Math.random() > 0.975;
+        const isHead = Math.random() > 0.985;
 
         ctx.fillStyle = isHead
 
-          ? 'rgba(201, 185, 138, 0.92)'
+          ? 'rgba(139, 30, 45, 0.55)'
 
-          : 'rgba(139, 30, 45, 0.55)';
+          : 'rgba(196, 200, 206, 0.18)';
 
         ctx.fillText(char, x, y);
 
@@ -209,6 +209,12 @@
 
       app.hidden = false;
 
+      try {
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      } catch (e) { /* ignore */ }
+
       /* avisa módulos que dependem de layout visível (ex.: scrollFx) */
       try {
         document.dispatchEvent(new CustomEvent('hats444:app-shown'));
@@ -307,6 +313,7 @@
     scrollTopBtn.addEventListener('click', () => {
 
       window.scrollTo({ top: 0, behavior: scrollBehavior });
+      document.documentElement.scrollTop = 0;
 
     });
 
@@ -443,6 +450,52 @@
   }
 
 
+
+  const topbar = document.querySelector('.topbar');
+  const navToggle = document.getElementById('nav-toggle');
+  const siteNav = document.getElementById('site-nav');
+  const progressBar = document.getElementById('nav-progress-bar');
+
+  if (navToggle && topbar) {
+    navToggle.addEventListener('click', function () {
+      const open = !topbar.classList.contains('is-open');
+      topbar.classList.toggle('is-open', open);
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+
+  if (siteNav) {
+    siteNav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (topbar) topbar.classList.remove('is-open');
+        if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  const navSections = ['sobre', 'foco', 'planos', 'caps', 'projetos', 'stack']
+    .map(function (id) { return document.getElementById(id); })
+    .filter(Boolean);
+
+  function updateNavChrome() {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    if (progressBar && max > 0) {
+      progressBar.style.width = Math.min(100, (window.scrollY / max) * 100).toFixed(2) + '%';
+    }
+    let current = navSections[0];
+    navSections.forEach(function (section) {
+      if (section.getBoundingClientRect().top < window.innerHeight * 0.32) current = section;
+    });
+    if (siteNav && current) {
+      siteNav.querySelectorAll('a').forEach(function (link) {
+        link.classList.toggle('is-active', link.getAttribute('data-nav') === current.id);
+      });
+    }
+  }
+
+  window.addEventListener('scroll', updateNavChrome, { passive: true });
+  window.addEventListener('resize', updateNavChrome);
+  updateNavChrome();
 
   if (window.Hats444Analytics) {
 

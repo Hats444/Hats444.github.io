@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="Hats444 — bots WhatsApp e Telegram, vendas PIX, proteção de grupos, divulgação com META, multi-sessão Baileys, downloads, consultas, inteligência de fontes públicas e host. Hanork em produção.">
-  <meta name="theme-color" content="#07060a">
+  <meta name="theme-color" content="#050506">
   <link rel="canonical" href="https://hats444.github.io/">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://hats444.github.io/">
@@ -20,9 +20,9 @@
   <title>Hats444 · Hanork</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/style.css?v=36">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%2307060a' width='100' height='100'/><text x='50' y='62' text-anchor='middle' fill='%23c9b98a' font-size='36' font-family='serif' font-weight='bold'>H4</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css?v=42">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23050506' width='100' height='100'/><circle cx='50' cy='50' r='28' fill='none' stroke='%23c4c8ce' stroke-width='2'/><circle cx='50' cy='50' r='6' fill='%238b1e2d'/></svg>">
 </head>
 <body>
 <script>
@@ -33,44 +33,44 @@
     }
   } catch (e) { /* ignore */ }
 </script>
+  <a class="skip-link" href="#top">Ir ao conteúdo</a>
   <canvas id="matrix" aria-hidden="true"></canvas>
   <div class="vignette" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
+  <div class="construct" aria-hidden="true"></div>
 
   <section class="gate" id="gate">
     <canvas id="gate-matrix" aria-hidden="true"></canvas>
     <div class="rose-wrap" aria-hidden="true">
       <svg class="rose" viewBox="0 0 400 400" focusable="false">
-        <g fill="none" stroke="#8b1e2d" stroke-width="1.15" transform="translate(200 200)">
-          <circle r="176"/>
-          <circle r="142"/>
-          <circle r="86"/>
-          <circle r="34"/>
-          <circle r="8" fill="#c9b98a" stroke="none"/>
-          <path d="M0 -176 V176 M-176 0 H176 M-124 -124 L124 124 M124 -124 L-124 124" stroke="#c9b98a" stroke-opacity="0.35"/>
-          <g stroke="#c9b98a" stroke-opacity="0.8">
-            <ellipse cy="-112" rx="22" ry="48"/>
-            <g transform="rotate(30)"><ellipse cy="-112" rx="22" ry="48"/></g>
-            <g transform="rotate(60)"><ellipse cy="-112" rx="22" ry="48"/></g>
-            <g transform="rotate(90)"><ellipse cy="-112" rx="22" ry="48"/></g>
-            <g transform="rotate(120)"><ellipse cy="-112" rx="22" ry="48"/></g>
-            <g transform="rotate(150)"><ellipse cy="-112" rx="22" ry="48"/></g>
-            <g transform="rotate(180)"><ellipse cy="-112" rx="22" ry="48"/></g>
-            <g transform="rotate(210)"><ellipse cy="-112" rx="22" ry="48"/></g>
-            <g transform="rotate(240)"><ellipse cy="-112" rx="22" ry="48"/></g>
-            <g transform="rotate(270)"><ellipse cy="-112" rx="22" ry="48"/></g>
-            <g transform="rotate(300)"><ellipse cy="-112" rx="22" ry="48"/></g>
-            <g transform="rotate(330)"><ellipse cy="-112" rx="22" ry="48"/></g>
+        <defs>
+          <linearGradient id="steelGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#d7dbe1"/>
+            <stop offset="0.5" stop-color="#8a9098"/>
+            <stop offset="1" stop-color="#c9ced4"/>
+          </linearGradient>
+        </defs>
+        <g fill="none" stroke="url(#steelGrad)" stroke-width="1.05" transform="translate(200 200)">
+          <circle r="186" stroke-width="1.4"/>
+          <circle r="172" stroke-width="0.6" stroke-dasharray="2 8"/>
+          <circle r="148" stroke-width="1.1"/>
+          <circle r="118"/>
+          <circle r="72" stroke-width="1.2"/>
+          <circle r="40" stroke-width="0.7"/>
+          <circle r="14" stroke="#8b1e2d" stroke-width="1.4"/>
+          <circle r="4" fill="#c4c8ce" stroke="none"/>
+          <g stroke="#8b1e2d" stroke-opacity="0.85" stroke-width="0.9">
+            <path d="M0 -186 V-148 M0 148 V186 M-186 0 H-148 M148 0 H186"/>
           </g>
-          <g>
-            <ellipse cy="-58" rx="14" ry="26"/>
-            <g transform="rotate(45)"><ellipse cy="-58" rx="14" ry="26"/></g>
-            <g transform="rotate(90)"><ellipse cy="-58" rx="14" ry="26"/></g>
-            <g transform="rotate(135)"><ellipse cy="-58" rx="14" ry="26"/></g>
-            <g transform="rotate(180)"><ellipse cy="-58" rx="14" ry="26"/></g>
-            <g transform="rotate(225)"><ellipse cy="-58" rx="14" ry="26"/></g>
-            <g transform="rotate(270)"><ellipse cy="-58" rx="14" ry="26"/></g>
-            <g transform="rotate(315)"><ellipse cy="-58" rx="14" ry="26"/></g>
+          <g stroke="#a8aeb6" stroke-opacity="0.55">
+            <path d="M0 -118 L8 -72 L0 -64 L-8 -72 Z"/>
+            <g transform="rotate(45)"><path d="M0 -118 L8 -72 L0 -64 L-8 -72 Z"/></g>
+            <g transform="rotate(90)"><path d="M0 -118 L8 -72 L0 -64 L-8 -72 Z"/></g>
+            <g transform="rotate(135)"><path d="M0 -118 L8 -72 L0 -64 L-8 -72 Z"/></g>
+            <g transform="rotate(180)"><path d="M0 -118 L8 -72 L0 -64 L-8 -72 Z"/></g>
+            <g transform="rotate(225)"><path d="M0 -118 L8 -72 L0 -64 L-8 -72 Z"/></g>
+            <g transform="rotate(270)"><path d="M0 -118 L8 -72 L0 -64 L-8 -72 Z"/></g>
+            <g transform="rotate(315)"><path d="M0 -118 L8 -72 L0 -64 L-8 -72 Z"/></g>
           </g>
         </g>
       </svg>
@@ -78,15 +78,17 @@
     <div class="gate-scanlines" aria-hidden="true"></div>
     <div class="gate-inner">
       <div class="gate-panel">
+        <p class="hanork-gate-kicker">HATS PROTOCOL · CORE · ADAPTATION</p>
         <div class="logo-box" aria-hidden="true">
           <div class="logo-glow"></div>
           <div class="logo-mark">
             <img src="/assets/images/logo-hanork.jpg?v=16" alt="Hanork" class="avatar-img" width="84" height="84">
           </div>
         </div>
-        <p class="hanork-gate-kicker" aria-hidden="true">HATS PROTOCOL · CORE · ADAPTATION</p>
+        <p class="gate-brand">HATS444</p>
         <h1 class="gate-title">HANORK</h1>
         <p class="gate-desc">WHATSAPP · TELEGRAM · PIX · SEGURANÇA</p>
+        <p class="gate-lead">Infraestrutura privada de automação: venda, proteção e escala no mesmo produto.</p>
         <div class="status-bar">
           <span class="status-live"><i class="dot"></i> STATUS: ONLINE<span class="caret" aria-hidden="true">▌</span></span>
           <span id="gate-version">VER: 2026.8</span>
@@ -114,8 +116,23 @@
           <span class="brand-icon">
             <img src="/assets/images/logo-hanork.jpg?v=16" alt="" class="avatar-img" width="32" height="32">
           </span>
-          <span class="brand-text">intent hanork</span>
+          <span class="brand-lockup">
+            <span class="brand-text">HATS444</span>
+            <span class="brand-sub">HANORK</span>
+          </span>
         </a>
+        <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+          <span class="nav-toggle-lines" aria-hidden="true"></span>
+          <span class="visually-hidden">Abrir navegação</span>
+        </button>
+        <nav class="site-nav" id="site-nav" aria-label="Seções">
+          <a href="#sobre" data-nav="sobre">Sobre</a>
+          <a href="#foco" data-nav="foco">Sistemas</a>
+          <a href="#planos" data-nav="planos">Planos</a>
+          <a href="#caps" data-nav="caps">Arquitetura</a>
+          <a href="#projetos" data-nav="projetos">Projetos</a>
+          <a href="#stack" data-nav="stack">Stack</a>
+        </nav>
         <div class="topbar-actions">
           <a href="/admin.html" class="btn-adm" title="Painel de analytics">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 16l4-6 4 3 5-8"/></svg>
@@ -127,13 +144,16 @@
           </a>
         </div>
       </div>
+      <div class="nav-progress" aria-hidden="true"><span id="nav-progress-bar"></span></div>
     </header>
 
     <main id="top">
       <section class="intro reveal" id="sobre">
+        <div class="hero-wheel-host" id="hero-wheel-host" aria-hidden="true"></div>
         <div class="hanork-hero-col">
           <p class="intro-label">// SOBRE</p>
-          <p class="hanork-kicker" aria-hidden="true">CORE · SESSION · SYNC</p>
+          <p class="hanork-kicker">CORE · SESSION · SYNC</p>
+          <p class="hero-id">HATS444 / HANORK</p>
           <h2>Automação que vende,<br>protege e escala.</h2>
           <p class="intro-text">
             Hanork é a plataforma que eu construo: WhatsApp + Telegram no mesmo produto.
@@ -141,59 +161,99 @@
             divulgação com ocupação META, proteção de grupo, downloads, consultas e inteligência de fontes públicas, figurinhas e painel multi-sessão.
             Do código ao servidor.
           </p>
+          <div class="hero-actions">
+            <a class="btn-enter btn-inline" href="#foco">Explorar sistemas</a>
+            <a class="btn-ghost" href="https://t.me/hanork_bot" target="_blank" rel="noopener noreferrer">Abrir HANORK</a>
+            <a class="btn-ghost" href="https://github.com/Hats444" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
         </div>
-        <aside class="hanork-hero-side" aria-hidden="true">
+        <aside class="hanork-hero-side">
           <span>HATS PROTOCOL</span>
           <span>NODE 20</span>
           <span>PAGES · LIVE</span>
-          <span>BUILD DECOR</span>
+          <span>BAILEYS · TG API</span>
         </aside>
+        <a class="hero-continue" href="#foco">Continuar pela infraestrutura</a>
       </section>
 
-      <p class="rule" aria-hidden="true"><span></span>†<span></span></p>
+      <section class="about-map reveal" id="relacao" aria-label="Relação HATS444 e HANORK">
+        <p class="section-label">// RELAÇÃO</p>
+        <div class="about-split">
+          <div>
+            <h3 class="about-heading">Do protocolo ao produto.</h3>
+            <p class="about-copy">HATS444 é a assinatura de engenharia. HANORK é o sistema em produção: WhatsApp e Telegram, automação de vendas, pagamentos, proteção e gerenciamento no mesmo fluxo.</p>
+          </div>
+          <svg class="rel-diagram" viewBox="0 0 420 180" role="img" aria-label="Diagrama: HATS444 origina HANORK, que conecta Telegram e WhatsApp">
+            <g fill="none" stroke="#8d949e" stroke-width="1">
+              <rect x="12" y="62" width="110" height="56" rx="2"/>
+              <rect x="155" y="50" width="110" height="80" rx="2"/>
+              <rect x="298" y="22" width="110" height="52" rx="2"/>
+              <rect x="298" y="106" width="110" height="52" rx="2"/>
+              <path d="M122 90 H155"/>
+              <path d="M265 70 H298 V48"/>
+              <path d="M265 110 H298 V132"/>
+            </g>
+            <g fill="#e8eaed" font-family="IBM Plex Mono, monospace" font-size="11">
+              <text x="67" y="94" text-anchor="middle">HATS444</text>
+              <text x="210" y="94" text-anchor="middle">HANORK</text>
+              <text x="353" y="52" text-anchor="middle">Telegram</text>
+              <text x="353" y="136" text-anchor="middle">WhatsApp</text>
+            </g>
+            <g fill="#8b1e2d" font-family="IBM Plex Mono, monospace" font-size="8">
+              <text x="67" y="108" text-anchor="middle">PROTOCOL</text>
+              <text x="210" y="110" text-anchor="middle">CORE</text>
+              <text x="353" y="66" text-anchor="middle">PAGAMENTO</text>
+              <text x="353" y="150" text-anchor="middle">SESSÃO</text>
+            </g>
+          </svg>
+        </div>
+      </section>
+
+      <p class="rule" aria-hidden="true"><span></span>01<span></span></p>
 
       <section class="focus-section reveal" id="foco" aria-label="Foco">
         <p class="section-label">// FOCO</p>
+        <h2 class="section-title">Oito domínios. Um sistema.</h2>
         <div class="focus-grid" id="focus-grid">
           <div class="focus-lead">
-            <article class="focus-item is-lead" data-numeral="I" style="--i:0">
+            <article class="focus-item is-lead" data-numeral="I" data-sys="session" style="--i:0">
               <span class="focus-glyph" aria-hidden="true">I</span>
               <h3>Multi-sessão</h3>
               <p>Painel no Telegram com várias sessões WhatsApp (Baileys). QR ou código. Cada usuário tem dados, grupos e DIV isolados. Prefixo live no Zap.</p>
             </article>
-            <article class="focus-item is-lead" data-numeral="II" style="--i:1">
+            <article class="focus-item is-lead" data-numeral="II" data-sys="shield" style="--i:1">
               <span class="focus-glyph" aria-hidden="true">II</span>
               <h3>Proteção de grupo</h3>
               <p>Antilink, anti-flood, anti-delete, anti-admin, só-admin, anti-ataque e presets. Admin nativo liga/desliga no painel .gpseguranca.</p>
             </article>
-            <article class="focus-item is-lead" data-numeral="III" style="--i:2">
+            <article class="focus-item is-lead" data-numeral="III" data-sys="pay" style="--i:2">
               <span class="focus-glyph" aria-hidden="true">III</span>
               <h3>Vendas e PIX</h3>
               <p>Starter R$29 · Pro R$49 · Enterprise R$99 /mês. Trimestral e anual com desconto. Day pass R$1. Checkout Mercado Pago. Afiliado com VIP por venda.</p>
             </article>
           </div>
           <div class="focus-rest">
-            <article class="focus-item" data-numeral="IV" style="--i:3">
+            <article class="focus-item" data-numeral="IV" data-sys="div" style="--i:3">
               <span class="focus-glyph" aria-hidden="true">IV</span>
               <h3>Divulgação</h3>
               <p>Posts em massa com CTA, status, mídia e PIX. Grupo morto sai sozinho e a vaga se repõe pela fila (ocupação META). Gerenciador de convites.</p>
             </article>
-            <article class="focus-item" data-numeral="V" style="--i:4">
+            <article class="focus-item" data-numeral="V" data-sys="dl" style="--i:4">
               <span class="focus-glyph" aria-hidden="true">V</span>
               <h3>Downloads e consulta</h3>
               <p>YouTube, TikTok, Instagram, Spotify, Facebook, Kwai. Figurinhas e canal. Consultas e inteligência de fontes públicas, e o hub da API Hanork (~750 cmds).</p>
             </article>
-            <article class="focus-item" data-numeral="VI" style="--i:5">
+            <article class="focus-item" data-numeral="VI" data-sys="osint" style="--i:5">
               <span class="focus-glyph" aria-hidden="true">VI</span>
               <h3>Fontes públicas</h3>
               <p>Um comando, relatório de fontes públicas: domínio, DNS, arquivo, username, wiki, gist, paste público e correlação. Sem dump de senha.</p>
             </article>
-            <article class="focus-item" data-numeral="VII" style="--i:6">
+            <article class="focus-item" data-numeral="VII" data-sys="pair" style="--i:6">
               <span class="focus-glyph" aria-hidden="true">VII</span>
               <h3>Pareamento</h3>
               <p>Paga no Telegram, conecta o chip e manda comando no WhatsApp. Prefixo troca com setprefix. Telegram continua sempre com /.</p>
             </article>
-            <article class="focus-item" data-numeral="VIII" style="--i:7">
+            <article class="focus-item" data-numeral="VIII" data-sys="host" style="--i:7">
               <span class="focus-glyph" aria-hidden="true">VIII</span>
               <h3>Host e entrega</h3>
               <p>Egg em produção, backup do código sem .env nem sessões. Zip do bot sem segredos. Painel admin e saúde do processo.</p>
@@ -202,38 +262,50 @@
         </div>
       </section>
 
-      <p class="rule" aria-hidden="true"><span></span>✦<span></span></p>
+      <p class="rule" aria-hidden="true"><span></span>02<span></span></p>
 
       <section class="pricing-section reveal" id="planos" data-numeral="IX" aria-label="Planos">
         <p class="section-label">// PLANOS</p>
+        <h2 class="section-title">Modalidades documentadas.</h2>
+        <p class="section-lede">Valores e meios de pagamento conforme o produto. Checkout no Telegram via Mercado Pago — sem simulação nesta página.</p>
         <div class="pricing-grid">
           <article class="price-card">
             <p class="price-tier">STARTER</p>
             <p class="price-value">R$29<span>/mês</span></p>
+            <ul class="price-features">
+              <li>Checkout Mercado Pago</li>
+              <li>PIX, cartão, boleto</li>
+            </ul>
+            <a class="btn-card" href="https://t.me/hanork_bot" target="_blank" rel="noopener noreferrer">Abrir bot</a>
           </article>
-          <article class="price-card is-featured">
+          <article class="price-card">
             <p class="price-tier">PRO</p>
             <p class="price-value">R$49<span>/mês</span></p>
             <ul class="price-features">
               <li>Trimestral e anual com desconto</li>
+              <li>Checkout Mercado Pago</li>
             </ul>
+            <a class="btn-card" href="https://t.me/hanork_bot" target="_blank" rel="noopener noreferrer">Abrir bot</a>
           </article>
           <article class="price-card">
             <p class="price-tier">ENTERPRISE</p>
             <p class="price-value">R$99<span>/mês</span></p>
             <ul class="price-features">
               <li>Afiliado com VIP por venda</li>
+              <li>Checkout Mercado Pago</li>
             </ul>
+            <a class="btn-card" href="https://t.me/hanork_bot" target="_blank" rel="noopener noreferrer">Abrir bot</a>
           </article>
         </div>
-        <p class="pricing-foot">Checkout Mercado Pago · PIX, cartão, boleto</p>
-        <p class="pricing-foot">Trimestral e anual com desconto · Day pass R$1</p>
+        <p class="pricing-foot">Day pass R$1 · Trimestral e anual com desconto · PIX, cartão, boleto</p>
       </section>
 
-      <p class="rule" aria-hidden="true"><span></span>⸸<span></span></p>
+      <p class="rule" aria-hidden="true"><span></span>03<span></span></p>
 
-      <section class="caps-section reveal" id="caps" data-numeral="X" aria-label="Capacidades">
-        <p class="section-label">// CAPACIDADES</p>
+      <section class="caps-section reveal" id="caps" data-numeral="X" aria-label="Arquitetura">
+        <p class="section-label">// ARQUITETURA</p>
+        <h2 class="section-title">Camadas do produto.</h2>
+        <p class="section-lede">Capacidades agrupadas por função. Ollama aparece como opcional, como no stack documentado.</p>
         <div class="caps-wrap" id="caps-grid">
           <details class="caps-group" open>
             <summary class="caps-cat">WhatsApp / Telegram</summary>
@@ -282,12 +354,13 @@
         </div>
       </section>
 
-      <p class="rule" aria-hidden="true"><span></span>†<span></span></p>
+      <p class="rule" aria-hidden="true"><span></span>04<span></span></p>
 
       <section class="cards-section reveal" id="projetos" data-numeral="XI">
         <p class="section-label">// PROJETOS &amp; CONTATO</p>
+        <h2 class="section-title">Superfícies reais.</h2>
         <div class="cards-grid" id="cards-grid">
-          <article class="dkc-card">
+          <article class="dkc-card is-flagship">
             <div class="card-avatar hanork"><img src="/assets/images/card-hanork.jpg" alt="Hanork Bot" class="avatar-img" loading="lazy" width="88" height="88"></div>
             <h3 class="card-name">HANORK BOT <span class="tag">#FLAGSHIP</span></h3>
             <p class="card-status">EM PRODUÇÃO</p>
@@ -332,10 +405,19 @@
         </div>
       </section>
 
-      <p class="rule" aria-hidden="true"><span></span>✦<span></span></p>
+      <p class="rule" aria-hidden="true"><span></span>05<span></span></p>
 
       <section class="stack-section reveal" id="stack" data-numeral="XII">
         <p class="section-label">// STACK</p>
+        <h2 class="section-title">Runtime documentado.</h2>
+        <div class="stack-lanes" aria-hidden="true">
+          <div class="lane"><em>Plataformas</em><span>Telegram</span><span>WhatsApp</span></div>
+          <div class="lane"><em>Runtime</em><span>Node.js 20</span><span>@systemzero/baileys</span><span>Telegram Bot API</span></div>
+          <div class="lane"><em>Persistência / filas</em><span>SQLite</span><span>Redis / Bull</span></div>
+          <div class="lane"><em>Pagamentos</em><span>Mercado Pago</span></div>
+          <div class="lane"><em>Intenção</em><span>Intent / NLU</span><span class="is-optional">Ollama opcional</span></div>
+          <div class="lane"><em>Infra</em><span>Linux / WSL</span><span>GitHub Actions</span><span>Supabase</span></div>
+        </div>
         <div class="stack-grid" id="stack-grid">
           <span>Node.js 20</span><span>@systemzero/baileys</span><span>Telegram Bot API</span><span>SQLite</span>
           <span>Intent / NLU</span><span>Ollama opcional</span><span>Mercado Pago</span><span>Supabase</span><span>GitHub Actions</span>
@@ -352,9 +434,23 @@
     </main>
 
     <footer class="site-footer">
-      <span>HATS PROTOCOL</span>
-      <span>© 2026 HATS444</span>
-      <span>PAGES · LIVE</span>
+      <div class="footer-brand">
+        <p class="footer-mark">HATS444</p>
+        <p>HANORK · HATS PROTOCOL</p>
+      </div>
+      <nav class="footer-nav" aria-label="Rodapé">
+        <a href="#sobre">Sobre</a>
+        <a href="#foco">Sistemas</a>
+        <a href="#planos">Planos</a>
+        <a href="https://t.me/hanork_bot" target="_blank" rel="noopener noreferrer">Bot</a>
+        <a href="https://github.com/Hats444" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/admin.html">Painel</a>
+      </nav>
+      <div class="footer-meta">
+        <span>HATS PROTOCOL</span>
+        <span>© 2026 HATS444</span>
+        <span>PAGES · LIVE</span>
+      </div>
     </footer>
 
     <div class="session-bar" id="analytics-bar" aria-label="Estatísticas do site">
@@ -392,9 +488,9 @@
   <script src="/js/services/analyticsApi.js?v=20"></script>
   <script src="/js/components/AnalyticsBar.js?v=21"></script>
   <script src="/js/hooks/useAnalytics.js?v=20"></script>
-  <script src="/js/siteContent.js?v=34"></script>
-  <script src="/js/main.js?v=36"></script>
-  <script src="/js/adaptationWheel.js?v=4"></script>
-  <script src="/js/scrollFx.js?v=3"></script>
+  <script src="/js/siteContent.js?v=40"></script>
+  <script src="/js/main.js?v=40"></script>
+  <script src="/js/adaptationWheel.js?v=40"></script>
+  <script src="/js/scrollFx.js?v=40"></script>
 </body>
 </html>

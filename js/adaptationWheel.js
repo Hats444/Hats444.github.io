@@ -32,63 +32,61 @@
 
   function svgMarkup() {
     var i;
-    var rays = '';
-    var tips = '';
-    var radials = '';
+    var blades = '';
+    var ticks = '';
     var bolts = '';
-    for (i = 0; i < 8; i++) {
-      rays +=
+    var inner = '';
+    for (i = 0; i < 12; i++) {
+      blades +=
         '<g transform="rotate(' +
-        i * 45 +
+        i * 30 +
         ' 200 200)">' +
-        '<path d="M200 48 L206 168 L200 178 L194 168 Z"/>' +
-        '<path d="M200 38 L204 52 L200 58 L196 52 Z"/>' +
-        '<line x1="200" y1="62" x2="200" y2="96"/>' +
-        '<circle cx="200" cy="108" r="3.2"/>' +
-        '<rect x="197.2" y="128" width="5.6" height="14" rx="0.6"/>' +
-        '</g>';
-      tips +=
-        '<g transform="rotate(' +
-        i * 45 +
-        ' 200 200)">' +
-        '<path d="M200 18 L208 36 L200 32 L192 36 Z"/>' +
-        '<path d="M188 40 L200 28 L212 40"/>' +
+        '<path d="M198 28 L202 28 L204 86 L200 94 L196 86 Z"/>' +
+        '<rect x="197.4" y="102" width="5.2" height="18"/>' +
         '</g>';
     }
-    for (i = 0; i < 32; i++) {
-      radials +=
+    for (i = 0; i < 72; i++) {
+      ticks +=
         '<line transform="rotate(' +
-        i * 11.25 +
-        ' 200 200)" x1="200" y1="24" x2="200" y2="' +
-        (i % 4 === 0 ? 34 : 30) +
+        i * 5 +
+        ' 200 200)" x1="200" y1="18" x2="200" y2="' +
+        (i % 6 === 0 ? 32 : 24) +
         '"/>';
     }
     for (i = 0; i < 8; i++) {
       bolts +=
         '<circle transform="rotate(' +
         (22.5 + i * 45) +
-        ' 200 200)" cx="200" cy="72" r="2.1"/>';
+        ' 200 200)" cx="200" cy="64" r="2.4"/>';
+      inner +=
+        '<path transform="rotate(' +
+        i * 45 +
+        ' 200 200)" d="M200 132 L206 158 L200 166 L194 158 Z"/>';
     }
     return (
       '<svg class="hanork-adaptation-svg" viewBox="0 0 400 400" focusable="false" aria-hidden="true">' +
-      '<g fill="none" stroke="#c9b27c" stroke-linejoin="miter" stroke-linecap="square">' +
-      '<circle cx="200" cy="200" r="188" stroke-width="1.15"/>' +
-      '<circle cx="200" cy="200" r="178" stroke-width="0.7"/>' +
-      '<circle cx="200" cy="200" r="168" stroke-width="0.45" stroke-dasharray="2 7"/>' +
-      radials +
-      tips +
-      rays +
+      '<g fill="none" stroke="#c4c8ce" stroke-linejoin="miter" stroke-linecap="square">' +
+      '<g class="ring-outer">' +
+      '<circle cx="200" cy="200" r="188" stroke-width="1.4"/>' +
+      '<circle cx="200" cy="200" r="176" stroke-width="0.55" stroke-dasharray="1 7"/>' +
+      ticks +
+      '</g>' +
+      '<g class="ring-mid" stroke="#8d949e">' +
+      '<circle cx="200" cy="200" r="148" stroke-width="1.1"/>' +
+      blades +
       bolts +
-      '<circle cx="200" cy="200" r="58" stroke-width="1"/>' +
-      '<circle cx="200" cy="200" r="46" stroke-width="0.6"/>' +
-      '<circle cx="200" cy="200" r="34" stroke-width="0.5" stroke-dasharray="1 4"/>' +
-      '<rect x="176" y="176" width="48" height="48" transform="rotate(45 200 200)" stroke-width="0.7"/>' +
-      '<path d="M200 148 L214 200 L200 252 L186 200 Z" stroke-width="0.55"/>' +
-      '<path d="M148 200 L200 214 L252 200 L200 186 Z" stroke-width="0.55"/>' +
-      '<circle cx="200" cy="200" r="16" stroke-width="1.2"/>' +
+      '</g>' +
+      '<g stroke="#8b1e2d" stroke-opacity="0.9">' +
+      '<path d="M200 12 V36 M200 364 V388 M12 200 H36 M364 200 H388"/>' +
+      '</g>' +
+      '<circle cx="200" cy="200" r="78" stroke-width="1.2"/>' +
+      '<circle cx="200" cy="200" r="58" stroke-width="0.6"/>' +
+      inner +
+      '<rect x="178" y="178" width="44" height="44" transform="rotate(45 200 200)" stroke-width="0.7"/>' +
+      '<circle cx="200" cy="200" r="18" stroke-width="1.3"/>' +
       '<circle cx="200" cy="200" r="8" stroke-width="0.8"/>' +
       '</g>' +
-      '<circle class="hanork-adaptation-nucleus" cx="200" cy="200" r="4.5" fill="#c9b27c"/>' +
+      '<circle class="hanork-adaptation-nucleus" cx="200" cy="200" r="4.2" fill="#8b1e2d"/>' +
       '</svg>'
     );
   }
@@ -104,11 +102,17 @@
       svgMarkup() +
       '<div class="hanork-adaptation-core"></div>' +
       '</div></div>';
-    var grain = document.querySelector('.grain');
-    if (grain && grain.parentNode) {
-      grain.parentNode.insertBefore(stage, grain.nextSibling);
+    var host = document.getElementById('hero-wheel-host');
+    if (host) {
+      host.appendChild(stage);
     } else {
-      document.body.insertBefore(stage, document.body.firstChild);
+      stage.classList.add('is-global');
+      var grain = document.querySelector('.grain');
+      if (grain && grain.parentNode) {
+        grain.parentNode.insertBefore(stage, grain.nextSibling);
+      } else {
+        document.body.insertBefore(stage, document.body.firstChild);
+      }
     }
     wheel = stage.querySelector('.hanork-adaptation-wheel');
     core = stage.querySelector('.hanork-adaptation-core');
@@ -321,7 +325,7 @@
         continue;
       }
       particleCtx.globalAlpha = p.life * 0.35;
-      particleCtx.fillStyle = p.gold ? '#c9b27c' : '#8b1a2b';
+      particleCtx.fillStyle = p.gold ? '#c4c8ce' : '#8b1a2b';
       particleCtx.fillRect(p.x, p.y, 1.5, 1.5);
     }
     particleCtx.globalAlpha = 1;
