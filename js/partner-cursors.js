@@ -59,9 +59,9 @@
     const gap = opts?.gap ?? Math.max(16, Math.round(88 * travelK));
     const half = gap / 2;
     const pad = Math.max(6, Math.round(PAD * travelK));
-    const arriveDist = Math.max(8, Math.round(ARRIVE_DIST * travelK));
+    const arriveDist = Math.max(28, Math.round(ARRIVE_DIST * travelK));
     const boundsEl = opts?.boundsEl || null;
-    const alwaysWander = opts?.alwaysWander === true;
+    const alwaysWander = opts?.alwaysWander !== false;
 
     function getBounds() {
       if (!boundsEl) {
@@ -103,11 +103,8 @@
     ];
 
     creatures.forEach((c) => {
-      const off = FOLLOW_OFFSETS.find((o) => o.id === c.id);
-      c.pos.x = mouse.x + (off?.ox ?? 0) * half;
-      c.pos.y = mouse.y + (off?.oy ?? 0) * half;
-      c.agent.x = c.pos.x;
-      c.agent.y = c.pos.y;
+      c.pos.x = c.agent.x;
+      c.pos.y = c.agent.y;
     });
 
     let lastMove = Date.now();
@@ -129,10 +126,38 @@
       };
     }
 
+    function pickSpreadTarget(agent) {
+      const b = getBounds();
+      const minSep = Math.max(140, Math.min(b.width, b.height) * 0.34);
+      const others = creatures.map((c) => c.agent).filter((a) => a !== agent);
+      let best = pickPointAnywhere();
+      let bestScore = -1;
+      for (let n = 0; n < 22; n++) {
+        const p = pickPointAnywhere();
+        const travel = Math.hypot(p.x - agent.x, p.y - agent.y);
+        if (travel < minSep * 0.7) continue;
+        let dMin = Infinity;
+        for (let i = 0; i < others.length; i++) {
+          const o = others[i];
+          dMin = Math.min(
+            dMin,
+            Math.hypot(p.x - o.targetX, p.y - o.targetY),
+            Math.hypot(p.x - o.x, p.y - o.y)
+          );
+        }
+        const score = dMin + travel * 0.28;
+        if (score > bestScore) {
+          bestScore = score;
+          best = p;
+        }
+        if (dMin >= minSep && travel >= minSep * 0.8) break;
+      }
+      agent.targetX = best.x;
+      agent.targetY = best.y;
+    }
+
     function pickSoloTarget(agent) {
-      const p = pickPointAnywhere();
-      agent.targetX = p.x;
-      agent.targetY = p.y;
+      pickSpreadTarget(agent);
     }
 
     function clampAgent(agent) {
@@ -142,13 +167,38 @@
     }
 
     function refreshAllTargets() {
-      creatures.forEach((c) => pickSoloTarget(c.agent));
+      creatures.forEach((c) => pickSpreadTarget(c.agent));
     }
 
     function enterPatrol() {
-      patrolUntil = Date.now() + 4000 + Math.random() * 6000;
       refreshAllTargets();
     }
+
+    (function seedSpread() {
+      const b = getBounds();
+      const cells = [
+        { x: 0, y: 0 },
+        { x: 1, y: 0 },
+        { x: 0, y: 1 },
+        { x: 1, y: 1 },
+      ];
+      for (let i = cells.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        const tmp = cells[i];
+        cells[i] = cells[j];
+        cells[j] = tmp;
+      }
+      const w = Math.max(80, (b.width - pad * 2) / 2);
+      const h = Math.max(60, (b.height - pad * 2) / 2);
+      creatures.forEach((c, i) => {
+        const q = cells[i];
+        c.agent.x = pad + q.x * w + w * (0.18 + Math.random() * 0.64);
+        c.agent.y = pad + q.y * h + h * (0.18 + Math.random() * 0.64);
+        c.pos.x = c.agent.x;
+        c.pos.y = c.agent.y;
+      });
+      refreshAllTargets();
+    })();
 
     function tickAgent(agent, pos) {
       agent.phase += 0.028;
@@ -176,14 +226,11 @@
     }
 
     function updatePatrol() {
-      if (Date.now() > patrolUntil) enterPatrol();
       creatures.forEach((c) => tickAgent(c.agent, c.pos));
     }
 
     function shouldWander() {
-      if (alwaysWander) return true;
-      if (!mouseInside) return true;
-      return Date.now() - lastMove > IDLE_MS;
+      return true;
     }
 
     function updateFollowCursor() {
