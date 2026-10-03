@@ -339,7 +339,7 @@
 
   const viz = document.getElementById('viz-bars');
 
-  const TRACK_LABEL = 'Rosary';
+  const TRACK_LABEL = 'Rosary (slowed reverb)';
 
 
 
