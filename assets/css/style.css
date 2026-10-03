@@ -437,6 +437,7 @@ html:not(.gate-open) #gate-matrix { display: none; }
 .app {
   position: relative;
   z-index: var(--z-app);
+  isolation: isolate;
   padding-bottom: calc(168px + env(safe-area-inset-bottom, 0px));
 }
 
@@ -1366,7 +1367,7 @@ html.gate-open .hanork-control-dock { display: none; }
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 18;
+  z-index: 3;
   overflow: hidden;
   contain: strict;
   transform: translateZ(0);
