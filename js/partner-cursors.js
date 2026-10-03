@@ -91,7 +91,7 @@
         targetX: p.x,
         targetY: p.y,
         phase: Math.random() * Math.PI * 2,
-        speed: 2.1 + Math.random() * 1.6,
+        speed: 2.55,
       };
     }
 
@@ -187,7 +187,7 @@
     }
 
     function updateFollowCursor() {
-      const mouseEase = 0.22;
+      const mouseEase = 0.28;
       creatures.forEach((c) => {
         const off = FOLLOW_OFFSETS.find((o) => o.id === c.id);
         const tx = mouse.x + (off?.ox ?? 0) * half;

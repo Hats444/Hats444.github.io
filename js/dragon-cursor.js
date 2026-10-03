@@ -109,7 +109,7 @@
     let lastTx = width / 2;
     let lastTy = height / 2;
     const partnerMode = Boolean(getPointer);
-    const headEase = partnerMode ? 18 : 10;
+    const chaseK = 0.36;
     const spacingK = 0.58;
 
     const onMove = (e) => {
@@ -133,10 +133,8 @@
       let e = elems[0];
       const ax = (Math.cos(3 * frm) * rad * width) / height;
       const ay = (Math.sin(4 * frm) * rad * height) / width;
-      const glide = partnerMode
-        ? { x: Math.sin(frm * 2.1) * (0.4 + speed), y: Math.cos(frm * 1.7) * (0.3 + speed * 0.7) }
-        : { x: 0, y: 0 };
-      const headK = 1 - Math.exp(-dt * headEase);
+      const glide = { x: 0, y: 0 };
+      const headK = partnerMode ? chaseK : 1 - Math.exp(-dt * 10);
       e.x += (ax + target.x + glide.x - e.x) * headK;
       e.y += (ay + target.y + glide.y - e.y) * headK;
 

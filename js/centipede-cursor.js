@@ -276,37 +276,13 @@
     follow(x, y) {
       var dist = ((this.x - x) ** 2 + (this.y - y) ** 2) ** 0.5;
       var angle = Math.atan2(y - this.y, x - this.x);
-      //Update forward
-      var accel = this.fAccel;
-      if (this.systems.length > 0) {
-        var sum = 0;
-        for (var i = 0; i < this.systems.length; i++) {
-          sum += this.systems[i].step == 0;
-        }
-        accel *= sum / this.systems.length;
-      }
-      this.fSpeed += accel * (dist > this.fThresh);
-      this.fSpeed *= 1 - this.fRes;
-      this.speed = Math.max(0, this.fSpeed - this.fFric);
-      //Update rotation
+      var chaseK = 0.36;
+      this.x += (x - this.x) * chaseK;
+      this.y += (y - this.y) * chaseK;
       var dif = this.absAngle - angle;
       dif -= 2 * Math.PI * Math.floor(dif / (2 * Math.PI) + 1 / 2);
-      if (Math.abs(dif) > this.rThresh && dist > this.fThresh) {
-        this.rSpeed -= this.rAccel * (2 * (dif > 0) - 1);
-      }
-      this.rSpeed *= 1 - this.rRes;
-      if (Math.abs(this.rSpeed) > this.rFric) {
-        this.rSpeed -= this.rFric * (2 * (this.rSpeed > 0) - 1);
-      } else {
-        this.rSpeed = 0;
-      }
-  
-      //Update position
-      this.absAngle += this.rSpeed;
-      this.absAngle -=
-        2 * Math.PI * Math.floor(this.absAngle / (2 * Math.PI) + 1 / 2);
-      this.x += this.speed * Math.cos(this.absAngle);
-      this.y += this.speed * Math.sin(this.absAngle);
+      this.absAngle -= dif * chaseK;
+      this.speed = dist * chaseK;
       this.absAngle += Math.PI;
       for (var i = 0; i < this.children.length; i++) {
         this.children[i].follow(true, true);
