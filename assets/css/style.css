@@ -635,6 +635,7 @@ main {
   padding-top: 48px;
   padding-bottom: 88px;
   position: relative;
+  overflow: visible;
 }
 
 .hero-wheel-host {
@@ -658,6 +659,8 @@ main {
   color: var(--silver);
   margin: 10px 0 12px;
 }
+
+.only-d { display: none; }
 
 .intro h2 {
   font-family: var(--font-display);
@@ -1420,10 +1423,20 @@ html.js .reveal.is-in { opacity: 1; transform: none; }
   }
   .caps-wrap { grid-template-columns: 1fr 1fr; gap: 0 32px; }
   .about-split { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .only-m { display: none; }
+  .only-d { display: inline; }
   .rose-wrap { right: 4%; width: min(42vw, 520px); opacity: 0.55; }
 }
 
 @media (min-width: 1024px) {
+  :root { --max: 1280px; }
+  .topbar-inner {
+    max-width: none;
+    padding: 10px 28px;
+    gap: 16px 20px;
+  }
+  .site-nav { gap: 0 16px; }
+  .site-nav a { font-size: 0.66rem; letter-spacing: 0.16em; }
   .focus-lead { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
   .cards-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
   .cards-grid .dkc-card:nth-child(1) {
@@ -1437,33 +1450,58 @@ html.js .reveal.is-in { opacity: 1; transform: none; }
   }
   .cards-grid .dkc-card:nth-child(n+2) { grid-column: span 3; }
   .intro {
-    grid-template-columns: minmax(0, 1fr) 200px;
-    align-items: end;
-    min-height: calc(100svh - 120px);
-    padding-bottom: 72px;
+    display: block;
+    min-height: calc(100vh - 64px);
+    padding: 28px 0 148px;
   }
-  .hanork-hero-col { max-width: 640px; }
+  .intro-label { display: none; }
+  .hanork-hero-col {
+    max-width: 58%;
+    position: relative;
+    z-index: 2;
+  }
+  .intro h2 {
+    font-size: clamp(3rem, 5.6vw, 4.7rem);
+    line-height: 0.92;
+    letter-spacing: -0.045em;
+    max-width: 11ch;
+  }
+  .intro-text {
+    max-width: 54ch;
+    font-size: 1.05rem;
+  }
+  .hero-actions {
+    margin-top: 28px;
+    gap: 12px;
+  }
   .hanork-hero-side {
+    position: absolute;
+    right: 64px;
+    bottom: 132px;
     flex-direction: column;
     align-items: flex-end;
-    padding-bottom: 48px;
+    z-index: 2;
   }
-  .hero-continue { grid-column: 1 / -1; }
+  .hero-continue { display: none; }
   .hero-wheel-host {
-    right: 0;
-    top: 8%;
-    width: min(36vw, 460px);
-    opacity: 0.42;
+    position: absolute;
+    right: -6%;
+    top: 46%;
+    transform: translateY(-50%);
+    width: min(54vw, 720px);
+    opacity: 1;
+    z-index: 0;
   }
   .hanork-adaptation-wheel {
     width: 100%;
-    opacity: 0.5;
+    opacity: 0.78;
   }
 }
 
 @media (min-width: 1440px) {
-  :root { --max: 1280px; }
-  .hero-wheel-host { right: 6%; width: 500px; }
+  :root { --max: 1400px; }
+  .hero-wheel-host { right: -2%; width: min(50vw, 760px); }
+  .intro h2 { font-size: 4.6rem; }
 }
 
 @media (max-width: 719px) {
