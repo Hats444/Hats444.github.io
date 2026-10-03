@@ -23,7 +23,6 @@
     var swarm = window.initCreatureSwarm({
       boundsEl: site,
       visualScale: window.innerWidth < 720 ? 0.52 : 0.68,
-      alwaysWander: true,
       dragonScreen: screen,
       dragonHybridScreen: screenHybrid,
       centipedeCanvas: canvas,

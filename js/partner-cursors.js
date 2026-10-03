@@ -61,7 +61,7 @@
     const pad = Math.max(6, Math.round(PAD * travelK));
     const arriveDist = Math.max(28, Math.round(ARRIVE_DIST * travelK));
     const boundsEl = opts?.boundsEl || null;
-    const alwaysWander = opts?.alwaysWander !== false;
+    const alwaysWander = opts?.alwaysWander === true;
 
     function getBounds() {
       if (!boundsEl) {
@@ -230,7 +230,9 @@
     }
 
     function shouldWander() {
-      return true;
+      if (alwaysWander) return true;
+      if (!mouseInside) return true;
+      return Date.now() - lastMove > IDLE_MS;
     }
 
     function updateFollowCursor() {
@@ -301,7 +303,12 @@
       onPointerMove({ clientX: t.clientX, clientY: t.clientY });
     }
 
+    function onPointerDown(e) {
+      onPointerMove(e);
+    }
+
     window.addEventListener("pointermove", onPointerMove, false);
+    window.addEventListener("pointerdown", onPointerDown, false);
     window.addEventListener("touchmove", onTouchMove, { passive: true });
     window.addEventListener("pointerleave", onPointerLeave, false);
     window.addEventListener("pointerenter", onPointerEnter, false);
@@ -390,6 +397,7 @@
       destroy() {
         cancelAnimationFrame(raf);
         window.removeEventListener("pointermove", onPointerMove, false);
+        window.removeEventListener("pointerdown", onPointerDown, false);
         window.removeEventListener("touchmove", onTouchMove, false);
         window.removeEventListener("pointerleave", onPointerLeave, false);
         window.removeEventListener("pointerenter", onPointerEnter, false);
