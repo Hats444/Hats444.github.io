@@ -11,8 +11,9 @@
       return { x: window.innerWidth / 2, y: window.innerHeight / 2 };
     };
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: true });
     if (!ctx) return null;
+    const externalTick = Boolean(opts && opts.externalTick);
 
     const lineWidth = (opts && opts.lineWidth) || 2;
     const legSpan = (opts && opts.legSpan) || 1;
@@ -26,8 +27,8 @@
       ctx.lineWidth = lineWidth;
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
-      ctx.shadowColor = hybridDragon ? 'rgba(110, 123, 247, 0.25)' : 'transparent';
-      ctx.shadowBlur = hybridDragon ? 6 : 0;
+      ctx.shadowColor = 'transparent';
+      ctx.shadowBlur = 0;
     }
 
     function measure() {
@@ -38,7 +39,7 @@
     }
 
     function resize() {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const dpr = 1;
       const m = measure();
       canvas.width = Math.floor(m.w * dpr);
       canvas.height = Math.floor(m.h * dpr);
@@ -528,7 +529,6 @@
 
     let raf = 0;
     function tick() {
-      raf = requestAnimationFrame(tick);
       const p = getPointer();
       ctx.save();
       ctx.setTransform(1, 0, 0, 1, 0, 0);
@@ -537,9 +537,14 @@
       paintStyle();
       lizard.follow(p.x, p.y);
     }
-    tick();
+    function run() {
+      raf = requestAnimationFrame(run);
+      tick();
+    }
+    if (!externalTick) run();
 
     return {
+      tick: tick,
       destroy: function () {
         cancelAnimationFrame(raf);
         window.removeEventListener('resize', resize, false);

@@ -261,12 +261,6 @@
     document.addEventListener("mouseleave", onPointerLeave, false);
     document.addEventListener("mouseenter", onPointerEnter, false);
 
-    const loop = () => {
-      raf = requestAnimationFrame(loop);
-      updatePosition();
-    };
-    loop();
-
     const getPtr = (id) => () => {
       const c = creatures.find((x) => x.id === id);
       return c ? { x: c.pos.x, y: c.pos.y } : { x: 0, y: 0 };
@@ -279,6 +273,7 @@
           getPointer: getPtr("dragon"),
           scale: dragonScale,
           boundsEl,
+          externalTick: true,
         })
       );
     }
@@ -292,6 +287,7 @@
           boundsEl,
           hybridCentipede: true,
           legsCanvas: opts.dragonCentipedeLegsCanvas,
+          externalTick: true,
         })
       );
     }
@@ -307,6 +303,7 @@
           lineWidth: centLine,
           legSpan: 0.9,
           boundsEl,
+          externalTick: true,
         })
       );
     }
@@ -321,9 +318,24 @@
           legSpan: 0.9,
           boundsEl,
           hybridDragon: true,
+          externalTick: true,
         })
       );
     }
+
+    const FRAME_MS = window.innerWidth < 720 ? 40 : 28;
+    let lastFrame = 0;
+    const loop = (now) => {
+      raf = requestAnimationFrame(loop);
+      if (document.hidden) return;
+      if (now - lastFrame < FRAME_MS) return;
+      lastFrame = now;
+      updatePosition();
+      for (let i = 0; i < instances.length; i++) {
+        if (instances[i] && instances[i].tick) instances[i].tick(now);
+      }
+    };
+    requestAnimationFrame(loop);
 
     return {
       destroy() {

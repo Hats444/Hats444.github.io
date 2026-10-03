@@ -42,7 +42,7 @@
 
       /* limita o número de colunas: é o que realmente pesa */
 
-      const MIN_COL_GAP = 18;
+      const MIN_COL_GAP = 28;
 
       const maxCols = Math.max(12, Math.floor(w / MIN_COL_GAP));
 
@@ -148,7 +148,7 @@
      A chuva é decorativa e opaca a 0.22 — nobody percebe os frames
      que caem, mas o processador agradece. Em telas pequenas o custo
      por frame é o mesmo, então menos frames = menos trabalho. */
-    const MATRIX_MS = 55;
+    const MATRIX_MS = 90;
 
     var matrixTimer = null;
 
