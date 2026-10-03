@@ -6,7 +6,6 @@
 
   function shouldRun() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false;
-    if (window.matchMedia('(max-width: 719px)').matches) return false;
     if (document.documentElement.classList.contains('gate-open')) return false;
     return true;
   }
@@ -23,7 +22,7 @@
     if (typeof window.initCreatureSwarm !== 'function') return;
     var swarm = window.initCreatureSwarm({
       boundsEl: site,
-      visualScale: 0.68,
+      visualScale: window.innerWidth < 720 ? 0.52 : 0.68,
       dragonScreen: screen,
       dragonHybridScreen: screenHybrid,
       centipedeCanvas: canvas,

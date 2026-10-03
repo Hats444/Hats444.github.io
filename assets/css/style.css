@@ -1555,7 +1555,6 @@ html.js .reveal.is-in { opacity: 1; transform: none; }
 }
 
 @media (max-width: 719px) {
-  #creatures-site { display: none; }
   .topbar-actions { display: none; }
   .topbar.is-open .topbar-actions { display: flex; width: 100%; }
   .intro h2 {

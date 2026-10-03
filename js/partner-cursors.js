@@ -246,7 +246,14 @@
       lastMove = Date.now();
     }
 
+    function onTouchMove(e) {
+      const t = e.touches && e.touches[0];
+      if (!t) return;
+      onPointerMove({ clientX: t.clientX, clientY: t.clientY });
+    }
+
     window.addEventListener("pointermove", onPointerMove, false);
+    window.addEventListener("touchmove", onTouchMove, { passive: true });
     window.addEventListener("pointerleave", onPointerLeave, false);
     window.addEventListener("pointerenter", onPointerEnter, false);
     window.addEventListener("blur", onBlur, false);
@@ -322,6 +329,7 @@
       destroy() {
         cancelAnimationFrame(raf);
         window.removeEventListener("pointermove", onPointerMove, false);
+        window.removeEventListener("touchmove", onTouchMove, false);
         window.removeEventListener("pointerleave", onPointerLeave, false);
         window.removeEventListener("pointerenter", onPointerEnter, false);
         window.removeEventListener("blur", onBlur, false);
