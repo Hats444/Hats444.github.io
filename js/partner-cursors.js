@@ -6,7 +6,9 @@
 
   const CENTIPEDE_BASE = 8 / Math.sqrt(7);
   const DRAGON_MULT = 0.34;
-  const SIZE_RATIO = (CENTIPEDE_BASE * 1.077) / DRAGON_MULT;
+  /* Cabeça do dragão ≈ 3.24 * dragonScale * ~28px; r da centopeia = 8.6 * scale.
+     SIZE_RATIO deixa as duas com a mesma largura visual. */
+  const SIZE_RATIO = 5.2;
 
   /** Seta padrão do SO ~24–32px; usamos 28 como referência. */
   const CURSOR_REF_PX = 28;
@@ -292,7 +294,7 @@
       );
     }
 
-    const centLine = Math.max(0.35, centipedeScale * 0.42);
+    const centLine = Math.max(0.85, dragonScale * 4.2);
 
     if (opts?.centipedeCanvas && typeof global.initCentipedeCursor === "function") {
       instances.push(
@@ -301,7 +303,7 @@
           getPointer: getPtr("centipede"),
           scale: centipedeScale,
           lineWidth: centLine,
-          legSpan: 0.9,
+          legSpan: 0.4,
           boundsEl,
           externalTick: true,
         })
@@ -315,7 +317,7 @@
           getPointer: getPtr("centipedeDragon"),
           scale: centipedeScale,
           lineWidth: centLine,
-          legSpan: 0.9,
+          legSpan: 0.4,
           boundsEl,
           hybridDragon: true,
           externalTick: true,
