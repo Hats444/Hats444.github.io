@@ -315,13 +315,15 @@ html:not(.gate-open) #gate-matrix { display: none; }
 .gate-title {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(2.6rem, 11vw, 6.2rem);
-  line-height: 0.86;
+  font-size: clamp(2.4rem, 8vw, 5rem);
+  line-height: 0.9;
   letter-spacing: -0.04em;
   color: var(--mist);
   margin-bottom: 14px;
   max-width: 100%;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
+  word-break: normal;
+  white-space: nowrap;
 }
 
 .gate-desc {
@@ -627,23 +629,23 @@ main {
 /* Hero */
 .intro {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 22px;
   min-height: calc(100svh - 148px);
   padding-top: 48px;
   padding-bottom: 88px;
-}
+  position: relative;
 }
 
 .hero-wheel-host {
   position: absolute;
-  right: -16%;
-  top: 4%;
-  width: min(92vw, 720px);
+  right: 0;
+  top: 6%;
+  width: min(58vw, 420px);
   aspect-ratio: 1;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.9;
+  opacity: 0.55;
 }
 
 .hanork-hero-col,
@@ -660,11 +662,13 @@ main {
 .intro h2 {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(1.7rem, 5vw, 3.8rem);
-  line-height: 0.96;
-  letter-spacing: -0.04em;
+  font-size: clamp(1.7rem, 4.2vw, 3.15rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
   max-width: 16ch;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
   margin-bottom: 18px;
 }
 
@@ -715,6 +719,8 @@ main {
   align-items: center;
 }
 
+.about-split > * { min-width: 0; }
+
 .about-heading {
   font-family: var(--font-display);
   font-size: clamp(1.4rem, 3vw, 2rem);
@@ -728,6 +734,7 @@ main {
   max-width: 520px;
   height: auto;
   opacity: 0.92;
+  display: block;
 }
 
 /* Systems */
@@ -1277,8 +1284,7 @@ html.gate-open .hanork-control-dock { display: none; }
   align-items: center;
   justify-content: center;
   pointer-events: none;
-  perspective: 1400px;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .hanork-adaptation-stage.is-global {
@@ -1289,34 +1295,29 @@ html.gate-open .hanork-control-dock { display: none; }
 
 .hanork-adaptation-parallax {
   position: relative;
-  transform-style: preserve-3d;
-  will-change: transform;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hanork-adaptation-wheel {
   position: relative;
-  width: min(120vw, 900px);
+  width: min(88vw, 520px);
   aspect-ratio: 1;
-  opacity: 0.5;
-  transform-style: preserve-3d;
-  will-change: transform;
+  opacity: 0.38;
 }
 
 .hanork-adaptation-svg {
   width: 100%;
   height: 100%;
   display: block;
-  overflow: visible;
 }
 
-.hanork-adaptation-wheel.hw-ghost {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  will-change: transform, opacity;
+.hanork-adaptation-stage.is-still .ring-outer,
+.hanork-adaptation-stage.is-still .ring-mid {
+  animation: none;
 }
 
 .hanork-heat-ring {
@@ -1369,37 +1370,57 @@ html.js .reveal.is-in { opacity: 1; transform: none; }
   .cards-grid .dkc-card:nth-child(1) { grid-column: 1 / -1; }
   :root { --section-y: 104px; }
   .nav-toggle { display: none; }
+  .topbar-inner {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: 12px 24px;
+    gap: 12px;
+  }
   .site-nav {
     display: flex;
     flex-direction: row;
+    flex-wrap: nowrap;
     width: auto;
-    gap: 4px 16px;
+    margin-left: 0;
+    justify-content: flex-end;
+    gap: 4px 12px;
+    min-width: 0;
   }
   .site-nav a {
     border: 0;
     padding: 8px 0;
-    font-size: 0.62rem;
+    font-size: 0.64rem;
+    white-space: nowrap;
   }
-  .topbar-inner { padding: 12px 24px; }
+  .btn-adm {
+    padding: 0 10px;
+    letter-spacing: 0.08em;
+  }
+  .topbar-actions { flex-shrink: 0; }
   main { padding: 0 24px; }
   .focus-rest,
   .cards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .cards-grid .dkc-card { padding-right: 16px; }
+  .focus-item p { overflow-wrap: break-word; }
   .pricing-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .price-card {
     padding: 28px 18px 24px 0;
     border-bottom: 0;
     border-right: 1px solid var(--line);
+    min-width: 0;
   }
   .price-card:last-child { border-right: 0; }
+  .price-value { font-size: clamp(1.6rem, 2.4vw, 2.4rem); }
   .caps-group summary {
     min-height: 0;
     pointer-events: none;
     cursor: default;
   }
   .caps-wrap { grid-template-columns: 1fr 1fr; gap: 0 32px; }
-  .about-split { grid-template-columns: 1fr 1fr; }
-  .rose-wrap { right: -8%; }
+  .about-split { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .rose-wrap { right: 4%; width: min(42vw, 520px); opacity: 0.55; }
 }
 
 @media (min-width: 1024px) {
@@ -1407,7 +1428,7 @@ html.js .reveal.is-in { opacity: 1; transform: none; }
   .cards-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
   .cards-grid .dkc-card:nth-child(1) {
     grid-column: span 6;
-    grid-template-columns: 96px 1.2fr 0.8fr;
+    grid-template-columns: 96px minmax(0, 1.2fr) minmax(0, 0.8fr);
     align-items: start;
   }
   .cards-grid .dkc-card:nth-child(1) .card-avatar {
@@ -1416,24 +1437,33 @@ html.js .reveal.is-in { opacity: 1; transform: none; }
   }
   .cards-grid .dkc-card:nth-child(n+2) { grid-column: span 3; }
   .intro {
-    grid-template-columns: minmax(0, 1.2fr) minmax(180px, 0.4fr);
+    grid-template-columns: minmax(0, 1fr) 200px;
     align-items: end;
     min-height: calc(100svh - 120px);
     padding-bottom: 72px;
   }
+  .hanork-hero-col { max-width: 640px; }
   .hanork-hero-side {
     flex-direction: column;
     align-items: flex-end;
     padding-bottom: 48px;
   }
   .hero-continue { grid-column: 1 / -1; }
-  .hero-wheel-host { right: -12%; opacity: 1; }
-  .hanork-adaptation-wheel { opacity: 0.38; width: min(70vw, 820px); }
+  .hero-wheel-host {
+    right: 0;
+    top: 8%;
+    width: min(36vw, 460px);
+    opacity: 0.42;
+  }
+  .hanork-adaptation-wheel {
+    width: 100%;
+    opacity: 0.5;
+  }
 }
 
 @media (min-width: 1440px) {
   :root { --max: 1280px; }
-  .hero-wheel-host { right: -4%; }
+  .hero-wheel-host { right: 6%; width: 500px; }
 }
 
 @media (max-width: 719px) {

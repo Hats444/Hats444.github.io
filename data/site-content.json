@@ -5,8 +5,8 @@
     "title": "Hats444 · Hanork",
     "description": "Hats444 — bots WhatsApp e Telegram, vendas PIX, proteção de grupos, divulgação com META, multi-sessão Baileys, downloads, consultas, inteligência de fontes públicas e host. Hanork em produção.",
     "introTitle": "Automação que vende,<br>protege e escala.",
-    "introText": "Hanork é a plataforma que eu construo: WhatsApp + Telegram no mesmo produto. O cliente paga no Telegram (PIX, cartão, boleto), pareia o chip (QR ou código) e usa no Zap — divulgação com ocupação META, proteção de grupo, downloads, consultas e inteligência de fontes públicas, figurinhas e painel multi-sessão. Do código ao servidor.",
-    "gateDesc": "WHATSAPP · TELEGRAM · PIX · SEGURANÇA",
+    "introText": "Hanork é a plataforma que eu construo: WhatsApp + Telegram no mesmo produto. O cliente paga no Telegram (PIX, cartão, boleto), pareia o chip (QR ou código) e usa no Zap. Divulgação com ocupação META, proteção de grupo, downloads, consultas e inteligência de fontes públicas, figurinhas e painel multi-sessão. Do código ao servidor.",
+    "gateDesc": "WhatsApp, Telegram, PIX, segurança",
     "gateVersion": "2026.8.31"
   },
   "focus": [

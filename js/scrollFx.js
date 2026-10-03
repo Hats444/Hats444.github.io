@@ -133,8 +133,8 @@
   }
 
   function mount() {
-    if (reduced) {
-      /* reduced-motion: nada some, nada move */
+    var wide = global.matchMedia('(min-width: 720px)').matches;
+    if (reduced || wide) {
       waitForApp(function () {
         collect();
         for (var i = 0; i < items.length; i++) {
