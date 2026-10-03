@@ -199,8 +199,6 @@
 
     if (!gate || !app) return;
 
-    if (window.Hats444StartMusic) window.Hats444StartMusic();
-
     document.documentElement.classList.remove('gate-open');
 
     gate.classList.add('leaving');
@@ -420,26 +418,6 @@
     audio.addEventListener('pause', () => setPlaying(false));
 
     audio.addEventListener('error', () => setPlaying(false));
-
-    function startMusic() {
-      if (!audio) return Promise.resolve();
-      audio.volume = 0.7;
-      return audio.play().then(function () {
-        setPlaying(true);
-        rememberMusic(true);
-      }).catch(function () {
-        setPlaying(false);
-      });
-    }
-
-    window.Hats444StartMusic = startMusic;
-
-    startMusic();
-    document.addEventListener('hats444:app-shown', startMusic);
-    document.addEventListener('pointerdown', function unlockMusic() {
-      if (audio.paused) startMusic();
-      document.removeEventListener('pointerdown', unlockMusic);
-    }, { once: true });
 
   }
 
