@@ -1698,7 +1698,20 @@ html.js .reveal.is-in { opacity: 1; transform: none; }
 }
 .cards-lane:hover .cards-track-inner, .stack-lane:hover .stack-track-inner,
 .cards-lane:focus-within .cards-track-inner, .stack-lane:focus-within .stack-track-inner { animation-play-state: paused; }
-.cards-lane .dkc-card { flex: 0 0 300px; max-width: 300px; }
+.cards-lane .dkc-card {
+  flex: 0 0 400px;
+  max-width: 400px;
+  padding: 22px 22px 20px;
+}
+.cards-lane .dkc-card .card-name { font-size: 1.15rem; }
+.cards-lane .dkc-card .card-desc { font-size: 0.9rem; line-height: 1.6; }
+.cards-lane .dkc-card .card-avatar { width: 96px; height: 96px; }
+.cards-lane .dkc-card .card-avatar .avatar-img { width: 96px; height: 96px; }
+@media (max-width: 720px) {
+  .cards-lane .dkc-card { flex-basis: 82vw; max-width: 82vw; }
+}
+/* título da seção não fica atrás do menu ao navegar */
+section[id] { scroll-margin-top: 96px; }
 @media (prefers-reduced-motion: reduce) {
   .cards-lane .cards-track-inner, .stack-lane .stack-track-inner { animation: none; }
   .cards-lane, .stack-lane { overflow-x: auto; }
