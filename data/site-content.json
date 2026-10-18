@@ -1,46 +1,46 @@
 {
-  "version": 8,
-  "updatedAt": 1792332045593,
+  "version": 9,
+  "updatedAt": 1792332316722,
   "meta": {
     "title": "Hats444 · Vanthork",
-    "description": "Hats444 — bots WhatsApp e Telegram, vendas PIX, proteção de grupos, divulgação com META, multi-sessão Baileys, downloads, consultas, inteligência de fontes públicas e host. Vanthork em produção.",
+    "description": "Hats444 — Vanthork: bot WhatsApp + Telegram. Loja completa no Telegram (catálogo, carrinho, cashback, afiliados), PIX Mercado Pago, divulgação com meta de grupos em tempo real, proteção de grupo, downloads, consultas e multi-sessão Baileys.",
     "introTitle": "Automação que vende,<br>protege e escala.",
-    "introText": "Vanthork é a plataforma que eu construo: WhatsApp + Telegram no mesmo produto. O cliente paga no Telegram (PIX, cartão, boleto), pareia o chip (QR ou código) e usa no Zap. Divulgação com ocupação META, proteção de grupo, downloads, consultas e inteligência de fontes públicas, figurinhas e painel multi-sessão. Do código ao servidor.",
+    "introText": "Vanthork é a plataforma que eu construo: WhatsApp + Telegram no mesmo produto. Loja completa no Telegram (catálogo, ofertas, carrinho, cupom, cashback, carteira, afiliados), checkout PIX Mercado Pago, pareamento do chip por QR ou código e uso no Zap com prefixo live. Divulgação com meta de grupos em tempo real, fila de convites que segue o chip vivo, proteção de grupo, downloads, figurinhas, consultas e inteligência de fontes públicas. Do código ao servidor.",
     "gateDesc": "WhatsApp, Telegram, PIX, segurança",
     "gateVersion": "2026.10.19"
   },
   "focus": [
     {
-      "title": "Multi-sessão",
-      "text": "Painel no Telegram com várias sessões WhatsApp (Baileys). QR ou código. Cada usuário tem dados, grupos e DIV isolados. Prefixo live no Zap."
+      "title": "Loja no Telegram",
+      "text": "Catálogo com busca, ofertas, carrinho, favoritos, cupom, cashback, carteira e pontos. Pedido com rastreio, reenvio, sorteios e tickets. Entrega digital automática e broadcast ao cliente."
+    },
+    {
+      "title": "Pagamentos e planos",
+      "text": "PIX, cartão e boleto via Mercado Pago. Teste 1 dia R$3 · 7 dias R$15 · 30 dias R$39 · 1 ano R$249. Renovar soma os dias. Afiliado ganha comissão e VIP por venda."
+    },
+    {
+      "title": "Divulgação e meta de grupos",
+      "text": "Disseminação em massa, fila de convites que segue o chip vivo e auto-reposição até o teto (10 a 200, contado em tempo real). Grupo morto sai sozinho. Pagamento nativo no grupo, canal de referências anônimo e aviso aos admins."
     },
     {
       "title": "Proteção de grupo",
-      "text": "Antilink, anti-flood, anti-delete, anti-admin, só-admin, anti-ataque e presets. Admin nativo liga/desliga no painel .gpseguranca."
+      "text": "Antilink, anti-flood, anti-delete, anti-admin, anti-ataque, antifake, só-admin e X9. Autoconvite avisa entrada no grupo, boas-vindas e presets. Painel .gpseguranca para o admin."
     },
     {
-      "title": "Vendas e PIX",
-      "text": "Teste 1 dia R$3 · 7 dias R$15 · 30 dias R$39 · 1 ano R$249. Checkout Mercado Pago. Afiliado com VIP por venda."
+      "title": "Multi-sessão e pareamento",
+      "text": "Várias sessões WhatsApp por usuário (Baileys), QR ou código. Dados, grupos e DIV isolados por tenant. Prefixo live no Zap; no Telegram sempre /. Menus nativos com botões, listas e enquetes."
     },
     {
-      "title": "Divulgação",
-      "text": "Posts em massa com CTA, status, mídia e PIX. Grupo morto sai sozinho e a vaga se repõe pela fila (ocupação META). Gerenciador de convites."
+      "title": "Downloads e mídia",
+      "text": "YouTube, TikTok, Instagram, Spotify, Facebook e Kwai. Foto + áudio externo viram um MP4 só. Figurinhas, efeitos e brincadeiras sociais (eununca, enquetes, jogos) no WhatsApp."
     },
     {
-      "title": "Downloads e consulta",
-      "text": "YouTube, TikTok, Instagram, Spotify, Facebook, Kwai. Figurinhas e canal. Consultas e inteligência de fontes públicas, e o hub da API Vanthork (~750 cmds)."
+      "title": "Consultas e fontes públicas",
+      "text": "Um comando, relatório de fontes públicas: domínio, DNS, arquivo, username, wiki, gist e paste público, com correlação. Sem dump de senha."
     },
     {
-      "title": "Fontes públicas",
-      "text": "Um comando, relatório de fontes públicas: domínio, DNS, arquivo, username, wiki, gist, paste público e correlação. Sem dump de senha."
-    },
-    {
-      "title": "Pareamento",
-      "text": "Paga no Telegram, conecta o chip e manda comando no WhatsApp. Prefixo troca com setprefix. Telegram continua sempre com /."
-    },
-    {
-      "title": "Host e entrega",
-      "text": "Egg em produção, backup do código sem .env nem sessões. Zip do bot sem segredos. Painel admin e saúde do processo."
+      "title": "Infra e host",
+      "text": "TypeScript, Node 20, PostgreSQL multi-tenant com RLS, filas Redis com retry, lock, idempotência e DLQ. Deploy zero-downtime, /health/ready e backup sem segredos."
     }
   ],
   "capabilities": [
@@ -48,6 +48,21 @@
     "Multi-sessão Baileys",
     "Pareamento QR / código",
     "Prefixo live no Zap",
+    "Menus nativos (botões, listas, enquetes)",
+    "Comando por frase natural",
+    "XP / níveis / quotas",
+    "Catálogo e busca",
+    "Ofertas",
+    "Carrinho e favoritos",
+    "Cupom",
+    "Cashback",
+    "Carteira e pontos",
+    "Pedidos e rastreio",
+    "Reenvio de pedido",
+    "Entrega digital automática",
+    "Sorteios e tickets",
+    "Broadcast ao cliente",
+    "Aviso de venda",
     "PIX Mercado Pago",
     "Cartão e boleto",
     "Teste 1 dia R$3",
@@ -55,38 +70,49 @@
     "30 dias R$39",
     "1 ano R$249",
     "Renovar soma os dias",
-    "Afiliado com VIP",
-    "Divulgação em grupos",
+    "Afiliado com VIP e comissão",
+    "Assinatura do bot",
+    "Disseminação em grupos",
     "Gerenciador de convites",
-    "Ocupação META",
+    "Meta de grupos (auto-repor)",
+    "Teto 10–200 em tempo real",
+    "Fila segue o chip vivo",
     "Grupo morto auto-repõe",
+    "Pagamento nativo no grupo",
+    "Canal de referências anônimo",
+    "Aviso aos admins",
     "Antilink / anti-flood",
     "Anti-admin / anti-delete",
     "Anti-ataque (defesa)",
+    "Antifake e X9",
+    "Só-admin e presets",
+    "Aviso de membro novo",
     "Painel .gpseguranca",
-    "Frase natural",
-    "Downloads (YT, TT, IG, SP)",
-    "Figurinhas e canal",
+    "Downloads (YT, TT, IG, SP, FB, Kwai)",
+    "Foto + áudio → MP4",
+    "Figurinhas e efeitos",
+    "Brincadeiras e enquetes",
     "Consultas e inteligência pública",
-    "API Vanthork (~750 cmds)",
     "Fontes públicas",
-    "Menus com botões",
-    "XP / níveis / quotas",
-    "Host / backup",
-    "Entrega do zip sem .env"
+    "PostgreSQL multi-tenant (RLS)",
+    "Redis / filas / DLQ",
+    "Idempotência e locks",
+    "Health / zero-downtime",
+    "Backup sem segredos"
   ],
   "stack": [
     "Node.js 20",
+    "TypeScript",
     "@systemzero/baileys",
     "Telegram Bot API",
-    "SQLite",
-    "Intent / NLU",
-    "Ollama opcional",
+    "PostgreSQL (Neon, RLS)",
+    "Redis / filas",
     "Mercado Pago",
-    "Supabase",
+    "ffmpeg",
+    "Vitest",
+    "Linux",
     "GitHub Actions",
-    "Linux / WSL",
-    "Redis / Bull"
+    "Supabase"
   ],
   "partners": [
     "Telegram",
@@ -105,7 +131,7 @@
       "tag": "#FLAGSHIP",
       "status": "EM PRODUÇÃO",
       "statusPrivate": false,
-      "desc": "Telegram + WhatsApp · PIX · planos · DIV · proteção · downloads · fontes públicas",
+      "desc": "Loja + PIX + planos · divulgação com meta de grupos em tempo real · proteção · downloads · figurinhas · consultas",
       "buttonType": "link",
       "buttonLabel": "ABRIR BOT",
       "buttonUrl": "https://t.me/vanthork_bot",

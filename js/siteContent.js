@@ -16,14 +16,14 @@
   };
 
   const SYS_BY_TITLE = {
-    'Multi-sessão': 'session',
+    'Loja no Telegram': 'pay',
+    'Pagamentos e planos': 'session',
+    'Divulgação e meta de grupos': 'div',
     'Proteção de grupo': 'shield',
-    'Vendas e PIX': 'pay',
-    'Divulgação': 'div',
-    'Downloads e consulta': 'dl',
-    'Fontes públicas': 'osint',
-    'Pareamento': 'pair',
-    'Host e entrega': 'host',
+    'Multi-sessão e pareamento': 'pair',
+    'Downloads e mídia': 'dl',
+    'Consultas e fontes públicas': 'osint',
+    'Infra e host': 'host',
   };
 
   function esc(s) {
@@ -110,9 +110,26 @@
         'Multi-sessão Baileys',
         'Pareamento QR / código',
         'Prefixo live no Zap',
-        'Menus com botões',
-        'Frase natural',
+        'Menus nativos (botões, listas, enquetes)',
+        'Comando por frase natural',
         'XP / níveis / quotas',
+      ],
+    },
+    {
+      label: 'Loja',
+      items: [
+        'Catálogo e busca',
+        'Ofertas',
+        'Carrinho e favoritos',
+        'Cupom',
+        'Cashback',
+        'Carteira e pontos',
+        'Pedidos e rastreio',
+        'Reenvio de pedido',
+        'Entrega digital automática',
+        'Sorteios e tickets',
+        'Broadcast ao cliente',
+        'Aviso de venda',
       ],
     },
     {
@@ -125,7 +142,22 @@
         '30 dias R$39',
         '1 ano R$249',
         'Renovar soma os dias',
-        'Afiliado com VIP',
+        'Afiliado com VIP e comissão',
+        'Assinatura do bot',
+      ],
+    },
+    {
+      label: 'Divulgação',
+      items: [
+        'Disseminação em grupos',
+        'Gerenciador de convites',
+        'Meta de grupos (auto-repor)',
+        'Teto 10–200 em tempo real',
+        'Fila segue o chip vivo',
+        'Grupo morto auto-repõe',
+        'Pagamento nativo no grupo',
+        'Canal de referências anônimo',
+        'Aviso aos admins',
       ],
     },
     {
@@ -134,36 +166,37 @@
         'Antilink / anti-flood',
         'Anti-admin / anti-delete',
         'Anti-ataque (defesa)',
+        'Antifake e X9',
+        'Só-admin e presets',
+        'Aviso de membro novo',
         'Painel .gpseguranca',
       ],
     },
     {
-      label: 'Distribuição',
+      label: 'Mídia e consulta',
       items: [
-        'Divulgação em grupos',
-        'Gerenciador de convites',
-        'Ocupação META',
-        'Grupo morto auto-repõe',
-      ],
-    },
-    {
-      label: 'Consultas e mídia',
-      items: [
-        'Downloads (YT, TT, IG, SP)',
-        'Figurinhas e canal',
+        'Downloads (YT, TT, IG, SP, FB, Kwai)',
+        'Foto + áudio → MP4',
+        'Figurinhas e efeitos',
+        'Brincadeiras e enquetes',
         'Consultas e inteligência pública',
-        'API Vanthork (~750 cmds)',
         'Fontes públicas',
       ],
     },
     {
-      label: 'Hospedagem',
-      items: ['Host / backup', 'Entrega do zip sem .env'],
+      label: 'Infraestrutura',
+      items: [
+        'PostgreSQL multi-tenant (RLS)',
+        'Redis / filas / DLQ',
+        'Idempotência e locks',
+        'Health / zero-downtime',
+        'Backup sem segredos',
+      ],
     },
   ];
 
   var ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
-  var LEAD_TITLES = ['Multi-sessão', 'Proteção de grupo', 'Vendas e PIX'];
+  var LEAD_TITLES = ['Loja no Telegram', 'Pagamentos e planos', 'Divulgação e meta de grupos'];
 
   function focusArticle(item, i, lead) {
     var sys = SYS_BY_TITLE[item.title] || 'session';
