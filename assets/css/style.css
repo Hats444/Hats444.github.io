@@ -1457,7 +1457,7 @@ html.js .reveal.is-in { opacity: 1; transform: none; }
   .cards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .cards-grid .dkc-card { padding-right: 16px; }
   .focus-item p { overflow-wrap: break-word; }
-  .pricing-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .pricing-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .price-card {
     padding: 28px 18px 24px 0;
     border-bottom: 0;

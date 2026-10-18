@@ -1,13 +1,13 @@
 {
-  "version": 7,
-  "updatedAt": 1788138600000,
+  "version": 8,
+  "updatedAt": 1792332045593,
   "meta": {
-    "title": "Hats444 · Hanork",
-    "description": "Hats444 — bots WhatsApp e Telegram, vendas PIX, proteção de grupos, divulgação com META, multi-sessão Baileys, downloads, consultas, inteligência de fontes públicas e host. Hanork em produção.",
+    "title": "Hats444 · Vanthork",
+    "description": "Hats444 — bots WhatsApp e Telegram, vendas PIX, proteção de grupos, divulgação com META, multi-sessão Baileys, downloads, consultas, inteligência de fontes públicas e host. Vanthork em produção.",
     "introTitle": "Automação que vende,<br>protege e escala.",
-    "introText": "Hanork é a plataforma que eu construo: WhatsApp + Telegram no mesmo produto. O cliente paga no Telegram (PIX, cartão, boleto), pareia o chip (QR ou código) e usa no Zap. Divulgação com ocupação META, proteção de grupo, downloads, consultas e inteligência de fontes públicas, figurinhas e painel multi-sessão. Do código ao servidor.",
+    "introText": "Vanthork é a plataforma que eu construo: WhatsApp + Telegram no mesmo produto. O cliente paga no Telegram (PIX, cartão, boleto), pareia o chip (QR ou código) e usa no Zap. Divulgação com ocupação META, proteção de grupo, downloads, consultas e inteligência de fontes públicas, figurinhas e painel multi-sessão. Do código ao servidor.",
     "gateDesc": "WhatsApp, Telegram, PIX, segurança",
-    "gateVersion": "2026.8.31"
+    "gateVersion": "2026.10.19"
   },
   "focus": [
     {
@@ -20,7 +20,7 @@
     },
     {
       "title": "Vendas e PIX",
-      "text": "Starter R$29 · Pro R$49 · Enterprise R$99 /mês. Trimestral e anual com desconto. Day pass R$1. Checkout Mercado Pago. Afiliado com VIP por venda."
+      "text": "Teste 1 dia R$3 · 7 dias R$15 · 30 dias R$39 · 1 ano R$249. Checkout Mercado Pago. Afiliado com VIP por venda."
     },
     {
       "title": "Divulgação",
@@ -28,7 +28,7 @@
     },
     {
       "title": "Downloads e consulta",
-      "text": "YouTube, TikTok, Instagram, Spotify, Facebook, Kwai. Figurinhas e canal. Consultas e inteligência de fontes públicas, e o hub da API Hanork (~750 cmds)."
+      "text": "YouTube, TikTok, Instagram, Spotify, Facebook, Kwai. Figurinhas e canal. Consultas e inteligência de fontes públicas, e o hub da API Vanthork (~750 cmds)."
     },
     {
       "title": "Fontes públicas",
@@ -50,11 +50,11 @@
     "Prefixo live no Zap",
     "PIX Mercado Pago",
     "Cartão e boleto",
-    "Starter R$29/mês",
-    "Pro R$49/mês",
-    "Enterprise R$99/mês",
-    "Trimestral / anual",
-    "Day pass R$1",
+    "Teste 1 dia R$3",
+    "7 dias R$15",
+    "30 dias R$39",
+    "1 ano R$249",
+    "Renovar soma os dias",
     "Afiliado com VIP",
     "Divulgação em grupos",
     "Gerenciador de convites",
@@ -68,7 +68,7 @@
     "Downloads (YT, TT, IG, SP)",
     "Figurinhas e canal",
     "Consultas e inteligência pública",
-    "API Hanork (~750 cmds)",
+    "API Vanthork (~750 cmds)",
     "Fontes públicas",
     "Menus com botões",
     "XP / níveis / quotas",
@@ -100,15 +100,15 @@
       "id": "hanork",
       "avatarClass": "hanork",
       "image": "/assets/images/card-hanork.jpg",
-      "imageAlt": "Hanork Bot",
-      "name": "HANORK BOT",
+      "imageAlt": "Vanthork Bot",
+      "name": "VANTHORK",
       "tag": "#FLAGSHIP",
       "status": "EM PRODUÇÃO",
       "statusPrivate": false,
       "desc": "Telegram + WhatsApp · PIX · planos · DIV · proteção · downloads · fontes públicas",
       "buttonType": "link",
       "buttonLabel": "ABRIR BOT",
-      "buttonUrl": "https://t.me/hanork_bot",
+      "buttonUrl": "https://t.me/vanthork_bot",
       "buttonIcon": "telegram"
     },
     {
