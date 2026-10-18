@@ -1603,3 +1603,41 @@ html.js .reveal.is-in { opacity: 1; transform: none; }
   .gate.leaving { transform: none; transition: none; }
   html.js .reveal { opacity: 1; transform: none; }
 }
+
+
+/* Capacidades: fileiras que giram sozinhas */
+.caps-lanes { display: flex; flex-direction: column; gap: 10px; margin-top: 28px; }
+.caps-lane {
+  position: relative;
+  border-top: 1px solid var(--line);
+  padding: 14px 0 10px;
+  overflow: hidden;
+}
+.caps-lane-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--carmine);
+  margin-bottom: 10px;
+}
+.caps-track {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+}
+.caps-track-inner {
+  display: flex;
+  gap: 10px;
+  width: max-content;
+  animation: caps-scroll var(--caps-dur, 46s) linear infinite;
+}
+.caps-lane:nth-child(even) .caps-track-inner { animation-direction: reverse; }
+.caps-lane:hover .caps-track-inner,
+.caps-lane:focus-within .caps-track-inner { animation-play-state: paused; }
+@keyframes caps-scroll { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .caps-track-inner { animation: none; }
+  .caps-track { overflow-x: auto; }
+}

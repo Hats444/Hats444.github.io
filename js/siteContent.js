@@ -340,23 +340,22 @@
     }).filter(function (g) { return g.items.length; });
     if (leftover.length) groups.push({ label: 'Outros', items: leftover });
     el.innerHTML = groups
-      .map(function (g, i) {
+      .map(function (g) {
+        const chips = g.items
+          .map(function (item) { return '<span class="chip">' + esc(M(item)) + '</span>'; })
+          .join('');
+        const dur = Math.max(24, Math.round(g.items.length * 3.4)) + 's';
         return (
-          '<details class="caps-group"' +
-          (i === 0 ? ' open' : '') +
-          '>' +
-          '<summary class="caps-cat">' +
-          esc(M(g.label)) +
-          '</summary>' +
-          '<div class="chip-row">' +
-          g.items.map(function (s) {
-            return '<span class="chip">' + esc(M(s)) + '</span>';
-          }).join('') +
-          '</div></details>'
+          '<div class="caps-lane">' +
+          '<span class="caps-lane-label">' + esc(M(g.label)) + '</span>' +
+          '<div class="caps-track">' +
+          '<div class="caps-track-inner" style="--caps-dur:' + dur + '">' +
+          chips + chips +
+          '</div></div></div>'
         );
       })
       .join('');
-    syncCapsAccordion();
+    el.classList.add('caps-lanes');
   }
 
   function syncCapsAccordion() {
@@ -401,8 +400,7 @@
       /* fallback: HTML estático permanece */
     }
   }
-
-  window.addEventListener('resize', syncCapsAccordion);
+
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', load);
