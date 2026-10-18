@@ -307,23 +307,22 @@
   function renderFocus(items) {
     const grid = document.getElementById('focus-grid');
     if (!grid || !Array.isArray(items) || !items.length) return;
-    const indexed = items.map(function (item, i) { return { item: item, i: i }; });
-    const lead = [];
-    LEAD_TITLES.forEach(function (title) {
-      indexed.forEach(function (row) {
-        if (row.item.title === title) lead.push(row);
-      });
-    });
-    const rest = indexed.filter(function (row) {
-      return LEAD_TITLES.indexOf(row.item.title) === -1;
-    });
-    grid.innerHTML =
-      '<div class="focus-lead">' +
-      lead.map(function (row) { return focusArticle(row.item, row.i, true); }).join('') +
-      '</div>' +
-      '<div class="focus-rest">' +
-      rest.map(function (row) { return focusArticle(row.item, row.i, false); }).join('') +
-      '</div>';
+    const lanes = [items.slice(0, Math.ceil(items.length / 2)), items.slice(Math.ceil(items.length / 2))];
+    grid.innerHTML = lanes
+      .filter(function (lane) { return lane.length; })
+      .map(function (lane) {
+        const cards = lane
+          .map(function (item, i) { return focusArticle(item, i, false); })
+          .join('');
+        const dur = Math.max(30, lane.length * 9) + 's';
+        return (
+          '<div class="focus-lane"><div class="focus-track-inner" style="--focus-dur:' + dur + '">' +
+          cards + cards +
+          '</div></div>'
+        );
+      })
+      .join('');
+    grid.classList.add('focus-lanes');
   }
 
   function renderCapabilities(items) {
