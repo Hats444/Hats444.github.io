@@ -154,6 +154,7 @@ pre, table { overflow-x: auto; }
 }
 
 html.gate-open #matrix { opacity: 0.22; }
+html.gate-open body { overflow: hidden; }
 html:not(.gate-open) #gate-matrix { display: none; }
 
 /* Gate */
@@ -165,7 +166,7 @@ html:not(.gate-open) #gate-matrix { display: none; }
   grid-template-rows: minmax(0, 1fr) auto;
   padding: 0;
   overflow: hidden;
-  background: transparent;
+  background: var(--bg);
   transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
 }
 
