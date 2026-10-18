@@ -382,12 +382,13 @@
     const grid = document.getElementById('cards-grid');
     if (grid && Array.isArray(data.cards)) {
       const bust = data.updatedAt || Date.now();
-      grid.innerHTML = data.cards.map(function (c, i) { return renderCard(c, bust, i); }).join('');
+      const row = data.cards.map(function (c, i) { return renderCard(c, bust, i); }).join('');
+      grid.innerHTML = '<div class="cards-lane"><div class="cards-track-inner" style="--track-dur:' + Math.max(36, data.cards.length * 9) + 's">' + row + row + '</div></div>';
     }
     applyMeta(data);
     renderFocus(data.focus);
     renderCapabilities(data.capabilities);
-    renderChips('stack-grid', data.stack);
+    (function(){const el=document.getElementById('stack-grid');if(el&&Array.isArray(data.stack)&&data.stack.length){const row=data.stack.map(function(t){return '<span>'+esc(M(t))+'</span>'}).join('');el.innerHTML='<div class="stack-lane" style="margin-top:0"><div class="stack-track-inner" style="--track-dur:'+Math.max(30,data.stack.length*4)+'s">'+row+row+'</div></div>';}})()
     renderChips('partners-row', data.partners);
   }
 

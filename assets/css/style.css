@@ -1672,3 +1672,34 @@ html.js .reveal.is-in { opacity: 1; transform: none; }
   .focus-track-inner { animation: none; }
   .focus-lane { overflow-x: auto; }
 }
+
+/* Cards de projeto e stack em trilha */
+.cards-lane, .stack-lane {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);
+  margin-top: 28px;
+}
+.cards-lane .cards-track-inner, .stack-lane .stack-track-inner {
+  display: flex;
+  gap: 14px;
+  width: max-content;
+  animation: caps-scroll var(--track-dur, 44s) linear infinite;
+}
+.stack-lane { margin-top: 20px; }
+.stack-lane .stack-track-inner span {
+  flex: 0 0 auto;
+  border: 1px solid var(--line);
+  padding: 8px 16px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-dim, #aab0b8);
+  white-space: nowrap;
+}
+.cards-lane:hover .cards-track-inner, .stack-lane:hover .stack-track-inner,
+.cards-lane:focus-within .cards-track-inner, .stack-lane:focus-within .stack-track-inner { animation-play-state: paused; }
+.cards-lane .dkc-card { flex: 0 0 300px; max-width: 300px; }
+@media (prefers-reduced-motion: reduce) {
+  .cards-lane .cards-track-inner, .stack-lane .stack-track-inner { animation: none; }
+  .cards-lane, .stack-lane { overflow-x: auto; }
+}
