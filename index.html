@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/style.css?v=53">
+  <link rel="stylesheet" href="/assets/css/style.css?v=54">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23050506' width='100' height='100'/><circle cx='50' cy='50' r='28' fill='none' stroke='%23c4c8ce' stroke-width='2'/><circle cx='50' cy='50' r='6' fill='%238b1e2d'/></svg>">
 </head>
 <body>
@@ -210,61 +210,111 @@
       <section class="focus-section reveal" id="foco" aria-label="Foco">
         <p class="section-label">Sistemas</p>
         <h2 class="section-title">Tudo que o bot faz. Literalmente.</h2>
-        <div class="focus-grid" id="focus-grid">
-          <div class="focus-lead">
-            <article class="focus-item is-lead" data-numeral="I" data-sys="pay" style="--i:0">
-              <span class="focus-glyph" aria-hidden="true">I</span>
-              <h3>Loja no Telegram</h3>
-              <p>A loja roda dentro do próprio Telegram: catálogo com busca e categorias, oferta relâmpago, carrinho, favorito, cupom de desconto, cashback, carteira e pontos (dá pra pagar com saldo). Pedido tem rastreio, reenvio e cancelamento, tem sorteio, ticket de suporte e avaliação depois da compra. Produto digital entrega na hora, sozinho. Pro dono: estoque, cupom, reembolso, relatório e carrinho abandonado.</p>
-            </article>
-            <article class="focus-item is-lead" data-numeral="II" data-sys="session" style="--i:1">
-              <span class="focus-glyph" aria-hidden="true">II</span>
-              <h3>Pagamentos e planos</h3>
-              <p>PIX, cartão e boleto pelo Mercado Pago. Teste de 1 dia por R$3, semana por R$15, mês por R$39 e ano por R$249. Renovou, os dias somam. Afiliado ganha comissão e VIP por venda, com painel de rendimento e saque. Tem assinatura do bot, VIP manual e verificação de pagamento.</p>
-            </article>
-            <article class="focus-item is-lead" data-numeral="III" data-sys="div" style="--i:2">
-              <span class="focus-glyph" aria-hidden="true">III</span>
-              <h3>Divulgação e meta de grupos</h3>
-              <p>Manda a divulgação pra vários grupos de uma vez, por trilha ou por slot. Texto, foto, botão e CTA configuráveis, mensagem de status e cobrança nativa no grupo (divpay/paypost), com delay e ordem por grupo. O bot entra em grupo pela fila de convites e segura a meta — de 10 a 200, contado na hora. Chip trocou? A fila vai junto. Grupo morreu? Sai e repõe. Tem criação automática de grupo, divulgação automática, canal de referências anônimo e aviso pra todos os admins.</p>
-            </article>
-          </div>
-          <div class="focus-rest">
-            <article class="focus-item" data-numeral="IV" data-sys="shield" style="--i:3">
-              <span class="focus-glyph" aria-hidden="true">IV</span>
-              <h3>Proteção de grupo</h3>
-              <p>Antilink (leve e pesado), antiflood de texto e figurinha, anti-delete, anti-admin, anti-ataque, antifake, antipalavrão e bloqueio por tipo de mídia — imagem, vídeo, áudio, figurinha, documento, localização, contato, canal, pagamento e catálogo. Só-admin, X9 e painel .gpseguranca pro admin ligar e desligar tudo.</p>
-            </article>
-            <article class="focus-item" data-numeral="V" data-sys="shield" style="--i:4">
-              <span class="focus-glyph" aria-hidden="true">V</span>
-              <h3>Administração de grupo</h3>
-              <p>Ban, mute e desmute, advertência com limite, lista branca e lista negra, palavra banida, DDD bloqueado, moderador com comando por cargo e permissão pra limpar o grupo. Boas-vindas e saída com legenda própria, autoconvite avisando entrada e ferramenta de tabela (nome, descrição, mensagem e foto do grupo).</p>
-            </article>
-            <article class="focus-item" data-numeral="VI" data-sys="pair" style="--i:5">
-              <span class="focus-glyph" aria-hidden="true">VI</span>
-              <h3>Multi-sessão e pareamento</h3>
-              <p>Vários chips no mesmo bot, cada um com seus grupos e sua divulgação separada. Pareia por QR ou código, troca o prefixo quando quiser no Zap — no Telegram continua /. O dono conecta e desconecta sessão pelo painel.</p>
-            </article>
-            <article class="focus-item" data-numeral="VII" data-sys="dl" style="--i:6">
-              <span class="focus-glyph" aria-hidden="true">VII</span>
-              <h3>Downloads e mídia</h3>
-              <p>Baixa de YouTube (música e vídeo), TikTok, Instagram, Spotify, Facebook e Kwai, com busca por nome ou link. Comando get extrai mídia de mensagem, foto + áudio externo vira um MP4 só e tem figurinha completa: s, take, attp, toimg, togif, emojimix, metadinha, figfundo e qc.</p>
-            </article>
-            <article class="focus-item" data-numeral="VIII" data-sys="dl" style="--i:7">
-              <span class="focus-glyph" aria-hidden="true">VIII</span>
-              <h3>Brincadeiras e atividade</h3>
-              <p>Enquete nativa, eununca, pedra-papel-tesoura, verdade ou desafio, casal, golpe, surubão, mencionar aleatório, contagem de dias e mais. Cada membro junta XP e nível, com rank dos mais ativos, dos inativos e modo ausente.</p>
-            </article>
-            <article class="focus-item" data-numeral="IX" data-sys="osint" style="--i:8">
-              <span class="focus-glyph" aria-hidden="true">IX</span>
-              <h3>Consultas e fontes públicas</h3>
-              <p>CEP, CNPJ e IP direto no comando, e relatório de fonte pública com domínio, DNS, arquivo, username, wiki, gist e paste — tudo com correlação. Sem dump de senha: só o que já é aberto.</p>
-            </article>
-            <article class="focus-item" data-numeral="X" data-sys="host" style="--i:9">
-              <span class="focus-glyph" aria-hidden="true">X</span>
-              <h3>Ferramentas do dono</h3>
-              <p>Painel de usuários com info e funil de vendas, multi-dono, lista de VIPs, mensagem direta pros clientes (pv e broadcast), host remoto com console, arquivos, backup e restart — tudo dentro do Telegram.</p>
-            </article>
-          </div>
+        <div class="focus-grid focus-lanes" id="focus-grid">
+          <div class="focus-lane"><div class="focus-track-inner" style="--focus-dur:45s">
+              <article class="focus-item" data-sys="pay">
+                <span class="focus-glyph" aria-hidden="true">I</span>
+                <h3>Loja no Telegram</h3>
+                <p>A loja roda dentro do próprio Telegram: catálogo com busca e categorias, oferta relâmpago, carrinho, favorito, cupom de desconto, cashback, carteira e pontos (dá pra pagar com saldo). Pedido tem rastreio, reenvio e cancelamento, tem sorteio, ticket de suporte e avaliação depois da compra. Produto digital entrega na hora, sozinho. Pro dono: estoque, cupom, reembolso, relatório e carrinho abandonado.</p>
+              </article>
+              <article class="focus-item" data-sys="session">
+                <span class="focus-glyph" aria-hidden="true">II</span>
+                <h3>Pagamentos e planos</h3>
+                <p>PIX, cartão e boleto pelo Mercado Pago. Teste de 1 dia por R$3, semana por R$15, mês por R$39 e ano por R$249. Renovou, os dias somam. Afiliado ganha comissão e VIP por venda, com painel de rendimento e saque. Tem assinatura do bot, VIP manual e verificação de pagamento.</p>
+              </article>
+              <article class="focus-item" data-sys="div">
+                <span class="focus-glyph" aria-hidden="true">III</span>
+                <h3>Divulgação e meta de grupos</h3>
+                <p>Manda a divulgação pra vários grupos de uma vez, por trilha ou por slot. Texto, foto, botão e CTA configuráveis, mensagem de status e cobrança nativa no grupo (divpay/paypost), com delay e ordem por grupo. O bot entra em grupo pela fila de convites e segura a meta — de 10 a 200, contado na hora. Chip trocou? A fila vai junto. Grupo morreu? Sai e repõe. Tem criação automática de grupo, divulgação automática, canal de referências anônimo e aviso pra todos os admins.</p>
+              </article>
+              <article class="focus-item" data-sys="shield">
+                <span class="focus-glyph" aria-hidden="true">IV</span>
+                <h3>Proteção de grupo</h3>
+                <p>Antilink (leve e pesado), antiflood de texto e figurinha, anti-delete, anti-admin, anti-ataque, antifake, antipalavrão e bloqueio por tipo de mídia — imagem, vídeo, áudio, figurinha, documento, localização, contato, canal, pagamento e catálogo. Só-admin, X9 e painel .gpseguranca pro admin ligar e desligar tudo.</p>
+              </article>
+              <article class="focus-item" data-sys="shield">
+                <span class="focus-glyph" aria-hidden="true">V</span>
+                <h3>Administração de grupo</h3>
+                <p>Ban, mute e desmute, advertência com limite, lista branca e lista negra, palavra banida, DDD bloqueado, moderador com comando por cargo e permissão pra limpar o grupo. Boas-vindas e saída com legenda própria, autoconvite avisando entrada e ferramenta de tabela (nome, descrição, mensagem e foto do grupo).</p>
+              </article>
+              <article class="focus-item" data-sys="pay">
+                <span class="focus-glyph" aria-hidden="true">I</span>
+                <h3>Loja no Telegram</h3>
+                <p>A loja roda dentro do próprio Telegram: catálogo com busca e categorias, oferta relâmpago, carrinho, favorito, cupom de desconto, cashback, carteira e pontos (dá pra pagar com saldo). Pedido tem rastreio, reenvio e cancelamento, tem sorteio, ticket de suporte e avaliação depois da compra. Produto digital entrega na hora, sozinho. Pro dono: estoque, cupom, reembolso, relatório e carrinho abandonado.</p>
+              </article>
+              <article class="focus-item" data-sys="session">
+                <span class="focus-glyph" aria-hidden="true">II</span>
+                <h3>Pagamentos e planos</h3>
+                <p>PIX, cartão e boleto pelo Mercado Pago. Teste de 1 dia por R$3, semana por R$15, mês por R$39 e ano por R$249. Renovou, os dias somam. Afiliado ganha comissão e VIP por venda, com painel de rendimento e saque. Tem assinatura do bot, VIP manual e verificação de pagamento.</p>
+              </article>
+              <article class="focus-item" data-sys="div">
+                <span class="focus-glyph" aria-hidden="true">III</span>
+                <h3>Divulgação e meta de grupos</h3>
+                <p>Manda a divulgação pra vários grupos de uma vez, por trilha ou por slot. Texto, foto, botão e CTA configuráveis, mensagem de status e cobrança nativa no grupo (divpay/paypost), com delay e ordem por grupo. O bot entra em grupo pela fila de convites e segura a meta — de 10 a 200, contado na hora. Chip trocou? A fila vai junto. Grupo morreu? Sai e repõe. Tem criação automática de grupo, divulgação automática, canal de referências anônimo e aviso pra todos os admins.</p>
+              </article>
+              <article class="focus-item" data-sys="shield">
+                <span class="focus-glyph" aria-hidden="true">IV</span>
+                <h3>Proteção de grupo</h3>
+                <p>Antilink (leve e pesado), antiflood de texto e figurinha, anti-delete, anti-admin, anti-ataque, antifake, antipalavrão e bloqueio por tipo de mídia — imagem, vídeo, áudio, figurinha, documento, localização, contato, canal, pagamento e catálogo. Só-admin, X9 e painel .gpseguranca pro admin ligar e desligar tudo.</p>
+              </article>
+              <article class="focus-item" data-sys="shield">
+                <span class="focus-glyph" aria-hidden="true">V</span>
+                <h3>Administração de grupo</h3>
+                <p>Ban, mute e desmute, advertência com limite, lista branca e lista negra, palavra banida, DDD bloqueado, moderador com comando por cargo e permissão pra limpar o grupo. Boas-vindas e saída com legenda própria, autoconvite avisando entrada e ferramenta de tabela (nome, descrição, mensagem e foto do grupo).</p>
+              </article>
+          </div></div>
+          <div class="focus-lane"><div class="focus-track-inner" style="--focus-dur:45s">
+              <article class="focus-item" data-sys="pair">
+                <span class="focus-glyph" aria-hidden="true">VI</span>
+                <h3>Multi-sessão e pareamento</h3>
+                <p>Vários chips no mesmo bot, cada um com seus grupos e sua divulgação separada. Pareia por QR ou código, troca o prefixo quando quiser no Zap — no Telegram continua /. O dono conecta e desconecta sessão pelo painel.</p>
+              </article>
+              <article class="focus-item" data-sys="dl">
+                <span class="focus-glyph" aria-hidden="true">VII</span>
+                <h3>Downloads e mídia</h3>
+                <p>Baixa de YouTube (música e vídeo), TikTok, Instagram, Spotify, Facebook e Kwai, com busca por nome ou link. Comando get extrai mídia de mensagem, foto + áudio externo vira um MP4 só e tem figurinha completa: s, take, attp, toimg, togif, emojimix, metadinha, figfundo e qc.</p>
+              </article>
+              <article class="focus-item" data-sys="dl">
+                <span class="focus-glyph" aria-hidden="true">VIII</span>
+                <h3>Brincadeiras e atividade</h3>
+                <p>Enquete nativa, eununca, pedra-papel-tesoura, verdade ou desafio, casal, golpe, surubão, mencionar aleatório, contagem de dias e mais. Cada membro junta XP e nível, com rank dos mais ativos, dos inativos e modo ausente.</p>
+              </article>
+              <article class="focus-item" data-sys="osint">
+                <span class="focus-glyph" aria-hidden="true">IX</span>
+                <h3>Consultas e fontes públicas</h3>
+                <p>CEP, CNPJ e IP direto no comando, e relatório de fonte pública com domínio, DNS, arquivo, username, wiki, gist e paste — tudo com correlação. Sem dump de senha: só o que já é aberto.</p>
+              </article>
+              <article class="focus-item" data-sys="host">
+                <span class="focus-glyph" aria-hidden="true">X</span>
+                <h3>Ferramentas do dono</h3>
+                <p>Painel de usuários com info e funil de vendas, multi-dono, lista de VIPs, mensagem direta pros clientes (pv e broadcast), host remoto com console, arquivos, backup e restart — tudo dentro do Telegram.</p>
+              </article>
+              <article class="focus-item" data-sys="pair">
+                <span class="focus-glyph" aria-hidden="true">VI</span>
+                <h3>Multi-sessão e pareamento</h3>
+                <p>Vários chips no mesmo bot, cada um com seus grupos e sua divulgação separada. Pareia por QR ou código, troca o prefixo quando quiser no Zap — no Telegram continua /. O dono conecta e desconecta sessão pelo painel.</p>
+              </article>
+              <article class="focus-item" data-sys="dl">
+                <span class="focus-glyph" aria-hidden="true">VII</span>
+                <h3>Downloads e mídia</h3>
+                <p>Baixa de YouTube (música e vídeo), TikTok, Instagram, Spotify, Facebook e Kwai, com busca por nome ou link. Comando get extrai mídia de mensagem, foto + áudio externo vira um MP4 só e tem figurinha completa: s, take, attp, toimg, togif, emojimix, metadinha, figfundo e qc.</p>
+              </article>
+              <article class="focus-item" data-sys="dl">
+                <span class="focus-glyph" aria-hidden="true">VIII</span>
+                <h3>Brincadeiras e atividade</h3>
+                <p>Enquete nativa, eununca, pedra-papel-tesoura, verdade ou desafio, casal, golpe, surubão, mencionar aleatório, contagem de dias e mais. Cada membro junta XP e nível, com rank dos mais ativos, dos inativos e modo ausente.</p>
+              </article>
+              <article class="focus-item" data-sys="osint">
+                <span class="focus-glyph" aria-hidden="true">IX</span>
+                <h3>Consultas e fontes públicas</h3>
+                <p>CEP, CNPJ e IP direto no comando, e relatório de fonte pública com domínio, DNS, arquivo, username, wiki, gist e paste — tudo com correlação. Sem dump de senha: só o que já é aberto.</p>
+              </article>
+              <article class="focus-item" data-sys="host">
+                <span class="focus-glyph" aria-hidden="true">X</span>
+                <h3>Ferramentas do dono</h3>
+                <p>Painel de usuários com info e funil de vendas, multi-dono, lista de VIPs, mensagem direta pros clientes (pv e broadcast), host remoto com console, arquivos, backup e restart — tudo dentro do Telegram.</p>
+              </article>
+          </div></div>
         </div>
       </section>
 
@@ -546,7 +596,7 @@
   <script src="/js/services/analyticsApi.js?v=20"></script>
   <script src="/js/components/AnalyticsBar.js?v=22"></script>
   <script src="/js/hooks/useAnalytics.js?v=20"></script>
-  <script src="/js/siteContent.js?v=42"></script>
+  <script src="/js/siteContent.js?v=43"></script>
   <script src="/js/main.js?v=48"></script>
   <script src="/js/adaptationWheel.js?v=44"></script>
   <script src="/js/scrollFx.js?v=44"></script>

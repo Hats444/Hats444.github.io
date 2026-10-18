@@ -1641,3 +1641,34 @@ html.js .reveal.is-in { opacity: 1; transform: none; }
   .caps-track-inner { animation: none; }
   .caps-track { overflow-x: auto; }
 }
+
+/* Sistemas: cards em trilhas que giram sozinhas */
+.focus-lanes { display: flex; flex-direction: column; gap: 14px; margin-top: 28px; }
+.focus-lane {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);
+}
+.focus-track-inner {
+  display: flex;
+  gap: 14px;
+  width: max-content;
+  animation: caps-scroll var(--focus-dur, 60s) linear infinite;
+}
+.focus-lane:nth-child(even) .focus-track-inner { animation-direction: reverse; }
+.focus-lane:hover .focus-track-inner,
+.focus-lane:focus-within .focus-track-inner { animation-play-state: paused; }
+.focus-lane .focus-item {
+  flex: 0 0 300px;
+  max-width: 300px;
+  border: 1px solid var(--line);
+  border-top-color: var(--line-strong);
+  background: rgba(12, 13, 16, 0.55);
+  padding: 18px 18px 16px;
+}
+.focus-lane .focus-item h3 { margin: 8px 0 6px; font-size: 1rem; }
+.focus-lane .focus-item p { font-size: 0.82rem; line-height: 1.55; margin: 0; color: var(--text-dim, #aab0b8); }
+@media (prefers-reduced-motion: reduce) {
+  .focus-track-inner { animation: none; }
+  .focus-lane { overflow-x: auto; }
+}
