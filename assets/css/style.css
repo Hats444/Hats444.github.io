@@ -998,7 +998,7 @@ main {
 .lane span.is-optional { color: var(--text-dim); }
 
 .stack-grid {
-  display: none;
+  display: block;
 }
 
 .partners-row {
@@ -1715,4 +1715,26 @@ section[id] { scroll-margin-top: 96px; }
 @media (prefers-reduced-motion: reduce) {
   .cards-lane .cards-track-inner, .stack-lane .stack-track-inner { animation: none; }
   .cards-lane, .stack-lane { overflow-x: auto; }
+}
+
+/* Responsivo: rodapé e bordas em qualquer formato */
+.site-footer { padding-bottom: calc(110px + env(safe-area-inset-bottom, 0px)); }
+
+@media (max-width: 719px) {
+  .site-footer { padding-right: 64px; }
+  .footer-nav { gap: 8px 12px; font-size: 0.56rem; }
+  .caps-lane .chip, .stack-track-inner span { font-size: 0.68rem; }
+  .focus-lane .focus-item { flex-basis: 84vw; max-width: 84vw; }
+}
+
+@media (max-width: 380px) {
+  .chip { font-size: 0.64rem; }
+  .price-value { font-size: 1.6rem; }
+  .caps-lane-label { font-size: 0.56rem; }
+  .session-bar span { font-size: 0.5rem; }
+}
+
+@media (max-width: 300px) {
+  .caps-lane .chip { font-size: 0.6rem; }
+  .focus-lane .focus-item { flex-basis: 90vw; max-width: 90vw; }
 }
