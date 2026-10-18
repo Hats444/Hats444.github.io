@@ -1,6 +1,6 @@
 {
-  "version": 10,
-  "updatedAt": 1792332737266,
+  "version": 11,
+  "updatedAt": 1792333187093,
   "meta": {
     "title": "Hats444 · Vanthork",
     "description": "Vanthork — bot no WhatsApp e no Telegram: loja completa, pagamento no PIX, divulgação que entra em grupo sozinha, proteção, download e consulta. Feito por Hats444.",
@@ -12,35 +12,43 @@
   "focus": [
     {
       "title": "Loja no Telegram",
-      "text": "A loja roda dentro do próprio Telegram: catálogo com busca, oferta, carrinho, favorito, cupom, cashback, carteira e pontos. Pedido tem rastreio, dá pra reenviar, tem sorteio e ticket de suporte. Produto digital entrega na hora, sozinho."
+      "text": "A loja roda dentro do próprio Telegram: catálogo com busca e categorias, oferta relâmpago, carrinho, favorito, cupom de desconto, cashback, carteira e pontos (dá pra pagar com saldo). Pedido tem rastreio, reenvio e cancelamento, tem sorteio, ticket de suporte e avaliação depois da compra. Produto digital entrega na hora, sozinho. Pro dono: estoque, cupom, reembolso, relatório e carrinho abandonado."
     },
     {
       "title": "Pagamentos e planos",
-      "text": "PIX, cartão e boleto pelo Mercado Pago. Teste de 1 dia por R$3, semana por R$15, mês por R$39 e ano por R$249. Renovou, os dias somam. Afiliado ganha comissão e VIP em cada venda."
+      "text": "PIX, cartão e boleto pelo Mercado Pago. Teste de 1 dia por R$3, semana por R$15, mês por R$39 e ano por R$249. Renovou, os dias somam. Afiliado ganha comissão e VIP por venda, com painel de rendimento e saque. Tem assinatura do bot, VIP manual e verificação de pagamento."
     },
     {
       "title": "Divulgação e meta de grupos",
-      "text": "Manda a divulgação pra vários grupos de uma vez. O bot entra em grupo novo pela fila de convites e segura o número que você escolheu — de 10 a 200, contado na hora. Grupo morreu? Ele sai e já repõe outro. Tem cobrança nativa no grupo e aviso pros admins."
+      "text": "Manda a divulgação pra vários grupos de uma vez, por trilha ou por slot. Texto, foto, botão e CTA configuráveis, mensagem de status e cobrança nativa no grupo (divpay/paypost), com delay e ordem por grupo. O bot entra em grupo pela fila de convites e segura a meta — de 10 a 200, contado na hora. Chip trocou? A fila vai junto. Grupo morreu? Sai e repõe. Tem criação automática de grupo, divulgação automática, canal de referências anônimo e aviso pra todos os admins."
     },
     {
       "title": "Proteção de grupo",
-      "text": "Antilink, antiflood, anti-delete, anti-admin, anti-ataque, antifake, só-admin e X9. Avisa quando alguém entra ou sai, dá boas-vindas e tem painel próprio (.gpseguranca) pro admin ligar e desligar tudo."
+      "text": "Antilink (leve e pesado), antiflood de texto e figurinha, anti-delete, anti-admin, anti-ataque, antifake, antipalavrão e bloqueio por tipo de mídia — imagem, vídeo, áudio, figurinha, documento, localização, contato, canal, pagamento e catálogo. Só-admin, X9 e painel .gpseguranca pro admin ligar e desligar tudo."
+    },
+    {
+      "title": "Administração de grupo",
+      "text": "Ban, mute e desmute, advertência com limite, lista branca e lista negra, palavra banida, DDD bloqueado, moderador com comando por cargo e permissão pra limpar o grupo. Boas-vindas e saída com legenda própria, autoconvite avisando entrada e ferramenta de tabela (nome, descrição, mensagem e foto do grupo)."
     },
     {
       "title": "Multi-sessão e pareamento",
-      "text": "Dá pra usar vários chips no mesmo bot, cada um com seus grupos e sua divulgação separada. Pareia por QR ou código e troca o prefixo quando quiser no Zap — no Telegram continua /."
+      "text": "Vários chips no mesmo bot, cada um com seus grupos e sua divulgação separada. Pareia por QR ou código, troca o prefixo quando quiser no Zap — no Telegram continua /. O dono conecta e desconecta sessão pelo painel."
     },
     {
       "title": "Downloads e mídia",
-      "text": "Baixa de YouTube, TikTok, Instagram, Spotify, Facebook e Kwai. Junta foto com áudio e sai um MP4 só. Faz figurinha, aplica efeito e tem as brincadeiras de grupo (eununca, enquete, jogo)."
+      "text": "Baixa de YouTube (música e vídeo), TikTok, Instagram, Spotify, Facebook e Kwai, com busca por nome ou link. Comando get extrai mídia de mensagem, foto + áudio externo vira um MP4 só e tem figurinha completa: s, take, attp, toimg, togif, emojimix, metadinha, figfundo e qc."
+    },
+    {
+      "title": "Brincadeiras e atividade",
+      "text": "Enquete nativa, eununca, pedra-papel-tesoura, verdade ou desafio, casal, golpe, surubão, mencionar aleatório, contagem de dias e mais. Cada membro junta XP e nível, com rank dos mais ativos, dos inativos e modo ausente."
     },
     {
       "title": "Consultas e fontes públicas",
-      "text": "Um comando e o bot junta o que achou em fonte pública: domínio, DNS, arquivo, username, wiki, gist e paste. Sem dump de senha — só o que já é aberto."
+      "text": "CEP, CNPJ e IP direto no comando, e relatório de fonte pública com domínio, DNS, arquivo, username, wiki, gist e paste — tudo com correlação. Sem dump de senha: só o que já é aberto."
     },
     {
-      "title": "Infra e host",
-      "text": "Roda em TypeScript no Node 20, com banco separado por cliente e fila que tenta de novo sozinha quando algo falha. Deploy sem derrubar o bot e backup sem vazar segredo."
+      "title": "Ferramentas do dono",
+      "text": "Painel de usuários com info e funil de vendas, multi-dono, lista de VIPs, mensagem direta pros clientes (pv e broadcast), host remoto com console, arquivos, backup e restart — tudo dentro do Telegram."
     }
   ],
   "capabilities": [
@@ -50,19 +58,24 @@
     "Prefixo que troca no Zap",
     "Menu com botão, lista e enquete",
     "Entende frase normal",
-    "XP, nível e cota",
-    "Catálogo com busca",
-    "Ofertas",
+    "Minha conta (perfil, dados, ID)",
+    "Compartilhar o bot",
+    "Tour dos comandos",
+    "Catálogo com busca e categorias",
+    "Oferta relâmpago",
     "Carrinho e favoritos",
-    "Cupom",
+    "Cupom de desconto",
     "Cashback",
-    "Carteira e pontos",
+    "Carteira e pontos (paga com saldo)",
     "Pedido com rastreio",
-    "Reenvio de pedido",
+    "Reenvio e cancelamento",
     "Entrega automática",
     "Sorteio e ticket",
+    "Avaliação pós-compra",
     "Mensagem pra todos os clientes",
     "Aviso de venda",
+    "Estoque, reembolso e relatório",
+    "Carrinho abandonado",
     "PIX pelo Mercado Pago",
     "Cartão e boleto",
     "Teste de 1 dia R$3",
@@ -70,29 +83,74 @@
     "Mês R$39",
     "Ano R$249",
     "Renovar soma os dias",
-    "Afiliado com comissão e VIP",
+    "Afiliado com comissão, VIP e saque",
     "Assinatura do bot",
-    "Divulgação em massa",
+    "Verificação de pagamento",
+    "Divulgação em massa e por trilha",
+    "Slots de divulgação",
+    "Texto, foto, botão e CTA",
+    "Mensagem de status",
+    "Cobrança nativa no grupo",
+    "Delay e ordem por grupo",
     "Fila de convites",
     "Meta de grupos (repõe sozinho)",
     "Teto de 10 a 200, em tempo real",
     "A fila segue o chip vivo",
     "Grupo morto sai e entra outro",
-    "Cobrança nativa no grupo",
+    "Cria grupo automático",
+    "Divulgação automática",
     "Canal de referências anônimo",
-    "Aviso pros admins",
-    "Antilink e antiflood",
-    "Anti-admin e anti-delete",
+    "Anúncio no Zap",
+    "Aviso pra todos os admins",
+    "Antilink (leve e pesado)",
+    "Antiflood de texto e figurinha",
+    "Anti-delete e anti-admin",
     "Anti-ataque",
-    "Antifake e X9",
-    "Só-admin e presets",
-    "Avisa quem entra e sai",
+    "Antifake",
+    "Antipalavrão",
+    "Bloqueia imagem, vídeo, áudio, figurinha, doc, localização, contato, canal e pagamento",
+    "Só-admin",
+    "X9 (quem sai, aparece)",
+    "Boas-vindas e saída com legenda",
+    "Autoconvite avisa entrada",
+    "Autodl, autosticker e autototext",
     "Painel .gpseguranca",
-    "Download (YT, TikTok, IG, Spotify, FB, Kwai)",
+    "Ban, mute e desmute",
+    "Advertência com limite",
+    "Lista branca e negra",
+    "Palavra banida",
+    "DDD bloqueado",
+    "Moderador com comando por cargo",
+    "Limpa o grupo",
+    "Nome, descrição e foto do grupo",
+    "XP, nível e cota",
+    "Rank dos ativos e inativos",
+    "Modo ausente",
+    "Música e vídeo do YouTube",
+    "TikTok, Instagram, Spotify, Facebook e Kwai",
+    "Busca por nome ou link",
+    "get extrai mídia da mensagem",
     "Foto + áudio vira MP4",
-    "Figurinha e efeito",
-    "Brincadeira e enquete",
-    "Consulta em fonte pública",
+    "Figurinha (s, take, attp, toimg)",
+    "togif, emojimix e metadinha",
+    "figfundo e qc",
+    "Enquete nativa",
+    "eununca",
+    "Pedra-papel-tesoura",
+    "Verdade ou desafio",
+    "Casal, golpe e surubão",
+    "Mencionar aleatório",
+    "Contagem de dias",
+    "CEP, CNPJ e IP",
+    "Domínio e DNS",
+    "Username, wiki, gist e paste",
+    "Relatório com correlação",
+    "Painel de usuários e funil",
+    "Multi-dono",
+    "Lista de VIPs",
+    "Mensagem direta (pv e broadcast)",
+    "Console e arquivos do host",
+    "Backup e restart remoto",
     "Banco separado por cliente",
     "Fila com retry e DLQ",
     "Sem cobrança duplicada",
