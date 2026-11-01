@@ -1,6 +1,6 @@
 {
-  "version": 11,
-  "updatedAt": 1792333187093,
+  "version": 12,
+  "updatedAt": 1793561832588,
   "meta": {
     "title": "Hats444 · Vanthork",
     "description": "Vanthork — bot no WhatsApp e no Telegram: loja completa, pagamento no PIX, divulgação que entra em grupo sozinha, proteção, download e consulta. Feito por Hats444.",
@@ -222,6 +222,21 @@
       "buttonType": "link",
       "buttonLabel": "VER CÓDIGO",
       "buttonUrl": "https://github.com/Hats444/hanork",
+      "buttonIcon": "github"
+    },
+    {
+      "id": "cleanselect",
+      "avatarClass": "gh",
+      "image": "/assets/images/card-gh.jpg",
+      "imageAlt": "Clean Select",
+      "name": "CLEAN SELECT",
+      "tag": "#TOOLS",
+      "status": "CÓDIGO ABERTO",
+      "statusPrivate": false,
+      "desc": "Limpador pro Termux: caches, logs, temporários e duplicados por hash. Zero dependências, lixeira restaurável, daemon automático com watchdog.",
+      "buttonType": "link",
+      "buttonLabel": "VER CÓDIGO",
+      "buttonUrl": "https://github.com/Hats444/clean-select",
       "buttonIcon": "github"
     },
     {
