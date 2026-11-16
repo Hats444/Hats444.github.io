@@ -337,7 +337,7 @@
 
   const viz = document.getElementById('viz-bars');
 
-  const TRACK_LABEL = 'Rosary (slowed reverb)';
+  const TRACK_LABEL = 'Unethical (epic instrumental)';
 
 
 

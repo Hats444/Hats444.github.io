@@ -1,5 +1,5 @@
-Musica do site: Enygma — Ciência Nikola Tesla (Shuumatsu no Valkyrie).
+Musica do site: Faouzia - Unethical (EPIC Orchestral Version, instrumental, Mathias Fritsche).
 
-Arquivo: assets/audio/ciencia-nikola-tesla.mp3
+Arquivo: assets/audio/unethical-epic-instrumental.mp3
 
 O botao de play no canto inferior usa esse MP3 em loop. Nao ha autoplay.
