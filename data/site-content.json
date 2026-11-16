@@ -275,13 +275,13 @@
       "image": "/assets/images/card-ig.jpg",
       "imageAlt": "Instagram",
       "name": "INSTAGRAM",
-      "tag": "#@swzsoza",
+      "tag": "#@swzsouza",
       "status": "SOCIAL",
       "statusPrivate": false,
       "desc": "Bastidores e novidades quando saem",
       "buttonType": "link",
       "buttonLabel": "SEGUIR",
-      "buttonUrl": "https://www.instagram.com/swzsoza",
+      "buttonUrl": "https://www.instagram.com/swzsouza",
       "buttonIcon": "chat"
     }
   ]
