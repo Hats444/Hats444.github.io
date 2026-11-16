@@ -16,7 +16,7 @@
     },
     {
       "title": "Pagamentos e planos",
-      "text": "PIX, cartão e boleto pelo Mercado Pago. Teste de 1 dia por R$3, semana por R$15, mês por R$39 e ano por R$249. Renovou, os dias somam. Afiliado ganha comissão e VIP por venda, com painel de rendimento e saque. Tem assinatura do bot, VIP manual e verificação de pagamento."
+      "text": "PIX, cartão e boleto pelo Mercado Pago. R$1 por dia em qualquer plano: 1 dia R$1, semana R$7, mês R$30 e ano R$365, com 30% off na primeira compra. Renovou, os dias somam. Afiliado ganha 20% de comissão e VIP por venda, com painel de rendimento e saque a partir de R$50. Tem assinatura do bot, VIP manual e verificação de pagamento."
     },
     {
       "title": "Divulgação e meta de grupos",
@@ -78,12 +78,12 @@
     "Carrinho abandonado",
     "PIX pelo Mercado Pago",
     "Cartão e boleto",
-    "Teste de 1 dia R$3",
-    "Semana R$15",
-    "Mês R$39",
-    "Ano R$249",
+    "R$1 por dia, em todo plano",
+    "Semana R$7",
+    "Mês R$30",
+    "Ano R$365", "30% off na primeira compra", "Aluguel do bot por grupo",
     "Renovar soma os dias",
-    "Afiliado com comissão, VIP e saque",
+    "Afiliado com 20%, VIP e saque",
     "Assinatura do bot",
     "Verificação de pagamento",
     "Divulgação em massa e por trilha",
@@ -275,13 +275,13 @@
       "image": "/assets/images/card-ig.jpg",
       "imageAlt": "Instagram",
       "name": "INSTAGRAM",
-      "tag": "#@caimsecond",
+      "tag": "#@swzsoza",
       "status": "SOCIAL",
       "statusPrivate": false,
       "desc": "Bastidores e novidades quando saem",
       "buttonType": "link",
       "buttonLabel": "SEGUIR",
-      "buttonUrl": "https://www.instagram.com/caimsecond",
+      "buttonUrl": "https://www.instagram.com/swzsoza",
       "buttonIcon": "chat"
     }
   ]
